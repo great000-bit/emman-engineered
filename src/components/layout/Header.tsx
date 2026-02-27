@@ -28,8 +28,8 @@ const Header = () => {
       style={{ transitionDuration: "300ms", transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
     >
       <div className="container-wide mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="font-display text-xl font-bold text-primary-foreground tracking-tight">
-          Creative<span className="text-accent">Emman</span>
+        <Link to="/" className="font-display text-lg font-bold text-primary-foreground tracking-tight">
+          Creative<span className="text-primary-foreground/70">Emman</span>
         </Link>
 
         {/* Desktop nav */}
@@ -46,7 +46,7 @@ const Header = () => {
             </Link>
           ))}
           <Link to="/contact">
-            <Button variant="accent" size="sm">
+            <Button variant="hero-pill" size="sm">
               Start a Project
             </Button>
           </Link>
