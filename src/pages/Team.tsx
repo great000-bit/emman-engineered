@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import { teamMembers } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Linkedin, ExternalLink, ArrowLeft } from "lucide-react";
+import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const TeamCarousel = () => {
@@ -30,22 +30,22 @@ const TeamCarousel = () => {
         {doubled.map((member, i) => (
           <div
             key={`${member.id}-${i}`}
-            className="relative w-72 flex-shrink-0 rounded-lg overflow-hidden group cursor-pointer"
+            className="relative w-72 flex-shrink-0 rounded-xl overflow-hidden group cursor-pointer border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03]"
           >
-            {/* Image placeholder */}
-            <div className="aspect-[3/4] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-accent/15 flex items-center justify-center">
+            <div className="aspect-[3/4] flex items-center justify-center"
+              style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
+            >
+              <div className="w-20 h-20 rounded-full bg-accent/15 flex items-center justify-center border border-accent/20">
                 <span className="text-2xl font-display font-bold text-accent">{member.name[0]}</span>
               </div>
             </div>
 
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6" style={{ transitionDuration: "250ms" }}>
+            <div className="absolute inset-0 bg-primary/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6" style={{ transitionDuration: "250ms" }}>
               <h3 className="text-lg font-display font-bold text-primary-foreground mb-1">{member.name}</h3>
               <p className="text-sm text-accent mb-2">{member.role}</p>
               <div className="flex flex-wrap gap-1 mb-3">
                 {member.stack.map((tech) => (
-                  <span key={tech} className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent">{tech}</span>
+                  <span key={tech} className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">{tech}</span>
                 ))}
               </div>
               <p className="text-xs text-primary-foreground/60 leading-relaxed mb-4">{member.bio}</p>
@@ -80,11 +80,11 @@ const TeamPage = () => (
       </div>
     </section>
 
-    <section className="section-padding">
+    <section className="section-padding bg-primary">
       <div className="container-wide mx-auto mb-8">
         <ScrollReveal>
-          <h2 className="text-2xl md:text-3xl mb-2">Meet the Team</h2>
-          <p className="text-muted-foreground">Hover to learn more about each team member.</p>
+          <h2 className="text-2xl md:text-3xl text-primary-foreground mb-2">Meet the Team</h2>
+          <p className="text-primary-foreground/50">Hover to learn more about each team member.</p>
         </ScrollReveal>
       </div>
       <ScrollReveal delay={0.1}>
@@ -92,7 +92,7 @@ const TeamPage = () => (
       </ScrollReveal>
     </section>
 
-    <section className="section-padding bg-primary text-center">
+    <section className="section-padding bg-primary text-center border-t border-primary-foreground/5">
       <div className="container-narrow mx-auto">
         <ScrollReveal>
           <h2 className="text-3xl md:text-4xl text-primary-foreground mb-6">
@@ -100,9 +100,16 @@ const TeamPage = () => (
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <Link to="/contact">
-            <Button variant="hero">Start a Project</Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/contact">
+              <Button variant="hero">Start a Project</Button>
+            </Link>
+            <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer">
+              <Button variant="hero-pill">
+                <Phone size={16} className="mr-2" /> WhatsApp Us
+              </Button>
+            </a>
+          </div>
         </ScrollReveal>
       </div>
     </section>
@@ -116,8 +123,8 @@ export const TeamProfile = () => {
   if (!member) {
     return (
       <PageLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          <p>Team member not found.</p>
+        <div className="min-h-screen flex items-center justify-center bg-primary">
+          <p className="text-primary-foreground">Team member not found.</p>
         </div>
       </PageLayout>
     );
@@ -133,11 +140,13 @@ export const TeamProfile = () => {
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="section-padding bg-primary">
         <div className="container-narrow mx-auto grid md:grid-cols-3 gap-12">
           <ScrollReveal>
-            <div className="aspect-[3/4] rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-              <div className="w-24 h-24 rounded-full bg-accent/15 flex items-center justify-center">
+            <div className="aspect-[3/4] rounded-xl border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] flex items-center justify-center"
+              style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
+            >
+              <div className="w-24 h-24 rounded-full bg-accent/15 flex items-center justify-center border border-accent/20">
                 <span className="text-4xl font-display font-bold text-accent">{member.name[0]}</span>
               </div>
             </div>
@@ -145,40 +154,48 @@ export const TeamProfile = () => {
 
           <div className="md:col-span-2">
             <ScrollReveal>
-              <h1 className="text-3xl md:text-4xl mb-2">{member.name}</h1>
+              <h1 className="text-3xl md:text-4xl text-primary-foreground mb-2">{member.name}</h1>
               <p className="text-accent font-medium mb-6">{member.role}</p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
-              <p className="text-muted-foreground leading-relaxed mb-8">{member.bio}</p>
+              <p className="text-primary-foreground/60 leading-relaxed mb-8">{member.bio}</p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.12}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-3">Tech Stack</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-primary-foreground/40 mb-3">Tech Stack</h3>
               <div className="flex flex-wrap gap-2 mb-8">
                 {member.stack.map((tech) => (
-                  <span key={tech} className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent font-medium">{tech}</span>
+                  <span key={tech} className="text-xs px-3 py-1.5 rounded-full bg-accent/10 text-accent font-medium border border-accent/20">{tech}</span>
                 ))}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.16}>
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-wrap">
                 <a href={member.portfolio}>
                   <Button variant="accent" size="sm"><ExternalLink size={14} /> Portfolio</Button>
                 </a>
                 <a href={member.linkedin}>
-                  <Button variant="outline" size="sm"><Linkedin size={14} /> LinkedIn</Button>
+                  <Button variant="hero-pill" size="sm"><Linkedin size={14} /> LinkedIn</Button>
+                </a>
+                <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer">
+                  <Button variant="hero-pill" size="sm"><Phone size={14} /> Contact</Button>
                 </a>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.2}>
-              <div className="mt-12 p-6 rounded-lg bg-secondary">
-                <p className="text-sm text-muted-foreground mb-3">Interested in working with {member.name.split(" ")[0]}?</p>
-                <Link to="/contact">
-                  <Button variant="accent">Work With Us</Button>
-                </Link>
+              <div className="mt-12 p-6 rounded-xl border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03]">
+                <p className="text-sm text-primary-foreground/60 mb-3">Interested in working with {member.name.split(" ")[0]}?</p>
+                <div className="flex gap-3 flex-wrap">
+                  <Link to="/contact">
+                    <Button variant="accent">Work With Us</Button>
+                  </Link>
+                  <a href="mailto:greatemmawori@gmail.com">
+                    <Button variant="hero-pill" size="sm"><Mail size={14} /> Email Us</Button>
+                  </a>
+                </div>
               </div>
             </ScrollReveal>
           </div>

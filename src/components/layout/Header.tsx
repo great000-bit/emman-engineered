@@ -70,7 +70,7 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-primary/50 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.nav
@@ -78,7 +78,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed top-0 right-0 h-full w-72 bg-primary p-8 pt-20 md:hidden flex flex-col gap-6"
+              className="fixed top-0 right-0 h-full w-72 bg-primary p-8 pt-20 md:hidden flex flex-col gap-6 border-l border-primary-foreground/10"
             >
               {navLinks.map((link) => (
                 <Link
@@ -96,6 +96,10 @@ const Header = () => {
                   Start a Project
                 </Button>
               </Link>
+              <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
+                <a href="mailto:greatemmawori@gmail.com" className="block hover:text-accent transition-colors">greatemmawori@gmail.com</a>
+                <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">+234 703 784 5433</a>
+              </div>
             </motion.nav>
           </>
         )}

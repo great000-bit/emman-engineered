@@ -34,7 +34,7 @@ const ContactPage = () => {
       return;
     }
     setErrors({});
-    toast.success("Message sent successfully! We'll be in touch soon.");
+    toast.success("Message sent successfully! We'll be in touch soon. You can also reach us at +234 703 784 5433 or greatemmawori@gmail.com");
     setForm({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
@@ -63,71 +63,73 @@ const ContactPage = () => {
           {/* Form */}
           <div className="md:col-span-2">
             <ScrollReveal>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Full Name *</label>
-                    <Input
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      placeholder="Your name"
-                    />
-                    {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+              <div className="rounded-xl border border-border/50 backdrop-blur-lg bg-card/80 p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Full Name *</label>
+                      <Input
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="Your name"
+                      />
+                      {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Email *</label>
+                      <Input
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="your@email.com"
+                      />
+                      {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
+                    </div>
                   </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Email *</label>
-                    <Input
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="your@email.com"
-                    />
-                    {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Phone</label>
+                      <Input
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="+234 XXX XXX XXXX"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium mb-2 block">Service Interested In *</label>
+                      <Select value={form.service} onValueChange={(v) => setForm({ ...form, service: v })}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {services.map((s) => (
+                            <SelectItem key={s.title} value={s.title}>{s.title}</SelectItem>
+                          ))}
+                          <SelectItem value="Training">Training Program</SelectItem>
+                          <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      {errors.service && <p className="text-xs text-destructive mt-1">{errors.service}</p>}
+                    </div>
+                  </div>
+
                   <div>
-                    <label className="text-sm font-medium mb-2 block">Phone</label>
-                    <Input
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      placeholder="+1 234 567 890"
+                    <label className="text-sm font-medium mb-2 block">Message *</label>
+                    <Textarea
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      placeholder="Tell us about your project..."
+                      rows={5}
                     />
+                    {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
                   </div>
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Service Interested In *</label>
-                    <Select value={form.service} onValueChange={(v) => setForm({ ...form, service: v })}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {services.map((s) => (
-                          <SelectItem key={s.title} value={s.title}>{s.title}</SelectItem>
-                        ))}
-                        <SelectItem value="Training">Training Program</SelectItem>
-                        <SelectItem value="Other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    {errors.service && <p className="text-xs text-destructive mt-1">{errors.service}</p>}
-                  </div>
-                </div>
 
-                <div>
-                  <label className="text-sm font-medium mb-2 block">Message *</label>
-                  <Textarea
-                    value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your project..."
-                    rows={5}
-                  />
-                  {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
-                </div>
-
-                <Button type="submit" variant="accent" size="lg">
-                  Send Message
-                </Button>
-              </form>
+                  <Button type="submit" variant="accent" size="lg">
+                    Send Message
+                  </Button>
+                </form>
+              </div>
             </ScrollReveal>
           </div>
 
@@ -138,16 +140,26 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-4">Direct Contact</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
-                    <a href="mailto:hello@creativeemman.com" className="flex items-center gap-3 hover:text-accent transition-colors">
-                      <Mail size={16} className="text-accent" /> hello@creativeemman.com
+                    <a href="mailto:greatemmawori@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail size={16} className="text-accent" /> greatemmawori@gmail.com
                     </a>
-                    <div className="flex items-center gap-3">
-                      <Phone size={16} className="text-accent" /> +234 800 000 0000
-                    </div>
+                    <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Phone size={16} className="text-accent" /> +234 703 784 5433
+                    </a>
                     <div className="flex items-center gap-3">
                       <MapPin size={16} className="text-accent" /> Lagos, Nigeria
                     </div>
                   </div>
+                </div>
+
+                <div className="p-5 rounded-xl border border-border/50 backdrop-blur-lg bg-card/80">
+                  <p className="text-sm font-medium mb-2">Quick Contact</p>
+                  <p className="text-xs text-muted-foreground mb-3">Prefer to chat directly? Reach us on WhatsApp.</p>
+                  <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer">
+                    <Button variant="accent" size="sm" className="w-full">
+                      <Phone size={14} className="mr-2" /> Chat on WhatsApp
+                    </Button>
+                  </a>
                 </div>
 
                 <div>
