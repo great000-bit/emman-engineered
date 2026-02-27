@@ -18,6 +18,7 @@ const buttonVariants = cva(
         accent: "bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] btn-glow",
         hero: "bg-accent text-accent-foreground hover:bg-accent/90 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] btn-glow text-base px-8 py-3",
         "hero-outline": "border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:-translate-y-0.5 active:translate-y-0 text-base px-8 py-3",
+        "hero-pill": "rounded-full border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 hover:border-primary-foreground/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] text-base px-10 py-3 backdrop-blur-sm",
       },
       size: {
         default: "h-10 px-5 py-2",
