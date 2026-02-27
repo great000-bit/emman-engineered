@@ -157,5 +157,6 @@ export const navLinks = [
   { label: "Services", path: "/services" },
   { label: "Team", path: "/team" },
   { label: "Trainings", path: "/trainings" },
+  { label: "Testimonials", path: "/testimonials" },
   { label: "Contact", path: "/contact" },
 ];
