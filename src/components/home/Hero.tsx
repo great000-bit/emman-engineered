@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import ParticleNetwork from "./ParticleNetwork";
+import BubbleBackground from "./BubbleBackground";
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -38,6 +39,13 @@ const Hero = () => (
 
     {/* Layer 3: Tech particle network */}
     <ParticleNetwork />
+
+    {/* Layer 3b: Bubble background */}
+    <BubbleBackground
+      interactive
+      opacity={0.12}
+      className="absolute inset-0 z-[1]"
+    />
 
     {/* Content — positioned in upper-middle safe zone */}
     <div className="relative z-10 text-center max-w-3xl mx-auto px-6 pb-32 pt-24 md:pb-40 md:pt-32">
