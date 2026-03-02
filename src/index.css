@@ -141,6 +141,49 @@
   .btn-glow:hover {
     box-shadow: var(--shadow-glow);
   }
+
+  /* Liquid fill button effect */
+  .btn-liquid {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .btn-liquid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      to top,
+      hsl(var(--accent)) 0%,
+      hsl(var(--accent) / 0.85) 40%,
+      hsl(var(--accent) / 0.6) 100%
+    );
+    transform: translateY(calc(100% - 3px));
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: inherit;
+  }
+
+  .btn-liquid:hover::before {
+    transform: translateY(0);
+  }
+
+  .btn-liquid-accent::before {
+    background: linear-gradient(
+      to top,
+      hsl(var(--accent) / 0.25) 0%,
+      hsl(var(--accent) / 0.15) 100%
+    );
+  }
+
+  .btn-liquid-ghost::before {
+    background: linear-gradient(
+      to top,
+      hsl(var(--primary-foreground) / 0.1) 0%,
+      hsl(var(--primary-foreground) / 0.05) 100%
+    );
+  }
 }
 
 @layer utilities {

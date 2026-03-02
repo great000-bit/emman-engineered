@@ -70,7 +70,7 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 bg-black/70 backdrop-blur-md md:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.nav
@@ -78,7 +78,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed top-0 right-0 h-full w-72 bg-primary p-8 pt-20 md:hidden flex flex-col gap-6 border-l border-primary-foreground/10"
+              className="fixed top-0 right-0 h-full w-72 bg-primary/80 backdrop-blur-xl p-8 pt-20 md:hidden flex flex-col gap-6 border-l border-primary-foreground/10 shadow-2xl"
             >
               {navLinks.map((link) => (
                 <Link
