@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/siteData";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import websiteIcon from "@/assets/website-icon.png";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,8 +28,16 @@ const Header = () => {
       style={{ transitionDuration: "300ms", transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
     >
       <div className="container-wide mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="font-display text-lg font-bold text-primary-foreground tracking-tight">
-          Creative<span className="text-primary-foreground/70">Emman</span>
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={websiteIcon}
+            alt="Creative Emman"
+            className="w-9 h-9 object-contain"
+          />
+          <span className="hidden md:inline font-brand text-lg font-bold text-primary-foreground tracking-tight">
+            Creative<span className="text-accent">Emman</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -52,13 +60,29 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Morphing hamburger */}
         <button
-          className="md:hidden text-primary-foreground"
+          className="md:hidden relative w-8 h-8 flex items-center justify-center text-primary-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          <div className="relative w-6 h-4">
+            <span
+              className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+              }`}
+            />
+          </div>
         </button>
       </div>
 
@@ -70,7 +94,8 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-md md:hidden"
+              className="fixed inset-0 bg-primary/60 backdrop-blur-sm md:hidden"
+              style={{ zIndex: 9998 }}
               onClick={() => setMobileOpen(false)}
             />
             <motion.nav
@@ -78,8 +103,20 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="fixed top-0 right-0 h-full w-72 bg-primary/80 backdrop-blur-xl p-8 pt-20 md:hidden flex flex-col gap-6 border-l border-primary-foreground/10 shadow-2xl"
+              className="fixed top-0 right-0 h-full w-72 p-8 pt-20 md:hidden flex flex-col gap-6 shadow-2xl"
+              style={{
+                zIndex: 9999,
+                backgroundColor: "rgba(0, 3, 36, 0.85)",
+                backdropFilter: "blur(25px) saturate(180%)",
+                WebkitBackdropFilter: "blur(25px) saturate(180%)",
+                borderLeft: "1px solid rgba(0, 170, 242, 0.1)",
+              }}
             >
+              {/* Mobile logo */}
+              <div className="absolute top-5 left-8">
+                <img src={websiteIcon} alt="Creative Emman" className="w-8 h-8" />
+              </div>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
