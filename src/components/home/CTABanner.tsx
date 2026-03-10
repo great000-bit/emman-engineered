@@ -25,11 +25,9 @@ const CTABanner = () => (
           <Link to="/contact">
             <Button variant="hero">Start Your Project</Button>
           </Link>
-          <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer">
-            <Button variant="hero-pill">
+          <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
               <Phone size={16} className="mr-2" /> WhatsApp Us
-            </Button>
-          </a>
+          </Button>
         </div>
       </ScrollReveal>
     </div>
