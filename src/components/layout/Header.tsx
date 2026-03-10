@@ -114,7 +114,7 @@ const Header = () => {
             >
               {/* Mobile logo */}
               <div className="absolute top-5 left-8">
-                <img src={websiteIcon} alt="Creative Emman" className="w-8 h-8" />
+                <img src={websiteIcon} alt="Creative Emman" className="w-10 h-10" />
               </div>
 
               {navLinks.map((link) => (
