@@ -247,7 +247,7 @@ const ContactPage = () => {
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="text-sm text-destructive"
+                        className="text-sm text-red-500"
                       >
                         Oops! Something went wrong. Please try again or contact us via WhatsApp.
                       </motion.p>
