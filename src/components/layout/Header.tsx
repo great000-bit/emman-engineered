@@ -106,10 +106,11 @@ const Header = () => {
               className="fixed top-0 right-0 h-full w-72 p-8 pt-20 md:hidden flex flex-col gap-6 shadow-2xl"
               style={{
                 zIndex: 9999,
-                backgroundColor: "rgba(0, 3, 36, 0.85)",
-                backdropFilter: "blur(25px) saturate(180%)",
-                WebkitBackdropFilter: "blur(25px) saturate(180%)",
-                borderLeft: "1px solid rgba(0, 170, 242, 0.1)",
+                backgroundColor: "rgba(0, 3, 36, 0.97)",
+                backdropFilter: "blur(40px) saturate(200%)",
+                WebkitBackdropFilter: "blur(40px) saturate(200%)",
+                borderLeft: "1px solid rgba(0, 170, 242, 0.15)",
+                boxShadow: "-4px 0 30px rgba(0, 3, 36, 0.8)",
               }}
             >
               {/* Mobile logo */}
