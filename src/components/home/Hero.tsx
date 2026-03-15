@@ -83,7 +83,7 @@ const Hero = () => (
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.55, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        className="flex flex-col items-center gap-5"
+        className="flex flex-col sm:flex-row items-center justify-center gap-6"
       >
         <Link to="/contact">
           <Button variant="hero-pill">Start a Project</Button>
