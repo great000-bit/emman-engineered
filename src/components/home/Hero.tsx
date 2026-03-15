@@ -89,7 +89,7 @@ const Hero = () => (
           <Button variant="hero-pill">Start a Project</Button>
         </Link>
         <Link to="/services">
-          <Button variant="hero-outline">View Services</Button>
+          <Button variant="hero-pill">View Services</Button>
         </Link>
       </motion.div>
     </div>
