@@ -88,11 +88,8 @@ const Hero = () => (
         <Link to="/contact">
           <Button variant="hero-pill">Start a Project</Button>
         </Link>
-        <Link
-          to="/services"
-          className="text-sm text-white/40 hover:text-white/70 transition-colors tracking-wide"
-        >
-          View Services
+        <Link to="/services">
+          <Button variant="hero-outline">View Services</Button>
         </Link>
       </motion.div>
     </div>
