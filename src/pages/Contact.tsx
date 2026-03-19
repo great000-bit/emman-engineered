@@ -275,8 +275,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-4 text-primary-foreground">Direct Line</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
-                    <a href="mailto:greatemmawori@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
-                      <Mail size={16} className="text-accent" /> greatemmawori@gmail.com
+                    <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail size={16} className="text-accent" /> creativeemman@gmail.com
                     </a>
                     <button
                       type="button"

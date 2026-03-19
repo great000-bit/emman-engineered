@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 shadow-md bg-primary"
+      className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="container-wide mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
@@ -123,7 +123,7 @@ const Header = () => {
                 </Button>
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
-                <a href="mailto:greatemmawori@gmail.com" className="block hover:text-accent transition-colors">greatemmawori@gmail.com</a>
+                <a href="mailto:creativeemman@gmail.com" className="block hover:text-accent transition-colors">creativeemman@gmail.com</a>
                 <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">+234 703 784 5433</a>
               </div>
             </motion.nav>
