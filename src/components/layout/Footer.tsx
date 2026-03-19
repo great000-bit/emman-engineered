@@ -72,8 +72,8 @@ const Footer = () => (
             Connect
           </h4>
           <div className="flex flex-col gap-3 text-sm text-primary-foreground/60">
-            <a href="mailto:greatemmawori@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail size={14} /> greatemmawori@gmail.com
+            <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <Mail size={14} /> creativeemman@gmail.com
             </a>
             <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Phone size={14} /> +234 703 784 5433
@@ -82,7 +82,7 @@ const Footer = () => (
               <a href="#" aria-label="LinkedIn" className="social-glow text-primary-foreground/50"><Linkedin size={18} /></a>
               <a href="#" aria-label="Twitter" className="social-glow text-primary-foreground/50"><Twitter size={18} /></a>
               <a href="#" aria-label="Instagram" className="social-glow text-primary-foreground/50"><Instagram size={18} /></a>
-              <a href="mailto:greatemmawori@gmail.com" aria-label="Email" className="social-glow text-primary-foreground/50"><Mail size={18} /></a>
+              <a href="mailto:creativeemman@gmail.com" aria-label="Email" className="social-glow text-primary-foreground/50"><Mail size={18} /></a>
             </div>
           </div>
         </div>
