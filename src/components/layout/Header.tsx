@@ -6,26 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import websiteIcon from "@/assets/website-icon.png";
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => setMobileOpen(false), [location]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-        scrolled
-          ? "bg-primary/95 backdrop-blur-md shadow-md"
-          : "bg-transparent"
-      }`}
-      style={{ transitionDuration: "300ms", transitionTimingFunction: "cubic-bezier(0.4,0,0.2,1)" }}
+      className="fixed top-0 left-0 right-0 z-50 shadow-md"
+      style={{ backgroundColor: "#0f2557" }}
     >
       <div className="container-wide mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
