@@ -64,7 +64,7 @@ const ServicesPage = () => (
                       More Details
                     </AccordionTrigger>
                     <AccordionContent className="text-sm text-primary-foreground/50 leading-relaxed">
-                      Our {service.title.toLowerCase()} service follows a structured delivery process: Discovery, Strategy, Execution, and Optimization. Every engagement is scoped precisely and delivered on milestone.
+                      {(service as any).longDescription ?? `Our ${service.title.toLowerCase()} service follows a structured delivery process: Discovery, Strategy, Execution, and Optimization. Every engagement is scoped precisely and delivered on milestone.`}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
