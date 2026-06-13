@@ -100,7 +100,7 @@ const TestimonialsPage = () => {
 
   return (
     <PageLayout>
-      <section className="bg-primary pt-32 pb-20 px-6">
+      <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>
             <span className="text-sm font-medium tracking-widest uppercase text-accent">Testimonials</span>
