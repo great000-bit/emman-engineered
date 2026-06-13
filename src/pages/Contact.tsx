@@ -192,7 +192,7 @@ const ContactPage = () => {
                     {/* Honeypot */}
                     <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                       <FloatingInput
                         name="name"
                         label="Full Name *"
@@ -210,7 +210,7 @@ const ContactPage = () => {
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                       <FloatingInput
                         name="phone"
                         label="Phone"
