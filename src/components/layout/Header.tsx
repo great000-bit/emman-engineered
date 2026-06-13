@@ -62,7 +62,7 @@ const Header = () => {
 
         {/* Mobile right: compact CTA + hamburger */}
         <div className="md:hidden flex items-center gap-2">
-          <Link to="/contact" className="hidden xs:inline-flex">
+          <Link to="/contact" className="inline-flex">
             <Button variant="accent" size="sm" className="h-9 px-3 text-xs">
               Start
             </Button>
