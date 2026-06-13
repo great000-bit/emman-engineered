@@ -27,15 +27,15 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container-wide mx-auto flex items-center justify-between px-6 py-4">
+      <div className="container-wide mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 gap-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
           <img
             src={websiteIcon}
             alt="Creative Emman"
-            className="w-11 h-11 object-contain"
+            className="w-9 h-9 sm:w-11 sm:h-11 object-contain flex-shrink-0"
           />
-          <span className="hidden md:inline font-brand text-lg font-bold text-primary-foreground tracking-tight">
+          <span className="hidden sm:inline font-brand text-base sm:text-lg font-bold text-primary-foreground tracking-tight truncate">
             Creative<span className="text-accent">Emman</span>
           </span>
         </Link>
@@ -60,31 +60,39 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Morphing hamburger */}
-        <button
-          className="md:hidden relative w-8 h-8 flex items-center justify-center text-primary-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          <div className="relative w-6 h-4">
-            <span
-              className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
-              }`}
-            />
-          </div>
-        </button>
+        {/* Mobile right: compact CTA + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          <Link to="/contact" className="inline-flex">
+            <Button variant="accent" size="sm" className="h-9 px-3 text-xs">
+              Start
+            </Button>
+          </Link>
+          <button
+            className="relative w-11 h-11 flex items-center justify-center text-primary-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            <div className="relative w-6 h-4">
+              <span
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </div>
+
 
       {/* Mobile menu */}
       <AnimatePresence>

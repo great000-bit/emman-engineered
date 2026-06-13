@@ -127,7 +127,7 @@ const ContactPage = () => {
 
   return (
     <PageLayout>
-      <section className="bg-primary pt-32 pb-20 px-6">
+      <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>
             <span className="text-sm font-medium tracking-widest uppercase text-accent">Command Center</span>
@@ -146,7 +146,7 @@ const ContactPage = () => {
       </section>
 
       <section className="section-padding bg-primary">
-        <div className="container-narrow mx-auto grid md:grid-cols-3 gap-16">
+        <div className="container-narrow mx-auto grid md:grid-cols-3 gap-10 md:gap-16">
           {/* Form */}
           <div className="md:col-span-2">
             <ScrollReveal>
@@ -192,7 +192,7 @@ const ContactPage = () => {
                     {/* Honeypot */}
                     <input type="text" name="_gotcha" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                       <FloatingInput
                         name="name"
                         label="Full Name *"
@@ -210,7 +210,7 @@ const ContactPage = () => {
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                       <FloatingInput
                         name="phone"
                         label="Phone"

@@ -13,7 +13,7 @@ import {
 
 const ServicesPage = () => (
   <PageLayout>
-    <section className="bg-primary pt-32 pb-20 px-6">
+    <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
         <ScrollReveal>
           <span className="text-sm font-medium tracking-widest uppercase text-accent">Our Expertise</span>
@@ -32,10 +32,11 @@ const ServicesPage = () => (
     </section>
 
     <section className="section-padding bg-primary">
-      <div className="container-narrow mx-auto space-y-20">
+      <div className="container-narrow mx-auto space-y-14 sm:space-y-20">
         {services.map((service, i) => (
           <ScrollReveal key={service.title} delay={0.05}>
-            <div className={`grid md:grid-cols-2 gap-12 items-start ${i % 2 === 1 ? "md:direction-rtl" : ""}`}>
+            <div className={`grid md:grid-cols-2 gap-8 md:gap-12 items-start ${i % 2 === 1 ? "md:direction-rtl" : ""}`}>
+
               <div>
                 <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 border border-accent/10">
                   <service.icon className="w-7 h-7 text-accent" />
@@ -71,7 +72,7 @@ const ServicesPage = () => (
               </div>
             </div>
 
-            {i < services.length - 1 && <div className="border-t border-primary-foreground/10 mt-20" />}
+            {i < services.length - 1 && <div className="border-t border-primary-foreground/10 mt-14 sm:mt-20" />}
           </ScrollReveal>
         ))}
       </div>

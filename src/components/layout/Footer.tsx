@@ -19,8 +19,9 @@ const Footer = () => (
       }}
     />
 
-    <div className="container-wide mx-auto px-6 py-16 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div className="container-wide mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+
         {/* Logo column */}
         <div>
           <img
@@ -78,18 +79,19 @@ const Footer = () => (
             Connect
           </h4>
           <div className="flex flex-col gap-3 text-sm text-primary-foreground/60">
-            <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail size={14} /> creativeemman@gmail.com
+            <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
+              <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemman@gmail.com</span>
             </a>
             <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone size={14} /> +234 703 784 5433
+              <Phone size={14} className="flex-shrink-0" /> +234 703 784 5433
             </a>
-            <div className="flex gap-4 mt-3">
-              <a href="#" aria-label="Facebook" className="social-glow text-primary-foreground/50"><Facebook size={18} /></a>
-              <a href="#" aria-label="LinkedIn" className="social-glow text-primary-foreground/50"><Linkedin size={18} /></a>
-              <a href="#" aria-label="X (Twitter)" className="social-glow text-primary-foreground/50"><XIcon size={18} /></a>
+            <div className="flex gap-5 mt-3">
+              <a href="#" aria-label="Facebook" className="social-glow text-primary-foreground/50 p-2 -m-2"><Facebook size={20} /></a>
+              <a href="#" aria-label="LinkedIn" className="social-glow text-primary-foreground/50 p-2 -m-2"><Linkedin size={20} /></a>
+              <a href="#" aria-label="X (Twitter)" className="social-glow text-primary-foreground/50 p-2 -m-2"><XIcon size={20} /></a>
             </div>
           </div>
+
         </div>
       </div>
 

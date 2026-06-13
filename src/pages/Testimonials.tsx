@@ -77,9 +77,10 @@ const MarqueeRow = ({ items, direction = "left", speed = 40 }: { items: typeof t
         {doubled.map((t, i) => (
           <div
             key={`${t.name}-${i}`}
-            className="w-[380px] flex-shrink-0 rounded-xl p-8 border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all group"
+            className="w-[300px] sm:w-[380px] flex-shrink-0 rounded-xl p-6 sm:p-8 border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all group"
             style={{ transitionDuration: "var(--duration-fast)" }}
           >
+
             <p className="text-sm text-primary-foreground/70 leading-relaxed mb-6 italic">
               "{t.text}"
             </p>
@@ -100,7 +101,7 @@ const TestimonialsPage = () => {
 
   return (
     <PageLayout>
-      <section className="bg-primary pt-32 pb-20 px-6">
+      <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>
             <span className="text-sm font-medium tracking-widest uppercase text-accent">Testimonials</span>
