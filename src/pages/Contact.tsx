@@ -146,7 +146,7 @@ const ContactPage = () => {
       </section>
 
       <section className="section-padding bg-primary">
-        <div className="container-narrow mx-auto grid md:grid-cols-3 gap-16">
+        <div className="container-narrow mx-auto grid md:grid-cols-3 gap-10 md:gap-16">
           {/* Form */}
           <div className="md:col-span-2">
             <ScrollReveal>
