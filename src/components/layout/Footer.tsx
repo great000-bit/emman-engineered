@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { navLinks } from "@/data/siteData";
-import { Linkedin, Twitter, Instagram, Mail, Phone } from "lucide-react";
+import { Linkedin, Facebook, Mail, Phone } from "lucide-react";
+
+const XIcon = ({ size = 18 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.59 8.67L23 22h-6.77l-5.3-6.93L4.8 22H1.54l8.12-9.28L1 2h6.91l4.79 6.34L18.244 2Zm-1.19 18h1.87L7.04 4H5.04l12.014 16Z" />
+  </svg>
+);
 import websiteIcon from "@/assets/website-icon.png";
 
 const Footer = () => (
@@ -79,10 +85,9 @@ const Footer = () => (
               <Phone size={14} /> +234 703 784 5433
             </a>
             <div className="flex gap-4 mt-3">
+              <a href="#" aria-label="Facebook" className="social-glow text-primary-foreground/50"><Facebook size={18} /></a>
               <a href="#" aria-label="LinkedIn" className="social-glow text-primary-foreground/50"><Linkedin size={18} /></a>
-              <a href="#" aria-label="Twitter" className="social-glow text-primary-foreground/50"><Twitter size={18} /></a>
-              <a href="#" aria-label="Instagram" className="social-glow text-primary-foreground/50"><Instagram size={18} /></a>
-              <a href="mailto:creativeemman@gmail.com" aria-label="Email" className="social-glow text-primary-foreground/50"><Mail size={18} /></a>
+              <a href="#" aria-label="X (Twitter)" className="social-glow text-primary-foreground/50"><XIcon size={18} /></a>
             </div>
           </div>
         </div>

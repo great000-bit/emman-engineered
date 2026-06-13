@@ -1,4 +1,4 @@
-import { Code2, Palette, PenTool, Video, Film, Camera, Brain, Target, Eye, CheckCircle } from "lucide-react";
+import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Brain, Target, Eye, CheckCircle } from "lucide-react";
 
 export const services = [
   {
@@ -6,6 +6,21 @@ export const services = [
     title: "Website Development",
     description: "High-performance web applications built with modern frameworks, optimized for speed and scalability.",
     includes: ["Custom Web Applications", "E-commerce Solutions", "Progressive Web Apps", "API Development", "Performance Optimization"],
+  },
+  {
+    icon: Share2,
+    title: "Social Media Management",
+    description: "Strategic social media growth that builds brand authority, drives engagement, and delivers measurable results across platforms.",
+    includes: [
+      "Content Strategy & Calendar Planning",
+      "Daily Posting & Community Management",
+      "Graphic Design & Visual Content Creation",
+      "Audience Growth & Engagement",
+      "Performance Analytics & Reporting",
+      "Paid Social Advertising (optional)",
+    ],
+    longDescription:
+      "Our Social Media Management service is designed to turn your profiles into powerful marketing assets. We handle everything from crafting scroll-stopping content to engaging with your audience and analyzing performance. Whether you're looking to build awareness, generate leads, or strengthen customer loyalty, we create a consistent, professional presence that grows with your business. Every campaign is data-driven and aligned with your overall brand goals.",
   },
   {
     icon: Palette,
