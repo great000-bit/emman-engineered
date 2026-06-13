@@ -19,8 +19,9 @@ const Footer = () => (
       }}
     />
 
-    <div className="container-wide mx-auto px-6 py-16 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div className="container-wide mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+
         {/* Logo column */}
         <div>
           <img
