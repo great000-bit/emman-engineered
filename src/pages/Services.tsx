@@ -72,7 +72,7 @@ const ServicesPage = () => (
               </div>
             </div>
 
-            {i < services.length - 1 && <div className="border-t border-primary-foreground/10 mt-20" />}
+            {i < services.length - 1 && <div className="border-t border-primary-foreground/10 mt-14 sm:mt-20" />}
           </ScrollReveal>
         ))}
       </div>
