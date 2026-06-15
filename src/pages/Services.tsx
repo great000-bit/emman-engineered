@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+import SEO from "@/components/SEO";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +14,26 @@ import {
 
 const ServicesPage = () => (
   <PageLayout>
+    <SEO
+      path="/services"
+      title="Our Services - Website Design, Social Media & Digital Marketing | Creative Emman Nigeria"
+      description="Website development, social media management, UI/UX design, graphic design, videography, video editing & photography services in Nigeria. Engineered for results."
+      jsonLd={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        itemListElement: services.map((s, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "Service",
+            name: s.title,
+            description: s.description,
+            provider: { "@type": "Organization", name: "Creative Emman" },
+            areaServed: "NG",
+          },
+        })),
+      }}
+    />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
         <ScrollReveal>
