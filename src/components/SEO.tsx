@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_URL = "https://emman-engineered.vercel.app";
-const DEFAULT_OG = `${SITE_URL}/favicon.png`;
+const DEFAULT_OG = `${SITE_URL}/og-image.jpg`;
 
 interface SEOProps {
   title: string;
