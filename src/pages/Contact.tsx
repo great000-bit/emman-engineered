@@ -127,6 +127,17 @@ const ContactPage = () => {
 
   return (
     <PageLayout>
+      <SEO
+        path="/contact"
+        title="Contact Creative Emman | Digital Agency in Lagos, Nigeria"
+        description="Start a project with Creative Emman. Email creativeemman@gmail.com or WhatsApp +234 703 784 5433. We respond within 24 hours."
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Creative Emman",
+          url: "https://emman-engineered.vercel.app/contact",
+        }}
+      />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>
