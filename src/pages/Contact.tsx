@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, CheckCircle } from "lucide-react";
+import SEO from "@/components/SEO";
 import { services } from "@/data/siteData";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
