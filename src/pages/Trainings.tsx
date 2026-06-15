@@ -5,9 +5,22 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Clock, BookOpen, Phone } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const TrainingsPage = () => (
   <PageLayout>
+    <SEO
+      path="/trainings"
+      title="Training Programs — Web, UI/UX, Video & Branding | Creative Emman"
+      description="Practitioner-led training in frontend engineering, UI/UX design, video production and brand identity. Portfolio-ready outcomes from Creative Emman Nigeria."
+      jsonLd={trainings.map((t) => ({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: t.title,
+        description: t.description,
+        provider: { "@type": "Organization", name: "Creative Emman", sameAs: "https://emman-engineered.vercel.app" },
+      }))}
+    />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
         <ScrollReveal>

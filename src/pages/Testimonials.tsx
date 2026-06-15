@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Phone, Mail } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const testimonials = [
   {
@@ -101,6 +102,18 @@ const TestimonialsPage = () => {
 
   return (
     <PageLayout>
+      <SEO
+        path="/testimonials"
+        title="Client Testimonials | Creative Emman — Digital Agency Nigeria"
+        description="What clients say about working with Creative Emman. Real results from website, branding and digital projects across Nigeria and beyond."
+        jsonLd={testimonials.map((t) => ({
+          "@context": "https://schema.org",
+          "@type": "Review",
+          reviewBody: t.text,
+          author: { "@type": "Person", name: t.name },
+          itemReviewed: { "@type": "Organization", name: "Creative Emman" },
+        }))}
+      />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>

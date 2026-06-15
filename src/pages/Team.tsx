@@ -6,6 +6,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const TeamCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -62,6 +63,11 @@ const TeamCarousel = () => {
 
 const TeamPage = () => (
   <PageLayout>
+    <SEO
+      path="/team"
+      title="Our Team | Creative Emman — Digital Agency Nigeria"
+      description="Meet the engineers, designers, and strategists behind Creative Emman — a multidisciplinary team delivering premium digital products from Lagos, Nigeria."
+    />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
         <ScrollReveal>
@@ -130,6 +136,19 @@ export const TeamProfile = () => {
 
   return (
     <PageLayout>
+      <SEO
+        path={`/team/${member.id}`}
+        title={`${member.name} — ${member.role} | Creative Emman`}
+        description={member.bio}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: member.name,
+          jobTitle: member.role,
+          description: member.bio,
+          worksFor: { "@type": "Organization", name: "Creative Emman" },
+        }}
+      />
       <section className="bg-primary pt-32 pb-12 px-6">
         <div className="container-narrow mx-auto">
           <Link to="/team" className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-accent transition-colors mb-8">
