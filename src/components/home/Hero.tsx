@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import ParticleNetwork from "./ParticleNetwork";
 import BubbleBackground from "./BubbleBackground";
+import TypingHeadline from "./TypingHeadline";
+
+const HERO_LINES = [
+  "We design.",
+  "We build digital solutions.",
+  "We manage your social presence.",
+  "We craft brand identities.",
+  "We shoot your story.",
+  "We edit your vision.",
+  "We engineer premium websites.",
+];
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -58,16 +69,18 @@ const Hero = () => (
         Premium Digital Technology Company
       </motion.span>
 
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-bold leading-[1.08] mb-6 tracking-tight"
+        className="mb-6 px-2"
       >
-        Premium Digital Execution{" "}
-        <br className="hidden sm:block" />
-        <span className="text-white/90">Engineered with Excellence</span>
-      </motion.h1>
+        <TypingHeadline
+          lines={HERO_LINES}
+          className="text-white font-bold leading-[1.08] tracking-tight"
+          style={{ fontSize: "clamp(1.85rem, 6.5vw, 4.5rem)" }}
+        />
+      </motion.div>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}

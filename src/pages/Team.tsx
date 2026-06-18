@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import websiteIcon from "@/assets/website-icon.png";
 
 const TeamCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -36,9 +37,11 @@ const TeamCarousel = () => {
             <div className="aspect-[3/4] flex items-center justify-center"
               style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
             >
-              <div className="w-20 h-20 rounded-full bg-accent/15 flex items-center justify-center border border-accent/20">
-                <span className="text-2xl font-display font-bold text-accent">{member.name[0]}</span>
-              </div>
+              <img
+                src={websiteIcon}
+                alt={`${member.name} — Creative Emman`}
+                className="w-20 h-20 object-contain logo-pulse"
+              />
             </div>
 
             <div className="absolute inset-0 bg-primary/90 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6" style={{ transitionDuration: "250ms" }}>
@@ -93,6 +96,20 @@ const TeamPage = () => (
           <p className="text-primary-foreground/50">Hover to learn more about each team member.</p>
         </ScrollReveal>
       </div>
+
+      <ScrollReveal delay={0.06}>
+        <div className="flex flex-col items-center justify-center mb-12 sm:mb-16">
+          <img
+            src={websiteIcon}
+            alt="Creative Emman"
+            className="w-20 h-20 sm:w-28 sm:h-28 object-contain logo-pulse"
+          />
+          <span className="mt-4 text-xs font-medium tracking-[0.3em] uppercase text-primary-foreground/40">
+            One Studio, Five Disciplines
+          </span>
+        </div>
+      </ScrollReveal>
+
       <ScrollReveal delay={0.1}>
         <TeamCarousel />
       </ScrollReveal>
@@ -163,9 +180,11 @@ export const TeamProfile = () => {
             <div className="aspect-[3/4] rounded-xl border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] flex items-center justify-center"
               style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
             >
-              <div className="w-24 h-24 rounded-full bg-accent/15 flex items-center justify-center border border-accent/20">
-                <span className="text-4xl font-display font-bold text-accent">{member.name[0]}</span>
-              </div>
+              <img
+                src={websiteIcon}
+                alt={`${member.name} — Creative Emman`}
+                className="w-24 h-24 object-contain logo-pulse"
+              />
             </div>
           </ScrollReveal>
 
