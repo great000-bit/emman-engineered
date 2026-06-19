@@ -21,6 +21,8 @@ const buttonVariants = cva(
         "hero-outline": "border-2 border-primary-foreground/30 text-primary-foreground btn-liquid-ghost text-base px-8 py-3",
         "hero-pill": "rounded-full border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground btn-liquid-ghost text-base px-10 py-3 backdrop-blur-sm",
         "accent-pill": "rounded-full bg-accent text-accent-foreground btn-glow text-base px-8 py-3.5 font-medium",
+        "light-fill": "rounded-md bg-primary-foreground text-primary border border-accent/40 text-sm px-5 py-2.5 font-medium hover:bg-primary-foreground/90",
+        "dark-outline": "rounded-md border border-primary-foreground/25 text-primary-foreground text-sm px-5 py-2.5 font-medium hover:bg-primary-foreground/5",
       },
       size: {
         default: "h-10 px-5 py-2",

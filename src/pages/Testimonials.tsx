@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Phone, Mail, ArrowRight } from "lucide-react";
-import RadialGridGlow from "@/components/shared/RadialGridGlow";
+import BarFanCorner from "@/components/shared/BarFanCorner";
 import SEO from "@/components/SEO";
 
 const testimonials = [
@@ -143,28 +143,31 @@ const TestimonialsPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/10 pt-28 pb-32 sm:pt-36 sm:pb-40">
-        <RadialGridGlow />
+      <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/10 py-20 sm:py-28">
+        <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+        <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+        <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+        <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
         <div className="relative container-narrow mx-auto px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display leading-[1.1] text-primary-foreground mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-4 leading-tight">
               Your story could
               <br />
               read like these.
             </h2>
-            <p className="text-base md:text-lg text-primary-foreground/60 mb-10 max-w-md mx-auto">
+            <p className="text-sm md:text-base text-primary-foreground/55 mb-8 max-w-md mx-auto">
               Every result above started with one message. Send yours.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-row gap-3 justify-center items-center">
               <Link to="/contact">
-                <Button variant="accent-pill">
-                  Let's Work Together <ArrowRight size={18} className="ml-1" />
+                <Button variant="light-fill">
+                  Let's Work Together <ArrowRight size={15} className="ml-1.5" />
                 </Button>
               </Link>
-              <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                  <Phone size={16} className="mr-2" /> WhatsApp Us
+              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
+                  <Phone size={14} className="mr-1.5" /> WhatsApp
               </Button>
             </div>
           </ScrollReveal>

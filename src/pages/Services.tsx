@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight } from "lucide-react";
-import RadialGridGlow from "@/components/shared/RadialGridGlow";
+import BarFanCorner from "@/components/shared/BarFanCorner";
 import SEO from "@/components/SEO";
 import {
   Accordion,
@@ -100,34 +100,38 @@ const ServicesPage = () => (
       </div>
     </section>
 
-    <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/5 pt-28 pb-32 sm:pt-36 sm:pb-40">
-      <RadialGridGlow />
+    <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/5 py-20 sm:py-28">
+      <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
       <div className="relative container-narrow mx-auto px-4">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display leading-[1.1] text-primary-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
             Which service
             <br />
             starts your next win?
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <p className="text-base md:text-lg text-primary-foreground/60 max-w-md mx-auto mb-10">
+          <p className="text-sm md:text-base text-primary-foreground/55 max-w-md mx-auto mb-8">
             Pick a lane or bring the whole brief — we'll map out the right team and timeline.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-row gap-3 justify-center items-center">
             <Link to="/contact">
-              <Button variant="accent-pill">
-                Let's Work Together <ArrowRight size={18} className="ml-1" />
+              <Button variant="light-fill">
+                Let's Work Together <ArrowRight size={15} className="ml-1.5" />
               </Button>
             </Link>
-            <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                <Phone size={16} className="mr-2" /> WhatsApp Us
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
+                <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>
         </ScrollReveal>
       </div>
+
     </section>
 
   </PageLayout>
