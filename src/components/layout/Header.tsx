@@ -22,10 +22,10 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4">
       <div
-        className={`container-wide mx-auto flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 ${
+        className={`container-wide mx-auto flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 nav-glass ${
           scrolled
-            ? "bg-primary/95 backdrop-blur-xl border-primary-foreground/10 shadow-2xl shadow-black/30"
-            : "bg-primary/80 backdrop-blur-md border-primary-foreground/[0.08]"
+            ? "nav-glass-scrolled border-primary-foreground/10 shadow-2xl shadow-black/30"
+            : "border-primary-foreground/[0.08]"
         }`}
       >
         {/* Logo */}

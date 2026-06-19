@@ -3,68 +3,97 @@ import { services } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { ArrowRight } from "lucide-react";
+import {
+  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, PhotoMockup,
+} from "./ServiceMockups";
 
-// Masonry sizing pattern — varied paddings/min-heights for natural rhythm
-const sizing = [
-  "md:min-h-[320px]",
-  "md:min-h-[260px]",
-  "md:min-h-[380px]",
-  "md:min-h-[280px]",
-  "md:min-h-[360px]",
-  "md:min-h-[300px]",
-  "md:min-h-[340px]",
-];
+// Map each real service to its mini mockup. Falls back to a generic icon
+// tile if a service doesn't have a custom mockup yet.
+const MOCKUPS: Record<string, React.FC> = {
+  "Website Development": WebDevMockup,
+  "Social Media Management": SocialMockup,
+  "UI/UX Design": UIUXMockup,
+  "Graphic Design": GraphicMockup,
+  "Videography": VideoMockup,
+  "Video Editing": VideoMockup,
+  "Photography": PhotoMockup,
+};
 
-const ServicesPreview = () => (
-  <section className="section-padding bg-primary relative overflow-hidden">
-    {/* Subtle background grid */}
-    <div
-      aria-hidden
-      className="absolute inset-0 opacity-[0.04] pointer-events-none"
-      style={{
-        backgroundImage:
-          "linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)",
-        backgroundSize: "64px 64px",
-      }}
-    />
+const BentoCard = ({ service, large = false, delay = 0 }: { service: typeof services[number]; large?: boolean; delay?: number }) => {
+  const Mockup = MOCKUPS[service.title];
 
-    <div className="container-wide mx-auto relative">
-      <SectionHeading
-        label="What We Do"
-        title="Core Services"
-        description="Seven integrated disciplines. One premium standard. Every project engineered for impact."
-        light
+  return (
+    <ScrollReveal delay={delay} distance="standard">
+      <Link
+        to="/services"
+        className={`group relative flex flex-col rounded-[28px] border border-primary-foreground/10 bg-primary-foreground/[0.025] hover:bg-primary-foreground/[0.045] hover:border-accent/25 transition-all duration-500 overflow-hidden ${
+          large ? "min-h-[360px] sm:min-h-[400px]" : "min-h-[320px]"
+        }`}
+      >
+        {/* Mockup window */}
+        <div className={`relative flex-shrink-0 mx-4 mt-4 rounded-2xl bg-black/40 border border-primary-foreground/[0.06] overflow-hidden ${large ? "h-44 sm:h-52" : "h-36"}`}>
+          {Mockup ? <Mockup /> : <div className="w-full h-full bg-primary-foreground/[0.02]" />}
+        </div>
+
+        {/* Label + title + description */}
+        <div className="flex-1 flex flex-col items-center text-center px-6 pt-5 pb-7">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium text-accent mb-3">
+            <service.icon size={13} />
+            {service.title}
+          </div>
+          <h3 className={`font-display font-semibold text-primary-foreground mb-2 ${large ? "text-xl sm:text-2xl" : "text-lg"}`}>
+            {service.description.split(".")[0]}.
+          </h3>
+          <p className="text-sm text-primary-foreground/55 leading-relaxed max-w-[280px]">
+            {service.includes.slice(0, 2).join(" · ")}
+          </p>
+          <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary-foreground/40 group-hover:text-accent group-hover:gap-2.5 transition-all">
+            Explore <ArrowRight size={12} />
+          </span>
+        </div>
+      </Link>
+    </ScrollReveal>
+  );
+};
+
+const ServicesPreview = () => {
+  const [first, second, ...rest] = services;
+
+  return (
+    <section id="services" className="section-padding bg-primary relative overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
       />
 
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-6 lg:gap-8 mt-4">
-        {services.map((service, i) => (
-          <div key={service.title} className="break-inside-avoid mb-6 lg:mb-8">
-            <ScrollReveal delay={(i % 3) * 0.08}>
-              <div
-                className={`group relative cursor-pointer p-8 lg:p-10 rounded-2xl border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.07] hover:border-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_hsl(var(--accent)/0.25)] flex flex-col ${sizing[i % sizing.length]}`}
-              >
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 border border-accent/10 transition-transform group-hover:-translate-y-0.5 group-hover:bg-accent/15">
-                  <service.icon className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl lg:text-2xl font-display font-semibold text-primary-foreground mb-3 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-sm lg:text-[15px] text-primary-foreground/60 leading-relaxed mb-6 flex-1">
-                  {service.description}
-                </p>
-                <Link
-                  to="/services"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all mt-auto"
-                >
-                  Explore <ArrowRight size={14} />
-                </Link>
-              </div>
-            </ScrollReveal>
-          </div>
-        ))}
+      <div className="container-wide mx-auto relative">
+        <SectionHeading
+          label="What We Do"
+          title="Core Services"
+          description="Seven integrated disciplines. One premium standard. Every project engineered for impact."
+          light
+        />
+
+        {/* Row 1 — two large feature cards */}
+        <div className="grid sm:grid-cols-2 gap-5 lg:gap-6 mt-10">
+          <BentoCard service={first} large delay={0} />
+          <BentoCard service={second} large delay={0.08} />
+        </div>
+
+        {/* Row 2+ — equal-size cards, 3 per row on desktop */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-5 lg:mt-6">
+          {rest.map((service, i) => (
+            <BentoCard key={service.title} service={service} delay={0.05 * i} />
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ServicesPreview;

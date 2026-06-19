@@ -5,28 +5,34 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "down" | "left" | "right";
+  direction?: "up" | "down" | "left" | "right" | "none";
+  /** "subtle" for small text elements, "standard" for cards/blocks (default) */
+  distance?: "subtle" | "standard";
 }
 
-const directionMap = {
-  up: { y: 24, x: 0 },
-  down: { y: -24, x: 0 },
-  left: { x: 24, y: 0 },
-  right: { x: -24, y: 0 },
-};
+const PREMIUM_EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const ScrollReveal = ({ children, className = "", delay = 0, direction = "up" }: ScrollRevealProps) => {
-  const offset = directionMap[direction];
+const directionMap = (dist: number) => ({
+  up: { y: dist, x: 0 },
+  down: { y: -dist, x: 0 },
+  left: { x: dist, y: 0 },
+  right: { x: -dist, y: 0 },
+  none: { x: 0, y: 0 },
+});
+
+const ScrollReveal = ({ children, className = "", delay = 0, direction = "up", distance = "standard" }: ScrollRevealProps) => {
+  const dist = distance === "subtle" ? 16 : 32;
+  const offset = directionMap(dist)[direction];
 
   return (
     <motion.div
       initial={{ opacity: 0, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: 0.6,
+        duration: 0.85,
         delay,
-        ease: [0.4, 0, 0.2, 1],
+        ease: PREMIUM_EASE,
       }}
       className={className}
     >
