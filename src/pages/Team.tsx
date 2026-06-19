@@ -4,10 +4,11 @@ import PageLayout from "@/components/layout/PageLayout";
 import { teamMembers } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail } from "lucide-react";
+import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
 import websiteIcon from "@/assets/website-icon.png";
+import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const TeamCarousel = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -115,20 +116,28 @@ const TeamPage = () => (
       </ScrollReveal>
     </section>
 
-    <section className="section-padding bg-primary text-center border-t border-primary-foreground/5">
-      <div className="container-narrow mx-auto">
+    <section className="relative overflow-hidden bg-primary text-center py-20 sm:py-28">
+      <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <div className="relative container-narrow mx-auto px-4">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl text-primary-foreground mb-6">
-            Work With Our Team
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
+            Work with the team
+            <br />
+            behind the work.
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-row gap-3 justify-center items-center">
             <Link to="/contact">
-              <Button variant="hero">Start a Project</Button>
+              <Button variant="light-fill">
+                Let's Work Together <ArrowRight size={15} className="ml-1.5" />
+              </Button>
             </Link>
-            <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                <Phone size={16} className="mr-2" /> WhatsApp Us
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
+                <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>
         </ScrollReveal>

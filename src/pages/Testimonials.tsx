@@ -143,7 +143,7 @@ const TestimonialsPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/10 py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-primary text-center py-20 sm:py-28">
         <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
         <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
         <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />

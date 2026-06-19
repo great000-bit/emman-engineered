@@ -5,7 +5,7 @@ import BarFanCorner from "@/components/shared/BarFanCorner";
 import { ArrowRight } from "lucide-react";
 
 const CTABanner = () => (
-  <section className="relative overflow-hidden bg-primary border-t border-primary-foreground/5 py-20 sm:py-28">
+  <section className="relative overflow-hidden bg-primary py-20 sm:py-28">
     {/* Corner bar-fan bursts — visible on desktop, clipped tighter on mobile via overflow-hidden on the section */}
     <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
     <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />

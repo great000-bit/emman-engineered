@@ -4,8 +4,9 @@ import { trainings } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { Button } from "@/components/ui/button";
-import { Clock, BookOpen, Phone } from "lucide-react";
+import { Clock, BookOpen, Phone, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const TrainingsPage = () => (
   <PageLayout>
@@ -76,7 +77,7 @@ const TrainingsPage = () => (
       </div>
     </section>
 
-    <section className="section-padding bg-primary border-t border-primary-foreground/5">
+    <section className="section-padding bg-primary">
       <div className="container-narrow mx-auto text-center">
         <ScrollReveal>
           <span className="text-sm font-medium tracking-widest uppercase text-accent">Testimonials</span>
@@ -91,23 +92,31 @@ const TrainingsPage = () => (
       </div>
     </section>
 
-    <section className="section-padding bg-primary text-center border-t border-primary-foreground/5">
-      <div className="container-narrow mx-auto">
+    <section className="relative overflow-hidden bg-primary text-center py-20 sm:py-28">
+      <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
+      <div className="relative container-narrow mx-auto px-4">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl text-primary-foreground mb-4">
-            Invest in Your Growth
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
+            Invest in skills
+            <br />
+            that actually ship.
           </h2>
-          <p className="text-primary-foreground/60 mb-8 max-w-md mx-auto">
-            Join a structured program designed to transform your skills into professional capability.
+          <p className="text-sm md:text-base text-primary-foreground/55 mb-8 max-w-md mx-auto">
+            Join a structured program designed to turn what you learn into work you can show.
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-row gap-3 justify-center items-center">
             <Link to="/contact">
-              <Button variant="hero">Get Started</Button>
+              <Button variant="light-fill">
+                Let's Work Together <ArrowRight size={15} className="ml-1.5" />
+              </Button>
             </Link>
-            <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                <Phone size={16} className="mr-2" /> WhatsApp Us
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
+                <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>
         </ScrollReveal>
