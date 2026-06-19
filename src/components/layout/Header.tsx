@@ -20,45 +20,49 @@ const Header = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-primary/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container-wide mx-auto flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 gap-3">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4">
+      <div
+        className={`container-wide mx-auto flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 ${
+          scrolled
+            ? "bg-primary/95 backdrop-blur-xl border-primary-foreground/10 shadow-2xl shadow-black/30"
+            : "bg-primary/80 backdrop-blur-md border-primary-foreground/[0.08]"
+        }`}
+      >
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <Link to="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <img
             src={websiteIcon}
             alt="Creative Emman"
-            className="w-9 h-9 sm:w-11 sm:h-11 object-contain flex-shrink-0"
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain flex-shrink-0"
           />
-          <span className="hidden sm:inline font-brand text-base sm:text-lg font-bold text-primary-foreground tracking-tight truncate">
+          <span className="hidden sm:inline font-brand text-sm sm:text-base font-bold text-primary-foreground tracking-tight truncate">
             Creative<span className="text-accent">Emman</span>
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Desktop nav links — centered within bar */}
+        <nav className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-accent ${
-                location.pathname === link.path ? "text-accent" : "text-primary-foreground/80"
+              className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
+                location.pathname === link.path ? "text-accent" : "text-primary-foreground/75"
               }`}
             >
               {link.label}
             </Link>
           ))}
+        </nav>
+
+        {/* Desktop right: pill CTA, same bar */}
+        <div className="hidden md:block">
           <Link to="/contact">
-            <Button variant="hero-pill" size="sm">
+            <Button variant="hero-pill" size="sm" className="rounded-full">
               Start a Project
             </Button>
           </Link>
-        </nav>
+        </div>
 
         {/* Mobile right: compact CTA + hamburger */}
         <div className="md:hidden flex items-center gap-2">

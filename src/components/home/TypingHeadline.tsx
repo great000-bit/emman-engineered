@@ -12,9 +12,10 @@ interface TypingHeadlineProps {
   style?: React.CSSProperties;
   typingSpeedMs?: number;
   holdMs?: number;
+  align?: "left" | "center";
 }
 
-const TypingHeadline = ({ lines, className = "", style, typingSpeedMs = 45, holdMs = 1400 }: TypingHeadlineProps) => {
+const TypingHeadline = ({ lines, className = "", style, typingSpeedMs = 45, holdMs = 1400, align = "left" }: TypingHeadlineProps) => {
   const [lineIndex, setLineIndex] = useState(0);
   const [typed, setTyped] = useState("");
   const [phase, setPhase] = useState<"typing" | "holding" | "exiting">("typing");
@@ -67,7 +68,7 @@ const TypingHeadline = ({ lines, className = "", style, typingSpeedMs = 45, hold
           initial={{ y: 0, opacity: 1 }}
           animate={phase === "exiting" ? { y: "-100%", opacity: 0 } : { y: 0, opacity: 1 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center"
+          className={align === "center" ? "text-center" : "text-left"}
         >
           {typed}
           <span
