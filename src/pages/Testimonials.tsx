@@ -174,8 +174,8 @@ const TestimonialsPage = () => {
 
           <ScrollReveal delay={0.15}>
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-primary-foreground/50">
-              <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Mail size={14} /> creativeemman@gmail.com
+              <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <Mail size={14} /> creativeemmanlimited@gmail.com
               </a>
               <a href="https://wa.me/2347037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Phone size={14} /> +234 703 784 5433

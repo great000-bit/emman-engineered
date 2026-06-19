@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinks } from "@/data/siteData";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import websiteIcon from "@/assets/website-icon.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false);
+  const [mobilePortfolioOpen, setMobilePortfolioOpen] = useState(false);
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout>>();
   const location = useLocation();
 
   useEffect(() => setMobileOpen(false), [location]);
@@ -41,18 +45,71 @@ const Header = () => {
         </Link>
 
         {/* Desktop nav links — centered within bar */}
-        <nav className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
-                location.pathname === link.path ? "text-accent" : "text-primary-foreground/75"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+          {navLinks.map((link) =>
+            link.children ? (
+              <div
+                key={link.path}
+                className="relative"
+                onMouseEnter={() => {
+                  if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
+                  setDesktopDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  dropdownTimeout.current = setTimeout(() => setDesktopDropdownOpen(false), 150);
+                }}
+              >
+                <button
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
+                    location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/75"
+                  }`}
+                  onClick={() => setDesktopDropdownOpen((v) => !v)}
+                  aria-expanded={desktopDropdownOpen}
+                >
+                  {link.label}
+                  <ChevronDown size={14} className={`transition-transform ${desktopDropdownOpen ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>
+                  {desktopDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+                      className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-2xl border border-primary-foreground/10 p-2 nav-glass-scrolled shadow-2xl shadow-black/40"
+                    >
+                      <Link
+                        to={link.path}
+                        className="block px-4 py-2.5 rounded-xl text-sm font-medium text-primary-foreground hover:bg-primary-foreground/[0.06] hover:text-accent transition-colors"
+                      >
+                        All Portfolio
+                      </Link>
+                      <div className="my-1 border-t border-primary-foreground/10" />
+                      {link.children.map((child) => (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          className="block px-4 py-2.5 rounded-xl text-sm text-primary-foreground/70 hover:bg-primary-foreground/[0.06] hover:text-accent transition-colors"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
+                  location.pathname === link.path ? "text-accent" : "text-primary-foreground/75"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         {/* Desktop right: pill CTA, same bar */}
@@ -130,24 +187,65 @@ const Header = () => {
                 <img src={websiteIcon} alt="Creative Emman" className="w-10 h-10" />
               </div>
 
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-lg font-medium ${
-                    location.pathname === link.path ? "text-accent" : "text-primary-foreground/80"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.children ? (
+                  <div key={link.path}>
+                    <button
+                      className={`w-full flex items-center justify-between text-lg font-medium ${
+                        location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/80"
+                      }`}
+                      onClick={() => setMobilePortfolioOpen((v) => !v)}
+                      aria-expanded={mobilePortfolioOpen}
+                    >
+                      {link.label}
+                      <ChevronDown size={18} className={`transition-transform ${mobilePortfolioOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    <AnimatePresence>
+                      {mobilePortfolioOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="flex flex-col gap-3 pt-3 pl-3">
+                            <Link to={link.path} className="text-sm text-primary-foreground/70 hover:text-accent transition-colors">
+                              All Portfolio
+                            </Link>
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.path}
+                                to={child.path}
+                                className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`text-lg font-medium ${
+                      location.pathname === link.path ? "text-accent" : "text-primary-foreground/80"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
               <Link to="/contact" className="mt-4">
                 <Button variant="accent" className="w-full">
                   Start a Project
                 </Button>
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
-                <a href="mailto:creativeemman@gmail.com" className="block hover:text-accent transition-colors">creativeemman@gmail.com</a>
+                <a href="mailto:creativeemmanlimited@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited@gmail.com</a>
                 <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">+234 703 784 5433</a>
               </div>
             </motion.nav>

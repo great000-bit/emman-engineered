@@ -131,7 +131,7 @@ const ContactPage = () => {
       <SEO
         path="/contact"
         title="Contact Creative Emman | Digital Agency in Lagos, Nigeria"
-        description="Start a project with Creative Emman. Email creativeemman@gmail.com or WhatsApp +234 703 784 5433. We respond within 24 hours."
+        description="Start a project with Creative Emman. Email creativeemmanlimited@gmail.com or WhatsApp +234 703 784 5433. We respond within 24 hours."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -287,8 +287,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-4 text-primary-foreground">Direct Line</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
-                    <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
-                      <Mail size={16} className="text-accent" /> creativeemman@gmail.com
+                    <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail size={16} className="text-accent" /> creativeemmanlimited@gmail.com
                     </a>
                     <button
                       type="button"

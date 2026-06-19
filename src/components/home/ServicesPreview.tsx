@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { ArrowRight } from "lucide-react";
 import {
-  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, PhotoMockup,
+  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, PhotoMockup, MotionMockup,
 } from "./ServiceMockups";
 
 // Map each real service to its mini mockup. Falls back to a generic icon
@@ -17,6 +17,7 @@ const MOCKUPS: Record<string, React.FC> = {
   "Videography": VideoMockup,
   "Video Editing": VideoMockup,
   "Photography": PhotoMockup,
+  "Motion Graphics Design": MotionMockup,
 };
 
 const BentoCard = ({ service, large = false, delay = 0 }: { service: typeof services[number]; large?: boolean; delay?: number }) => {
@@ -75,7 +76,7 @@ const ServicesPreview = () => {
         <SectionHeading
           label="What We Do"
           title="Core Services"
-          description="Seven integrated disciplines. One premium standard. Every project engineered for impact."
+          description="Eight integrated disciplines. One premium standard. Every project engineered for impact."
           light
         />
 

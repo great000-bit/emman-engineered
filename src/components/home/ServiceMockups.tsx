@@ -126,3 +126,27 @@ export const PhotoMockup = () => (
     ))}
   </div>
 );
+
+export const MotionMockup = () => (
+  <div className="w-full h-full flex items-center justify-center p-4 relative">
+    {/* Orbiting nodes around a morphing center shape — reads as "motion/animation" at a glance */}
+    <motion.div
+      className="w-8 h-8 rounded-lg bg-accent/25 border border-accent/40"
+      animate={{ rotate: [0, 90, 180, 270, 360], borderRadius: ["20%", "50%", "20%"] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+    {[0, 1, 2].map((i) => (
+      <motion.span
+        key={i}
+        className="absolute w-1.5 h-1.5 rounded-full bg-accent/70"
+        style={{ top: "50%", left: "50%" }}
+        animate={{
+          x: [0, Math.cos((i * 2 * Math.PI) / 3) * 34, 0],
+          y: [0, Math.sin((i * 2 * Math.PI) / 3) * 34, 0],
+          opacity: [0.3, 1, 0.3],
+        }}
+        transition={{ duration: 3, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
+      />
+    ))}
+  </div>
+);

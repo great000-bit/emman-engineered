@@ -61,7 +61,7 @@ const Footer = () => (
             Services
           </h4>
           <nav className="flex flex-col gap-3">
-            {["Web Development", "UI/UX Design", "Graphic Design", "Videography", "Photography"].map((s) => (
+            {["Web Development", "UI/UX Design", "Graphic Design", "Videography", "Motion Graphics Design", "Photography"].map((s) => (
               <Link
                 key={s}
                 to="/services"
@@ -79,8 +79,8 @@ const Footer = () => (
             Connect
           </h4>
           <div className="flex flex-col gap-3 text-sm text-primary-foreground/60">
-            <a href="mailto:creativeemman@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
-              <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemman@gmail.com</span>
+            <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
+              <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemmanlimited@gmail.com</span>
             </a>
             <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Phone size={14} className="flex-shrink-0" /> +234 703 784 5433

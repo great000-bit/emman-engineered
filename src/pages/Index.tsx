@@ -19,7 +19,7 @@ const Index = () => (
         name: "Creative Emman",
         image: "https://emman-engineered.vercel.app/favicon.png",
         url: "https://emman-engineered.vercel.app",
-        email: "creativeemman@gmail.com",
+        email: "creativeemmanlimited@gmail.com",
         telephone: "+234-703-784-5433",
         priceRange: "$$",
         address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },

@@ -1,60 +1,62 @@
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import SectionHeading from "@/components/shared/SectionHeading";
+import ProtectedImage from "@/components/shared/ProtectedImage";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import showcaseEnterprise from "@/assets/showcase-enterprise.jpg";
 import showcaseBrand from "@/assets/showcase-brand.jpg";
 import showcaseFilm from "@/assets/showcase-film.jpg";
 import showcaseMobile from "@/assets/showcase-mobile.jpg";
-import showcasePortrait from "@/assets/showcase-portrait.jpg";
-import showcaseSaas from "@/assets/showcase-saas.jpg";
 
-const projects = [
-  { title: "Enterprise Platform", category: "Web Development", image: showcaseEnterprise },
-  { title: "Brand Identity System", category: "Graphic Design", image: showcaseBrand },
-  { title: "Product Launch Film", category: "Videography", image: showcaseFilm },
-  { title: "Mobile Experience", category: "UI/UX Design", image: showcaseMobile },
-  { title: "Corporate Portrait Series", category: "Photography", image: showcasePortrait },
-  { title: "SaaS Dashboard", category: "Web Development", image: showcaseSaas },
-];
+// Compact homepage teaser that links out to the full /portfolio page system,
+// rather than hosting the entire portfolio inline on the landing page.
+const portfolioPreviewImages = [showcaseEnterprise, showcaseBrand, showcaseFilm, showcaseMobile];
 
 const VisualShowcase = () => (
   <section className="section-padding bg-primary border-t border-primary-foreground/5">
     <div className="container-wide mx-auto">
-      <SectionHeading
-        label="Portfolio"
-        title="Selected Work"
-        description="A curated selection of projects that demonstrate our commitment to excellence."
-        light
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, i) => (
-          <ScrollReveal key={project.title} delay={i * 0.08}>
-            <div className="card-web3 group relative aspect-[4/3] cursor-pointer">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl opacity-70 group-hover:opacity-90 transition-opacity duration-500"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent rounded-2xl" />
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <p className="text-xs text-accent font-medium uppercase tracking-wider mb-1">{project.category}</p>
-                <h3 className="text-lg font-display font-semibold text-primary-foreground mb-3">{project.title}</h3>
-                <Link to="/contact">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-fit bg-primary/80 border-accent/40 text-accent hover:bg-accent hover:text-accent-foreground"
-                  >
-                    View Details
-                  </Button>
-                </Link>
-              </div>
-            </div>
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div className="flex-1">
+          <ScrollReveal>
+            <span className="text-sm font-medium tracking-widest uppercase text-accent">Portfolio</span>
           </ScrollReveal>
-        ))}
+          <ScrollReveal delay={0.08}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary-foreground mt-3 mb-4">
+              See the Work Behind the Words
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.14}>
+            <p className="text-lg text-primary-foreground/60 max-w-md mb-8">
+              Browse case studies across web development, design, video, and more — organized by discipline.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <Link to="/portfolio">
+              <Button variant="accent">
+                View Full Portfolio <ArrowRight size={16} className="ml-2" />
+              </Button>
+            </Link>
+          </ScrollReveal>
+        </div>
+
+        <div className="flex-1 grid grid-cols-2 gap-3 w-full max-w-md">
+          {portfolioPreviewImages.map((img, i) => (
+            <ScrollReveal key={i} delay={0.05 * i}>
+              <Link
+                to="/portfolio"
+                className={`block rounded-xl overflow-hidden border border-primary-foreground/10 hover:border-accent/30 transition-colors ${
+                  i === 0 ? "aspect-[4/5]" : "aspect-square"
+                }`}
+              >
+                <ProtectedImage
+                  src={img}
+                  alt="Portfolio preview"
+                  className="w-full h-full object-cover opacity-70 hover:opacity-95 transition-opacity duration-500"
+                />
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </div>
   </section>

@@ -1,4 +1,4 @@
-import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Brain, Target, Eye, CheckCircle } from "lucide-react";
+import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Brain, Target, Eye, CheckCircle, Sparkles } from "lucide-react";
 
 export const services = [
   {
@@ -45,6 +45,12 @@ export const services = [
     title: "Video Editing",
     description: "Post-production mastery that transforms raw footage into compelling visual stories.",
     includes: ["Color Grading", "Motion Graphics", "Sound Design", "Multi-format Export", "Subtitling"],
+  },
+  {
+    icon: Sparkles,
+    title: "Motion Graphics Design",
+    description: "We create animated visuals, motion-led brand content, explainer animations, social media motion assets, and dynamic visual storytelling for digital platforms.",
+    includes: ["Logo Animation", "Explainer Animations", "Social Media Motion Assets", "Promo Animations", "Kinetic Typography"],
   },
   {
     icon: Camera,
@@ -167,11 +173,30 @@ export const trainings = [
   },
 ];
 
-export const navLinks = [
+export interface NavLink {
+  label: string;
+  path: string;
+  children?: { label: string; path: string }[];
+}
+
+export const navLinks: NavLink[] = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
+  {
+    label: "Portfolio",
+    path: "/portfolio",
+    children: [
+      { label: "Website Development Portfolio", path: "/portfolio/web-development" },
+      { label: "UI/UX Design Portfolio", path: "/portfolio/ui-ux-design" },
+      { label: "Graphic & Brand Design Portfolio", path: "/portfolio/graphic-brand-design" },
+      { label: "Social Media Management Portfolio", path: "/portfolio/social-media-management" },
+      { label: "Videography & Video Editing Portfolio", path: "/portfolio/videography-video-editing" },
+      { label: "Motion Graphics Design Portfolio", path: "/portfolio/motion-graphics-design" },
+    ],
+  },
   { label: "Team", path: "/team" },
   { label: "Trainings", path: "/trainings" },
   { label: "Testimonials", path: "/testimonials" },
+  { label: "Applications", path: "/applications" },
   { label: "Contact", path: "/contact" },
 ];
