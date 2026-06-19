@@ -1,73 +1,109 @@
-# Welcome to your Lovable project
+# Creative Emman Limited Website
 
-## Project info
+Official company website for Creative Emman Limited, showcasing services, team members, portfolio work, applications, and contact information.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Overview
 
-## How can I edit this code?
+Creative Emman Limited is a multidisciplinary creative and technology company offering website development, UI/UX design, graphic and brand design, social media management, videography, video editing, and motion graphics design. This repository contains the company's official marketing website — a fast, dark-themed, animated single-page-app experience built to showcase the studio's services, team, portfolio, training programs, and recruitment pipeline.
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- **Vite** — build tool and dev server
+- **React 18** + **TypeScript**
+- **React Router** — client-side routing
+- **Tailwind CSS** — utility-first styling
+- **shadcn/ui** + **Radix UI** — accessible component primitives
+- **Framer Motion** — animation and scroll reveals
+- **Zod** — form validation
+- **React Helmet Async** — per-page SEO/meta tag management
+- **Lucide React** — icon set
+- **Vitest** — testing
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Dark, premium agency-style design system with glassmorphism navigation, animated hero, and scroll-triggered reveals throughout
+- Responsive layout tuned for desktop, tablet, and mobile, including a dedicated mobile navigation panel
+- Services showcase with animated mini-mockups per discipline
+- Centralized portfolio data model with category-specific case study presentation (brand identity, UI/UX, web development, social media, video, and motion graphics each use a layout suited to that discipline)
+- Image protection component (`ProtectedImage`) applied across portfolio imagery to discourage casual downloading while preserving accessibility
+- Careers/Applications page with separate Professional Role and Internship application forms, validated with Zod and submitted via Formspree
+- Contact form with validation, loading/success/error states, and WhatsApp quick-contact option
+- SEO: per-page meta tags, Open Graph/Twitter cards, JSON-LD structured data, sitemap, and robots.txt
 
-**Use your preferred IDE**
+## Pages
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Route | Description |
+|---|---|
+| `/` | Homepage — hero, brand story, services preview, why-choose-us, portfolio teaser, closing CTA |
+| `/services` | Full services listing |
+| `/portfolio` | Portfolio landing page, organized by discipline |
+| `/portfolio/:category` | Category listing (e.g. `web-development`, `ui-ux-design`, `graphic-brand-design`, `social-media-management`, `videography-video-editing`, `motion-graphics-design`) |
+| `/portfolio/:category/:slug` | Individual project case study, presented per the category's format |
+| `/team` | Team listing |
+| `/team/:id` | Individual team member profile |
+| `/trainings` | Training programs |
+| `/testimonials` | Client testimonials |
+| `/applications` | Careers — Professional Role and Internship application forms |
+| `/contact` | Contact form and direct contact details |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Installation
 
-Follow these steps:
+Requires Node.js (LTS recommended) and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate into the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Development
+
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Starts the Vite dev server with hot module reloading, available at `http://localhost:8080` by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build
 
-**Use GitHub Codespaces**
+```sh
+npm run build       # production build, output to dist/
+npm run build:dev   # development-mode build (unminified, useful for debugging)
+npm run preview     # serve the production build locally
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Other useful scripts:
 
-## What technologies are used for this project?
+```sh
+npm run lint        # run ESLint
+npm run test        # run the test suite once
+npm run test:watch  # run tests in watch mode
+```
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is deployed on Vercel. Pushing to the `main` branch triggers an automatic production deployment. Vercel runs `npm run build` and serves the contents of `dist/`.
 
-## How can I deploy this project?
+To deploy elsewhere, run `npm run build` and serve the static `dist/` output with any static host or Node server.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Environment Variables
 
-## Can I connect a custom domain to my Lovable project?
+Copy `.env.example` to `.env` and fill in real values before running locally or deploying with form submissions enabled.
 
-Yes, you can!
+| Variable | Required | Description |
+|---|---|---|
+| `VITE_FORMSPREE_APPLICATIONS_ENDPOINT` | For the Applications page forms to send | Formspree endpoint URL (e.g. `https://formspree.io/f/abcd1234`) that the Professional Role and Internship forms submit to. Create this at [formspree.io](https://formspree.io), pointed at the company inbox. Without it, application submissions will fail gracefully with a console warning rather than send. |
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+`.env` is gitignored and should never be committed.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Contact
+
+**Creative Emman Limited**
+Email: [creativeemmanlimited@gmail.com](mailto:creativeemmanlimited@gmail.com)
+WhatsApp: +234 703 784 5433
+Location: Lagos, Nigeria

@@ -14,7 +14,6 @@ export const submitApplication = async (
   payload: Record<string, string>,
 ): Promise<{ ok: boolean }> => {
   if (!ENDPOINT) {
-    // eslint-disable-next-line no-console
     console.warn(
       "[Applications] VITE_FORMSPREE_APPLICATIONS_ENDPOINT is not set — see .env.example. " +
         "Submission was not sent.",
