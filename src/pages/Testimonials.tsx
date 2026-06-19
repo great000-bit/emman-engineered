@@ -4,7 +4,8 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, ArrowRight } from "lucide-react";
+import RadialGridGlow from "@/components/shared/RadialGridGlow";
 import SEO from "@/components/SEO";
 
 const testimonials = [
@@ -142,20 +143,25 @@ const TestimonialsPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary text-center border-t border-primary-foreground/10">
-        <div className="container-narrow mx-auto">
+      <section className="relative overflow-hidden bg-primary text-center border-t border-primary-foreground/10 pt-28 pb-32 sm:pt-36 sm:pb-40">
+        <RadialGridGlow />
+        <div className="relative container-narrow mx-auto px-4">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl text-primary-foreground mb-4">
-              Ready to Join Our Success Stories?
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display leading-[1.1] text-primary-foreground mb-4">
+              Your story could
+              <br />
+              read like these.
             </h2>
-            <p className="text-primary-foreground/60 mb-8 max-w-md mx-auto">
-              Let's build something exceptional together.
+            <p className="text-base md:text-lg text-primary-foreground/60 mb-10 max-w-md mx-auto">
+              Every result above started with one message. Send yours.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/contact">
-                <Button variant="hero">Start Your Project</Button>
+                <Button variant="accent-pill">
+                  Let's Work Together <ArrowRight size={18} className="ml-1" />
+                </Button>
               </Link>
               <Button variant="hero-pill" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
                   <Phone size={16} className="mr-2" /> WhatsApp Us
