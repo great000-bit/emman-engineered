@@ -39,14 +39,14 @@ const RadialGridGlow = () => {
       aria-hidden="true"
     >
       <defs>
-        <radialGradient id="gridFade" cx="50%" cy="80%" r="62%">
-          <stop offset="0%" stopColor="hsl(var(--blue-glow))" stopOpacity="1" />
-          <stop offset="30%" stopColor="hsl(var(--accent))" stopOpacity="0.85" />
-          <stop offset="60%" stopColor="hsl(var(--accent))" stopOpacity="0.4" />
+        <radialGradient id="gridFade" cx="50%" cy="82%" r="50%">
+          <stop offset="0%" stopColor="hsl(var(--blue-glow))" stopOpacity="0.8" />
+          <stop offset="35%" stopColor="hsl(var(--accent))" stopOpacity="0.5" />
+          <stop offset="65%" stopColor="hsl(var(--accent))" stopOpacity="0.18" />
           <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="coreGlow" cx="50%" cy="82%" r="32%">
-          <stop offset="0%" stopColor="hsl(var(--blue-glow))" stopOpacity="0.7" />
+        <radialGradient id="coreGlow" cx="50%" cy="85%" r="22%">
+          <stop offset="0%" stopColor="hsl(var(--blue-glow))" stopOpacity="0.28" />
           <stop offset="100%" stopColor="hsl(var(--blue-glow))" stopOpacity="0" />
         </radialGradient>
         <mask id="fadeMask">
@@ -57,12 +57,12 @@ const RadialGridGlow = () => {
       {/* soft core glow at the vanishing point */}
       <rect width="1000" height="700" fill="url(#coreGlow)" />
 
-      <g mask="url(#fadeMask)" stroke="hsl(var(--blue-glow))" fill="none" strokeWidth="1.3">
+      <g mask="url(#fadeMask)" stroke="hsl(var(--blue-glow))" fill="none" strokeWidth="1.1">
         {arcRadii.map((r) => (
-          <path key={`arc-${r}`} d={arcPath(r)} opacity={0.85} />
+          <path key={`arc-${r}`} d={arcPath(r)} opacity={0.55} />
         ))}
         {spokeAngles.map((a) => (
-          <path key={`spoke-${a}`} d={spokePath(a)} opacity={0.65} />
+          <path key={`spoke-${a}`} d={spokePath(a)} opacity={0.4} />
         ))}
       </g>
     </svg>
