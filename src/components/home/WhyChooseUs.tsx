@@ -1,6 +1,7 @@
 import { pillars } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
+import IconGlow from "@/components/shared/IconGlow";
 
 const WhyChooseUs = () => (
   <section className="section-padding bg-primary border-t border-primary-foreground/5">
@@ -18,9 +19,7 @@ const WhyChooseUs = () => (
             <div className="p-8 rounded-xl border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all group hover:-translate-y-1"
               style={{ transitionDuration: "var(--duration-fast)" }}
             >
-              <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-5 group-hover:bg-accent/20 transition-colors border border-accent/10">
-                <pillar.icon className="w-6 h-6 text-accent" />
-              </div>
+              <IconGlow icon={pillar.icon} size="md" className="mb-5" />
               <h3 className="text-lg font-display font-semibold text-primary-foreground mb-3">{pillar.title}</h3>
               <p className="text-sm text-primary-foreground/60 leading-relaxed">{pillar.description}</p>
             </div>

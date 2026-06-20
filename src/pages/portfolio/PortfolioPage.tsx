@@ -68,8 +68,13 @@ const PortfolioPage = () => (
                     {meta.label}
                   </h2>
                   <p className="text-sm text-primary-foreground/60 max-w-md mb-4">{meta.description}</p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-foreground/80 group-hover:text-accent group-hover:gap-2.5 transition-all">
-                    Explore Category <ArrowRight size={15} />
+                  <span className="inline-flex items-stretch w-fit">
+                    <span className="inline-flex items-center bg-white text-[#0a0a0b] text-xs font-semibold tracking-wide uppercase px-5 py-2.5 rounded-l-full">
+                      Explore Category
+                    </span>
+                    <span className="inline-flex items-center justify-center w-9 aspect-square rounded-full bg-accent text-[#0a0a0b] -ml-px transition-transform duration-300 group-hover:rotate-45">
+                      <ArrowRight size={16} strokeWidth={2.25} />
+                    </span>
                   </span>
                 </div>
               </Link>

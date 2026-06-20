@@ -20,7 +20,7 @@ const Index = () => (
         image: "https://emman-engineered.vercel.app/favicon.png",
         url: "https://emman-engineered.vercel.app",
         email: "creativeemmanlimited@gmail.com",
-        telephone: "+234-703-784-5433",
+        telephone: "+234-905-138-0648",
         priceRange: "$$",
         address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
         areaServed: "NG",

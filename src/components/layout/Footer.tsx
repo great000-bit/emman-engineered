@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import { navLinks } from "@/data/siteData";
-import { Linkedin, Facebook, Mail, Phone } from "lucide-react";
-
-const XIcon = ({ size = 18 }: { size?: number }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
-    <path d="M18.244 2H21.5l-7.59 8.67L23 22h-6.77l-5.3-6.93L4.8 22H1.54l8.12-9.28L1 2h6.91l4.79 6.34L18.244 2Zm-1.19 18h1.87L7.04 4H5.04l12.014 16Z" />
-  </svg>
-);
+import { Mail, Phone } from "lucide-react";
+import SocialLinks from "@/components/shared/SocialLinks";
 import websiteIcon from "@/assets/website-icon.png";
 
 const Footer = () => (
@@ -82,14 +77,10 @@ const Footer = () => (
             <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
               <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemmanlimited@gmail.com</span>
             </a>
-            <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone size={14} className="flex-shrink-0" /> +234 703 784 5433
+            <a href="https://wa.me/2349051380648" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <Phone size={14} className="flex-shrink-0" /> 09051380648
             </a>
-            <div className="flex gap-5 mt-3">
-              <a href="#" aria-label="Facebook" className="social-glow text-primary-foreground/50 p-2 -m-2"><Facebook size={20} /></a>
-              <a href="#" aria-label="LinkedIn" className="social-glow text-primary-foreground/50 p-2 -m-2"><Linkedin size={20} /></a>
-              <a href="#" aria-label="X (Twitter)" className="social-glow text-primary-foreground/50 p-2 -m-2"><XIcon size={20} /></a>
-            </div>
+            <SocialLinks className="flex gap-5 mt-3" />
           </div>
 
         </div>
@@ -97,7 +88,7 @@ const Footer = () => (
 
       {/* Accent divider + copyright */}
       <div className="mt-12 pt-8 text-center text-xs text-primary-foreground/40" style={{ borderTop: "1px solid hsl(200 100% 48% / 0.2)" }}>
-        © {new Date().getFullYear()} Creative Emman. All rights reserved.
+        © 2026 Creative Emman limited. All rights reserved.
       </div>
     </div>
   </footer>

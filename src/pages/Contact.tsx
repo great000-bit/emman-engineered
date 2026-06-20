@@ -3,7 +3,8 @@ import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle } from "lucide-react";
+import SocialLinks from "@/components/shared/SocialLinks";
 import SEO from "@/components/SEO";
 import { services } from "@/data/siteData";
 import { z } from "zod";
@@ -131,7 +132,7 @@ const ContactPage = () => {
       <SEO
         path="/contact"
         title="Contact Creative Emman | Digital Agency in Lagos, Nigeria"
-        description="Start a project with Creative Emman. Email creativeemmanlimited@gmail.com or WhatsApp +234 703 784 5433. We respond within 24 hours."
+        description="Start a project with Creative Emman. Email creativeemmanlimited@gmail.com or WhatsApp 09051380648. We respond within 24 hours."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
@@ -292,10 +293,10 @@ const ContactPage = () => {
                     </a>
                     <button
                       type="button"
-                      onClick={() => window.open("https://wa.me/2347037845433", "_blank")}
+                      onClick={() => window.open("https://wa.me/2349051380648", "_blank")}
                       className="flex items-center gap-3 hover:text-accent transition-colors text-sm text-muted-foreground"
                     >
-                      <Phone size={16} className="text-accent" /> +234 703 784 5433
+                      <Phone size={16} className="text-accent" /> 09051380648
                     </button>
                     <div className="flex items-center gap-3">
                       <MapPin size={16} className="text-accent" /> Lagos, Nigeria
@@ -310,7 +311,7 @@ const ContactPage = () => {
                     variant="accent"
                     size="sm"
                     className="w-full"
-                    onClick={() => window.open("https://wa.me/2347037845433", "_blank")}
+                    onClick={() => window.open("https://wa.me/2349051380648", "_blank")}
                   >
                     <Phone size={14} className="mr-2" /> Chat on WhatsApp
                   </Button>
@@ -318,11 +319,7 @@ const ContactPage = () => {
 
                 <div>
                   <h3 className="font-display font-semibold mb-4 text-primary-foreground">Follow Us</h3>
-                  <div className="flex gap-4">
-                    <a href="#" className="social-glow text-muted-foreground"><Linkedin size={20} /></a>
-                    <a href="#" className="social-glow text-muted-foreground"><Twitter size={20} /></a>
-                    <a href="#" className="social-glow text-muted-foreground"><Instagram size={20} /></a>
-                  </div>
+                  <SocialLinks className="flex gap-4" iconClassName="text-muted-foreground p-2 -m-2" />
                 </div>
               </div>
             </ScrollReveal>

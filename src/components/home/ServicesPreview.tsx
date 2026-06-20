@@ -62,16 +62,6 @@ const ServicesPreview = () => {
 
   return (
     <section id="services" className="section-padding bg-primary relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.035] pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-
       <div className="container-wide mx-auto relative">
         <SectionHeading
           label="What We Do"

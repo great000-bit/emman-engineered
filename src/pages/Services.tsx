@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight } from "lucide-react";
 import BarFanCorner from "@/components/shared/BarFanCorner";
+import IconGlow from "@/components/shared/IconGlow";
 import SEO from "@/components/SEO";
 import {
   Accordion,
@@ -47,7 +48,7 @@ const ServicesPage = () => (
         </ScrollReveal>
         <ScrollReveal delay={0.16}>
           <p className="text-lg text-primary-foreground/60 max-w-xl">
-            Seven integrated disciplines delivering premium digital outcomes. Every service engineered with institutional precision.
+            Eight integrated disciplines delivering premium digital outcomes. Every service engineered with institutional precision.
           </p>
         </ScrollReveal>
       </div>
@@ -60,9 +61,7 @@ const ServicesPage = () => (
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
               <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 border border-accent/10">
-                  <service.icon className="w-7 h-7 text-accent" />
-                </div>
+                <IconGlow icon={service.icon} size="lg" className="mb-6" />
                 <h2 className="text-2xl md:text-3xl text-primary-foreground mb-4">{service.title}</h2>
                 <p className="text-primary-foreground/60 leading-relaxed mb-6">{service.description}</p>
                 <Link to="/contact">
@@ -125,7 +124,7 @@ const ServicesPage = () => (
                 Let's Work Together <ArrowRight size={15} className="ml-1.5" />
               </Button>
             </Link>
-            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
                 <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>

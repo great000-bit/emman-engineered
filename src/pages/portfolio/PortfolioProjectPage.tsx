@@ -5,9 +5,9 @@ import ProtectedImage from "@/components/shared/ProtectedImage";
 import SEO from "@/components/SEO";
 import StatusBadge from "@/components/portfolio/StatusBadge";
 import AssetMarquee from "@/components/portfolio/AssetMarquee";
-import { Button } from "@/components/ui/button";
+import { HeroCTALink, HeroCTAAnchor, HeroCTAButton } from "@/components/shared/HeroCTA";
 import { getProjectBySlug, categoryMeta, PortfolioCategory } from "@/data/portfolioData";
-import { ChevronRight, ExternalLink, Play, ArrowRight } from "lucide-react";
+import { ChevronRight, ExternalLink, Play } from "lucide-react";
 
 const PortfolioProjectPage = () => {
   const { category, slug } = useParams<{ category: string; slug: string }>();
@@ -71,11 +71,7 @@ const PortfolioProjectPage = () => {
             <h2 className="text-2xl md:text-3xl text-primary-foreground mb-4">
               Want something like this for your brand?
             </h2>
-            <Link to="/contact">
-              <Button variant="accent">
-                Start Your Project <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </Link>
+            <HeroCTALink to="/contact" label="Start Your Project" className="justify-center" />
           </ScrollReveal>
         </div>
       </section>
@@ -120,9 +116,7 @@ const WebDevDetail = ({ project }: { project: PortfolioProject }) => (
             ))}
           </div>
           {project.liveUrl ? (
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              <Button variant="accent">View Project <ExternalLink size={15} className="ml-2" /></Button>
-            </a>
+            <HeroCTAAnchor href={project.liveUrl} target="_blank" rel="noopener noreferrer" label="View Project" icon={ExternalLink} />
           ) : (
             <p className="text-sm text-primary-foreground/40">Live link not yet public for this concept case study.</p>
           )}
@@ -289,7 +283,7 @@ const VideoDetail = ({ project }: { project: PortfolioProject }) => (
           {project.videoType}
         </span>
       )}
-      <Button variant="accent">Watch Project <Play size={14} className="ml-2" /></Button>
+      <HeroCTAButton label="Watch Project" icon={Play} />
     </ScrollReveal>
   </SectionWrap>
 );

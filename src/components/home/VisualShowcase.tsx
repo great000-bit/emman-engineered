@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import ProtectedImage from "@/components/shared/ProtectedImage";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { HeroCTALink } from "@/components/shared/HeroCTA";
 import showcaseEnterprise from "@/assets/showcase-enterprise.jpg";
 import showcaseBrand from "@/assets/showcase-brand.jpg";
 import showcaseFilm from "@/assets/showcase-film.jpg";
@@ -31,11 +30,7 @@ const VisualShowcase = () => (
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <Link to="/portfolio">
-              <Button variant="accent">
-                View Full Portfolio <ArrowRight size={16} className="ml-2" />
-              </Button>
-            </Link>
+            <HeroCTALink to="/portfolio" label="View Full Portfolio" />
           </ScrollReveal>
         </div>
 

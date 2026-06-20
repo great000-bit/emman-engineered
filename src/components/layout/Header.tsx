@@ -121,13 +121,8 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Mobile right: compact CTA + hamburger */}
-        <div className="md:hidden flex items-center gap-2">
-          <Link to="/contact" className="inline-flex">
-            <Button variant="accent" size="sm" className="h-9 px-3 text-xs">
-              Start
-            </Button>
-          </Link>
+        {/* Mobile right: hamburger only — no Start button on mobile per design spec */}
+        <div className="md:hidden flex items-center">
           <button
             className="relative w-11 h-11 flex items-center justify-center text-primary-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -246,7 +241,7 @@ const Header = () => {
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
                 <a href="mailto:creativeemmanlimited@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited@gmail.com</a>
-                <a href="https://wa.me/2347037845433" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">+234 703 784 5433</a>
+                <a href="https://wa.me/2349051380648" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">09051380648</a>
               </div>
             </motion.nav>
           </>

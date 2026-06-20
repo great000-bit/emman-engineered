@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { PortfolioProject } from "@/data/portfolioData";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 import StatusBadge from "./StatusBadge";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 interface ProjectCardProps {
   project: PortfolioProject;
@@ -12,6 +11,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, ctaLabel = "View Project" }: ProjectCardProps) => {
   const goesLive = Boolean(project.liveUrl);
+  const Icon = goesLive ? ExternalLink : ArrowUpRight;
 
   const cardInner = (
     <>
@@ -28,9 +28,16 @@ const ProjectCard = ({ project, ctaLabel = "View Project" }: ProjectCardProps) =
       <p className="text-xs text-accent font-medium uppercase tracking-wider mb-1.5">{project.projectType}</p>
       <h3 className="text-lg font-display font-semibold text-primary-foreground mb-2">{project.title}</h3>
       <p className="text-sm text-primary-foreground/55 leading-relaxed mb-4 line-clamp-2">{project.shortDescription}</p>
-      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-foreground/70 group-hover:text-accent group-hover:gap-2.5 transition-all">
-        {goesLive ? ctaLabel : ctaLabel}
-        {goesLive ? <ExternalLink size={14} /> : <ArrowRight size={14} />}
+      {/* Visual-only rendering of the hero CTA shape (pill + circular icon). The whole card
+          is already the clickable element, so this is presentational, not a nested link —
+          nesting a real <a>/<Link> here would be invalid HTML and break click semantics. */}
+      <span className="inline-flex items-stretch w-fit">
+        <span className="inline-flex items-center bg-white text-[#0a0a0b] text-xs font-semibold tracking-wide uppercase px-5 py-2.5 rounded-l-full">
+          {ctaLabel}
+        </span>
+        <span className="inline-flex items-center justify-center w-9 aspect-square rounded-full bg-accent text-[#0a0a0b] -ml-px transition-transform duration-300 group-hover:rotate-45">
+          <Icon size={16} strokeWidth={2.25} />
+        </span>
       </span>
     </>
   );
