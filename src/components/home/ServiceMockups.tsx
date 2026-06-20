@@ -69,9 +69,9 @@ export const WebDevMockup = () => {
     <div className="w-full h-full flex flex-col p-4 overflow-hidden">
       <div className="flex items-center justify-between mb-3 flex-shrink-0">
         <div className="flex gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-white/15" />
-          <span className="w-2 h-2 rounded-full bg-white/15" />
-          <span className="w-2 h-2 rounded-full bg-white/15" />
+          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#ff5f57" }} />
+          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#ffbd2e" }} />
+          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#28c840" }} />
         </div>
         <span className="text-[9px] font-mono text-white/25">{scene.lang}</span>
       </div>
