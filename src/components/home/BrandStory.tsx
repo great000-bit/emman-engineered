@@ -1,58 +1,110 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, MotionValue } from "framer-motion";
 
 /**
- * "Our Story" / "About Creative Emman Limited" — a scroll-driven text-reveal section.
+ * "Our Story" / "About Us" — scroll-linked text reveal.
  *
- * Desktop/tablet: the section is tall enough to scroll through; as the user scrolls,
- * slide 1 fades + moves up and out while slide 2 fades + moves up into place — driven
- * directly by scroll progress (useScroll + useTransform), so it's tied to the scrollbar
- * rather than a timer. Only `opacity`/`transform` are animated (GPU-friendly, no layout
- * thrashing), and there is no JS scroll-event listener — Framer's useScroll uses a
- * passive, rAF-batched scroll observer internally.
+ * The key layout idea that makes this read as "1-2 lines highlighted at a time" rather
+ * than a wall of text: each body chunk is absolutely positioned in the exact same slot
+ * (stacked on top of each other), so only the chunk(s) near the current scroll position
+ * are opaque enough to read — everything else is faded near-invisible, not just dimmed.
+ * Only one or two chunks are ever visually present at once.
  *
- * Mobile: a tall pinned scroll effect is exactly the kind of thing that feels janky on
- * mobile (per the brief), so below the `md` breakpoint this renders as two simple
- * stacked blocks that fade in once each on entering the viewport — cheap and reliable.
+ * The section label + title are pinned at the top of the centered column and crossfade
+ * between "Our Story"/title and "About Us"/title as the user crosses the midpoint —
+ * they don't need their own scroll-highlight, the brief only asks for line-by-line
+ * highlighting on the body copy.
  *
- * No card, no logo — copy only, as specified.
+ * Desktop: pinned via position:fixed (see note below re: why not position:sticky),
+ * gated to the section's own scroll range. Mobile: simple sequential fade-in, no pin.
+ * Everything animated is opacity/transform only.
  */
 
-const SLIDES = [
+interface Section {
+  label: string;
+  title: string;
+  chunks: string[];
+  paragraphGroups: number[];
+}
+
+const SECTIONS: Section[] = [
   {
     label: "Our Story",
     title: "Built to Create. Engineered to Grow.",
-    paragraphs: [
-      "Creative Emman Limited was founded on the belief that exceptional talent deserves meaningful opportunities, and ambitious businesses deserve digital solutions built with intention. What started as a passion for design, technology, and problem-solving has grown into a creative and technology company committed to helping brands navigate the digital landscape with confidence.",
-      "We recognized a gap in the industry. Many businesses struggle to find reliable creative partners who understand both aesthetics and business objectives, while talented professionals often lack access to projects that allow them to showcase their abilities and grow. Creative Emman Limited was established to bridge that gap.",
-      "Today, we bring together designers, developers, strategists, writers, marketers, and innovators to create digital experiences that are thoughtful, scalable, and impactful. Every project we undertake contributes to a larger vision of building products, creating opportunities, and shaping a future where creativity and technology work hand in hand.",
+    chunks: [
+      "Creative Emman Limited was built to bridge the gap",
+      "between ambitious brands and skilled creative talent.",
+      "What began as a passion for design, technology,",
+      "and problem-solving has grown into a multidisciplinary company",
+      "helping businesses build with clarity, creativity, and purpose.",
+      "We bring together designers, developers, strategists,",
+      "marketers, writers, and visual storytellers to create",
+      "digital experiences that are thoughtful, scalable, and impactful.",
+      "Every project is an opportunity to build better products,",
+      "stronger brands, and meaningful growth.",
     ],
+    // How many consecutive chunks form one natural sentence/paragraph, for the
+    // mobile/reduced-motion joined-paragraph rendering.
+    paragraphGroups: [2, 3, 3, 2],
   },
   {
-    label: "About Creative Emman Limited",
-    title: "Building Brands, Products, and Opportunities.",
-    paragraphs: [
-      "Creative Emman Limited is a creative and technology company dedicated to helping startups, businesses, and organizations build stronger brands, better products, and meaningful digital experiences.",
-      "Our expertise spans branding, UI/UX design, web development, product strategy, content creation, and digital innovation. We partner with businesses to transform ideas into solutions that not only look exceptional but also drive measurable growth.",
-      "Beyond client services, Creative Emman Limited is building an ecosystem that empowers talented creatives and technology professionals through collaboration, mentorship, and access to real-world opportunities. We believe that sustainable innovation happens when businesses succeed and people grow alongside them.",
-      "As we continue to evolve, our mission remains clear: to engineer opportunities, inspire innovation, and build digital solutions that leave a lasting impact.",
+    label: "About Us",
+    title: "About Creative Emman Limited",
+    chunks: [
+      "Creative Emman Limited is a creative and technology company",
+      "helping startups, businesses, and organizations build stronger brands,",
+      "better products, and meaningful digital experiences.",
+      "Our work spans branding, UI/UX design, web development,",
+      "product strategy, content creation, social media,",
+      "video, motion graphics, and digital innovation.",
+      "Beyond client services, we are building an ecosystem",
+      "where talented creatives and technology professionals",
+      "can collaborate, grow, and access real opportunities.",
+      "Our mission is simple: engineer opportunities, inspire innovation,",
+      "and build digital solutions that leave a lasting impact.",
     ],
+    paragraphGroups: [3, 3, 3, 2],
   },
 ];
 
-const SlideText = ({ slide }: { slide: typeof SLIDES[number] }) => (
-  <>
-    <span className="text-sm font-medium tracking-widest uppercase text-accent">{slide.label}</span>
-    <h2 className="text-3xl md:text-4xl lg:text-5xl text-primary-foreground mt-3 mb-6 leading-tight">
-      {slide.title}
-    </h2>
-    {slide.paragraphs.map((p, i) => (
-      <p key={i} className="text-primary-foreground/60 leading-relaxed mb-4 last:mb-0">
-        {p}
-      </p>
-    ))}
-  </>
+// Flat, ordered list of every chunk across both sections, each tagged with which section
+// it belongs to — this is what the scroll progress walks through, one slot at a time.
+const FLAT_CHUNKS = SECTIONS.flatMap((section, sectionIndex) =>
+  section.chunks.map((text) => ({ text, sectionIndex })),
 );
+
+// For mobile/reduced-motion: join the short scroll-highlight chunks back into natural
+// reading paragraphs using each section's explicit sentence groupings, rather than a
+// fixed stride that could split mid-sentence.
+const joinIntoParagraphs = (chunks: string[], groups: number[]): string[] => {
+  const paragraphs: string[] = [];
+  let cursor = 0;
+  for (const groupSize of groups) {
+    paragraphs.push(chunks.slice(cursor, cursor + groupSize).join(" "));
+    cursor += groupSize;
+  }
+  return paragraphs;
+};
+
+/**
+ * A single body chunk, absolutely stacked in the same slot as every other chunk. Bright
+ * and fully opaque only near its own position in the scroll sequence; otherwise faded
+ * almost fully away so it doesn't visually clutter the stack.
+ */
+const StackedChunk = ({ text, index, progress }: { text: string; index: number; progress: MotionValue<number> }) => {
+  const center = index;
+  const opacity = useTransform(progress, [center - 0.55, center - 0.2, center + 0.2, center + 0.55], [0, 1, 1, 0]);
+  const y = useTransform(progress, [center - 0.55, center, center + 0.55], [14, 0, -14]);
+
+  return (
+    <motion.p
+      style={{ opacity, y }}
+      className="absolute inset-x-0 top-1/2 -translate-y-1/2 text-xl sm:text-2xl md:text-[1.65rem] text-primary-foreground leading-snug font-medium"
+    >
+      {text}
+    </motion.p>
+  );
+};
 
 const BrandStoryDesktop = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -61,38 +113,94 @@ const BrandStoryDesktop = () => {
     offset: ["start start", "end end"],
   });
 
-  // Slide 1 holds, then fades out; slide 2 fades in before slide 1 fully disappears,
-  // so there is always at least one slide visible — no empty gap at the midpoint.
-  const slide1Opacity = useTransform(scrollYProgress, [0, 0.38, 0.52], [1, 1, 0]);
-  const slide1Y = useTransform(scrollYProgress, [0, 0.52], [0, -40]);
+  const chunkProgress = useTransform(scrollYProgress, [0, 1], [0, FLAT_CHUNKS.length - 1]);
 
-  const slide2Opacity = useTransform(scrollYProgress, [0.42, 0.58, 1], [0, 1, 1]);
-  const slide2Y = useTransform(scrollYProgress, [0.42, 0.62], [40, 0]);
+  // The site's global `html, body { overflow-x: hidden }` rule breaks `position: sticky`
+  // pinning in this browser engine, so pinning uses position:fixed gated by scroll
+  // progress instead — verified to behave identically, same cost.
+  const pinnedOpacity = useTransform(scrollYProgress, [0, 0.02, 0.97, 1], [0, 1, 1, 0]);
 
-  // The site's global `html, body { overflow-x: hidden }` rule (needed elsewhere to stop
-  // horizontal bleed from decorative elements) interferes with `position: sticky` pinning
-  // in some browser engines — the element never actually pins, it just scrolls normally.
-  // Pinning via `position: fixed`, gated to only be fixed while the track is on-screen,
-  // sidesteps that entirely and is just as cheap (transform/opacity-driven, no listeners
-  // beyond Framer's own rAF-batched scroll observer).
-  const pinnedOpacity = useTransform(scrollYProgress, [0, 0.02, 0.98, 1], [0, 1, 1, 0]);
+  // Section split point: once we're past the last "Our Story" chunk's slot, About Us
+  // becomes active. This drives both the label and the title crossfade.
+  const lastOurStoryIndex = SECTIONS[0].chunks.length - 1;
+  const sectionSwitch = useTransform(
+    chunkProgress,
+    [lastOurStoryIndex + 0.5, lastOurStoryIndex + 0.9],
+    [0, 1],
+  );
+  const ourStoryOpacity = useTransform(sectionSwitch, [0, 1], [1, 0]);
+  const aboutUsOpacity = useTransform(sectionSwitch, [0, 1], [0, 1]);
+
+  // useScroll's "start start"/"end end" offsets mean the usable 0->1 progress range is
+  // (track height - one viewport height), not the full track height — the track needs
+  // that extra viewport's worth of height as a buffer for the math to span correctly.
+  // ~55vh per chunk keeps each highlight on screen long enough to read comfortably
+  // without making the overall section feel like an endless scroll.
+  const scrollPerChunk = 55; // vh
+  const trackHeightVh = FLAT_CHUNKS.length * scrollPerChunk + 100;
 
   return (
-    <div ref={sectionRef} className="relative h-[200vh] hidden md:block">
+    <div ref={sectionRef} className="relative hidden md:block" style={{ height: `${trackHeightVh}vh` }}>
       <motion.div
         style={{ opacity: pinnedOpacity }}
-        className="fixed top-0 left-0 right-0 h-screen flex items-center overflow-hidden pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-screen overflow-hidden pointer-events-none"
       >
-        <div className="container-wide mx-auto px-4 sm:px-6 relative w-full h-[60vh] max-h-[600px]">
-          <div className="absolute inset-x-4 sm:inset-x-6 top-1/2 -translate-y-1/2 pointer-events-auto">
-            <motion.div style={{ opacity: slide1Opacity, y: slide1Y }} className="max-w-2xl">
-              <SlideText slide={SLIDES[0]} />
-            </motion.div>
+        <div className="container-wide mx-auto px-4 sm:px-6 h-full relative">
+          {/* Left label column */}
+          <div className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 hidden lg:block w-32">
+            <motion.span
+              style={{ opacity: ourStoryOpacity }}
+              className="absolute text-sm font-medium tracking-widest uppercase text-accent whitespace-nowrap"
+            >
+              Our Story
+            </motion.span>
+            <motion.span
+              style={{ opacity: aboutUsOpacity }}
+              className="absolute text-sm font-medium tracking-widest uppercase text-accent whitespace-nowrap"
+            >
+              About Us
+            </motion.span>
           </div>
-          <div className="absolute inset-x-4 sm:inset-x-6 top-1/2 -translate-y-1/2 pointer-events-auto">
-            <motion.div style={{ opacity: slide2Opacity, y: slide2Y }} className="max-w-2xl">
-              <SlideText slide={SLIDES[1]} />
-            </motion.div>
+
+          {/* Centered column: title (crossfades per section) + stacked highlight chunks */}
+          <div className="h-full flex items-center justify-center">
+            <div className="max-w-2xl w-full text-center lg:text-left">
+              <div className="relative h-5 mb-4 lg:hidden">
+                <motion.span
+                  style={{ opacity: ourStoryOpacity }}
+                  className="absolute inset-x-0 text-sm font-medium tracking-widest uppercase text-accent"
+                >
+                  Our Story
+                </motion.span>
+                <motion.span
+                  style={{ opacity: aboutUsOpacity }}
+                  className="absolute inset-x-0 text-sm font-medium tracking-widest uppercase text-accent"
+                >
+                  About Us
+                </motion.span>
+              </div>
+
+              <div className="relative h-[88px] sm:h-[104px] mb-8">
+                <motion.h2
+                  style={{ opacity: ourStoryOpacity }}
+                  className="absolute inset-x-0 top-0 text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary-foreground leading-tight"
+                >
+                  {SECTIONS[0].title}
+                </motion.h2>
+                <motion.h2
+                  style={{ opacity: aboutUsOpacity }}
+                  className="absolute inset-x-0 top-0 text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary-foreground leading-tight"
+                >
+                  {SECTIONS[1].title}
+                </motion.h2>
+              </div>
+
+              <div className="relative h-24 sm:h-20">
+                {FLAT_CHUNKS.map((chunk, i) => (
+                  <StackedChunk key={chunk.text.slice(0, 24)} text={chunk.text} index={i} progress={chunkProgress} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -101,17 +209,25 @@ const BrandStoryDesktop = () => {
 };
 
 const BrandStoryMobile = () => (
-  <div className="md:hidden container-wide mx-auto px-4 sm:px-6 space-y-16">
-    {SLIDES.map((slide, i) => (
+  <div className="md:hidden container-wide mx-auto px-4 sm:px-6 space-y-14">
+    {SECTIONS.map((section, i) => (
       <motion.div
-        key={slide.label}
-        initial={{ opacity: 0, y: 24 }}
+        key={section.label}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
         className="max-w-2xl"
       >
-        <SlideText slide={slide} />
+        <span className="text-sm font-medium tracking-widest uppercase text-accent block mb-3">{section.label}</span>
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-foreground leading-tight mb-5">
+          {section.title}
+        </h2>
+        {joinIntoParagraphs(section.chunks, section.paragraphGroups).map((paragraph) => (
+          <p key={paragraph.slice(0, 24)} className="text-primary-foreground/65 leading-relaxed mb-3 last:mb-0">
+            {paragraph}
+          </p>
+        ))}
       </motion.div>
     ))}
   </div>
@@ -120,15 +236,23 @@ const BrandStoryMobile = () => (
 const BrandStory = () => {
   const prefersReducedMotion = useReducedMotion();
 
-  // With reduced motion requested, skip the pinned scroll-jacking effect entirely
-  // (even on desktop) and use the simple stacked layout everywhere.
   if (prefersReducedMotion) {
     return (
       <section className="section-padding relative">
-        <div className="container-wide mx-auto px-4 sm:px-6 space-y-16">
-          {SLIDES.map((slide) => (
-            <div key={slide.label} className="max-w-2xl">
-              <SlideText slide={slide} />
+        <div className="container-wide mx-auto px-4 sm:px-6 space-y-14">
+          {SECTIONS.map((section) => (
+            <div key={section.label} className="max-w-2xl">
+              <span className="text-sm font-medium tracking-widest uppercase text-accent block mb-3">
+                {section.label}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-foreground leading-tight mb-5">
+                {section.title}
+              </h2>
+              {joinIntoParagraphs(section.chunks, section.paragraphGroups).map((paragraph) => (
+                <p key={paragraph.slice(0, 24)} className="text-primary-foreground/65 leading-relaxed mb-3 last:mb-0">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           ))}
         </div>
