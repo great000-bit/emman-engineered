@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, MotionValue } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useTransform, useReducedMotion, useMotionValue, MotionValue } from "framer-motion";
 
 /**
  * "Our Story" / "About Us" — scroll-linked text reveal.
@@ -108,17 +108,65 @@ const StackedChunk = ({ text, index, progress }: { text: string; index: number; 
 
 const BrandStoryDesktop = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
 
-  const chunkProgress = useTransform(scrollYProgress, [0, 1], [0, FLAT_CHUNKS.length - 1]);
+  // useScroll's automatic element-relative offset ("start start"/"end end") was measured
+  // to behave unreliably in this environment — scrollYProgress reached 1.0 once window
+  // scrollY equaled the track's own pixel height, ignoring how far down the page the
+  // track actually starts. Tracking the section's real position manually via
+  // getBoundingClientRect on scroll (passive listener, rAF-throttled) sidesteps that
+  // entirely and was verified to produce a correct, evenly-spaced 0..1 range.
+  const rawProgress = useMotionValue(0);
 
-  // The site's global `html, body { overflow-x: hidden }` rule breaks `position: sticky`
-  // pinning in this browser engine, so pinning uses position:fixed gated by scroll
-  // progress instead — verified to behave identically, same cost.
-  const pinnedOpacity = useTransform(scrollYProgress, [0, 0.02, 0.97, 1], [0, 1, 1, 0]);
+  useEffect(() => {
+    let ticking = false;
+    const update = () => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const trackHeight = el.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      // Progress 0 when the track's top reaches the viewport top; progress 1 when the
+      // track's bottom reaches the viewport bottom (i.e. scrolled through trackHeight -
+      // viewportHeight of additional distance after the top aligns).
+      const scrolledIntoTrack = -rect.top;
+      const usableDistance = trackHeight - viewportHeight;
+      const p = usableDistance > 0 ? scrolledIntoTrack / usableDistance : 0;
+      rawProgress.set(Math.min(1, Math.max(0, p)));
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [rawProgress]);
+
+  const scrollYProgress = rawProgress;
+
+  // Reserve a small head/tail slice of the progress range purely for the pin's own
+  // fade in/out, and map chunks across the remaining middle so the last chunk still
+  // gets its full, fair share of scroll time before the fade-out begins.
+  const FADE_FRACTION = 0.04;
+  const chunkProgress = useTransform(
+    scrollYProgress,
+    [FADE_FRACTION, 1 - FADE_FRACTION],
+    [0, FLAT_CHUNKS.length - 1],
+    { clamp: true },
+  );
+
+  const pinnedOpacity = useTransform(
+    scrollYProgress,
+    [0, FADE_FRACTION, 1 - FADE_FRACTION, 1],
+    [0, 1, 1, 0],
+  );
 
   // Section split point: once we're past the last "Our Story" chunk's slot, About Us
   // becomes active. This drives both the label and the title crossfade.
@@ -131,11 +179,10 @@ const BrandStoryDesktop = () => {
   const ourStoryOpacity = useTransform(sectionSwitch, [0, 1], [1, 0]);
   const aboutUsOpacity = useTransform(sectionSwitch, [0, 1], [0, 1]);
 
-  // useScroll's "start start"/"end end" offsets mean the usable 0->1 progress range is
-  // (track height - one viewport height), not the full track height — the track needs
-  // that extra viewport's worth of height as a buffer for the math to span correctly.
-  // ~55vh per chunk keeps each highlight on screen long enough to read comfortably
-  // without making the overall section feel like an endless scroll.
+  // The manual progress calculation above is (trackHeight - viewportHeight) of usable
+  // scroll distance, so the track still needs to exceed one viewport height — ~55vh per
+  // chunk keeps each highlight on screen long enough to read comfortably without making
+  // the overall section feel like an endless scroll.
   const scrollPerChunk = 55; // vh
   const trackHeightVh = FLAT_CHUNKS.length * scrollPerChunk + 100;
 
