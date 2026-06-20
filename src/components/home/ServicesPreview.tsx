@@ -4,7 +4,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { ArrowRight } from "lucide-react";
 import {
-  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, PhotoMockup, MotionMockup,
+  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, VideoEditingMockup, PhotoMockup, MotionMockup,
 } from "./ServiceMockups";
 
 // Map each real service to its mini mockup. Falls back to a generic icon
@@ -15,7 +15,7 @@ const MOCKUPS: Record<string, React.FC> = {
   "UI/UX Design": UIUXMockup,
   "Graphic Design": GraphicMockup,
   "Videography": VideoMockup,
-  "Video Editing": VideoMockup,
+  "Video Editing": VideoEditingMockup,
   "Photography": PhotoMockup,
   "Motion Graphics Design": MotionMockup,
 };

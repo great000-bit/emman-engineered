@@ -143,9 +143,6 @@ const ContactPage = () => {
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
           <ScrollReveal>
-            <span className="text-sm font-medium tracking-widest uppercase text-accent">Command Center</span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
             <h1 className="text-4xl md:text-5xl lg:text-7xl text-primary-foreground mt-3 mb-4 max-w-4xl leading-[0.95]">
               Let's Build Something <span className="gradient-text">Exceptional</span>
             </h1>
