@@ -1,34 +1,44 @@
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import { teamMembers } from "@/data/siteData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
 import websiteIcon from "@/assets/website-icon.png";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const TeamCarousel = () => {
-  const [isPaused, setIsPaused] = useState(false);
   const doubled = [...teamMembers, ...teamMembers];
 
   return (
-    <div
-      className="overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <motion.div
-        className="flex gap-6"
-        animate={{ x: isPaused ? undefined : [0, -(teamMembers.length * 320)] }}
-        transition={
-          isPaused
-            ? { type: "tween", duration: 0 }
-            : { x: { duration: 30, repeat: Infinity, ease: "linear" } }
+    <div className="overflow-hidden w-full">
+      <style>{`
+        @keyframes teamMarquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-${teamMembers.length * 312}px);
+          }
         }
-        style={{ width: "fit-content" }}
+        .animate-team-marquee {
+          animation: teamMarquee 30s linear infinite;
+        }
+        .animate-team-marquee:hover {
+          animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-team-marquee {
+            animation: none;
+            transform: none;
+            overflow-x: auto;
+          }
+        }
+      `}</style>
+      <div
+        className="flex gap-6 animate-team-marquee"
+        style={{ width: "max-content" }}
       >
         {doubled.map((member, i) => (
           <div
@@ -39,9 +49,9 @@ const TeamCarousel = () => {
               style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
             >
               <img
-                src={websiteIcon}
+                src={member.image}
                 alt={`${member.name} — Creative Emman`}
-                className="w-20 h-20 object-contain logo-pulse"
+                className="w-full h-full object-cover logo-pulse"
               />
             </div>
 
@@ -49,18 +59,20 @@ const TeamCarousel = () => {
               <h3 className="text-lg font-display font-bold text-primary-foreground mb-1">{member.name}</h3>
               <p className="text-sm text-accent mb-2">{member.role}</p>
               <div className="flex flex-wrap gap-1 mb-3">
-                {member.stack.map((tech) => (
+                {member.stack.slice(0, 4).map((tech) => (
                   <span key={tech} className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">{tech}</span>
                 ))}
+                {member.stack.length > 4 && (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary-foreground/5 text-primary-foreground/45 border border-primary-foreground/10">+{member.stack.length - 4} more</span>
+                )}
               </div>
-              <p className="text-xs text-primary-foreground/60 leading-relaxed mb-4">{member.bio}</p>
               <Link to={`/team/${member.id}`}>
                 <Button variant="accent" size="sm" className="w-full">View Profile</Button>
               </Link>
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -137,7 +149,7 @@ const TeamPage = () => (
               </Button>
             </Link>
             <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
-                <Phone size={14} className="mr-1.5" /> WhatsApp
+              <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>
         </ScrollReveal>
@@ -175,9 +187,9 @@ export const TeamProfile = () => {
           worksFor: { "@type": "Organization", name: "Creative Emman" },
         }}
       />
-      <section className="bg-primary pt-32 pb-12 px-6">
+      <section className="bg-primary pt-32 px-6">
         <div className="container-narrow mx-auto">
-          <Link to="/team" className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-accent transition-colors mb-8">
+          <Link to="/team" className="inline-flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-accent transition-colors">
             <ArrowLeft size={14} /> Back to Team
           </Link>
         </div>
@@ -190,9 +202,9 @@ export const TeamProfile = () => {
               style={{ background: "radial-gradient(ellipse at center, hsl(210 80% 55% / 0.08) 0%, transparent 70%)" }}
             >
               <img
-                src={websiteIcon}
+                src={member.image}
                 alt={`${member.name} — Creative Emman`}
-                className="w-24 h-24 object-contain logo-pulse"
+                className="w-full h-full object-cover rounded-3xl logo-pulse"
               />
             </div>
           </ScrollReveal>
@@ -218,13 +230,21 @@ export const TeamProfile = () => {
 
             <ScrollReveal delay={0.16}>
               <div className="flex gap-3 flex-wrap">
-                <a href={member.portfolio}>
-                  <Button variant="accent" size="sm"><ExternalLink size={14} /> Portfolio</Button>
-                </a>
-                <a href={member.linkedin}>
-                  <Button variant="hero-pill" size="sm"><Linkedin size={14} /> LinkedIn</Button>
-                </a>
-                <Button variant="hero-pill" size="sm" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}><Phone size={14} /> Contact</Button>
+                {member.portfolio && member.portfolio !== "#" && member.portfolio !== "" && (
+                  <a href={member.portfolio} target="_blank" rel="noopener noreferrer">
+                    <Button variant="accent" size="sm"><ExternalLink size={14} className="mr-1.5" /> Portfolio</Button>
+                  </a>
+                )}
+                {member.linkedin && member.linkedin !== "#" && member.linkedin !== "" && (
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Button variant="hero-pill" size="sm"><Linkedin size={14} className="mr-1.5" /> LinkedIn</Button>
+                  </a>
+                )}
+                {member.email && (
+                  <a href={`mailto:${member.email}`}>
+                    <Button variant="hero-pill" size="sm"><Mail size={14} className="mr-1.5" /> Email</Button>
+                  </a>
+                )}
               </div>
             </ScrollReveal>
 

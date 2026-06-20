@@ -1,8 +1,20 @@
 {
   "name": "creative-emman-limited-website",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "Official company website for Creative Emman Limited, showcasing services, team members, portfolio work, applications, and contact information.",
+  "homepage": "https://github.com/great000-bit/emman-engineered#readme",
+  "bugs": {
+    "url": "https://github.com/great000-bit/emman-engineered/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/great000-bit/emman-engineered.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
