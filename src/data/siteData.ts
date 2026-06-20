@@ -1,13 +1,11 @@
 import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Brain, Target, Eye, CheckCircle, Sparkles } from "lucide-react";
-import VictoryImg from "@/assets/VictoryAdaezeIsrael.jpeg"
-import AdefisoyeImg from "@/assets/AdefisoyeMorayo.jpeg"
+
 import AdebowaleImg from "@/assets/AdebowaleTaofeek.jpeg"
-import OsuagwuImg from "@/assets/OsuagwuGoldenheart.jpeg"
 import DanielImg from "@/assets/DanielOyetayo.jpeg"
 import VivianImg from "@/assets/MbaVivian.jpeg"
-import IsrealImg from "@/assets/IsraelChijinduObani.jpeg"
 import ZaydImg from "@/assets/ZaydTahir.png"
 import GreatEmmanImg from "@/assets/GreatEmman-wori.jpeg"
+import SophiaImg from "@/assets/IyeritufuSophiaAdaobim.jpeg"
 
 
 export const services = [
@@ -99,7 +97,6 @@ export const teamMembers = [
     name: "Great Emman-wori",
     role: "Founder & Vision Architect",
     bio: "Building Creative Emman Limited at the intersection of creativity, technology, and opportunity. Passionate about crafting impactful digital experiences, nurturing emerging talent, and developing innovative solutions that empower businesses, inspire collaboration, and shape the future of digital innovation.",
-    // tagline: "Engineering Opportunities. Inspiring Innovation. Building the Future.",
     stack: ["Next.js", "Figma", "Meta Business Suite", "Adobe Creative Cloud", "Sony Cinema Line", "DaVinci Resolve", "After Effects", "Lightroom"],
     image: GreatEmmanImg,
     linkedin: "https://www.linkedin.com/in/great-emman-wori",
@@ -117,16 +114,6 @@ export const teamMembers = [
     portfolio: "https://zayd-portfolio.vercel.app/",
   },
   {
-    id: " Victory Adaeze Israel",
-    name: " Victory Adaeze Israel",
-    role: " Social Media Manager ",
-    bio: "Helping Brands Grow and Win Online Through Strategic Social Media Management",
-    stack: ["Content Strategy", "Design", "Video Editing", "Content Planning", "Scheduling & Analytics", "Asset Management", "Client Meetings", "Client Communication", "Content Research", "Link Management"],
-    image: VictoryImg,
-    linkedin: "https://www.linkedin.com/in/victory-israel-14a121240",
-    portfolio: "https://www.canva.com/design/DAGy2py6umo/k8BANVqjsqX6AP71TV3ebQ/edit",
-  },
-  {
     id: "Adebowale Taofeek",
     name: "Adebowale Taofeek",
     role: "Graphics designer ",
@@ -136,16 +123,6 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/in/taofeek-adebowale-725151381?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     portfolio: "https://drive.google.com/drive/folders/1fP7uOoahh9dv_bo8W8ITqtYdMWCrdejK",
   },
-  // {
-  //   id: "Osuagwu Goldenheart",
-  //   name: "Osuagwu Goldenheart ",
-  //   role: "Mobile Photographer.",
-  //   bio: "Reimagining life through the lens.",
-  //   stack: ["Notion", "Snapseed", "Claude"],
-  //   image: OsuagwuImg,
-  //   linkedin: "#",
-  //   portfolio: "#",
-  // },
   {
     id: "Daniel Oyetayo",
     name: "Daniel Oyetayo",
@@ -156,16 +133,16 @@ export const teamMembers = [
     linkedin: "https://shorturl.at/MpaS3",
     portfolio: "https://shorturl.at/961Hh",
   },
-  // {
-  //   id: "Israel Chijindu Obani",
-  //   name: "Israel Chijindu Obani",
-  //   role: "Virtual assistant/Copywriter, Graphic Designer, Tutor.",
-  //   bio: "Captivating Brands With Splendid Designs",
-  //   stack: ["Productivity Tool", "Communication Tool", "Project Management", "Design"],
-  //   image: IsrealImg,
-  //   linkedin: "",
-  //   portfolio: "",
-  // },
+  {
+    id: "Iyeritufu SophiaAdaobi",
+    name: "Iyeritufu SophiaAdaobi",
+    role: " Project manager, Content writer, social media manager, email marketer, content writer ",
+    bio: "Creating strategies to build a legacy.",
+    stack: ["Productivity Tool", "Communication Tool", "Project Management", "Video Editing", "Content planning", "Designs", "Trello", "Photo Editing"],
+    image: SophiaImg,
+    linkedin: "https://www.linkedin.com/in/sophia-iyeritufu-43838633b/",
+    portfolio: "",
+  },
   {
     id: "MBA Vivian",
     name: "MBA Vivian",
@@ -176,16 +153,6 @@ export const teamMembers = [
     linkedin: "https://bit.ly/4a6BtDp",
     portfolio: "https://shorturl.at/961Hh",
   },
-  // {
-  //   id: "Adefisoye-Morayo",
-  //   name: "Adefisoye Morayo",
-  //   role: "Social media manager",
-  //   bio: "Think It. Build It. Grow It.",
-  //   stack: ["Notion", "ChatGpt", "Claude"],
-  //   image: AdefisoyeImg,
-  //   linkedin: "#",
-  //   portfolio: "#",
-  // },
 ];
 
 export const trainings = [
