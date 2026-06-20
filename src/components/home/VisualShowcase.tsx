@@ -12,7 +12,7 @@ import showcaseMobile from "@/assets/showcase-mobile.jpg";
 const portfolioPreviewImages = [showcaseEnterprise, showcaseBrand, showcaseFilm, showcaseMobile];
 
 const VisualShowcase = () => (
-  <section className="section-padding bg-primary border-t border-primary-foreground/5">
+  <section className="section-padding border-t border-primary-foreground/5 relative">
     <div className="container-wide mx-auto">
       <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
         <div className="flex-1">

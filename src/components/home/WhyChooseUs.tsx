@@ -4,7 +4,7 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import IconGlow from "@/components/shared/IconGlow";
 
 const WhyChooseUs = () => (
-  <section className="section-padding bg-primary border-t border-primary-foreground/5">
+  <section className="section-padding border-t border-primary-foreground/5 relative">
     <div className="container-wide mx-auto">
       <SectionHeading
         label="Why Us"

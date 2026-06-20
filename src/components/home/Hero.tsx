@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import TypingHeadline from "./TypingHeadline";
 import { HeroCTALink } from "@/components/shared/HeroCTA";
-import HeroBackground from "./HeroBackground";
 
 const HERO_LINES = [
   "We design.",
@@ -14,8 +13,9 @@ const HERO_LINES = [
 ];
 
 const Hero = () => (
-  <section className="relative min-h-screen flex flex-col overflow-hidden bg-[#0a0a0b]">
-    <HeroBackground />
+  <section className="relative min-h-screen flex flex-col overflow-hidden">
+    {/* Background now lives once at the page level (HomeAnimatedBackground in Index.tsx),
+        fixed behind every homepage section — Hero no longer renders its own video/layers. */}
 
     {/* Spacer for floating nav clearance */}
     <div className="h-24 sm:h-28 flex-shrink-0" />

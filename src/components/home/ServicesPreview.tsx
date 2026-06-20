@@ -61,7 +61,7 @@ const ServicesPreview = () => {
   const [first, second, ...rest] = services;
 
   return (
-    <section id="services" className="section-padding bg-primary relative overflow-hidden">
+    <section id="services" className="section-padding relative overflow-hidden">
       <div className="container-wide mx-auto relative">
         <SectionHeading
           label="What We Do"

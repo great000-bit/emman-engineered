@@ -1,4 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
+import HomeAnimatedBackground from "@/components/home/HomeAnimatedBackground";
 import Hero from "@/components/home/Hero";
 import BrandStory from "@/components/home/BrandStory";
 import ServicesPreview from "@/components/home/ServicesPreview";
@@ -28,12 +29,18 @@ const Index = () => (
           "Premium digital agency in Nigeria offering website development, social media management, UI/UX design, graphic design, videography and photography.",
       }}
     />
-    <Hero />
-    <BrandStory />
-    <ServicesPreview />
-    <WhyChooseUs />
-    <VisualShowcase />
-    <CTABanner />
+    {/* Fixed, full-page cinematic background — Home page only. This component is never
+        imported by any other page, which is what actually keeps it off every other route. */}
+    <HomeAnimatedBackground variant="aurora" />
+
+    <div className="relative z-10">
+      <Hero />
+      <BrandStory />
+      <ServicesPreview />
+      <WhyChooseUs />
+      <VisualShowcase />
+      <CTABanner />
+    </div>
   </PageLayout>
 );
 
