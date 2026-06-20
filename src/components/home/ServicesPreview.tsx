@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import {
   WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, VideoEditingMockup, PhotoMockup, MotionMockup,
 } from "./ServiceMockups";
+import MobileServiceStack from "./MobileServiceStack";
 
 // Map each real service to its mini mockup. Falls back to a generic icon
 // tile if a service doesn't have a custom mockup yet.
@@ -70,17 +71,25 @@ const ServicesPreview = () => {
           light
         />
 
-        {/* Row 1 — two large feature cards */}
-        <div className="grid sm:grid-cols-2 gap-5 lg:gap-6 mt-10">
-          <BentoCard service={first} large delay={0} />
-          <BentoCard service={second} large delay={0.08} />
+        {/* Mobile (<768px): sticky stacked-card scroll animation */}
+        <div className="md:hidden mt-10">
+          <MobileServiceStack />
         </div>
 
-        {/* Row 2+ — equal-size cards, 3 per row on desktop */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-5 lg:mt-6">
-          {rest.map((service, i) => (
-            <BentoCard key={service.title} service={service} delay={0.05 * i} />
-          ))}
+        {/* Tablet/Desktop (>=768px): existing grid layout, unchanged */}
+        <div className="hidden md:block">
+          {/* Row 1 — two large feature cards */}
+          <div className="grid sm:grid-cols-2 gap-5 lg:gap-6 mt-10">
+            <BentoCard service={first} large delay={0} />
+            <BentoCard service={second} large delay={0.08} />
+          </div>
+
+          {/* Row 2+ — equal-size cards, 3 per row on desktop */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-5 lg:mt-6">
+            {rest.map((service, i) => (
+              <BentoCard key={service.title} service={service} delay={0.05 * i} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
