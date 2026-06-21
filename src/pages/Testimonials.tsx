@@ -12,7 +12,7 @@ const testimonials = [
   {
     name: "Adaeze Nwosu",
     company: "Finova Technologies",
-    text: "Creative Emman delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched.",
+    text: "Creative Emman Limited delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched.",
   },
   {
     name: "James Okonkwo",
@@ -32,12 +32,12 @@ const testimonials = [
   {
     name: "Chioma Eze",
     company: "NovaTech Solutions",
-    text: "The video production quality rivaled agencies three times their size. Creative Emman is a serious technology partner.",
+    text: "The video production quality rivaled agencies three times their size. Creative Emman Limited is a serious technology partner.",
   },
   {
     name: "Daniel Osei",
     company: "Prism Ventures",
-    text: "We've worked with many agencies. Creative Emman is the only one that treats digital execution as engineering. Highly recommended.",
+    text: "We've worked with many agencies. Creative Emman Limited is the only one that treats digital execution as engineering. Highly recommended.",
   },
   {
     name: "Blessing Amadi",
@@ -105,14 +105,14 @@ const TestimonialsPage = () => {
     <PageLayout>
       <SEO
         path="/testimonials"
-        title="Client Testimonials | Creative Emman — Digital Agency Nigeria"
-        description="What clients say about working with Creative Emman. Real results from website, branding and digital projects across Nigeria and beyond."
+        title="Client Testimonials | Creative Emman Limited — Digital Agency Nigeria"
+        description="What clients say about working with Creative Emman Limited. Real results from website, branding and digital projects across Nigeria and beyond."
         jsonLd={testimonials.map((t) => ({
           "@context": "https://schema.org",
           "@type": "Review",
           reviewBody: t.text,
           author: { "@type": "Person", name: t.name },
-          itemReviewed: { "@type": "Organization", name: "Creative Emman" },
+          itemReviewed: { "@type": "Organization", name: "Creative Emman Limited" },
         }))}
       />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

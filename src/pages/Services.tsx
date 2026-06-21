@@ -18,7 +18,7 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Our Services - Website Design, Social Media & Digital Marketing | Creative Emman Nigeria"
+      title="Our Services - Website Design, Social Media & Digital Marketing | Creative Emman Limited Nigeria"
       description="Website development, social media management, UI/UX design, graphic design, videography, video editing & photography services in Nigeria. Engineered for results."
       jsonLd={{
         "@context": "https://schema.org",
@@ -30,7 +30,7 @@ const ServicesPage = () => (
             "@type": "Service",
             name: s.title,
             description: s.description,
-            provider: { "@type": "Organization", name: "Creative Emman" },
+            provider: { "@type": "Organization", name: "Creative Emman Limited" },
             areaServed: "NG",
           },
         })),

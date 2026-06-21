@@ -26,7 +26,7 @@ const SEO = ({ title, description, path, image = DEFAULT_OG, type = "website", j
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Creative Emman" />
+      <meta property="og:site_name" content="Creative Emman Limited" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:image" content={image} />
       <meta property="og:image:secure_url" content={image} />

@@ -10,8 +10,7 @@ import SEO from "@/components/SEO";
 import { services } from "@/data/siteData";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
-
-const FORMSPREE_URL = "https://formspree.io/f/mwvrnqny";
+import { submitToFormspree } from "@/lib/formspree";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -102,28 +101,18 @@ const ContactPage = () => {
     setErrors({});
     setStatus("submitting");
 
-    try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("phone", form.phone);
-      formData.append("service", form.service);
-      formData.append("message", form.message);
-      formData.append("_gotcha", ""); // honeypot
+    const { ok } = await submitToFormspree("Contact Form", {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      service: form.service,
+      message: form.message,
+    });
 
-      const res = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", phone: "", service: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
+    if (ok) {
+      setStatus("success");
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+    } else {
       setStatus("error");
     }
   };
@@ -132,12 +121,12 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman | Digital Agency in Lagos, Nigeria"
-        description="Start a project with Creative Emman. Email creativeemmanlimited@gmail.com or WhatsApp 07037845433. We respond within 24 hours."
+        title="Contact Creative Emman Limited | Digital Agency in Rivers State, Nigeria"
+        description="Start a project with Creative Emman Limited. Email creativeemmanlimited@gmail.com or WhatsApp 07037845433. We respond within 24 hours."
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ContactPage",
-          name: "Contact Creative Emman",
+          name: "Contact Creative Emman Limited",
           url: "https://emman-engineered.vercel.app/contact",
         }}
       />
@@ -269,7 +258,7 @@ const ContactPage = () => {
                       <Phone size={16} className="text-accent" /> 07037845433
                     </a>
                     <div className="flex items-center gap-3">
-                      <MapPin size={16} className="text-accent" /> Lagos, Nigeria
+                      <MapPin size={16} className="text-accent" /> Rivers State, Nigeria
                     </div>
                   </div>
                 </div>

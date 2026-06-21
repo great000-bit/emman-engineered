@@ -9,6 +9,22 @@
   font-display: swap;
 }
 
+/*
+ * TODO — LICENSE: the bundled Nevera file (public/fonts/nevera.otf / .woff2) was
+ * downloaded from 1001fonts.com under a PERSONAL USE ONLY license. Commercial use
+ * (which this site requires) needs a paid license — see https://circlefont.com/product/nevera/.
+ * Do not ship this build publicly until that license is purchased, or swap in a
+ * licensed-for-commercial-use alternative.
+ */
+@font-face {
+  font-family: 'Nevera';
+  src: url('/fonts/nevera.woff2') format('woff2'),
+       url('/fonts/nevera.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

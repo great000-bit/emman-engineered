@@ -97,7 +97,7 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 
 | Variable | Required | Description |
 |---|---|---|
-| `VITE_FORMSPREE_APPLICATIONS_ENDPOINT` | For the Applications page forms to send | Formspree endpoint URL (e.g. `https://formspree.io/f/abcd1234`) that the Professional Role and Internship forms submit to. Create this at [formspree.io](https://formspree.io), pointed at the company inbox. Without it, application submissions will fail gracefully with a console warning rather than send. |
+| `VITE_FORMSPREE_ENDPOINT` | For all forms to send (Contact, Professional Role, Internship) | Formspree endpoint URL (e.g. `https://formspree.io/f/abcd1234`) that every form on the site submits to. Create this at [formspree.io](https://formspree.io), pointed at the company inbox. This is optional — if unset, the site falls back to the production endpoint already hardcoded in `src/lib/formspree.ts`, so a missing `.env` will never break form submissions in production. |
 
 `.env` is gitignored and should never be committed.
 
@@ -106,4 +106,4 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 **Creative Emman Limited**
 Email: [creativeemmanlimited@gmail.com](mailto:creativeemmanlimited@gmail.com)
 WhatsApp: +234 703 784 5433
-Location: Lagos, Nigeria
+Location: Rivers State, Nigeria

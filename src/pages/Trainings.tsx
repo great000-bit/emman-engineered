@@ -12,14 +12,14 @@ const TrainingsPage = () => (
   <PageLayout>
     <SEO
       path="/trainings"
-      title="Training Programs — Web, UI/UX, Video & Branding | Creative Emman"
-      description="Practitioner-led training in frontend engineering, UI/UX design, video production and brand identity. Portfolio-ready outcomes from Creative Emman Nigeria."
+      title="Training Programs — Web, UI/UX, Video & Branding | Creative Emman Limited"
+      description="Practitioner-led training in frontend engineering, UI/UX design, video production and brand identity. Portfolio-ready outcomes from Creative Emman Limited Nigeria."
       jsonLd={trainings.map((t) => ({
         "@context": "https://schema.org",
         "@type": "Course",
         name: t.title,
         description: t.description,
-        provider: { "@type": "Organization", name: "Creative Emman", sameAs: "https://emman-engineered.vercel.app" },
+        provider: { "@type": "Organization", name: "Creative Emman Limited", sameAs: "https://emman-engineered.vercel.app" },
       }))}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

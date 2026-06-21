@@ -16,7 +16,7 @@ const NotFound = () => {
     <PageLayout>
       <SEO
         path={location.pathname}
-        title="Page Not Found | Creative Emman"
+        title="Page Not Found | Creative Emman Limited"
         description="The page you're looking for doesn't exist or has moved."
       />
 

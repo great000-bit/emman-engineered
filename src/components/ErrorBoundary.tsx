@@ -48,7 +48,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         {/* No Header/Footer here — a render crash anywhere in the tree could mean those
             are unsafe to render too, so this fallback is deliberately self-contained. */}
         <div className="relative z-10 flex items-center gap-2 px-4 sm:px-6 pt-6">
-          <img src={websiteIcon} alt="Creative Emman" className="w-8 h-8 object-contain" />
+          <img src={websiteIcon} alt="Creative Emman Limited" className="w-8 h-8 object-contain" />
           <span className="font-brand text-sm font-bold text-primary-foreground tracking-tight">
             Creative<span className="text-accent">Emman</span>
           </span>

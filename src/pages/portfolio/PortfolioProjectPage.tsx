@@ -23,7 +23,7 @@ const PortfolioProjectPage = () => {
     <PageLayout>
       <SEO
         path={`/portfolio/${project.category}/${project.slug}`}
-        title={`${project.title} | Creative Emman Portfolio`}
+        title={`${project.title} | Creative Emman Limited Portfolio`}
         description={project.shortDescription}
       />
 

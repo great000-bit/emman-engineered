@@ -32,7 +32,7 @@ const PortfolioCategoryPage = () => {
     <PageLayout>
       <SEO
         path={`/portfolio/${cat}`}
-        title={`${meta.label} Portfolio | Creative Emman`}
+        title={`${meta.label} Portfolio | Creative Emman Limited`}
         description={meta.description}
         jsonLd={{
           "@context": "https://schema.org",

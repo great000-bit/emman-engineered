@@ -12,18 +12,18 @@ const Index = () => (
   <PageLayout>
     <SEO
       path="/"
-      title="Creative Emman | Premium Digital Agency in Nigeria"
+      title="Creative Emman Limited | Premium Digital Agency in Nigeria"
       description="Premium digital agency in Nigeria offering website development, social media management, UI/UX design, graphic design, videography & photography. Engineered for excellence and results."
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        name: "Creative Emman",
+        name: "Creative Emman Limited",
         image: "https://emman-engineered.vercel.app/favicon.png",
         url: "https://emman-engineered.vercel.app",
         email: "creativeemmanlimited@gmail.com",
         telephone: "+234-703-784-5433",
         priceRange: "$$",
-        address: { "@type": "PostalAddress", addressLocality: "Lagos", addressCountry: "NG" },
+        address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
         areaServed: "NG",
         description:
           "Premium digital agency in Nigeria offering website development, social media management, UI/UX design, graphic design, videography and photography.",
