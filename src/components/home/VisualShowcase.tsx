@@ -9,7 +9,12 @@ import showcaseMobile from "@/assets/showcase-mobile.jpg";
 
 // Compact homepage teaser that links out to the full /portfolio page system,
 // rather than hosting the entire portfolio inline on the landing page.
-const portfolioPreviewImages = [showcaseEnterprise, showcaseBrand, showcaseFilm, showcaseMobile];
+const portfolioPreviewImages = [
+  { src: showcaseEnterprise, alt: "Enterprise web application portfolio preview" },
+  { src: showcaseBrand, alt: "Brand identity design portfolio preview" },
+  { src: showcaseFilm, alt: "Brand film and videography portfolio preview" },
+  { src: showcaseMobile, alt: "Mobile app UI design portfolio preview" },
+];
 
 const VisualShowcase = () => (
   <section className="section-padding border-t border-primary-foreground/5 relative">
@@ -35,7 +40,7 @@ const VisualShowcase = () => (
         </div>
 
         <div className="flex-1 grid grid-cols-2 gap-3 w-full max-w-md">
-          {portfolioPreviewImages.map((img, i) => (
+          {portfolioPreviewImages.map(({ src, alt }, i) => (
             <ScrollReveal key={i} delay={0.05 * i}>
               <Link
                 to="/portfolio"
@@ -44,8 +49,8 @@ const VisualShowcase = () => (
                 }`}
               >
                 <ProtectedImage
-                  src={img}
-                  alt="Portfolio preview"
+                  src={src}
+                  alt={alt}
                   className="w-full h-full object-cover opacity-70 hover:opacity-95 transition-opacity duration-500"
                 />
               </Link>

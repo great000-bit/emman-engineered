@@ -13,8 +13,8 @@ const TrainingsPage = () => (
   <PageLayout>
     <SEO
       path="/trainings"
-      title="Training Programs — Web, UI/UX, Video & Branding | Creative Emman Limited"
-      description="Practitioner-led training in frontend engineering, UI/UX design, video production and brand identity. Portfolio-ready outcomes from Creative Emman Limited Nigeria."
+      title="Trainings | Creative Emman Limited"
+      description="Explore Creative Emman Limited training opportunities for creatives, developers, designers, marketers, and emerging digital talent."
       jsonLd={[
         ...trainings.map((t) => ({
           "@context": "https://schema.org",

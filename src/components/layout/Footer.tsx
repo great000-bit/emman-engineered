@@ -37,7 +37,7 @@ const Footer = () => (
         <div>
           <img
             src={websiteIcon}
-            alt="Creative Emman Limited"
+            alt="Creative Emman Limited logo"
             className="w-16 h-16 object-contain logo-pulse mb-4"
           />
           <span className="font-brand text-lg font-bold block mb-3 leading-tight">

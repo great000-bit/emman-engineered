@@ -1,0 +1,21 @@
+TODO: This is a placeholder. IndexNow is not active yet.
+
+IndexNow lets participating search engines (Bing, Yandex, and others) be notified
+immediately when a page is added, updated, or removed, instead of waiting for their
+next crawl. See https://www.indexnow.org for details.
+
+To activate this for Creative Emman Limited's site:
+
+1. Generate a key at https://www.bing.com/indexnow (or any IndexNow key generator).
+2. Replace the contents of this file with that key (and nothing else).
+3. Rename this file to match the key itself, e.g. `<your-key>.txt`, and keep it at
+   the same path: public/<your-key>.txt — IndexNow verifies ownership by checking
+   that the key file is reachable at https://emman-engineered.vercel.app/<key>.txt.
+4. Set VITE_INDEXNOW_KEY in your .env to that same key (see .env.example).
+5. Submit URLs via a simple HTTP request, e.g.:
+   https://api.indexnow.org/indexnow?url=https://emman-engineered.vercel.app/&key=<your-key>
+   This can be called manually after publishing changes, or automated later as a
+   post-deploy script — neither is wired up yet, by design, until a real key exists.
+
+Until a real key is generated and this file is renamed/updated, IndexNow has no
+effect on this site — search engines will simply ignore the absence of a key file.

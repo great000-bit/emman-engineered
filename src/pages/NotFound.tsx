@@ -17,7 +17,7 @@ const NotFound = () => {
       <SEO
         path={location.pathname}
         title="Page Not Found | Creative Emman Limited"
-        description="The page you're looking for doesn't exist or has moved."
+        description="The page you are looking for could not be found. Return to Creative Emman Limited's homepage or explore our services and portfolio."
       />
 
       <section className="relative min-h-screen flex flex-col overflow-hidden bg-primary">
