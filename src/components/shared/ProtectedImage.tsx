@@ -21,6 +21,8 @@ const ProtectedImage = ({
   watermark = false,
   className = "",
   wrapperClassName = "",
+  loading = "lazy",
+  decoding = "async",
   ...rest
 }: ProtectedImageProps) => {
   const imgEl = (
@@ -32,6 +34,8 @@ const ProtectedImage = ({
       onDragStart={(e) => e.preventDefault()}
       className={`select-none ${className}`}
       style={{ WebkitUserDrag: "none" } as React.CSSProperties}
+      loading={loading}
+      decoding={decoding}
       {...rest}
     />
   );

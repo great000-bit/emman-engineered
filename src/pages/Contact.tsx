@@ -122,8 +122,8 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman Limited | Start Your Project"
-        description="Contact Creative Emman Limited for website development, branding, UI/UX design, social media management, video editing, motion graphics, and digital solutions in Rivers State, Nigeria."
+        title="Contact Creative Emman Limited | Start a Project"
+        description="Contact Creative Emman Limited to start a website, branding, UI/UX, social media, video editing, motion graphics, or digital growth project."
         keywords={[
           "contact creative agency Nigeria",
           "hire website designer Nigeria",

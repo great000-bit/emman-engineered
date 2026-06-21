@@ -36,7 +36,7 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <img
             src={websiteIcon}
-            alt="Creative Emman Limited"
+            alt="Creative Emman Limited logo"
             className="w-8 h-8 sm:w-9 sm:h-9 object-contain flex-shrink-0"
           />
           <span className="hidden sm:inline font-brand text-sm sm:text-base font-bold text-primary-foreground tracking-tight truncate">
@@ -177,7 +177,7 @@ const Header = () => {
             >
               {/* Mobile logo */}
               <div className="absolute top-5 left-8">
-                <img src={websiteIcon} alt="Creative Emman Limited" className="w-10 h-10" />
+                <img src={websiteIcon} alt="Creative Emman Limited logo" className="w-10 h-10" />
               </div>
 
               {navLinks.map((link) =>

@@ -82,8 +82,8 @@ const TeamPage = () => (
   <PageLayout>
     <SEO
       path="/team"
-      title="Our Team | Creative Emman Limited — Digital Agency Nigeria"
-      description="Meet the engineers, designers, and strategists behind Creative Emman Limited — a multidisciplinary team delivering premium digital products from Rivers State, Nigeria."
+      title="Team | Creative Emman Limited"
+      description="Meet the multidisciplinary team behind Creative Emman Limited, including designers, developers, strategists, creatives, marketers, and visual storytellers."
       jsonLd={buildBreadcrumbSchema([{ name: "Team", path: "/team" }])}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
@@ -116,7 +116,7 @@ const TeamPage = () => (
         <div className="flex flex-col items-center justify-center mb-12 sm:mb-16">
           <img
             src={websiteIcon}
-            alt="Creative Emman Limited"
+            alt="Creative Emman Limited logo"
             className="w-20 h-20 sm:w-28 sm:h-28 object-contain logo-pulse"
           />
           <span className="mt-4 text-xs font-medium tracking-[0.3em] uppercase text-primary-foreground/40">

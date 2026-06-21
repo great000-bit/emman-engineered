@@ -19,9 +19,17 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Website Development, UI/UX & Branding Services in Nigeria | Creative Emman Limited"
-      description="Creative Emman Limited offers website development, UI/UX design, brand identity, social media management, videography, video editing, and motion graphics services across Nigeria and Rivers State."
+      title="Services | Web, Branding, UI/UX, Social Media & Motion Graphics"
+      description="Explore Creative Emman Limited's services across website development, UI/UX design, brand identity, graphic design, social media management, videography, video editing, motion graphics, and digital strategy."
       keywords={[
+        "web development agency",
+        "UI UX design agency",
+        "branding agency",
+        "digital product design agency",
+        "social media management agency",
+        "video editing agency",
+        "motion graphics agency",
+        "startup branding agency",
         "website development Nigeria",
         "web design Rivers State",
         "UI UX designer Nigeria",
@@ -36,6 +44,17 @@ const ServicesPage = () => (
       jsonLd={[
         {
           "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Creative Emman Limited",
+          url: "https://emman-engineered.vercel.app",
+          email: "creativeemmanlimited@gmail.com",
+          telephone: "+234-703-784-5433",
+          address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
+          areaServed: "Global",
+          serviceType: "Creative and Technology Services",
+        },
+        {
+          "@context": "https://schema.org",
           "@type": "ItemList",
           itemListElement: services.map((s, i) => ({
             "@type": "ListItem",
@@ -45,7 +64,7 @@ const ServicesPage = () => (
               name: s.title,
               description: s.description,
               provider: { "@type": "Organization", name: "Creative Emman Limited" },
-              areaServed: "NG",
+              areaServed: "Global",
             },
           })),
         },

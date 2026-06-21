@@ -26,11 +26,33 @@ const PortfolioProjectPage = () => {
         path={`/portfolio/${project.category}/${project.slug}`}
         title={`${project.title} | Creative Emman Limited Portfolio`}
         description={project.shortDescription}
-        jsonLd={buildBreadcrumbSchema([
-          { name: "Portfolio", path: "/portfolio" },
-          { name: categoryMeta[project.category as PortfolioCategory].label, path: `/portfolio/${project.category}` },
-          { name: project.title, path: `/portfolio/${project.category}/${project.slug}` },
-        ])}
+        // NOTE: deliberately using the site's default 1200x630 OG image rather than
+        // project.coverImage here — the cover images are portrait/varied aspect ratios
+        // (see src/assets/showcase-*.jpg), and cropping those into the 1.91:1 ratio social
+        // platforms expect would look worse than the consistent branded default. Revisit
+        // if/when project covers are produced specifically at 1200x630.
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: project.title,
+            description: project.shortDescription,
+            url: `https://emman-engineered.vercel.app/portfolio/${project.category}/${project.slug}`,
+            creator: { "@type": "Organization", name: "Creative Emman Limited" },
+            // Per the honesty requirement in portfolioData.ts: these are concept/internal
+            // projects, not real client engagements, so that's stated plainly here too
+            // rather than implied as a genuine client case study.
+            disambiguatingDescription:
+              project.status === "Client Project"
+                ? undefined
+                : `${project.status} — demonstration of work quality, not a real client engagement.`,
+          },
+          buildBreadcrumbSchema([
+            { name: "Portfolio", path: "/portfolio" },
+            { name: categoryMeta[project.category as PortfolioCategory].label, path: `/portfolio/${project.category}` },
+            { name: project.title, path: `/portfolio/${project.category}/${project.slug}` },
+          ]),
+        ]}
       />
 
       {/* Hero */}
@@ -213,7 +235,7 @@ const BrandDetail = ({ project }: { project: PortfolioProject }) => (
           <h3 className="text-2xl font-display font-semibold text-primary-foreground mb-6">Brand Assets</h3>
         </ScrollReveal>
         <ScrollReveal delay={0.05}>
-          <AssetMarquee images={project.assets} />
+          <AssetMarquee images={project.assets} altPrefix={project.title} />
         </ScrollReveal>
       </SectionWrap>
     )}

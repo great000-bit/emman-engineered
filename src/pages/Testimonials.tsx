@@ -106,8 +106,8 @@ const TestimonialsPage = () => {
     <PageLayout>
       <SEO
         path="/testimonials"
-        title="Client Testimonials | Creative Emman Limited — Digital Agency Nigeria"
-        description="What clients say about working with Creative Emman Limited. Real results from website, branding and digital projects across Nigeria and beyond."
+        title="Testimonials | Creative Emman Limited"
+        description="Read testimonials and feedback from people and brands connected with Creative Emman Limited's creative, digital, and technology services."
         jsonLd={[
           ...testimonials.map((t) => ({
             "@context": "https://schema.org",

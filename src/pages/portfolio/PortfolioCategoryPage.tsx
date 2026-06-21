@@ -34,7 +34,7 @@ const PortfolioCategoryPage = () => {
       <SEO
         path={`/portfolio/${cat}`}
         title={`${meta.label} Portfolio | Creative Emman Limited`}
-        description={meta.description}
+        description={meta.seoDescription}
         jsonLd={[
           {
             "@context": "https://schema.org",
