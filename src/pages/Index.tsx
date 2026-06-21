@@ -12,8 +12,21 @@ const Index = () => (
   <PageLayout>
     <SEO
       path="/"
-      title="Creative Emman Limited | Premium Digital Agency in Nigeria"
-      description="Premium digital agency in Nigeria offering website development, social media management, UI/UX design, graphic design, videography & photography. Engineered for excellence and results."
+      title="Creative Emman Limited | Web Design, Branding & Digital Solutions in Nigeria"
+      description="Creative Emman Limited is a creative and technology company in Nigeria offering web development, UI/UX design, branding, social media management, video editing, motion graphics, and digital growth solutions."
+      keywords={[
+        "Creative Emman Limited",
+        "creative agency in Nigeria",
+        "web development company in Nigeria",
+        "branding agency in Nigeria",
+        "UI UX design company in Nigeria",
+        "digital agency in Nigeria",
+        "social media management Nigeria",
+        "video editing company Nigeria",
+        "motion graphics designer Nigeria",
+        "website design in Rivers State",
+        "creative agency Rivers State",
+      ]}
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -26,7 +39,7 @@ const Index = () => (
         address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
         areaServed: "NG",
         description:
-          "Premium digital agency in Nigeria offering website development, social media management, UI/UX design, graphic design, videography and photography.",
+          "Creative Emman Limited is a creative and technology company in Rivers State, Nigeria, helping startups, businesses, and organizations build stronger brands, modern websites, digital products, content systems, video assets, and growth-focused online experiences.",
       }}
     />
     {/* Fixed, full-page cinematic background — Home page only. This component is never

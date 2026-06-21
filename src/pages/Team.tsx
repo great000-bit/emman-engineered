@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import websiteIcon from "@/assets/website-icon.png";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
@@ -83,6 +84,7 @@ const TeamPage = () => (
       path="/team"
       title="Our Team | Creative Emman Limited — Digital Agency Nigeria"
       description="Meet the engineers, designers, and strategists behind Creative Emman Limited — a multidisciplinary team delivering premium digital products from Rivers State, Nigeria."
+      jsonLd={buildBreadcrumbSchema([{ name: "Team", path: "/team" }])}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
@@ -178,14 +180,20 @@ export const TeamProfile = () => {
         path={`/team/${member.id}`}
         title={`${member.name} — ${member.role} | Creative Emman Limited`}
         description={member.bio}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: member.name,
-          jobTitle: member.role,
-          description: member.bio,
-          worksFor: { "@type": "Organization", name: "Creative Emman Limited" },
-        }}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: member.name,
+            jobTitle: member.role,
+            description: member.bio,
+            worksFor: { "@type": "Organization", name: "Creative Emman Limited" },
+          },
+          buildBreadcrumbSchema([
+            { name: "Team", path: "/team" },
+            { name: member.name, path: `/team/${member.id}` },
+          ]),
+        ]}
       />
       <section className="bg-primary pt-32 px-6">
         <div className="container-narrow mx-auto">

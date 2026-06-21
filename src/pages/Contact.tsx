@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import SocialLinks from "@/components/shared/SocialLinks";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { services } from "@/data/siteData";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -121,14 +122,24 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman Limited | Digital Agency in Rivers State, Nigeria"
-        description="Start a project with Creative Emman Limited. Email creativeemmanlimited@gmail.com or WhatsApp 07037845433. We respond within 24 hours."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Contact Creative Emman Limited",
-          url: "https://emman-engineered.vercel.app/contact",
-        }}
+        title="Contact Creative Emman Limited | Start Your Project"
+        description="Contact Creative Emman Limited for website development, branding, UI/UX design, social media management, video editing, motion graphics, and digital solutions in Rivers State, Nigeria."
+        keywords={[
+          "contact creative agency Nigeria",
+          "hire website designer Nigeria",
+          "hire brand designer Nigeria",
+          "Creative Emman Limited contact",
+          "digital agency Rivers State",
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Creative Emman Limited",
+            url: "https://emman-engineered.vercel.app/contact",
+          },
+          buildBreadcrumbSchema([{ name: "Contact", path: "/contact" }]),
+        ]}
       />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">

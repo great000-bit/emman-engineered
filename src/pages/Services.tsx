@@ -7,6 +7,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 import IconGlow from "@/components/shared/IconGlow";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import {
   Accordion,
   AccordionContent,
@@ -18,23 +19,38 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Our Services - Website Design, Social Media & Digital Marketing | Creative Emman Limited Nigeria"
-      description="Website development, social media management, UI/UX design, graphic design, videography, video editing & photography services in Nigeria. Engineered for results."
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        itemListElement: services.map((s, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          item: {
-            "@type": "Service",
-            name: s.title,
-            description: s.description,
-            provider: { "@type": "Organization", name: "Creative Emman Limited" },
-            areaServed: "NG",
-          },
-        })),
-      }}
+      title="Website Development, UI/UX & Branding Services in Nigeria | Creative Emman Limited"
+      description="Creative Emman Limited offers website development, UI/UX design, brand identity, social media management, videography, video editing, and motion graphics services across Nigeria and Rivers State."
+      keywords={[
+        "website development Nigeria",
+        "web design Rivers State",
+        "UI UX designer Nigeria",
+        "logo design Nigeria",
+        "branding agency Nigeria",
+        "social media management Nigeria",
+        "video editing Nigeria",
+        "videography Rivers State",
+        "motion graphics Nigeria",
+        "creative agency in Nigeria",
+      ]}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Service",
+              name: s.title,
+              description: s.description,
+              provider: { "@type": "Organization", name: "Creative Emman Limited" },
+              areaServed: "NG",
+            },
+          })),
+        },
+        buildBreadcrumbSchema([{ name: "Services", path: "/services" }]),
+      ]}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">

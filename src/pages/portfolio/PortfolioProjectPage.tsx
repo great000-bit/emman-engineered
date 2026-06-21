@@ -3,6 +3,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import StatusBadge from "@/components/portfolio/StatusBadge";
 import AssetMarquee from "@/components/portfolio/AssetMarquee";
 import { HeroCTALink, HeroCTAAnchor, HeroCTAButton } from "@/components/shared/HeroCTA";
@@ -25,6 +26,11 @@ const PortfolioProjectPage = () => {
         path={`/portfolio/${project.category}/${project.slug}`}
         title={`${project.title} | Creative Emman Limited Portfolio`}
         description={project.shortDescription}
+        jsonLd={buildBreadcrumbSchema([
+          { name: "Portfolio", path: "/portfolio" },
+          { name: categoryMeta[project.category as PortfolioCategory].label, path: `/portfolio/${project.category}` },
+          { name: project.title, path: `/portfolio/${project.category}/${project.slug}` },
+        ])}
       />
 
       {/* Hero */}
