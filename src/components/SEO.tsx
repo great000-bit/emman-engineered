@@ -9,10 +9,11 @@ interface SEOProps {
   path: string;
   image?: string;
   type?: "website" | "article";
+  keywords?: string[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const SEO = ({ title, description, path, image = DEFAULT_OG, type = "website", jsonLd }: SEOProps) => {
+const SEO = ({ title, description, path, image = DEFAULT_OG, type = "website", keywords, jsonLd }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
@@ -20,6 +21,7 @@ const SEO = ({ title, description, path, image = DEFAULT_OG, type = "website", j
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
       <link rel="canonical" href={url} />
 
       <meta property="og:title" content={title} />

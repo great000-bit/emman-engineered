@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion, AnimatePresence } from "framer-motion";
@@ -375,8 +376,18 @@ const ApplicationsPage = () => {
     <PageLayout>
       <SEO
         path="/applications"
-        title="Apply to Creative Emman Limited | Careers & Internships"
-        description="Apply for a professional role or internship at Creative Emman Limited and join a multidisciplinary creative team building digital products, brands, campaigns, and visual experiences."
+        title="Apply to Creative Emman Limited | Roles & Internship Opportunities"
+        description="Apply for professional roles or internship opportunities at Creative Emman Limited. Join our creative and technology team across design, development, branding, video, and digital marketing."
+        keywords={[
+          "creative internship Nigeria",
+          "tech internship Nigeria",
+          "design internship Nigeria",
+          "frontend internship Nigeria",
+          "UI UX internship Nigeria",
+          "creative jobs Nigeria",
+          "Creative Emman Limited careers",
+        ]}
+        jsonLd={buildBreadcrumbSchema([{ name: "Applications", path: "/applications" }])}
       />
 
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

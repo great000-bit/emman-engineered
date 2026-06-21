@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Phone, Mail, ArrowRight } from "lucide-react";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 
 const testimonials = [
   {
@@ -107,13 +108,16 @@ const TestimonialsPage = () => {
         path="/testimonials"
         title="Client Testimonials | Creative Emman Limited — Digital Agency Nigeria"
         description="What clients say about working with Creative Emman Limited. Real results from website, branding and digital projects across Nigeria and beyond."
-        jsonLd={testimonials.map((t) => ({
-          "@context": "https://schema.org",
-          "@type": "Review",
-          reviewBody: t.text,
-          author: { "@type": "Person", name: t.name },
-          itemReviewed: { "@type": "Organization", name: "Creative Emman Limited" },
-        }))}
+        jsonLd={[
+          ...testimonials.map((t) => ({
+            "@context": "https://schema.org",
+            "@type": "Review",
+            reviewBody: t.text,
+            author: { "@type": "Person", name: t.name },
+            itemReviewed: { "@type": "Organization", name: "Creative Emman Limited" },
+          })),
+          buildBreadcrumbSchema([{ name: "Testimonials", path: "/testimonials" }]),
+        ]}
       />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
