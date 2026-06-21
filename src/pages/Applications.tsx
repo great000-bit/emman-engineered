@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
-import { submitApplication } from "@/lib/submitApplication";
+import { submitToFormspree } from "@/lib/formspree";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 
 type ApplicationTab = "professional" | "internship";
@@ -163,7 +163,7 @@ const ProfessionalRoleForm = () => {
     setErrors({});
     setStatus("submitting");
 
-    const { ok } = await submitApplication({
+    const { ok } = await submitToFormspree("Professional Role Application", {
       applicationType: "Professional Role",
       fullName: form.fullName,
       email: form.email,
@@ -177,7 +177,6 @@ const ProfessionalRoleForm = () => {
       cvLink: form.cvLink,
       coverLetter: form.coverLetter,
       availability: form.availability,
-      _subject: `New Professional Role Application — ${form.roleApplyingFor}`,
     });
 
     if (ok) {
@@ -291,7 +290,7 @@ const InternshipForm = () => {
     setErrors({});
     setStatus("submitting");
 
-    const { ok } = await submitApplication({
+    const { ok } = await submitToFormspree("Internship Application", {
       applicationType: "Internship",
       fullName: form.fullName,
       email: form.email,
@@ -303,7 +302,6 @@ const InternshipForm = () => {
       linkedinLink: form.linkedinLink,
       motivation: form.motivation,
       availability: form.availability,
-      _subject: `New Internship Application — ${form.internshipArea}`,
     });
 
     if (ok) {
