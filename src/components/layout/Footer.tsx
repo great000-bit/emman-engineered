@@ -77,8 +77,8 @@ const Footer = () => (
             <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
               <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemmanlimited@gmail.com</span>
             </a>
-            <a href="https://wa.me/2349051380648" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone size={14} className="flex-shrink-0" /> 09051380648
+            <a href="tel:07037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <Phone size={14} className="flex-shrink-0" /> 07037845433
             </a>
             <SocialLinks className="flex gap-5 mt-3" />
           </div>

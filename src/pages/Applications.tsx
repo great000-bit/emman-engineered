@@ -4,10 +4,10 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { submitApplication } from "@/lib/submitApplication";
+import FormSuccessState from "@/components/shared/FormSuccessState";
 
 type ApplicationTab = "professional" | "internship";
 
@@ -104,27 +104,6 @@ const SelectField = ({
   </div>
 );
 
-const SuccessState = ({ heading, onReset }: { heading: string; onReset: () => void }) => (
-  <motion.div
-    key="success"
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
-    className="flex flex-col items-center justify-center text-center py-20 space-y-5"
-  >
-    <div className="w-16 h-16 rounded-full bg-accent/15 flex items-center justify-center">
-      <CheckCircle size={36} className="text-accent" />
-    </div>
-    <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground">{heading}</h2>
-    <p className="text-sm text-muted-foreground max-w-md">
-      Thank you for applying to Creative Emman. Our team reviews every application and will reach out if there's a fit.
-    </p>
-    <Button variant="outline" size="sm" className="mt-4" onClick={onReset}>
-      Submit Another Application
-    </Button>
-  </motion.div>
-);
-
 const ErrorNotice = () => (
   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-red-500">
     Oops! Something went wrong sending your application. Please try again or reach us via WhatsApp.
@@ -216,7 +195,7 @@ const ProfessionalRoleForm = () => {
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <SuccessState heading="Your application has been submitted!" onReset={() => setStatus("idle")} />
+        <FormSuccessState />
       ) : (
         <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-10">
           {/* Honeypot */}
@@ -341,7 +320,7 @@ const InternshipForm = () => {
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <SuccessState heading="Your internship application has been submitted!" onReset={() => setStatus("idle")} />
+        <FormSuccessState />
       ) : (
         <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-10">
           {/* Honeypot */}

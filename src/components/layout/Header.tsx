@@ -238,7 +238,7 @@ const Header = () => {
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
                 <a href="mailto:creativeemmanlimited@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited@gmail.com</a>
-                <a href="https://wa.me/2349051380648" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">09051380648</a>
+                <a href="tel:07037845433" className="block hover:text-accent transition-colors">07037845433</a>
               </div>
             </motion.nav>
           </>

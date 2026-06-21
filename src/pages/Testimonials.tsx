@@ -166,7 +166,7 @@ const TestimonialsPage = () => {
                   Let's Work Together <ArrowRight size={15} className="ml-1.5" />
                 </Button>
               </Link>
-              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
+              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
                   <Phone size={14} className="mr-1.5" /> WhatsApp
               </Button>
             </div>
@@ -177,8 +177,8 @@ const TestimonialsPage = () => {
               <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail size={14} /> creativeemmanlimited@gmail.com
               </a>
-              <a href="https://wa.me/2349051380648" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Phone size={14} /> 09051380648
+              <a href="tel:07037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <Phone size={14} /> 07037845433
               </a>
             </div>
           </ScrollReveal>

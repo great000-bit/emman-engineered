@@ -34,7 +34,7 @@ const CTABanner = () => (
           </Link>
           <Button
             variant="dark-outline"
-            onClick={() => window.open("https://wa.me/2349051380648", "_blank")}
+            onClick={() => window.open("https://wa.me/2347037845433", "_blank")}
           >
             Talk to Us
           </Button>
