@@ -10,12 +10,12 @@ const PortfolioPage = () => (
   <PageLayout>
     <SEO
       path="/portfolio"
-      title="Portfolio | Creative Emman — Digital Agency Nigeria"
-      description="Explore Creative Emman's work across web development, UI/UX design, brand identity, social media, video, and motion graphics."
+      title="Portfolio | Creative Emman Limited — Digital Agency Nigeria"
+      description="Explore Creative Emman Limited's work across web development, UI/UX design, brand identity, social media, video, and motion graphics."
       jsonLd={{
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        name: "Creative Emman Portfolio",
+        name: "Creative Emman Limited Portfolio",
         url: "https://emman-engineered.vercel.app/portfolio",
       }}
     />
