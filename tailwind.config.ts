@@ -17,7 +17,7 @@ export default {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        brand: ['Nevera', 'Agile', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        brand: ['Agile', '"Space Grotesk"', 'system-ui', 'sans-serif'],
         'story-label': ['"Bricolage Grotesque"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
         'story-text': ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
       },
