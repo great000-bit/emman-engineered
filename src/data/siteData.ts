@@ -6,6 +6,9 @@ import VivianImg from "@/assets/MbaVivian.jpeg"
 import ZaydImg from "@/assets/ZaydTahir.png"
 import GreatEmmanImg from "@/assets/GreatEmman-wori.jpeg"
 import SophiaImg from "@/assets/IyeritufuSophiaAdaobim.jpeg"
+import OsuagwuImg from "@/assets/OsuagwuGoldenheart.jpeg"
+import DavidImg from "@/assets/DavidEsemuruOkeoghene .jpeg"
+import GraceImg from "@/assets/GraceGrant.jpeg"
 
 
 export const services = [
@@ -152,6 +155,36 @@ export const teamMembers = [
     image: VivianImg,
     linkedin: "https://bit.ly/4a6BtDp",
     portfolio: "https://shorturl.at/961Hh",
+  },
+  {
+    id: "Osuagwu Goldenheart",
+    name: "Osuagwu Goldenheart",
+    role: "Mobile Photographer.",
+    bio: "Reimagining life through the lens.",
+    stack: ["Notion", "Snapseed", "Claude"],
+    image: OsuagwuImg,
+    linkedin: "",
+    portfolio: "",
+  },
+  {
+    id: "David Esemuru Okeoghene",
+    name: "David Esemuru Okeoghene ",
+    role: "Graphic Designer & Social Media Manager ",
+    bio: "Helping businesses and startups grow their social presence, capture leads, and make an impact through thoughtful, high-converting design",
+    stack: ["Canva", "Desygner", "Adobe Express", "Capcut", "Business Suite", "Facebook Studio", "Chatgpt", "Gemini Ai"],
+    image: DavidImg,
+    linkedin: "",
+    portfolio: "https://drive.google.com/drive/folders/1LBB4ExWBtPB6ZhWZ3RiV80aOmoq22du7",
+  },
+  {
+    id: "Grace Grant",
+    name: "Grace Grant ",
+    role: "Content Creator, Virtual Assistant, Video Editor and Social Media Manager ",
+    bio: "A Content Creator who tells stories with words and images.",
+    stack: ["Canva", "Capcut", "Google Workspace", "Trello", "Asana"],
+    image: GraceImg,
+    linkedin: "https://www.linkedin.com/in/grace-grant-4b647224b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    portfolio: "",
   },
 ];
 
