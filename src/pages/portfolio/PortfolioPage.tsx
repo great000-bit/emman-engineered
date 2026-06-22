@@ -3,6 +3,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { categoryMeta, portfolioCategoryOrder, getProjectsByCategory } from "@/data/portfolioData";
 import { ArrowRight } from "lucide-react";
 
@@ -10,14 +11,25 @@ const PortfolioPage = () => (
   <PageLayout>
     <SEO
       path="/portfolio"
-      title="Portfolio | Creative Emman — Digital Agency Nigeria"
-      description="Explore Creative Emman's work across web development, UI/UX design, brand identity, social media, video, and motion graphics."
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        name: "Creative Emman Portfolio",
-        url: "https://emman-engineered.vercel.app/portfolio",
-      }}
+      title="Portfolio | Creative Emman Limited Projects & Case Studies"
+      description="Explore Creative Emman Limited's portfolio across web development, UI/UX design, branding, social media management, videography, video editing, and motion graphics."
+      keywords={[
+        "Creative Emman Limited portfolio",
+        "web design portfolio Nigeria",
+        "branding portfolio Nigeria",
+        "UI UX design portfolio",
+        "video editing portfolio Nigeria",
+        "motion graphics portfolio Nigeria",
+      ]}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Creative Emman Limited Portfolio",
+          url: "https://emman-engineered.vercel.app/portfolio",
+        },
+        buildBreadcrumbSchema([{ name: "Portfolio", path: "/portfolio" }]),
+      ]}
     />
 
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

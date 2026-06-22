@@ -2,6 +2,7 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import ProjectCard from "@/components/portfolio/ProjectCard";
 import { categoryMeta, getProjectsByCategory, PortfolioCategory } from "@/data/portfolioData";
 import { ChevronRight } from "lucide-react";
@@ -32,14 +33,20 @@ const PortfolioCategoryPage = () => {
     <PageLayout>
       <SEO
         path={`/portfolio/${cat}`}
-        title={`${meta.label} Portfolio | Creative Emman`}
-        description={meta.description}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          name: `${meta.label} Portfolio`,
-          url: `https://emman-engineered.vercel.app/portfolio/${cat}`,
-        }}
+        title={`${meta.label} Portfolio | Creative Emman Limited`}
+        description={meta.seoDescription}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: `${meta.label} Portfolio`,
+            url: `https://emman-engineered.vercel.app/portfolio/${cat}`,
+          },
+          buildBreadcrumbSchema([
+            { name: "Portfolio", path: "/portfolio" },
+            { name: meta.label, path: `/portfolio/${cat}` },
+          ]),
+        ]}
       />
 
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

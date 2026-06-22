@@ -36,11 +36,12 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <img
             src={websiteIcon}
-            alt="Creative Emman"
+            alt="Creative Emman Limited logo"
             className="w-8 h-8 sm:w-9 sm:h-9 object-contain flex-shrink-0"
           />
           <span className="hidden sm:inline font-brand text-sm sm:text-base font-bold text-primary-foreground tracking-tight truncate">
             Creative<span className="text-accent">Emman</span>
+            <span className="text-primary-foreground/50 font-medium ml-1">Limited</span>
           </span>
         </Link>
 
@@ -176,7 +177,7 @@ const Header = () => {
             >
               {/* Mobile logo */}
               <div className="absolute top-5 left-8">
-                <img src={websiteIcon} alt="Creative Emman" className="w-10 h-10" />
+                <img src={websiteIcon} alt="Creative Emman Limited logo" className="w-10 h-10" />
               </div>
 
               {navLinks.map((link) =>
@@ -238,7 +239,7 @@ const Header = () => {
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
                 <a href="mailto:creativeemmanlimited@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited@gmail.com</a>
-                <a href="https://wa.me/2349051380648" target="_blank" rel="noopener noreferrer" className="block hover:text-accent transition-colors">09051380648</a>
+                <a href="tel:07037845433" className="block hover:text-accent transition-colors">07037845433</a>
               </div>
             </motion.nav>
           </>

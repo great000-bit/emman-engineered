@@ -60,36 +60,48 @@ export interface PortfolioProject {
   sampleMetrics?: { label: string; value: string }[];
 }
 
-export const categoryMeta: Record<PortfolioCategory, { label: string; navLabel: string; description: string }> = {
+export const categoryMeta: Record<PortfolioCategory, { label: string; navLabel: string; description: string; seoDescription: string }> = {
   "web-development": {
     label: "Website Development",
     navLabel: "Website Development Portfolio",
     description: "Performance-engineered web platforms built for speed, scale, and conversion.",
+    seoDescription:
+      "Explore website development projects and case studies by Creative Emman Limited, including modern business websites, digital platforms, landing pages, and web applications.",
   },
   "ui-ux-design": {
     label: "UI/UX Design",
     navLabel: "UI/UX Design Portfolio",
     description: "Research-driven product design — from problem framing to polished final screens.",
+    seoDescription:
+      "Explore UI/UX design case studies by Creative Emman Limited, including product interfaces, mobile app screens, wireframes, user flows, and digital experience design.",
   },
   "graphic-brand-design": {
     label: "Graphic & Brand Design",
     navLabel: "Graphic & Brand Design Portfolio",
     description: "Identity systems built on real strategy — logo, color, type, and the story behind the mark.",
+    seoDescription:
+      "Explore brand identity, logo design, visual systems, creative direction, and graphic design case studies by Creative Emman Limited.",
   },
   "social-media-management": {
     label: "Social Media Management",
     navLabel: "Social Media Management Portfolio",
     description: "Campaigns engineered for engagement, consistency, and brand authority.",
+    seoDescription:
+      "Explore social media campaigns, content systems, visual direction, campaign strategy, and brand growth work by Creative Emman Limited.",
   },
   "videography-video-editing": {
     label: "Videography & Video Editing",
     navLabel: "Videography & Video Editing Portfolio",
     description: "Cinematic production and post — from raw footage to a finished story.",
+    seoDescription:
+      "Explore cinematic video projects, brand films, product videos, event visuals, social video edits, and storytelling work by Creative Emman Limited.",
   },
   "motion-graphics-design": {
     label: "Motion Graphics Design",
     navLabel: "Motion Graphics Design Portfolio",
     description: "Animated brand content, explainers, and kinetic visual storytelling.",
+    seoDescription:
+      "Explore motion graphics, logo animations, explainer visuals, animated brand assets, and digital motion projects by Creative Emman Limited.",
   },
 };
 

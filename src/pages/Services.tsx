@@ -7,6 +7,7 @@ import { Phone, ArrowRight } from "lucide-react";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 import IconGlow from "@/components/shared/IconGlow";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import {
   Accordion,
   AccordionContent,
@@ -18,23 +19,57 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Our Services - Website Design, Social Media & Digital Marketing | Creative Emman Nigeria"
-      description="Website development, social media management, UI/UX design, graphic design, videography, video editing & photography services in Nigeria. Engineered for results."
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        itemListElement: services.map((s, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          item: {
-            "@type": "Service",
-            name: s.title,
-            description: s.description,
-            provider: { "@type": "Organization", name: "Creative Emman" },
-            areaServed: "NG",
-          },
-        })),
-      }}
+      title="Services | Web, Branding, UI/UX, Social Media & Motion Graphics"
+      description="Explore Creative Emman Limited's services across website development, UI/UX design, brand identity, graphic design, social media management, videography, video editing, motion graphics, and digital strategy."
+      keywords={[
+        "web development agency",
+        "UI UX design agency",
+        "branding agency",
+        "digital product design agency",
+        "social media management agency",
+        "video editing agency",
+        "motion graphics agency",
+        "startup branding agency",
+        "website development Nigeria",
+        "web design Rivers State",
+        "UI UX designer Nigeria",
+        "logo design Nigeria",
+        "branding agency Nigeria",
+        "social media management Nigeria",
+        "video editing Nigeria",
+        "videography Rivers State",
+        "motion graphics Nigeria",
+        "creative agency in Nigeria",
+      ]}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "Creative Emman Limited",
+          url: "https://emman-engineered.vercel.app",
+          email: "creativeemmanlimited@gmail.com",
+          telephone: "+234-703-784-5433",
+          address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
+          areaServed: "Global",
+          serviceType: "Creative and Technology Services",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: services.map((s, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "Service",
+              name: s.title,
+              description: s.description,
+              provider: { "@type": "Organization", name: "Creative Emman Limited" },
+              areaServed: "Global",
+            },
+          })),
+        },
+        buildBreadcrumbSchema([{ name: "Services", path: "/services" }]),
+      ]}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
@@ -124,7 +159,7 @@ const ServicesPage = () => (
                 Let's Work Together <ArrowRight size={15} className="ml-1.5" />
               </Button>
             </Link>
-            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
                 <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>

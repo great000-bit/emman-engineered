@@ -6,21 +6,25 @@ import SectionHeading from "@/components/shared/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Clock, BookOpen, Phone, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const TrainingsPage = () => (
   <PageLayout>
     <SEO
       path="/trainings"
-      title="Training Programs — Web, UI/UX, Video & Branding | Creative Emman"
-      description="Practitioner-led training in frontend engineering, UI/UX design, video production and brand identity. Portfolio-ready outcomes from Creative Emman Nigeria."
-      jsonLd={trainings.map((t) => ({
-        "@context": "https://schema.org",
-        "@type": "Course",
-        name: t.title,
-        description: t.description,
-        provider: { "@type": "Organization", name: "Creative Emman", sameAs: "https://emman-engineered.vercel.app" },
-      }))}
+      title="Trainings | Creative Emman Limited"
+      description="Explore Creative Emman Limited training opportunities for creatives, developers, designers, marketers, and emerging digital talent."
+      jsonLd={[
+        ...trainings.map((t) => ({
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: t.title,
+          description: t.description,
+          provider: { "@type": "Organization", name: "Creative Emman Limited", sameAs: "https://emman-engineered.vercel.app" },
+        })),
+        buildBreadcrumbSchema([{ name: "Trainings", path: "/trainings" }]),
+      ]}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
@@ -115,7 +119,7 @@ const TrainingsPage = () => (
                 Let's Work Together <ArrowRight size={15} className="ml-1.5" />
               </Button>
             </Link>
-            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
                 <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>

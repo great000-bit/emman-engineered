@@ -5,11 +5,13 @@ interface AssetMarqueeProps {
   images: string[];
   /** seconds for one full loop */
   duration?: number;
+  /** Used to build descriptive alt text, e.g. "NovaPay Studio brand asset mockup". Falls back to a generic label if omitted. */
+  altPrefix?: string;
 }
 
 // Rolling horizontal marquee of brand asset mockups (logo variations, business cards,
 // social mockups, stationery, packaging). Pure CSS/Framer transform loop, no video needed.
-const AssetMarquee = ({ images, duration = 22 }: AssetMarqueeProps) => {
+const AssetMarquee = ({ images, duration = 22, altPrefix }: AssetMarqueeProps) => {
   const doubled = [...images, ...images];
 
   return (
@@ -27,7 +29,7 @@ const AssetMarquee = ({ images, duration = 22 }: AssetMarqueeProps) => {
           >
             <ProtectedImage
               src={src}
-              alt="Brand asset mockup"
+              alt={altPrefix ? `${altPrefix} brand asset mockup ${i % images.length + 1}` : "Brand asset mockup"}
               className="w-full h-full object-cover"
             />
           </div>

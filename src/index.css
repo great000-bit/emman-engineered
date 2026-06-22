@@ -1,9 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Bricolage+Grotesque:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 @font-face {
   font-family: 'Agile';
   src: url('/fonts/agile.otf') format('opentype'),
        url('/fonts/agile.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * TODO — LICENSE: the bundled Nevera file (public/fonts/nevera.otf / .woff2) was
+ * downloaded from 1001fonts.com under a PERSONAL USE ONLY license. Commercial use
+ * (which this site requires) needs a paid license — see https://circlefont.com/product/nevera/.
+ * Do not ship this build publicly until that license is purchased, or swap in a
+ * licensed-for-commercial-use alternative.
+ */
+@font-face {
+  font-family: 'Nevera';
+  src: url('/fonts/nevera.woff2') format('woff2'),
+       url('/fonts/nevera.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

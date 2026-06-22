@@ -5,6 +5,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import websiteIcon from "@/assets/website-icon.png";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
@@ -50,7 +51,7 @@ const TeamCarousel = () => {
             >
               <img
                 src={member.image}
-                alt={`${member.name} — Creative Emman`}
+                alt={`${member.name} — Creative Emman Limited`}
                 className="w-full h-full object-cover logo-pulse"
               />
             </div>
@@ -81,8 +82,9 @@ const TeamPage = () => (
   <PageLayout>
     <SEO
       path="/team"
-      title="Our Team | Creative Emman — Digital Agency Nigeria"
-      description="Meet the engineers, designers, and strategists behind Creative Emman — a multidisciplinary team delivering premium digital products from Lagos, Nigeria."
+      title="Team | Creative Emman Limited"
+      description="Meet the multidisciplinary team behind Creative Emman Limited, including designers, developers, strategists, creatives, marketers, and visual storytellers."
+      jsonLd={buildBreadcrumbSchema([{ name: "Team", path: "/team" }])}
     />
     <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
       <div className="container-wide mx-auto">
@@ -114,7 +116,7 @@ const TeamPage = () => (
         <div className="flex flex-col items-center justify-center mb-12 sm:mb-16">
           <img
             src={websiteIcon}
-            alt="Creative Emman"
+            alt="Creative Emman Limited logo"
             className="w-20 h-20 sm:w-28 sm:h-28 object-contain logo-pulse"
           />
           <span className="mt-4 text-xs font-medium tracking-[0.3em] uppercase text-primary-foreground/40">
@@ -148,7 +150,7 @@ const TeamPage = () => (
                 Let's Work Together <ArrowRight size={15} className="ml-1.5" />
               </Button>
             </Link>
-            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
+            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
               <Phone size={14} className="mr-1.5" /> WhatsApp
             </Button>
           </div>
@@ -176,16 +178,22 @@ export const TeamProfile = () => {
     <PageLayout>
       <SEO
         path={`/team/${member.id}`}
-        title={`${member.name} — ${member.role} | Creative Emman`}
+        title={`${member.name} — ${member.role} | Creative Emman Limited`}
         description={member.bio}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: member.name,
-          jobTitle: member.role,
-          description: member.bio,
-          worksFor: { "@type": "Organization", name: "Creative Emman" },
-        }}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: member.name,
+            jobTitle: member.role,
+            description: member.bio,
+            worksFor: { "@type": "Organization", name: "Creative Emman Limited" },
+          },
+          buildBreadcrumbSchema([
+            { name: "Team", path: "/team" },
+            { name: member.name, path: `/team/${member.id}` },
+          ]),
+        ]}
       />
       <section className="bg-primary pt-32 px-6">
         <div className="container-narrow mx-auto">
@@ -203,7 +211,7 @@ export const TeamProfile = () => {
             >
               <img
                 src={member.image}
-                alt={`${member.name} — Creative Emman`}
+                alt={`${member.name} — Creative Emman Limited`}
                 className="w-full h-full object-cover rounded-3xl logo-pulse"
               />
             </div>

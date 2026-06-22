@@ -10,7 +10,7 @@ import { ImgHTMLAttributes } from "react";
 interface ProtectedImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
-  /** Optional small corner watermark, e.g. "Creative Emman" — off by default. */
+  /** Optional small corner watermark, e.g. "Creative Emman Limited" — off by default. */
   watermark?: boolean;
   wrapperClassName?: string;
 }
@@ -21,6 +21,8 @@ const ProtectedImage = ({
   watermark = false,
   className = "",
   wrapperClassName = "",
+  loading = "lazy",
+  decoding = "async",
   ...rest
 }: ProtectedImageProps) => {
   const imgEl = (
@@ -32,6 +34,8 @@ const ProtectedImage = ({
       onDragStart={(e) => e.preventDefault()}
       className={`select-none ${className}`}
       style={{ WebkitUserDrag: "none" } as React.CSSProperties}
+      loading={loading}
+      decoding={decoding}
       {...rest}
     />
   );
@@ -49,7 +53,7 @@ const ProtectedImage = ({
       {imgEl}
       {watermark && (
         <span className="absolute bottom-2 right-2 text-[10px] font-medium tracking-wide text-white/40 bg-black/30 backdrop-blur-sm px-2 py-0.5 rounded select-none pointer-events-none">
-          Creative Emman
+          Creative Emman Limited
         </span>
       )}
     </div>

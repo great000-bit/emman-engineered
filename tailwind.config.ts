@@ -18,6 +18,8 @@ export default {
         body: ['Inter', 'system-ui', 'sans-serif'],
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
         brand: ['Agile', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        'story-label': ['"Bricolage Grotesque"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        'story-text': ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

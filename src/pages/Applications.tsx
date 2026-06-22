@@ -2,12 +2,13 @@ import { useState } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
-import { submitApplication } from "@/lib/submitApplication";
+import { submitToFormspree } from "@/lib/formspree";
+import FormSuccessState from "@/components/shared/FormSuccessState";
 
 type ApplicationTab = "professional" | "internship";
 
@@ -104,27 +105,6 @@ const SelectField = ({
   </div>
 );
 
-const SuccessState = ({ heading, onReset }: { heading: string; onReset: () => void }) => (
-  <motion.div
-    key="success"
-    initial={{ opacity: 0, scale: 0.95 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
-    className="flex flex-col items-center justify-center text-center py-20 space-y-5"
-  >
-    <div className="w-16 h-16 rounded-full bg-accent/15 flex items-center justify-center">
-      <CheckCircle size={36} className="text-accent" />
-    </div>
-    <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground">{heading}</h2>
-    <p className="text-sm text-muted-foreground max-w-md">
-      Thank you for applying to Creative Emman. Our team reviews every application and will reach out if there's a fit.
-    </p>
-    <Button variant="outline" size="sm" className="mt-4" onClick={onReset}>
-      Submit Another Application
-    </Button>
-  </motion.div>
-);
-
 const ErrorNotice = () => (
   <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-red-500">
     Oops! Something went wrong sending your application. Please try again or reach us via WhatsApp.
@@ -184,7 +164,7 @@ const ProfessionalRoleForm = () => {
     setErrors({});
     setStatus("submitting");
 
-    const { ok } = await submitApplication({
+    const { ok } = await submitToFormspree("Professional Role Application", {
       applicationType: "Professional Role",
       fullName: form.fullName,
       email: form.email,
@@ -198,7 +178,6 @@ const ProfessionalRoleForm = () => {
       cvLink: form.cvLink,
       coverLetter: form.coverLetter,
       availability: form.availability,
-      _subject: `New Professional Role Application — ${form.roleApplyingFor}`,
     });
 
     if (ok) {
@@ -216,7 +195,7 @@ const ProfessionalRoleForm = () => {
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <SuccessState heading="Your application has been submitted!" onReset={() => setStatus("idle")} />
+        <FormSuccessState />
       ) : (
         <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-10">
           {/* Honeypot */}
@@ -312,7 +291,7 @@ const InternshipForm = () => {
     setErrors({});
     setStatus("submitting");
 
-    const { ok } = await submitApplication({
+    const { ok } = await submitToFormspree("Internship Application", {
       applicationType: "Internship",
       fullName: form.fullName,
       email: form.email,
@@ -324,7 +303,6 @@ const InternshipForm = () => {
       linkedinLink: form.linkedinLink,
       motivation: form.motivation,
       availability: form.availability,
-      _subject: `New Internship Application — ${form.internshipArea}`,
     });
 
     if (ok) {
@@ -341,7 +319,7 @@ const InternshipForm = () => {
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <SuccessState heading="Your internship application has been submitted!" onReset={() => setStatus("idle")} />
+        <FormSuccessState />
       ) : (
         <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-10">
           {/* Honeypot */}
@@ -398,8 +376,18 @@ const ApplicationsPage = () => {
     <PageLayout>
       <SEO
         path="/applications"
-        title="Apply to Creative Emman Limited | Careers & Internships"
-        description="Apply for a professional role or internship at Creative Emman Limited and join a multidisciplinary creative team building digital products, brands, campaigns, and visual experiences."
+        title="Apply to Creative Emman Limited | Roles & Internship Opportunities"
+        description="Apply for professional roles or internship opportunities at Creative Emman Limited. Join our creative and technology team across design, development, branding, video, and digital marketing."
+        keywords={[
+          "creative internship Nigeria",
+          "tech internship Nigeria",
+          "design internship Nigeria",
+          "frontend internship Nigeria",
+          "UI UX internship Nigeria",
+          "creative jobs Nigeria",
+          "Creative Emman Limited careers",
+        ]}
+        jsonLd={buildBreadcrumbSchema([{ name: "Applications", path: "/applications" }])}
       />
 
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">

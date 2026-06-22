@@ -57,22 +57,29 @@ const SECTIONS: Section[] = [
 ];
 
 /**
- * One body chunk. Always visible; only its color/opacity shift between muted-gray and
- * bright-white as the highlight sweep passes through, plus a very slight y-drift.
+ * One body chunk. Always visible; only its opacity shifts between a low, non-distracting
+ * dim level and full white as the highlight sweep passes through, plus a very slight
+ * y-drift. Color itself stays a single off-white the whole time — varying the opacity of
+ * one consistent color (rather than crossfading two different HSL lightness values, as
+ * an earlier version did) is what keeps inactive lines from reading as "almost as bright
+ * as the active line".
  */
 const HighlightChunk = ({ text, index, progress }: { text: string; index: number; progress: MotionValue<number> }) => {
   const center = index;
-  const color = useTransform(
+  // Inactive opacity sits in the 0.18–0.28 range requested — low enough that the active
+  // chunk clearly dominates, high enough that the full passage is still legible as
+  // context, not invisible.
+  const opacity = useTransform(
     progress,
     [center - 0.85, center - 0.35, center + 0.35, center + 0.85],
-    ["hsl(220 8% 42%)", "hsl(0 0% 100%)", "hsl(0 0% 100%)", "hsl(220 8% 42%)"],
+    [0.22, 1, 1, 0.22],
   );
   const y = useTransform(progress, [center - 0.85, center, center + 0.85], [4, 0, -4]);
 
   return (
     <motion.p
-      style={{ color, y }}
-      className="text-lg sm:text-xl md:text-[1.4rem] leading-relaxed sm:leading-relaxed font-medium mb-4 last:mb-0"
+      style={{ opacity, y }}
+      className="font-story-text text-lg sm:text-xl md:text-[1.4rem] lg:text-[2rem] leading-relaxed sm:leading-relaxed lg:leading-[1.45] font-medium text-primary-foreground mb-4 last:mb-0"
     >
       {text}
     </motion.p>
@@ -83,7 +90,7 @@ const HighlightChunk = ({ text, index, progress }: { text: string; index: number
 const SectionTitle = ({ title, opacity }: { title: string; opacity: MotionValue<number> }) => (
   <motion.h2
     style={{ opacity }}
-    className="absolute inset-0 text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary-foreground leading-tight"
+    className="absolute inset-0 text-3xl sm:text-4xl md:text-5xl font-story-text font-bold text-primary-foreground leading-tight"
   >
     {title}
   </motion.h2>
@@ -174,38 +181,43 @@ const BrandStoryDesktop = () => {
                 <motion.span
                   key={section.label}
                   style={{ opacity: sectionOpacities[i] }}
-                  className="absolute inset-0 text-sm font-medium tracking-widest uppercase text-accent whitespace-nowrap"
+                  className="absolute inset-0 text-sm font-story-label font-semibold tracking-widest uppercase text-accent whitespace-nowrap"
                 >
                   {section.label}
                 </motion.span>
               ))}
             </div>
 
-            {/* Right column: title + full dimmed body text with highlight sweep */}
-            <div className="max-w-2xl">
-              <div className="relative h-[5.5rem] sm:h-24 md:h-28 mb-8">
-                {SECTIONS.map((section, i) => (
-                  <SectionTitle key={section.label} title={section.title} opacity={sectionOpacities[i]} />
-                ))}
-              </div>
+            {/* Right column: takes the full remaining width after the label, with its
+                content centered *within that remaining space* (not across the full
+                page — the label stays pinned left of it). Wider max-width + larger type
+                makes this column read as the dominant, premium element of the section. */}
+            <div className="w-full flex justify-center">
+              <div className="w-full max-w-3xl lg:max-w-4xl">
+                <div className="relative h-[6rem] sm:h-28 md:h-32 mb-8">
+                  {SECTIONS.map((section, i) => (
+                    <SectionTitle key={section.label} title={section.title} opacity={sectionOpacities[i]} />
+                  ))}
+                </div>
 
-              <div className="relative">
-                {SECTIONS.map((section, sIdx) => (
-                  <motion.div
-                    key={section.label}
-                    style={{ opacity: sectionOpacities[sIdx] }}
-                    className={sIdx === 0 ? "relative" : "absolute inset-0"}
-                  >
-                    {section.chunks.map((chunk, cIdx) => (
-                      <HighlightChunk
-                        key={chunk.text.slice(0, 24)}
-                        text={chunk.text}
-                        index={sectionStartIndex[sIdx] + cIdx}
-                        progress={chunkProgress}
-                      />
-                    ))}
-                  </motion.div>
-                ))}
+                <div className="relative">
+                  {SECTIONS.map((section, sIdx) => (
+                    <motion.div
+                      key={section.label}
+                      style={{ opacity: sectionOpacities[sIdx] }}
+                      className={sIdx === 0 ? "relative" : "absolute inset-0"}
+                    >
+                      {section.chunks.map((chunk, cIdx) => (
+                        <HighlightChunk
+                          key={chunk.text.slice(0, 24)}
+                          text={chunk.text}
+                          index={sectionStartIndex[sIdx] + cIdx}
+                          progress={chunkProgress}
+                        />
+                      ))}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -260,8 +272,8 @@ const MobileSection = ({ section }: { section: Section }) => {
 
   return (
     <div ref={ref} className="max-w-2xl">
-      <span className="text-sm font-medium tracking-widest uppercase text-accent block mb-3">{section.label}</span>
-      <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-foreground leading-tight mb-5">
+      <span className="text-sm font-story-label font-semibold tracking-widest uppercase text-accent block mb-3">{section.label}</span>
+      <h2 className="text-2xl sm:text-3xl font-story-text font-bold text-primary-foreground leading-tight mb-5">
         {section.title}
       </h2>
       {section.chunks.map((chunk, i) => (
@@ -284,12 +296,12 @@ const StaticFallback = () => (
     <div className="container-wide mx-auto px-4 sm:px-6 space-y-14">
       {SECTIONS.map((section) => (
         <div key={section.label} className="max-w-2xl">
-          <span className="text-sm font-medium tracking-widest uppercase text-accent block mb-3">{section.label}</span>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-primary-foreground leading-tight mb-5">
+          <span className="text-sm font-story-label font-semibold tracking-widest uppercase text-accent block mb-3">{section.label}</span>
+          <h2 className="text-2xl sm:text-3xl font-story-text font-bold text-primary-foreground leading-tight mb-5">
             {section.title}
           </h2>
           {section.chunks.map((chunk) => (
-            <p key={chunk.text.slice(0, 24)} className="text-primary-foreground/65 leading-relaxed mb-3 last:mb-0">
+            <p key={chunk.text.slice(0, 24)} className="font-story-text text-primary-foreground/65 leading-relaxed mb-3 last:mb-0">
               {chunk.text}
             </p>
           ))}

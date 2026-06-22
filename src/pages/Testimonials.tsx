@@ -7,12 +7,13 @@ import { useState } from "react";
 import { Phone, Mail, ArrowRight } from "lucide-react";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 
 const testimonials = [
   {
     name: "Adaeze Nwosu",
     company: "Finova Technologies",
-    text: "Creative Emman delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched.",
+    text: "Creative Emman Limited delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched.",
   },
   {
     name: "James Okonkwo",
@@ -32,12 +33,12 @@ const testimonials = [
   {
     name: "Chioma Eze",
     company: "NovaTech Solutions",
-    text: "The video production quality rivaled agencies three times their size. Creative Emman is a serious technology partner.",
+    text: "The video production quality rivaled agencies three times their size. Creative Emman Limited is a serious technology partner.",
   },
   {
     name: "Daniel Osei",
     company: "Prism Ventures",
-    text: "We've worked with many agencies. Creative Emman is the only one that treats digital execution as engineering. Highly recommended.",
+    text: "We've worked with many agencies. Creative Emman Limited is the only one that treats digital execution as engineering. Highly recommended.",
   },
   {
     name: "Blessing Amadi",
@@ -105,15 +106,18 @@ const TestimonialsPage = () => {
     <PageLayout>
       <SEO
         path="/testimonials"
-        title="Client Testimonials | Creative Emman — Digital Agency Nigeria"
-        description="What clients say about working with Creative Emman. Real results from website, branding and digital projects across Nigeria and beyond."
-        jsonLd={testimonials.map((t) => ({
-          "@context": "https://schema.org",
-          "@type": "Review",
-          reviewBody: t.text,
-          author: { "@type": "Person", name: t.name },
-          itemReviewed: { "@type": "Organization", name: "Creative Emman" },
-        }))}
+        title="Testimonials | Creative Emman Limited"
+        description="Read testimonials and feedback from people and brands connected with Creative Emman Limited's creative, digital, and technology services."
+        jsonLd={[
+          ...testimonials.map((t) => ({
+            "@context": "https://schema.org",
+            "@type": "Review",
+            reviewBody: t.text,
+            author: { "@type": "Person", name: t.name },
+            itemReviewed: { "@type": "Organization", name: "Creative Emman Limited" },
+          })),
+          buildBreadcrumbSchema([{ name: "Testimonials", path: "/testimonials" }]),
+        ]}
       />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
@@ -166,7 +170,7 @@ const TestimonialsPage = () => {
                   Let's Work Together <ArrowRight size={15} className="ml-1.5" />
                 </Button>
               </Link>
-              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2349051380648", "_blank")}>
+              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
                   <Phone size={14} className="mr-1.5" /> WhatsApp
               </Button>
             </div>
@@ -177,8 +181,8 @@ const TestimonialsPage = () => {
               <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                 <Mail size={14} /> creativeemmanlimited@gmail.com
               </a>
-              <a href="https://wa.me/2349051380648" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Phone size={14} /> 09051380648
+              <a href="tel:07037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
+                <Phone size={14} /> 07037845433
               </a>
             </div>
           </ScrollReveal>

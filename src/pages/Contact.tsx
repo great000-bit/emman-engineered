@@ -3,14 +3,15 @@ import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Phone, MapPin, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import SocialLinks from "@/components/shared/SocialLinks";
+import FormSuccessState from "@/components/shared/FormSuccessState";
 import SEO from "@/components/SEO";
+import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { services } from "@/data/siteData";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
-
-const FORMSPREE_URL = "https://formspree.io/f/mwvrnqny";
+import { submitToFormspree } from "@/lib/formspree";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -101,28 +102,18 @@ const ContactPage = () => {
     setErrors({});
     setStatus("submitting");
 
-    try {
-      const formData = new FormData();
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("phone", form.phone);
-      formData.append("service", form.service);
-      formData.append("message", form.message);
-      formData.append("_gotcha", ""); // honeypot
+    const { ok } = await submitToFormspree("Contact Form", {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      service: form.service,
+      message: form.message,
+    });
 
-      const res = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", phone: "", service: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
+    if (ok) {
+      setStatus("success");
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+    } else {
       setStatus("error");
     }
   };
@@ -131,14 +122,24 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman | Digital Agency in Lagos, Nigeria"
-        description="Start a project with Creative Emman. Email creativeemmanlimited@gmail.com or WhatsApp 09051380648. We respond within 24 hours."
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          name: "Contact Creative Emman",
-          url: "https://emman-engineered.vercel.app/contact",
-        }}
+        title="Contact Creative Emman Limited | Start a Project"
+        description="Contact Creative Emman Limited to start a website, branding, UI/UX, social media, video editing, motion graphics, or digital growth project."
+        keywords={[
+          "contact creative agency Nigeria",
+          "hire website designer Nigeria",
+          "hire brand designer Nigeria",
+          "Creative Emman Limited contact",
+          "digital agency Rivers State",
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Creative Emman Limited",
+            url: "https://emman-engineered.vercel.app/contact",
+          },
+          buildBreadcrumbSchema([{ name: "Contact", path: "/contact" }]),
+        ]}
       />
       <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
         <div className="container-wide mx-auto">
@@ -162,34 +163,7 @@ const ContactPage = () => {
             <ScrollReveal>
               <AnimatePresence mode="wait">
                 {status === "success" ? (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex flex-col items-center justify-center text-center py-20 space-y-5"
-                  >
-                    <div className="w-16 h-16 rounded-full bg-accent/15 flex items-center justify-center">
-                      <CheckCircle size={36} className="text-accent" />
-                    </div>
-                    <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground">
-                      Your message has been sent successfully!
-                    </h2>
-                    <p className="text-lg text-accent font-medium">
-                      Expect a reply within 2 hours.
-                    </p>
-                    <p className="text-sm text-muted-foreground max-w-md">
-                      Thank you for reaching out to Creative Emman. We'll respond promptly.
-                    </p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="mt-4"
-                      onClick={() => setStatus("idle")}
-                    >
-                      Send Another Message
-                    </Button>
-                  </motion.div>
+                  <FormSuccessState />
                 ) : (
                   <motion.form
                     key="form"
@@ -288,15 +262,14 @@ const ContactPage = () => {
                     <a href="mailto:creativeemmanlimited@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
                       <Mail size={16} className="text-accent" /> creativeemmanlimited@gmail.com
                     </a>
-                    <button
-                      type="button"
-                      onClick={() => window.open("https://wa.me/2349051380648", "_blank")}
+                    <a
+                      href="tel:07037845433"
                       className="flex items-center gap-3 hover:text-accent transition-colors text-sm text-muted-foreground"
                     >
-                      <Phone size={16} className="text-accent" /> 09051380648
-                    </button>
+                      <Phone size={16} className="text-accent" /> 07037845433
+                    </a>
                     <div className="flex items-center gap-3">
-                      <MapPin size={16} className="text-accent" /> Lagos, Nigeria
+                      <MapPin size={16} className="text-accent" /> Rivers State, Nigeria
                     </div>
                   </div>
                 </div>
@@ -308,7 +281,7 @@ const ContactPage = () => {
                     variant="accent"
                     size="sm"
                     className="w-full"
-                    onClick={() => window.open("https://wa.me/2349051380648", "_blank")}
+                    onClick={() => window.open("https://wa.me/2347037845433", "_blank")}
                   >
                     <Phone size={14} className="mr-2" /> Chat on WhatsApp
                   </Button>
