@@ -4,7 +4,8 @@ import { navLinks } from "@/data/siteData";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import websiteIcon from "@/assets/website-icon.png";
+import websiteIcon from "@/assets/Creativeemanlogo.svg";
+import websiteIcon2 from "@/assets/Creative_eman.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,27 +27,30 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-3 sm:pt-4">
       <div
-        className={`container-wide mx-auto flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 nav-glass ${
-          scrolled
-            ? "nav-glass-scrolled border-primary-foreground/10 shadow-2xl shadow-black/30"
-            : "border-primary-foreground/[0.08]"
-        }`}
+        className={`container-wide mx-auto flex items-center justify-between gap-3 px-4 sm:px-5 py-2.5 sm:py-3 rounded-full border transition-all duration-300 nav-glass ${scrolled
+          ? "nav-glass-scrolled border-primary-foreground/10 shadow-2xl shadow-black/30"
+          : "border-primary-foreground/[0.08]"
+          }`}
       >
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0">
           <img
             src={websiteIcon}
             alt="Creative Emman Limited logo"
-            className="w-8 h-8 sm:w-9 sm:h-9 object-contain flex-shrink-0"
+            className="scale-150 pl-6 object-contain max-sm:hidden flex-shrink-0"
           />
-          <span className="hidden sm:inline font-brand text-sm sm:text-base font-bold text-primary-foreground tracking-tight truncate">
-            Creative<span className="text-accent">Emman</span>
-            <span className="text-primary-foreground/50 font-medium ml-1">Limited</span>
-          </span>
+          <img
+            src={websiteIcon2}
+            alt=""
+            className="h-12 hidden max-sm:block" />
+          {/* <span className="hidden sm:inline font-brand text-sm sm:text-base font-bold text-primary-foreground tracking-tight truncate">
+              Creative<span className="text-accent">Emman</span>
+              <span className="text-primary-foreground/50 font-medium ml-1">Limited</span>
+            </span> */}
         </Link>
 
         {/* Desktop nav links — centered within bar */}
-        <nav className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden lg:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) =>
             link.children ? (
               <div
@@ -61,9 +65,8 @@ const Header = () => {
                 }}
               >
                 <button
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
-                    location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/75"
-                  }`}
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/75"
+                    }`}
                   onClick={() => setDesktopDropdownOpen((v) => !v)}
                   aria-expanded={desktopDropdownOpen}
                 >
@@ -103,9 +106,8 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${
-                  location.pathname === link.path ? "text-accent" : "text-primary-foreground/75"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-accent whitespace-nowrap ${location.pathname === link.path ? "text-accent" : "text-primary-foreground/75"
+                  }`}
               >
                 {link.label}
               </Link>
@@ -114,7 +116,7 @@ const Header = () => {
         </nav>
 
         {/* Desktop right: pill CTA, same bar */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link to="/contact">
             <Button variant="hero-pill" size="sm" className="rounded-full">
               Start a Project
@@ -123,7 +125,7 @@ const Header = () => {
         </div>
 
         {/* Mobile right: hamburger only — no Start button on mobile per design spec */}
-        <div className="md:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <button
             className="relative w-11 h-11 flex items-center justify-center text-primary-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -131,19 +133,16 @@ const Header = () => {
           >
             <div className="relative w-6 h-4">
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
-                }`}
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                  }`}
               />
               <span
-                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
-                }`}
+                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                  }`}
               />
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
-                }`}
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                  }`}
               />
             </div>
           </button>
@@ -159,7 +158,7 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-primary/60 backdrop-blur-sm md:hidden"
+              className="fixed scroll-y-auto inset-0 bg-primary/60 backdrop-blur-sm md:hidden"
               style={{ zIndex: 9998 }}
               onClick={() => setMobileOpen(false)}
             />
@@ -177,16 +176,15 @@ const Header = () => {
             >
               {/* Mobile logo */}
               <div className="absolute top-5 left-8">
-                <img src={websiteIcon} alt="Creative Emman Limited logo" className="w-10 h-10" />
+                <img src={websiteIcon2} alt="Creative Emman Limited logo" className=" h-12" />
               </div>
 
               {navLinks.map((link) =>
                 link.children ? (
                   <div key={link.path}>
                     <button
-                      className={`w-full flex items-center justify-between text-lg font-medium ${
-                        location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/80"
-                      }`}
+                      className={`w-full flex items-center justify-between text-lg font-medium ${location.pathname.startsWith(link.path) ? "text-accent" : "text-primary-foreground/80"
+                        }`}
                       onClick={() => setMobilePortfolioOpen((v) => !v)}
                       aria-expanded={mobilePortfolioOpen}
                     >
@@ -224,9 +222,8 @@ const Header = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`text-lg font-medium ${
-                      location.pathname === link.path ? "text-accent" : "text-primary-foreground/80"
-                    }`}
+                    className={`text-lg font-medium ${location.pathname === link.path ? "text-accent" : "text-primary-foreground/80"
+                      }`}
                   >
                     {link.label}
                   </Link>

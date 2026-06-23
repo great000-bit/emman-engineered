@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
-import websiteIcon from "@/assets/website-icon.png";
+import websiteIcon from "@/assets/Creativeeman.svg";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const TeamCarousel = () => {

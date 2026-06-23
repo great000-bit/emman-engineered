@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { navLinks } from "@/data/siteData";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import SocialLinks from "@/components/shared/SocialLinks";
-import websiteIcon from "@/assets/website-icon.png";
+import websiteIcon from "@/assets/Creativeeman.svg";
 
 const Footer = () => (
   <footer className="relative bg-primary text-primary-foreground overflow-hidden">
