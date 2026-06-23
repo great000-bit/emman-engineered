@@ -116,9 +116,9 @@ const Footer = () => (
       >
         <span
           className="font-brand absolute top-1/2 whitespace-nowrap font-bold text-primary-foreground/[0.07] leading-none"
-          style={{ fontSize: "8vw", transform: "translateY(-38%)" }}
+          style={{ fontSize: "7vw", transform: "translateY(-38%)" }}
         >
-          Creative Emman
+          Creative Emman Limited
         </span>
       </div>
 
