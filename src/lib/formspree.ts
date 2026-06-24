@@ -6,7 +6,7 @@
 // the real production endpoint below if that env var is missing, so a missing .env can
 // never silently break submissions in production — per the brief, "do not let a missing
 // env variable break production."
-const FALLBACK_ENDPOINT = "https://formspree.io/f/xaqgwevv";
+const FALLBACK_ENDPOINT = "https://formspree.io/f/mykqknqa";
 const ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || FALLBACK_ENDPOINT;
 
 export type FormType = "Contact Form" | "Professional Role Application" | "Internship Application";
@@ -31,7 +31,7 @@ export const submitToFormspree = async (
     // Hidden identification / routing fields, per spec.
     formData.append("form_type", formType);
     formData.append("website", "Creative Emman Limited");
-    formData.append("recipient_email", "creativeemmanlimited@gmail.com");
+    formData.append("recipient_email", "creativeemmanlimited@outlook.com");
     formData.append("_subject", `New submission — ${formType}`);
     formData.append("_gotcha", ""); // honeypot — Formspree silently drops submissions where this is filled
 

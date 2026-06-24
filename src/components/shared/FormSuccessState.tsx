@@ -3,16 +3,41 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 
+interface FormSuccessStateProps {
+  /** Defaults to the standard contact/application copy. */
+  heading?: string;
+  /** Defaults to the standard "within 1 hour" supporting copy. */
+  supportingText?: string;
+  /**
+   * Milliseconds before navigating back/home. Pass `null` to disable the auto-redirect
+   * entirely — used by the Internship flow, which instead shows a follow-up modal and
+   * must NOT navigate the intern away automatically.
+   * Defaults to 4000.
+   */
+  redirectAfterMs?: number | null;
+}
+
 /**
  * Shared success screen for the Contact form and both Applications forms (Professional
- * Role / Internship). Shows the required copy + a looping blue/cyan mail icon, then
- * after 4 seconds returns the user to wherever they came from (browser history), or
- * home if there's no previous page in this session.
+ * Role / Internship). Shows the required copy + a looping blue/cyan mail icon.
+ *
+ * By default, after 4 seconds it returns the user to wherever they came from (browser
+ * history), or home if there's no previous page in this session — this is the Contact /
+ * Professional Role behavior, unchanged. Pass `redirectAfterMs={null}` to disable that
+ * entirely (Internship flow) — the caller is then responsible for whatever happens next
+ * (e.g. Applications.tsx runs its own separate 2-second timer to reveal the onboarding
+ * modal; that timing is unrelated to and independent of this component).
  */
-const FormSuccessState = () => {
+const FormSuccessState = ({
+  heading = "Thank you. Your message has been received successfully.",
+  supportingText = "Our team will reach back to you within 1 hour. Please stay close to your email so you do not miss our response.",
+  redirectAfterMs = 4000,
+}: FormSuccessStateProps = {}) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (redirectAfterMs === null) return;
+
     const timer = setTimeout(() => {
       // history.state.idx is set by react-router's BrowserHistory — > 0 means there is
       // a previous entry in this session to go back to; otherwise fall back to home.
@@ -21,10 +46,10 @@ const FormSuccessState = () => {
       } else {
         navigate("/");
       }
-    }, 4000);
+    }, redirectAfterMs);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [navigate, redirectAfterMs]);
 
   return (
     <motion.div
@@ -51,13 +76,8 @@ const FormSuccessState = () => {
         </div>
       </div>
 
-      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground">
-        Thank you. Your message has been received successfully.
-      </h2>
-      <p className="text-sm text-muted-foreground max-w-md">
-        Our team will reach back to you within 1 hour. Please stay close to your email so you do not miss our
-        response.
-      </p>
+      <h2 className="text-2xl md:text-3xl font-display font-bold text-primary-foreground">{heading}</h2>
+      <p className="text-sm text-muted-foreground max-w-md">{supportingText}</p>
     </motion.div>
   );
 };
