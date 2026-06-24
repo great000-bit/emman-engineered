@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
 import { X, BellRing, CircleCheck, ArrowUpRight } from "lucide-react";
@@ -9,6 +10,9 @@ interface InternshipOnboardingModalProps {
 }
 
 const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/HsrWyV3WSoNKK1flHvllis?mode=gi_t";
+
+// TODO: Add soft notification sound file at public/sounds/soft-notification.mp3
+const NOTIFICATION_SOUND_PATH = "/sounds/soft-notification.mp3";
 
 const ONBOARDING_TASKS = [
   "Introduce yourself clearly",
@@ -28,7 +32,20 @@ const ONBOARDING_TASKS = [
  * wrapper, because that wrapper always renders its own hardcoded close button with no way to
  * omit it — this modal needs a single custom-styled close button, not two.
  */
-const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingModalProps) => (
+const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingModalProps) => {
+  // Plays a single short, quiet notification chime exactly once each time the modal opens —
+  // not on every re-render while it's already open. Since this only ever fires right after
+  // the intern has just clicked Submit (a real user gesture earlier in the same flow),
+  // browsers generally allow audio here even under autoplay restrictions, but the .catch()
+  // ensures a blocked/missing/failed sound never breaks the modal itself.
+  useEffect(() => {
+    if (!open) return;
+    const audio = new Audio(NOTIFICATION_SOUND_PATH);
+    audio.volume = 0.25;
+    audio.play().catch(() => {});
+  }, [open]);
+
+  return (
   <Dialog.Root open={open} onOpenChange={onOpenChange}>
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
@@ -53,8 +70,9 @@ const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingM
             <span className="sr-only">Close</span>
           </Dialog.Close>
 
-          {/* Animated notification icon — purely visual "ringing" motion (a gentle, looped
-              side-to-side rock plus a soft pulsing glow behind it), no sound of any kind. */}
+          {/* Animated notification icon — a gentle, looped side-to-side rock plus a soft
+              pulsing glow behind it. Paired with a single short, quiet chime (see the
+              useEffect above) that plays once when the modal first opens, not looped. */}
           <div className="relative w-16 h-16 mx-auto mb-5 flex items-center justify-center">
             <motion.div
               className="absolute inset-0 rounded-full bg-accent/20"
@@ -100,6 +118,7 @@ const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingM
       </Dialog.Content>
     </Dialog.Portal>
   </Dialog.Root>
-);
+  );
+};
 
 export default InternshipOnboardingModal;
