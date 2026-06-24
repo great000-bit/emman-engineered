@@ -47,7 +47,7 @@ const ServicesPage = () => (
           "@type": "ProfessionalService",
           name: "Creative Emman Limited",
           url: "https://emman-engineered.vercel.app",
-          email: "creativeemmanlimited@gmail.com",
+          email: "creativeemmanlimited@outlook.com",
           telephone: "+234-703-784-5433",
           address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
           areaServed: "Global",

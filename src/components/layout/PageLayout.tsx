@@ -22,7 +22,7 @@ const SiteWideStructuredData = () => (
         name: "Creative Emman Limited",
         url: "https://emman-engineered.vercel.app",
         logo: "https://emman-engineered.vercel.app/favicon.png",
-        email: "creativeemmanlimited@gmail.com",
+        email: "creativeemmanlimited@outlook.com",
         telephone: "+234-703-784-5433",
         address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
         // TODO: populate with real Instagram, X, Facebook, and LinkedIn profile URLs once

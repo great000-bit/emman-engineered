@@ -98,12 +98,13 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 | Variable | Required | Description |
 |---|---|---|
 | `VITE_FORMSPREE_ENDPOINT` | For all forms to send (Contact, Professional Role, Internship) | Formspree endpoint URL (e.g. `https://formspree.io/f/abcd1234`) that every form on the site submits to. Create this at [formspree.io](https://formspree.io), pointed at the company inbox. This is optional — if unset, the site falls back to the production endpoint already hardcoded in `src/lib/formspree.ts`, so a missing `.env` will never break form submissions in production. |
+| `VITE_INTERNSHIP_GROUP_URL` | No | Link shown as the "Join the Internship Group" button after a successful internship application. Optional — if unset, the button shows "Group link coming soon" and is disabled instead of linking anywhere. |
 
 `.env` is gitignored and should never be committed.
 
 ## Contact
 
 **Creative Emman Limited**
-Email: [creativeemmanlimited@gmail.com](mailto:creativeemmanlimited@gmail.com)
+Email: [creativeemmanlimited@outlook.com](mailto:creativeemmanlimited@outlook.com)
 WhatsApp: +234 703 784 5433
 Location: Rivers State, Nigeria

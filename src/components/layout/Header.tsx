@@ -235,7 +235,7 @@ const Header = () => {
                 </Button>
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
-                <a href="mailto:creativeemmanlimited@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited@gmail.com</a>
+                <a href="mailto:creativeemmanlimited@outlook.com" className="block hover:text-accent transition-colors">creativeemmanlimited@outlook.com</a>
                 <a href="tel:07037845433" className="block hover:text-accent transition-colors">07037845433</a>
               </div>
             </motion.nav>

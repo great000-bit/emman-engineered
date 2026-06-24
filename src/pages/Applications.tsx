@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SEO from "@/components/SEO";
@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import { submitToFormspree } from "@/lib/formspree";
 import FormSuccessState from "@/components/shared/FormSuccessState";
+import InternshipOnboardingModal from "@/components/shared/InternshipOnboardingModal";
 
 type ApplicationTab = "professional" | "internship";
 
@@ -274,8 +275,19 @@ const InternshipForm = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [showOnboardingModal, setShowOnboardingModal] = useState(false);
 
   const set = (key: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [key]: v }));
+
+  // Internship-specific flow: show the standard success screen first (no auto-redirect —
+  // unlike Contact/Professional Role), then after 2 seconds swap it for the onboarding
+  // modal instead. The modal itself never auto-closes or redirects; the intern dismisses
+  // it manually whenever ready.
+  useEffect(() => {
+    if (status !== "success") return;
+    const timer = setTimeout(() => setShowOnboardingModal(true), 2000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -319,7 +331,13 @@ const InternshipForm = () => {
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <FormSuccessState />
+        <>
+          <FormSuccessState
+            heading="Thank you. Your internship application has been received successfully."
+            redirectAfterMs={null}
+          />
+          <InternshipOnboardingModal open={showOnboardingModal} onOpenChange={setShowOnboardingModal} />
+        </>
       ) : (
         <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={handleSubmit} className="space-y-10">
           {/* Honeypot */}
