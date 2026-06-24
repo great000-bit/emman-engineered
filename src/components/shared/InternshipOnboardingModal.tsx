@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@/components/ui/button";
-import { X, ArrowUpRight } from "lucide-react";
+import { X, BellRing, CircleCheck, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface InternshipOnboardingModalProps {
@@ -8,8 +8,15 @@ interface InternshipOnboardingModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-// TODO: Add the real internship group link in VITE_INTERNSHIP_GROUP_URL
-const INTERNSHIP_GROUP_URL = import.meta.env.VITE_INTERNSHIP_GROUP_URL as string | undefined;
+const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/HsrWyV3WSoNKK1flHvllis?mode=gi_t";
+
+const ONBOARDING_TASKS = [
+  "Introduce yourself clearly",
+  "Send a clear image of yourself",
+  "State what you want to learn",
+  "Explain what you intend to gain from the internship",
+  "Mention your learning path or area of interest",
+];
 
 /**
  * Shown after a successful Internship application, once the standard success screen has
@@ -26,7 +33,7 @@ const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingM
     <Dialog.Portal>
       <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
       <Dialog.Content
-        className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+        className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-md max-h-[88vh] overflow-y-auto -translate-x-1/2 -translate-y-1/2 focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <motion.div
@@ -46,27 +53,49 @@ const InternshipOnboardingModal = ({ open, onOpenChange }: InternshipOnboardingM
             <span className="sr-only">Close</span>
           </Dialog.Close>
 
-          <Dialog.Title className="text-xl sm:text-2xl font-display font-bold text-primary-foreground mb-4 pr-6">
-            Next Step for Interns
+          {/* Animated notification icon — purely visual "ringing" motion (a gentle, looped
+              side-to-side rock plus a soft pulsing glow behind it), no sound of any kind. */}
+          <div className="relative w-16 h-16 mx-auto mb-5 flex items-center justify-center">
+            <motion.div
+              className="absolute inset-0 rounded-full bg-accent/20"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.15, 0.5] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="relative w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center">
+              <motion.div
+                animate={{ rotate: [0, -12, 10, -8, 6, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 1.6, ease: "easeInOut" }}
+              >
+                <BellRing size={28} className="text-accent" strokeWidth={1.75} />
+              </motion.div>
+            </div>
+          </div>
+
+          <Dialog.Title className="text-xl sm:text-2xl font-display font-bold text-primary-foreground mb-4">
+            New Message from the Internship Team Lead
           </Dialog.Title>
 
-          <Dialog.Description className="text-sm text-primary-foreground/70 leading-relaxed mb-7">
-            Message to interns: Once you join the group, introduce yourself with a clear image of yourself, what
-            you want to learn, and what you intend to gain from the internship based on your learning path.
+          <Dialog.Description className="text-sm text-primary-foreground/70 leading-relaxed mb-5">
+            Please complete the following once you join the internship group:
           </Dialog.Description>
 
-          {INTERNSHIP_GROUP_URL ? (
-            <Button asChild variant="accent" size="lg" className="w-full">
-              <a href={INTERNSHIP_GROUP_URL} target="_blank" rel="noopener noreferrer">
-                Join the Internship Group
-                <ArrowUpRight size={16} className="ml-1.5" />
-              </a>
-            </Button>
-          ) : (
-            <Button variant="accent" size="lg" className="w-full" disabled>
-              Group link coming soon
-            </Button>
-          )}
+          <ul className="text-left space-y-3 mb-8">
+            {ONBOARDING_TASKS.map((task) => (
+              <li key={task} className="flex items-start gap-3">
+                <span className="mt-0.5 flex-shrink-0 rounded-full bg-accent/15 p-1">
+                  <CircleCheck size={16} className="text-accent" strokeWidth={2} />
+                </span>
+                <span className="text-sm text-primary-foreground/85 leading-relaxed">{task}</span>
+              </li>
+            ))}
+          </ul>
+
+          <Button asChild variant="accent" size="lg" className="w-full">
+            <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer">
+              Join the Internship Group
+              <ArrowUpRight size={16} className="ml-1.5" />
+            </a>
+          </Button>
         </motion.div>
       </Dialog.Content>
     </Dialog.Portal>
