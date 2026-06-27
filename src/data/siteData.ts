@@ -9,7 +9,8 @@ import SophiaImg from "@/assets/IyeritufuSophiaAdaobim.jpeg"
 import OsuagwuImg from "@/assets/OsuagwuGoldenheart.jpeg"
 import DavidImg from "@/assets/DavidEsemuruOkeoghene .jpeg"
 import GraceImg from "@/assets/GraceGrant.jpeg"
-
+import CharlesImg from "@/assets/CharlesMacanthony.jpeg"
+import JenniferImg from "@/assets/JenniferFrank .jpeg"
 
 export const services = [
   {
@@ -184,6 +185,26 @@ export const teamMembers = [
     stack: ["Canva", "Capcut", "Google Workspace", "Trello", "Asana"],
     image: GraceImg,
     linkedin: "https://www.linkedin.com/in/grace-grant-4b647224b?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+    portfolio: "",
+  },
+  {
+    id: "Charles Macanthony",
+    name: "Charles Macanthony ",
+    role: "Frontend Engineer",
+    bio: "Aspiring software developer building practical web applications, learning Python, and solving real-world community problems",
+    stack: ["ReactJs", "HTML", "CSS", "TailwindCSS", "Firebase", "Supabase"],
+    image: CharlesImg,
+    linkedin: "https://www.linkedin.com/in/macanthony-charles-561810367",
+    portfolio: "https://cmc-tech.netlify.app/",
+  },
+  {
+    id: "Jennifer Frank",
+    name: "Jennifer Frank",
+    role: "Community manager",
+    bio: "Building connections, one conversation at a time. ",
+    stack: ["Canva", "ChatGpt", "Google Workspace", "Content Strategy", "Community Engagement"],
+    image: JenniferImg,
+    linkedin: "https://www.linkedin.com/in/jennifer-frank-00b589372?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     portfolio: "",
   },
 ];
