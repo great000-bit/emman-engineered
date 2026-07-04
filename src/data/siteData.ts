@@ -138,16 +138,6 @@ export const teamMembers = [
     portfolio: "https://shorturl.at/961Hh",
   },
   {
-    id: "Iyeritufu SophiaAdaobi",
-    name: "Iyeritufu SophiaAdaobi",
-    role: " Project manager, Content writer, social media manager, email marketer, content writer ",
-    bio: "Creating strategies to build a legacy.",
-    stack: ["Productivity Tool", "Communication Tool", "Project Management", "Video Editing", "Content planning", "Designs", "Trello", "Photo Editing"],
-    image: SophiaImg,
-    linkedin: "https://www.linkedin.com/in/sophia-iyeritufu-43838633b/",
-    portfolio: "",
-  },
-  {
     id: "MBA Vivian",
     name: "MBA Vivian",
     role: "Virtual assistant/Creative and content Writer.",
