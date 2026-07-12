@@ -27,13 +27,12 @@ const SiteWideStructuredData = () => (
         email: "creativeemmanlimited@outlook.com",
         telephone: "+234-703-784-5433",
         address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
-        // LinkedIn intentionally omitted: searched for the official Creative Emman Limited
-        // LinkedIn company page and could not confirm one exists, or distinguish it from
-        // unrelated similarly-named profiles. Add it here once confirmed — do not guess.
+        // LinkedIn confirmed by the site owner: https://www.linkedin.com/company/creative-emman-limited
         sameAs: [
-          "https://www.instagram.com/creativeemman_limited",
-          "https://x.com/CE_Limited1",
+          "https://www.instagram.com/creativeemman_limited?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+          "https://x.com/CE_Limited1?s=20",
           "https://web.facebook.com/profile.php?id=61591330806057",
+          "https://www.linkedin.com/company/creative-emman-limited",
         ],
       })}
     </script>

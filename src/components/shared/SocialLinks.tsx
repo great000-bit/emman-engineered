@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 
 // Custom X (formerly Twitter) glyph — lucide doesn't ship the rebranded X mark.
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -7,17 +7,12 @@ const XIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-// Confirmed official profile URLs for Instagram, X, and Facebook. LinkedIn is
-// intentionally omitted — searched for the official Creative Emman Limited LinkedIn
-// company page and could not confirm one exists, or distinguish it from unrelated
-// similarly-named profiles. Do not add a "#" placeholder (the brand's SEO/social spec
-// explicitly forbids dead social links). Once the real LinkedIn URL is confirmed, add it
-// back as a fourth entry here, in PageLayout.tsx's Organization sameAs array, and in the
-// aria-label list — same pattern as the three entries below.
+// Confirmed official profile URLs for Instagram, X, Facebook, and LinkedIn.
 export const SOCIAL_LINKS = [
-  { label: "Visit Creative Emman Limited on Instagram", href: "https://www.instagram.com/creativeemman_limited", Icon: Instagram },
-  { label: "Visit Creative Emman Limited on X", href: "https://x.com/CE_Limited1", Icon: XIcon },
+  { label: "Visit Creative Emman Limited on Instagram", href: "https://www.instagram.com/creativeemman_limited?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", Icon: Instagram },
+  { label: "Visit Creative Emman Limited on X", href: "https://x.com/CE_Limited1?s=20", Icon: XIcon },
   { label: "Visit Creative Emman Limited on Facebook", href: "https://web.facebook.com/profile.php?id=61591330806057", Icon: Facebook },
+  { label: "Visit Creative Emman Limited on LinkedIn", href: "https://www.linkedin.com/company/creative-emman-limited", Icon: Linkedin },
 ] as const;
 
 interface SocialLinksProps {
@@ -27,10 +22,9 @@ interface SocialLinksProps {
 }
 
 /**
- * The site's single source of truth for social icons — Instagram, X, Facebook (LinkedIn
- * pending a confirmed official URL, see note above), with consistent sizing, the
- * blue/cyan glow hover state (.social-glow, defined in index.css), and accessible labels
- * for screen readers.
+ * The site's single source of truth for social icons — Instagram, X, Facebook, LinkedIn,
+ * with consistent sizing, the blue/cyan glow hover state (.social-glow, defined in
+ * index.css), and accessible labels for screen readers.
  */
 const SocialLinks = ({ size = 20, className = "flex gap-5", iconClassName = "text-primary-foreground/50 p-2 -m-2" }: SocialLinksProps) => (
   <div className={className}>
