@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { Analytics } from "@vercel/analytics/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -42,6 +43,12 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        {/* Vercel Analytics — mounted once here so it loads on every route (this is a Vite
+            SPA, not Next.js, so there's no root layout.tsx; App.tsx is the true root that
+            renders once for the whole site). Placed after all routed content, per the
+            "near the end, after main content" convention from Next.js's own root-layout
+            pattern. */}
+        <Analytics />
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
