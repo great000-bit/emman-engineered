@@ -10,10 +10,10 @@ To activate this for Creative Emman Limited's site:
 2. Replace the contents of this file with that key (and nothing else).
 3. Rename this file to match the key itself, e.g. `<your-key>.txt`, and keep it at
    the same path: public/<your-key>.txt — IndexNow verifies ownership by checking
-   that the key file is reachable at https://emman-engineered.vercel.app/<key>.txt.
+   that the key file is reachable at https://www.creativeemmanlimited.com/<key>.txt.
 4. Set VITE_INDEXNOW_KEY in your .env to that same key (see .env.example).
 5. Submit URLs via a simple HTTP request, e.g.:
-   https://api.indexnow.org/indexnow?url=https://emman-engineered.vercel.app/&key=<your-key>
+   https://api.indexnow.org/indexnow?url=https://www.creativeemmanlimited.com/&key=<your-key>
    This can be called manually after publishing changes, or automated later as a
    post-deploy script — neither is wired up yet, by design, until a real key exists.
 

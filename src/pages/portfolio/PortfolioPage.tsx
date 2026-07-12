@@ -26,7 +26,7 @@ const PortfolioPage = () => (
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Creative Emman Limited Portfolio",
-          url: "https://emman-engineered.vercel.app/portfolio",
+          url: "https://www.creativeemmanlimited.com/portfolio",
         },
         buildBreadcrumbSchema([{ name: "Portfolio", path: "/portfolio" }]),
       ]}

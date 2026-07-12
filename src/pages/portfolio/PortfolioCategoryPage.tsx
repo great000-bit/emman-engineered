@@ -40,7 +40,7 @@ const PortfolioCategoryPage = () => {
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             name: `${meta.label} Portfolio`,
-            url: `https://emman-engineered.vercel.app/portfolio/${cat}`,
+            url: `https://www.creativeemmanlimited.com/portfolio/${cat}`,
           },
           buildBreadcrumbSchema([
             { name: "Portfolio", path: "/portfolio" },

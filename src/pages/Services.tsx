@@ -19,34 +19,34 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Services | Web, Branding, UI/UX, Social Media & Motion Graphics"
-      description="Explore Creative Emman Limited's services across website development, UI/UX design, brand identity, graphic design, social media management, videography, video editing, motion graphics, and digital strategy."
+      title="Services | Creative Emman Limited"
+      description="Explore Creative Emman Limited's website design, web development, branding, UI/UX, SEO, and digital strategy services for startups, businesses, and organisations."
       keywords={[
-        "web development agency",
-        "UI UX design agency",
-        "branding agency",
-        "digital product design agency",
-        "social media management agency",
-        "video editing agency",
-        "motion graphics agency",
-        "startup branding agency",
+        "web development company",
+        "UI UX design company",
+        "branding company",
+        "digital product design company",
+        "social media management company",
+        "video editing company",
+        "motion graphics company",
+        "startup branding company",
         "website development Nigeria",
         "web design Rivers State",
         "UI UX designer Nigeria",
         "logo design Nigeria",
-        "branding agency Nigeria",
+        "branding company Nigeria",
         "social media management Nigeria",
         "video editing Nigeria",
         "videography Rivers State",
         "motion graphics Nigeria",
-        "creative agency in Nigeria",
+        "creative technology company in Nigeria",
       ]}
       jsonLd={[
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           name: "Creative Emman Limited",
-          url: "https://emman-engineered.vercel.app",
+          url: "https://www.creativeemmanlimited.com",
           email: "creativeemmanlimited@outlook.com",
           telephone: "+234-703-784-5433",
           address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },

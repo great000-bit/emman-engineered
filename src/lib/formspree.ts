@@ -40,7 +40,7 @@ const SUBJECT_BY_FORM_TYPE: Record<FormType, string> = {
  *   - Mark any legitimate test submissions as "Not Spam" in the Formspree dashboard (this
  *     trains their filter on what real submissions from this form look like)
  *   - Enable reCAPTCHA on the form if spam persists despite the honeypot
- *   - Restrict the form's allowed domain to emman-engineered.vercel.app (Settings > the
+ *   - Restrict the form's allowed domain to www.creativeemmanlimited.com (Settings > the
  *     form > restrict submissions to this domain), so submissions from anywhere else are
  *     rejected outright
  *   - If emails genuinely aren't arriving (as opposed to landing in Formspree's spam view),

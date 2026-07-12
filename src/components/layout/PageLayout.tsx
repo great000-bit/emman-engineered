@@ -20,15 +20,21 @@ const SiteWideStructuredData = () => (
         "@context": "https://schema.org",
         "@type": "Organization",
         name: "Creative Emman Limited",
-        url: "https://emman-engineered.vercel.app",
-        logo: "https://emman-engineered.vercel.app/favicon.png",
+        url: "https://www.creativeemmanlimited.com",
+        logo: "https://www.creativeemmanlimited.com/favicon.png",
+        description:
+          "Creative Emman Limited is a global creative and technology company helping startups, businesses, and organisations build websites, brand identities, digital products, and growth-focused digital experiences.",
         email: "creativeemmanlimited@outlook.com",
         telephone: "+234-703-784-5433",
         address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
-        // TODO: populate with real Instagram, X, Facebook, and LinkedIn profile URLs once
-        // they exist. Do not insert placeholder/fake social links — an empty array is
-        // correct until real ones are available.
-        sameAs: [],
+        // LinkedIn intentionally omitted: searched for the official Creative Emman Limited
+        // LinkedIn company page and could not confirm one exists, or distinguish it from
+        // unrelated similarly-named profiles. Add it here once confirmed — do not guess.
+        sameAs: [
+          "https://www.instagram.com/creativeemman_limited",
+          "https://x.com/CE_Limited1",
+          "https://web.facebook.com/profile.php?id=61591330806057",
+        ],
       })}
     </script>
     <script type="application/ld+json">
@@ -36,7 +42,9 @@ const SiteWideStructuredData = () => (
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: "Creative Emman Limited",
-        url: "https://emman-engineered.vercel.app",
+        url: "https://www.creativeemmanlimited.com",
+        description:
+          "Creative Emman Limited is a global creative and technology company helping businesses build websites, brand identities, digital products, and growth-focused digital experiences.",
       })}
     </script>
   </Helmet>

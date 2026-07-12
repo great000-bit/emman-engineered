@@ -394,7 +394,7 @@ const ApplicationsPage = () => {
     <PageLayout>
       <SEO
         path="/applications"
-        title="Apply to Creative Emman Limited | Roles & Internship Opportunities"
+        title="Applications | Creative Emman Limited"
         description="Apply for professional roles or internship opportunities at Creative Emman Limited. Join our creative and technology team across design, development, branding, video, and digital marketing."
         keywords={[
           "creative internship Nigeria",

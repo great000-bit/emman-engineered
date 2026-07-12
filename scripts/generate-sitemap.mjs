@@ -10,7 +10,7 @@ import { writeFileSync, mkdtempSync } from "fs";
 import { tmpdir } from "os";
 import path from "path";
 
-const SITE_URL = "https://emman-engineered.vercel.app";
+const SITE_URL = "https://www.creativeemmanlimited.com";
 const today = new Date().toISOString().slice(0, 10);
 
 async function loadPortfolioData() {

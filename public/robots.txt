@@ -33,4 +33,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://emman-engineered.vercel.app/sitemap.xml
+Sitemap: https://www.creativeemmanlimited.com/sitemap.xml

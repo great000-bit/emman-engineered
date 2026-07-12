@@ -122,21 +122,21 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman Limited | Start a Project"
-        description="Contact Creative Emman Limited to start a website, branding, UI/UX, social media, video editing, motion graphics, or digital growth project."
+        title="Contact Creative Emman Limited"
+        description="Contact Creative Emman Limited for website design, branding, web development, UI/UX, SEO, and digital strategy enquiries."
         keywords={[
-          "contact creative agency Nigeria",
+          "contact creative technology company Nigeria",
           "hire website designer Nigeria",
           "hire brand designer Nigeria",
           "Creative Emman Limited contact",
-          "digital agency Rivers State",
+          "digital company Rivers State",
         ]}
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             name: "Contact Creative Emman Limited",
-            url: "https://emman-engineered.vercel.app/contact",
+            url: "https://www.creativeemmanlimited.com/contact",
           },
           buildBreadcrumbSchema([{ name: "Contact", path: "/contact" }]),
         ]}
