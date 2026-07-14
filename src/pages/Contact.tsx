@@ -8,7 +8,7 @@ import SocialLinks from "@/components/shared/SocialLinks";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
-import { services } from "@/data/siteData";
+import { services } from "@/data/services";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitToFormspree } from "@/lib/formspree";

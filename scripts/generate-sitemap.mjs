@@ -11,7 +11,14 @@ import { tmpdir } from "os";
 import path from "path";
 
 const SITE_URL = "https://www.creativeemmanlimited.com";
-const today = new Date().toISOString().slice(0, 10);
+
+function renderLastmod(updatedAt) {
+  if (!updatedAt) return "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(updatedAt)) {
+    throw new Error(`Invalid sitemap updatedAt date: ${updatedAt}`);
+  }
+  return `<lastmod>${updatedAt}</lastmod>`;
+}
 
 async function loadPortfolioData() {
   // Compile src/data/portfolioData.ts (TS + JSX-free, but it imports .jpg assets which Node
@@ -58,6 +65,7 @@ async function main() {
     loc: `/portfolio/${p.category}/${p.slug}`,
     changefreq: "monthly",
     priority: "0.7",
+    updatedAt: p.updatedAt,
   }));
 
   const allUrls = [...staticUrls, ...projectUrls];
@@ -67,7 +75,7 @@ async function main() {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...allUrls.map(
       (u) =>
-        `  <url><loc>${SITE_URL}${u.loc}</loc><lastmod>${today}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`,
+        `  <url><loc>${SITE_URL}${u.loc}</loc>${renderLastmod(u.updatedAt)}<changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`,
     ),
     "</urlset>",
   ].join("\n");

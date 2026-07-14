@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { services } from "@/data/siteData";
+import { services } from "@/data/services";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { ArrowRight } from "lucide-react";

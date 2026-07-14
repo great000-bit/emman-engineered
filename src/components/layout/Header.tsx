@@ -133,15 +133,15 @@ const Header = () => {
           >
             <div className="relative w-6 h-4">
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
                   }`}
               />
               <span
-                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
                   }`}
               />
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
                   }`}
               />
             </div>

@@ -1,5 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
-import { services } from "@/data/siteData";
+import { services } from "@/data/services";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -121,7 +121,7 @@ const ServicesPage = () => (
                       More Details
                     </AccordionTrigger>
                     <AccordionContent className="text-sm text-primary-foreground/50 leading-relaxed">
-                      {(service as any).longDescription ?? `Our ${service.title.toLowerCase()} service follows a structured delivery process: Discovery, Strategy, Execution, and Optimization. Every engagement is scoped precisely and delivered on milestone.`}
+                      {service.longDescription ?? `Our ${service.title.toLowerCase()} service follows a structured delivery process: Discovery, Strategy, Execution, and Optimization. Every engagement is scoped precisely and delivered on milestone.`}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>

@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
-import { teamMembers } from "@/data/siteData";
+import { teamMembers } from "@/data/teamMembers";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, ArrowLeft, Phone, Mail, ArrowRight } from "lucide-react";
@@ -52,6 +52,8 @@ const TeamCarousel = () => {
               <img
                 src={member.image}
                 alt={`${member.name} — Creative Emman Limited`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover logo-pulse"
               />
             </div>
@@ -212,6 +214,7 @@ export const TeamProfile = () => {
               <img
                 src={member.image}
                 alt={`${member.name} — Creative Emman Limited`}
+                decoding="async"
                 className="w-full h-full object-cover rounded-3xl logo-pulse"
               />
             </div>

@@ -116,7 +116,7 @@ const BubbleBackground = ({
         {/* Interactive bubble following mouse */}
         {interactive && (
           <div
-            className="absolute rounded-full transition-transform duration-[3000ms] ease-out"
+            className="absolute rounded-full transition-transform [transition-duration:3000ms] ease-out"
             style={{
               width: "20%",
               height: "20%",
