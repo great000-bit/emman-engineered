@@ -47,7 +47,7 @@ const ServicesPage = () => (
           "@type": "ProfessionalService",
           name: "Creative Emman Limited",
           url: "https://www.creativeemmanlimited.com",
-          email: "creativeemmanlimited@outlook.com",
+          email: "creativeemmanlimited1@gmail.com",
           telephone: "+234-703-784-5433",
           address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
           areaServed: "Global",

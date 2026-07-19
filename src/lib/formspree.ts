@@ -44,7 +44,7 @@ const SUBJECT_BY_FORM_TYPE: Record<FormType, string> = {
  *     form > restrict submissions to this domain), so submissions from anywhere else are
  *     rejected outright
  *   - If emails genuinely aren't arriving (as opposed to landing in Formspree's spam view),
- *     check the Outlook junk/quarantine folder for creativeemmanlimited@outlook.com —
+ *     check the Gmail spam folder for creativeemmanlimited1@gmail.com —
  *     that's a separate failure point from Formspree's own spam detection
  */
 export const submitToFormspree = async (

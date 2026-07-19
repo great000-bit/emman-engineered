@@ -91,8 +91,8 @@ const Footer = () => (
             Connect
           </h4>
           <div className="flex flex-col gap-3 text-sm text-primary-foreground/60">
-            <a href="mailto:creativeemmanlimited@outlook.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
-              <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemmanlimited@outlook.com</span>
+            <a href="mailto:creativeemmanlimited1@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors break-all">
+              <Mail size={14} className="flex-shrink-0" /> <span className="break-all">creativeemmanlimited1@gmail.com</span>
             </a>
             <a href="tel:07037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Phone size={14} className="flex-shrink-0" /> 07037845433

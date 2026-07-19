@@ -104,6 +104,6 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 ## Contact
 
 **Creative Emman Limited**
-Email: [creativeemmanlimited@outlook.com](mailto:creativeemmanlimited@outlook.com)
+Email: [creativeemmanlimited1@gmail.com](mailto:creativeemmanlimited1@gmail.com)
 WhatsApp: +234 703 784 5433
 Location: Rivers State, Nigeria

@@ -266,7 +266,7 @@ export const TeamProfile = () => {
                   <Link to="/contact">
                     <Button variant="accent">Work With Us</Button>
                   </Link>
-                  <a href="mailto:creativeemmanlimited@outlook.com">
+                  <a href="mailto:creativeemmanlimited1@gmail.com">
                     <Button variant="hero-pill" size="sm"><Mail size={14} /> Email Us</Button>
                   </a>
                 </div>

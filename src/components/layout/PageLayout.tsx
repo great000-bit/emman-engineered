@@ -24,7 +24,7 @@ const SiteWideStructuredData = () => (
         logo: "https://www.creativeemmanlimited.com/favicon.png",
         description:
           "Creative Emman Limited is a global creative and technology company helping startups, businesses, and organisations build websites, brand identities, digital products, and growth-focused digital experiences.",
-        email: "creativeemmanlimited@outlook.com",
+        email: "creativeemmanlimited1@gmail.com",
         telephone: "+234-703-784-5433",
         address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
         // LinkedIn confirmed by the site owner: https://www.linkedin.com/company/creative-emman-limited

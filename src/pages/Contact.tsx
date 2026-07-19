@@ -259,8 +259,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-4 text-primary-foreground">Direct Line</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
-                    <a href="mailto:creativeemmanlimited@outlook.com" className="flex items-center gap-3 hover:text-accent transition-colors">
-                      <Mail size={16} className="text-accent" /> creativeemmanlimited@outlook.com
+                    <a href="mailto:creativeemmanlimited1@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail size={16} className="text-accent" /> creativeemmanlimited1@gmail.com
                     </a>
                     <a
                       href="tel:07037845433"

@@ -40,7 +40,7 @@ const Index = () => (
           name: "Creative Emman Limited",
           image: "https://www.creativeemmanlimited.com/favicon.png",
           url: "https://www.creativeemmanlimited.com",
-          email: "creativeemmanlimited@outlook.com",
+          email: "creativeemmanlimited1@gmail.com",
           telephone: "+234-703-784-5433",
           priceRange: "$$",
           address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
