@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://emman-engineered.vercel.app";
+const SITE_URL = "https://www.creativeemmanlimited.com";
 const DEFAULT_OG = `${SITE_URL}/og-image.jpg`;
 
 // Search-console verification codes, set via env vars so no real codes are ever hardcoded

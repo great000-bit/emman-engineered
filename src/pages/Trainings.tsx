@@ -21,7 +21,7 @@ const TrainingsPage = () => (
           "@type": "Course",
           name: t.title,
           description: t.description,
-          provider: { "@type": "Organization", name: "Creative Emman Limited", sameAs: "https://emman-engineered.vercel.app" },
+          provider: { "@type": "Organization", name: "Creative Emman Limited", sameAs: "https://www.creativeemmanlimited.com" },
         })),
         buildBreadcrumbSchema([{ name: "Trainings", path: "/trainings" }]),
       ]}

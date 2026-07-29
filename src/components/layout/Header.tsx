@@ -133,15 +133,15 @@ const Header = () => {
           >
             <div className="relative w-6 h-4">
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
                   }`}
               />
               <span
-                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
+                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "opacity-0 scale-x-0" : "opacity-100"
                   }`}
               />
               <span
-                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+                className={`absolute left-0 w-full h-[2px] bg-current rounded-full transition-all duration-300 [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] ${mobileOpen ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
                   }`}
               />
             </div>
@@ -235,7 +235,7 @@ const Header = () => {
                 </Button>
               </Link>
               <div className="mt-auto pt-6 border-t border-primary-foreground/10 text-xs text-primary-foreground/40 space-y-2">
-                <a href="mailto:creativeemmanlimited@outlook.com" className="block hover:text-accent transition-colors">creativeemmanlimited@outlook.com</a>
+                <a href="mailto:creativeemmanlimited1@gmail.com" className="block hover:text-accent transition-colors">creativeemmanlimited1@gmail.com</a>
                 <a href="tel:07037845433" className="block hover:text-accent transition-colors">07037845433</a>
               </div>
             </motion.nav>

@@ -37,7 +37,7 @@ const PortfolioProjectPage = () => {
             "@type": "CreativeWork",
             name: project.title,
             description: project.shortDescription,
-            url: `https://emman-engineered.vercel.app/portfolio/${project.category}/${project.slug}`,
+            url: `https://www.creativeemmanlimited.com/portfolio/${project.category}/${project.slug}`,
             creator: { "@type": "Organization", name: "Creative Emman Limited" },
             // Per the honesty requirement in portfolioData.ts: these are concept/internal
             // projects, not real client engagements, so that's stated plainly here too

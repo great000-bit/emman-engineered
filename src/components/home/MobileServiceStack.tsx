@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, useTransform, useReducedMotion, useMotionValue, MotionValue } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { services } from "@/data/siteData";
+import { services } from "@/data/services";
 import {
   WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, VideoEditingMockup, PhotoMockup, MotionMockup,
 } from "./ServiceMockups";

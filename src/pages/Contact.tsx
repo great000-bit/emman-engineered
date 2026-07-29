@@ -8,7 +8,7 @@ import SocialLinks from "@/components/shared/SocialLinks";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
-import { services } from "@/data/siteData";
+import { services } from "@/data/services";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitToFormspree } from "@/lib/formspree";
@@ -122,21 +122,21 @@ const ContactPage = () => {
     <PageLayout>
       <SEO
         path="/contact"
-        title="Contact Creative Emman Limited | Start a Project"
-        description="Contact Creative Emman Limited to start a website, branding, UI/UX, social media, video editing, motion graphics, or digital growth project."
+        title="Contact Creative Emman Limited"
+        description="Contact Creative Emman Limited for website design, branding, web development, UI/UX, SEO, and digital strategy enquiries."
         keywords={[
-          "contact creative agency Nigeria",
+          "contact creative technology company Nigeria",
           "hire website designer Nigeria",
           "hire brand designer Nigeria",
           "Creative Emman Limited contact",
-          "digital agency Rivers State",
+          "digital company Rivers State",
         ]}
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             name: "Contact Creative Emman Limited",
-            url: "https://emman-engineered.vercel.app/contact",
+            url: "https://www.creativeemmanlimited.com/contact",
           },
           buildBreadcrumbSchema([{ name: "Contact", path: "/contact" }]),
         ]}
@@ -259,8 +259,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-display font-semibold mb-4 text-primary-foreground">Direct Line</h3>
                   <div className="space-y-3 text-sm text-muted-foreground">
-                    <a href="mailto:creativeemmanlimited@outlook.com" className="flex items-center gap-3 hover:text-accent transition-colors">
-                      <Mail size={16} className="text-accent" /> creativeemmanlimited@outlook.com
+                    <a href="mailto:creativeemmanlimited1@gmail.com" className="flex items-center gap-3 hover:text-accent transition-colors">
+                      <Mail size={16} className="text-accent" /> creativeemmanlimited1@gmail.com
                     </a>
                     <a
                       href="tel:07037845433"

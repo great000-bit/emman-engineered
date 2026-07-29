@@ -7,12 +7,12 @@ const XIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-// TODO: replace the '#' placeholders with the real profile URLs for each platform once available.
+// Confirmed official profile URLs for Instagram, X, Facebook, and LinkedIn.
 export const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#", Icon: Instagram },
-  { label: "X (Twitter)", href: "#", Icon: XIcon },
-  { label: "Facebook", href: "#", Icon: Facebook },
-  { label: "LinkedIn", href: "#", Icon: Linkedin },
+  { label: "Visit Creative Emman Limited on Instagram", href: "https://www.instagram.com/creativeemman_limited?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", Icon: Instagram },
+  { label: "Visit Creative Emman Limited on X", href: "https://x.com/CE_Limited1?s=20", Icon: XIcon },
+  { label: "Visit Creative Emman Limited on Facebook", href: "https://web.facebook.com/profile.php?id=61591330806057", Icon: Facebook },
+  { label: "Visit Creative Emman Limited on LinkedIn", href: "https://www.linkedin.com/company/creative-emman-limited", Icon: Linkedin },
 ] as const;
 
 interface SocialLinksProps {
@@ -22,9 +22,9 @@ interface SocialLinksProps {
 }
 
 /**
- * The site's single source of truth for social icons — exactly Instagram, X, Facebook,
- * LinkedIn, in that order, with consistent sizing, the blue/cyan glow hover state
- * (.social-glow, defined in index.css), and accessible labels for screen readers.
+ * The site's single source of truth for social icons — Instagram, X, Facebook, LinkedIn,
+ * with consistent sizing, the blue/cyan glow hover state (.social-glow, defined in
+ * index.css), and accessible labels for screen readers.
  */
 const SocialLinks = ({ size = 20, className = "flex gap-5", iconClassName = "text-primary-foreground/50 p-2 -m-2" }: SocialLinksProps) => (
   <div className={className}>
@@ -32,8 +32,8 @@ const SocialLinks = ({ size = 20, className = "flex gap-5", iconClassName = "tex
       <a
         key={label}
         href={href}
-        target={href !== "#" ? "_blank" : undefined}
-        rel={href !== "#" ? "noopener noreferrer" : undefined}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label={label}
         className={`social-glow transition-colors ${iconClassName}`}
       >
