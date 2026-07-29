@@ -13,6 +13,8 @@ import showcaseFilm from "@/assets/showcase-film.jpg";
 import showcaseMobile from "@/assets/showcase-mobile.jpg";
 import showcasePortrait from "@/assets/showcase-portrait.jpg";
 import showcaseSaas from "@/assets/showcase-saas.jpg";
+import showcaseSchool from "@/assets/BrightPathAcademy.png";
+import showcaseAdeyemi from "@/assets/AdeyemiPartners.png";
 
 export type PortfolioCategory =
   | "web-development"
@@ -109,35 +111,49 @@ export const portfolioProjects: PortfolioProject[] = [
   // ---------- Website Development ----------
   {
     id: "wd-1",
-    slug: "novapay-studio-platform",
+    slug: "brightpath-academy-website",
     category: "web-development",
-    title: "NovaPay Studio — SaaS Platform",
-    clientName: "NovaPay Studio",
-    projectType: "SaaS Web Application",
+    title: "BrightPath Academy — School Website",
+    clientName: "BrightPath Academy",
+    projectType: "School Website",
     status: "Concept Case Study",
-    shortDescription: "A performance-first dashboard for a fictional fintech SaaS, built to handle real-time data without feeling heavy.",
+    shortDescription:
+      "An editorial, boutique-studio school website built around a mustard-and-cream palette, serif headlines, and a signature geometric pattern motif — warm and welcoming without slipping into the generic school-template look.",
     story:
-      "NovaPay Studio needed a dashboard that financial teams could trust at a glance — fast, legible, and calm under pressure. We engineered the front end around real-time data streams while keeping interaction latency near-zero, then layered in a design system that reads as premium without sacrificing density.",
-    coverImage: showcaseSaas,
-    liveUrl: "",
-    features: ["Real-time transaction feed", "Role-based dashboards", "Exportable financial reports", "Dark/light theming"],
-    toolsUsed: ["React", "TypeScript", "Tailwind CSS", "PostgreSQL", "WebSockets"],
+      'BrightPath Academy needed a digital front door that felt as warm and welcoming as walking onto the actual campus without slipping into the generic "school template" look. We built an editorial, boutique-studio design system from scratch: a mustard-and-cream palette, serif headlines paired with clean sans-serif body text, and a signature geometric pattern motif that shows up as a recurring brand signature across every page. Twelve fully responsive pages later, admissions, academics, and campus life all read like a considered brand not a stock layout.',
+    coverImage: showcaseSchool,
+    liveUrl: "https://bright-pathacademy.vercel.app/",
+    features: [
+      "Full admissions flow — process, requirements, tuition, FAQ",
+      "Filterable faculty directory with individual staff profiles",
+      "Multi-category photo gallery of campus life",
+      "News & events system with detail pages",
+      "Fully responsive — mobile nav collapses cleanly to a matching brand experience",
+    ],
+    toolsUsed: ["React", "TypeScript", "Tailwind CSS", "React Router", "Framer Motion"],
   },
   {
     id: "wd-2",
-    slug: "radiance-logistics-platform",
+    slug: "adeyemi-partners-law-firm-website",
     category: "web-development",
-    title: "Radiance Logistics — Fleet Management Portal",
-    clientName: "Radiance Logistics",
-    projectType: "Enterprise Web Application",
+    title: "Adeyemi & Partners — Law Firm Website",
+    clientName: "Adeyemi & Partners",
+    projectType: "Corporate Law Firm Website",
     status: "Concept Case Study",
-    shortDescription: "An internal fleet-tracking portal concept for a fictional logistics company, built for dispatchers managing dozens of routes at once.",
+    shortDescription:
+      "A twelve-page corporate law firm site built around charcoal, ivory, and a disciplined gold accent — deliberately restrained so every element signals serious authority before a single word is read.",
     story:
-      "Dispatchers needed to see fleet status without digging through menus. We designed an at-a-glance command view — live vehicle states, route deviations flagged automatically, and a permissions layer so drivers, dispatchers, and admins each see only what they need.",
-    coverImage: showcaseEnterprise,
-    liveUrl: "",
-    features: ["Live fleet map", "Automated route-deviation alerts", "Driver/dispatcher/admin roles", "Exportable trip logs"],
-    toolsUsed: ["React", "Node.js", "PostgreSQL", "Mapbox", "Docker"],
+      'Adeyemi & Partners needed a site that earns trust in the first three seconds the kind of restraint that signals "serious firm" before a single word is read. We built the entire system around charcoal, ivory, and a disciplined gold accent, paired with a gravitas-forward serif for headlines and sharp, minimal-radius components throughout deliberately stripping out anything playful. The result is a twelve-page site where every practice area, attorney profile, and case result reinforces the same quiet authority.',
+    coverImage: showcaseAdeyemi,
+    liveUrl: "https://adeyemi-partners.vercel.app/",
+    features: [
+      "Practice area directory with individual deep-dive pages",
+      "Filterable attorney directory with full profile pages",
+      "Case results / track record section, filterable by practice area",
+      "Legal insights blog with article detail pages",
+      "Consultation request form with practice-area routing",
+    ],
+    toolsUsed: ["React", "TypeScript", "Tailwind CSS", "React Router", "Framer Motion"],
   },
 
   // ---------- UI/UX Design ----------

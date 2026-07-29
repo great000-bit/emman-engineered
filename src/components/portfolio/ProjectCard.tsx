@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import { PortfolioProject } from "@/data/portfolioData";
 import ProtectedImage from "@/components/shared/ProtectedImage";
 import StatusBadge from "./StatusBadge";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProjectCardProps {
   project: PortfolioProject;
   ctaLabel?: string;
 }
 
-const ProjectCard = ({ project, ctaLabel = "View Project" }: ProjectCardProps) => {
-  const goesLive = Boolean(project.liveUrl);
-  const Icon = goesLive ? ExternalLink : ArrowUpRight;
-
+// The card ALWAYS navigates to the internal case-study detail page.
+// If a liveUrl exists, the "Visit Live Site" button is shown on the detail
+// page itself — not here — so the card click is never hijacked.
+const ProjectCard = ({ project, ctaLabel = "View Case Study" }: ProjectCardProps) => {
   const cardInner = (
     <>
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-4">
@@ -36,7 +36,7 @@ const ProjectCard = ({ project, ctaLabel = "View Project" }: ProjectCardProps) =
           {ctaLabel}
         </span>
         <span className="inline-flex items-center justify-center w-9 aspect-square rounded-full bg-accent text-[#0a0a0b] -ml-px transition-transform duration-300 group-hover:rotate-45">
-          <Icon size={16} strokeWidth={2.25} />
+          <ArrowUpRight size={16} strokeWidth={2.25} />
         </span>
       </span>
     </>
@@ -44,14 +44,6 @@ const ProjectCard = ({ project, ctaLabel = "View Project" }: ProjectCardProps) =
 
   const cardClasses =
     "group block rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.025] hover:bg-primary-foreground/[0.045] hover:border-accent/25 transition-all duration-500 p-4";
-
-  if (goesLive) {
-    return (
-      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={cardClasses}>
-        {cardInner}
-      </a>
-    );
-  }
 
   return (
     <Link to={`/portfolio/${project.category}/${project.slug}`} className={cardClasses}>

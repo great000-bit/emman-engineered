@@ -144,7 +144,10 @@ const WebDevDetail = ({ project }: { project: PortfolioProject }) => (
             ))}
           </div>
           {project.liveUrl ? (
-            <HeroCTAAnchor href={project.liveUrl} target="_blank" rel="noopener noreferrer" label="View Project" icon={ExternalLink} />
+            <div className="flex flex-wrap gap-3 items-center">
+              <HeroCTAAnchor href={project.liveUrl} target="_blank" rel="noopener noreferrer" label="Visit Live Site" icon={ExternalLink} />
+              <HeroCTALink to={`/portfolio/${project.category}`} label="View All Projects" />
+            </div>
           ) : (
             <p className="text-sm text-primary-foreground/40">Live link not yet public for this concept case study.</p>
           )}
