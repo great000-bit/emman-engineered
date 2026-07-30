@@ -115,6 +115,7 @@ html.brand-loader-active body {
   display: flex;
   gap: 0.25em;
   width: max-content;
+  padding-right: 0.18em;
   padding-left: clamp(0.75rem, 2vw, 1.5rem);
   opacity: 0;
   transform: translateX(-2.4rem);
@@ -181,7 +182,7 @@ html.brand-loader-active body {
 
 @keyframes brand-loader-name-window {
   to {
-    width: clamp(16.5rem, 54vw, 36rem);
+    width: clamp(18rem, 62vw, 42rem);
   }
 }
 
@@ -255,7 +256,7 @@ html.brand-loader-active body {
 
   @keyframes brand-loader-name-window {
     to {
-      width: min(70vw, 18.5rem);
+      width: min(73vw, 20rem);
     }
   }
 }
