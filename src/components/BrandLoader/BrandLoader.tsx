@@ -92,9 +92,6 @@ const BrandLoader = () => {
 
       </div>
 
-      <div className="brand-loader__progress" aria-hidden="true">
-        <span />
-      </div>
     </section>
   );
 };
