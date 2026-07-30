@@ -1,0 +1,115 @@
+html.brand-loader-active,
+html.brand-loader-active body {
+  overflow: hidden;
+}
+
+.brand-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  color: #ffffff;
+  background: #000000;
+  will-change: opacity;
+}
+
+.brand-loader__lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(94vw, 980px);
+  min-height: 150px;
+  padding: 24px;
+}
+
+.brand-loader__mark {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(82px, 9vw, 126px);
+  height: auto;
+  overflow: visible;
+}
+
+.brand-loader__name-mask {
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+  will-change: grid-template-columns, clip-path, opacity;
+}
+
+.brand-loader__name-inner {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.brand-loader__name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  color: #ffffff;
+  white-space: nowrap;
+  font-family: "Space Grotesk", "Manrope", Arial, sans-serif;
+  font-size: clamp(1.4rem, 3.8vw, 3.9rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.brand-loader__name-accent {
+  color: #00a3f5;
+}
+
+@media (max-width: 680px) {
+  .brand-loader__lockup {
+    width: 97vw;
+    min-height: 120px;
+    padding: 16px;
+  }
+
+  .brand-loader__mark {
+    width: clamp(64px, 18vw, 88px);
+  }
+
+  .brand-loader__name-mask {
+    --loader-name-gap: 14px;
+  }
+
+  .brand-loader__name {
+    gap: 0.2em;
+    font-size: clamp(0.96rem, 5vw, 1.7rem);
+    letter-spacing: -0.04em;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-loader__lockup {
+    padding: 10px;
+  }
+
+  .brand-loader__mark {
+    width: 58px;
+  }
+
+  .brand-loader__name-mask {
+    --loader-name-gap: 8px;
+  }
+
+  .brand-loader__name {
+    font-size: clamp(0.82rem, 4.5vw, 1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-loader *,
+  .brand-loader *::before,
+  .brand-loader *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
