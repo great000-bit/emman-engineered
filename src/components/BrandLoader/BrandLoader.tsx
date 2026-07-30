@@ -53,6 +53,7 @@ const BrandLoader = () => {
       aria-label="Loading Creative Emman Limited"
       onAnimationEnd={finish}
     >
+      <span className="brand-loader__ambient-wave" aria-hidden="true" />
       <span className="brand-loader__ring brand-loader__ring--outer" aria-hidden="true" />
       <span className="brand-loader__ring brand-loader__ring--inner" aria-hidden="true" />
 
@@ -90,7 +91,6 @@ const BrandLoader = () => {
           </div>
         </div>
 
-        <span className="brand-loader__asset-glow" aria-hidden="true" />
       </div>
 
       <div className="brand-loader__progress" aria-hidden="true">
