@@ -135,32 +135,6 @@ html.brand-loader-active body {
   color: #00a3f5;
 }
 
-.brand-loader__progress {
-  position: absolute;
-  bottom: clamp(2rem, 7vh, 4.5rem);
-  left: 50%;
-  width: min(11rem, 42vw);
-  height: 2px;
-  overflow: hidden;
-  border-radius: 999px;
-  opacity: 0;
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateX(-50%);
-  animation:
-    brand-loader-progress-show 240ms ease 500ms forwards,
-    brand-loader-progress-out 220ms ease 4.12s forwards;
-}
-
-.brand-loader__progress span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #00a3f5, #8ee1ff);
-  transform: translateX(-100%);
-  animation: brand-loader-progress-fill 3.45s cubic-bezier(0.65, 0, 0.35, 1)
-    520ms forwards;
-}
-
 @keyframes brand-loader-crescent {
   0% {
     opacity: 0;
@@ -244,24 +218,6 @@ html.brand-loader-active body {
   }
 }
 
-@keyframes brand-loader-progress-show {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes brand-loader-progress-fill {
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes brand-loader-progress-out {
-  to {
-    opacity: 0;
-  }
-}
-
 @keyframes brand-loader-asset-out {
   to {
     opacity: 0;
@@ -306,8 +262,7 @@ html.brand-loader-active body {
 
 @media (prefers-reduced-motion: reduce) {
   .brand-loader__ring,
-  .brand-loader__spark,
-  .brand-loader__progress {
+  .brand-loader__spark {
     display: none;
   }
 
