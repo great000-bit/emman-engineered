@@ -5,6 +5,7 @@ import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import PageLayout from "@/components/layout/PageLayout";
+import BrandLoader from "@/components/BrandLoader/BrandLoader";
 import Index from "./pages/Index";
 
 const Services = lazy(() => import("./pages/Services"));
@@ -32,35 +33,38 @@ const RouteLoadingFallback = () => (
 );
 
 const App = () => (
-  <ErrorBoundary>
-    <TooltipProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={<RouteLoadingFallback />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/team/:id" element={<TeamProfile />} />
-            <Route path="/trainings" element={<Trainings />} />
-            <Route path="/testimonials" element={<Testimonials />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/applications" element={<Applications />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/portfolio/:category" element={<PortfolioCategoryPage />} />
-            <Route path="/portfolio/:category/:slug" element={<PortfolioProjectPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-      {/* Vercel Analytics — mounted once here so it loads on every route (this is a Vite
-          SPA, not Next.js, so there's no root layout.tsx; App.tsx is the true root that
-          renders once for the whole site). Placed after all routed content, per the
-          "near the end, after main content" convention from Next.js's own root-layout
-          pattern. */}
-      <Analytics />
-    </TooltipProvider>
-  </ErrorBoundary>
+  <>
+    <BrandLoader />
+    <ErrorBoundary>
+      <TooltipProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Suspense fallback={<RouteLoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/team/:id" element={<TeamProfile />} />
+              <Route path="/trainings" element={<Trainings />} />
+              <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/applications" element={<Applications />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/portfolio/:category" element={<PortfolioCategoryPage />} />
+              <Route path="/portfolio/:category/:slug" element={<PortfolioProjectPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+        {/* Vercel Analytics — mounted once here so it loads on every route (this is a Vite
+            SPA, not Next.js, so there's no root layout.tsx; App.tsx is the true root that
+            renders once for the whole site). Placed after all routed content, per the
+            "near the end, after main content" convention from Next.js's own root-layout
+            pattern. */}
+        <Analytics />
+      </TooltipProvider>
+    </ErrorBoundary>
+  </>
 );
 
 export default App;
