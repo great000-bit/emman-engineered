@@ -6,6 +6,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import PageLayout from "@/components/layout/PageLayout";
 import BrandLoader from "@/components/BrandLoader/BrandLoader";
+import IconLoadingState from "@/components/BrandLoader/IconLoadingState";
 import Index from "./pages/Index";
 
 const Services = lazy(() => import("./pages/Services"));
@@ -22,13 +23,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const RouteLoadingFallback = () => (
   <PageLayout>
-    <div
-      role="status"
-      aria-live="polite"
-      className="min-h-[50vh] flex items-center justify-center bg-primary px-4 text-primary-foreground"
-    >
-      Loading…
-    </div>
+    <IconLoadingState />
   </PageLayout>
 );
 
