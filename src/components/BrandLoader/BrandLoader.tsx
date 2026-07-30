@@ -53,52 +53,6 @@ const BrandLoader = () => {
       aria-label="Loading Creative Emman Limited"
       onAnimationEnd={finish}
     >
-      <svg
-        className="brand-loader__ambient-wave"
-        viewBox="0 0 1000 1000"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="brand-water-fill" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#001c38" stopOpacity="0" />
-            <stop offset="55%" stopColor="#006fbd" stopOpacity="0.2" />
-            <stop offset="88%" stopColor="#00a3f5" stopOpacity="0.45" />
-            <stop offset="100%" stopColor="#bfefff" stopOpacity="0.72" />
-          </linearGradient>
-          <filter id="brand-water-distortion" x="-20%" y="-10%" width="150%" height="120%">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.006 0.018"
-              numOctaves="2"
-              seed="7"
-              result="waterNoise"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="waterNoise"
-              scale="46"
-              xChannelSelector="R"
-              yChannelSelector="B"
-            />
-          </filter>
-        </defs>
-
-        <g filter="url(#brand-water-distortion)">
-          <path
-            fill="url(#brand-water-fill)"
-            d="M-80-80H610C760 52 466 166 626 296C786 428 488 548 648 680C804 810 526 924 690 1080H-80Z"
-          />
-          <path
-            className="brand-loader__water-edge"
-            d="M610-80C760 52 466 166 626 296C786 428 488 548 648 680C804 810 526 924 690 1080"
-          />
-          <path
-            className="brand-loader__water-highlight"
-            d="M550-80C696 58 418 172 578 302C732 430 442 552 600 684C750 814 480 932 642 1080"
-          />
-        </g>
-      </svg>
       <span className="brand-loader__ring brand-loader__ring--outer" aria-hidden="true" />
       <span className="brand-loader__ring brand-loader__ring--inner" aria-hidden="true" />
 
