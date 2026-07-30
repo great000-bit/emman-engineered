@@ -135,40 +135,6 @@ html.brand-loader-active body {
   color: #00a3f5;
 }
 
-.brand-loader__ambient-wave {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  z-index: 0;
-  width: 72vw;
-  height: 125vh;
-  overflow: visible;
-  pointer-events: none;
-  opacity: 0;
-  transform: translate(-120%, -50%);
-  will-change: transform, opacity;
-  animation: brand-loader-water-wave 1.38s cubic-bezier(0.45, 0, 0.25, 1)
-    2.78s forwards;
-}
-
-.brand-loader__water-edge,
-.brand-loader__water-highlight {
-  fill: none;
-  stroke-linecap: round;
-}
-
-.brand-loader__water-edge {
-  stroke: rgba(189, 240, 255, 0.82);
-  stroke-width: 8;
-  filter: drop-shadow(0 0 14px rgba(0, 163, 245, 0.52));
-}
-
-.brand-loader__water-highlight {
-  stroke: rgba(96, 211, 255, 0.28);
-  stroke-width: 18;
-  filter: blur(5px);
-}
-
 .brand-loader__progress {
   position: absolute;
   bottom: clamp(2rem, 7vh, 4.5rem);
@@ -278,31 +244,6 @@ html.brand-loader-active body {
   }
 }
 
-@keyframes brand-loader-water-wave {
-  0% {
-    opacity: 0;
-    transform: translate(-120%, -50%);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 1;
-    transform: translate(46vw, -50%);
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translate(155vw, -50%);
-  }
-}
-
 @keyframes brand-loader-progress-show {
   to {
     opacity: 1;
@@ -366,7 +307,6 @@ html.brand-loader-active body {
 @media (prefers-reduced-motion: reduce) {
   .brand-loader__ring,
   .brand-loader__spark,
-  .brand-loader__ambient-wave,
   .brand-loader__progress {
     display: none;
   }
