@@ -1,7 +1,7 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import PageLayout from "@/components/layout/PageLayout";
@@ -14,7 +14,8 @@ const Team = lazy(() => import("./pages/Team"));
 const TeamProfile = lazy(() => import("./pages/Team").then((module) => ({ default: module.TeamProfile })));
 const Trainings = lazy(() => import("./pages/Trainings"));
 const Testimonials = lazy(() => import("./pages/Testimonials"));
-const Contact = lazy(() => import("./pages/Contact"));
+const loadContact = () => import("./pages/Contact");
+const Contact = lazy(loadContact);
 const Applications = lazy(() => import("./pages/Applications"));
 const PortfolioPage = lazy(() => import("./pages/portfolio/PortfolioPage"));
 const PortfolioCategoryPage = lazy(() => import("./pages/portfolio/PortfolioCategoryPage"));
@@ -26,6 +27,30 @@ const RouteLoadingFallback = () => (
     <IconLoadingState />
   </PageLayout>
 );
+
+const ContactWithLoader = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    void loadContact();
+
+    const timer = window.setTimeout(() => {
+      setLoading(false);
+    }, 1850);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <PageLayout>
+        <IconLoadingState />
+      </PageLayout>
+    );
+  }
+
+  return <Contact />;
+};
 
 const App = () => (
   <>
@@ -42,7 +67,7 @@ const App = () => (
               <Route path="/team/:id" element={<TeamProfile />} />
               <Route path="/trainings" element={<Trainings />} />
               <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path="/contact" element={<ContactWithLoader />} />
               <Route path="/applications" element={<Applications />} />
               <Route path="/portfolio" element={<PortfolioPage />} />
               <Route path="/portfolio/:category" element={<PortfolioCategoryPage />} />
