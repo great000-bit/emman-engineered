@@ -1,0 +1,15 @@
+html:not(.brand-loader-complete),
+html:not(.brand-loader-complete) body {
+  overflow: hidden;
+}
+
+#brand-loader-bootstrap {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #000000;
+}

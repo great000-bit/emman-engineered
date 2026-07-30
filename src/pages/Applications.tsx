@@ -10,6 +10,7 @@ import { z } from "zod";
 import { submitToFormspree } from "@/lib/formspree";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 import InternshipOnboardingModal from "@/components/shared/InternshipOnboardingModal";
+import { useSuccessSound } from "@/hooks/useSuccessSound";
 
 type ApplicationTab = "professional" | "internship";
 
@@ -148,6 +149,7 @@ const ProfessionalRoleForm = () => {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const { unlockSuccessSound, playSuccessSound } = useSuccessSound();
 
   const set = (key: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [key]: v }));
 
@@ -165,6 +167,7 @@ const ProfessionalRoleForm = () => {
     setErrors({});
     setStatus("submitting");
 
+    unlockSuccessSound();
     const { ok } = await submitToFormspree("Professional Role Application", {
       applicationType: "Professional Role",
       fullName: form.fullName,
@@ -182,6 +185,7 @@ const ProfessionalRoleForm = () => {
     });
 
     if (ok) {
+      playSuccessSound();
       setStatus("success");
       setForm({
         fullName: "", email: "", phone: "", location: "", roleApplyingFor: "",
@@ -276,6 +280,7 @@ const InternshipForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [showOnboardingModal, setShowOnboardingModal] = useState(false);
+  const { unlockSuccessSound, playSuccessSound } = useSuccessSound();
 
   const set = (key: keyof typeof form) => (v: string) => setForm((f) => ({ ...f, [key]: v }));
 
@@ -303,6 +308,7 @@ const InternshipForm = () => {
     setErrors({});
     setStatus("submitting");
 
+    unlockSuccessSound();
     const { ok } = await submitToFormspree("Internship Application", {
       applicationType: "Internship",
       fullName: form.fullName,
@@ -318,6 +324,7 @@ const InternshipForm = () => {
     });
 
     if (ok) {
+      playSuccessSound();
       setStatus("success");
       setForm({
         fullName: "", email: "", phone: "", location: "", internshipArea: "",

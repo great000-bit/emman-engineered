@@ -1,15 +1,27 @@
 // Shared Formspree submit helper for every form on the site (Contact, Professional Role
-// application, Internship application). All three currently submit to the same Formspree
-// endpoint/form.
+// application, Internship application). Contact and application submissions now route to
+// separate Formspree endpoints while preserving the existing professional/internship form
+// layout, validation, loading states, and success states.
 //
-// The endpoint is read from VITE_FORMSPREE_ENDPOINT (see .env.example) but falls back to
-// the real production endpoint below if that env var is missing, so a missing .env can
-// never silently break submissions in production — per the brief, "do not let a missing
-// env variable break production."
-const FALLBACK_ENDPOINT = "https://formspree.io/f/mykqknqa";
-const ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || FALLBACK_ENDPOINT;
+// The contact endpoint is configured by VITE_FORMSPREE_CONTACT_ENDPOINT and falls back to
+// the approved production contact form path. The applications endpoint is configured by
+// VITE_FORMSPREE_APPLICATIONS_ENDPOINT and falls back to the existing applications form path.
+const CONTACT_FALLBACK_ENDPOINT = "https://formspree.io/f/xdaqjqwe";
+const APPLICATIONS_FALLBACK_ENDPOINT = "https://formspree.io/f/mykqknqa";
 
 export type FormType = "Contact Form" | "Professional Role Application" | "Internship Application";
+
+const getEndpointForFormType = (formType: FormType) => {
+  if (formType === "Contact Form") {
+    return (
+      import.meta.env.VITE_FORMSPREE_CONTACT_ENDPOINT || CONTACT_FALLBACK_ENDPOINT
+    );
+  }
+
+  return (
+    import.meta.env.VITE_FORMSPREE_APPLICATIONS_ENDPOINT || APPLICATIONS_FALLBACK_ENDPOINT
+  );
+};
 
 // Clean, specific subject line per form type — kept short and human-readable rather than
 // the previous generic "New submission — {type}", since vague/templated subject lines are
@@ -70,7 +82,15 @@ export const submitToFormspree = async (
     formData.append("_subject", SUBJECT_BY_FORM_TYPE[formType]);
     formData.append("_gotcha", ""); // honeypot — Formspree silently drops submissions where this is filled
 
-    const res = await fetch(ENDPOINT, {
+    // If the user provided an email, include it as the Reply-To header so received
+    // messages have a sensible reply address and are less likely to be classified
+    // as spam by downstream mail systems.
+    if (payload.email) {
+      formData.append("_replyto", payload.email);
+    }
+
+    const endpoint = getEndpointForFormType(formType);
+    const res = await fetch(endpoint, {
       method: "POST",
       body: formData,
       headers: { Accept: "application/json" },
