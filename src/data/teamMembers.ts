@@ -19,7 +19,7 @@ export const teamMembers = [
     stack: ["Next.js", "Figma", "Meta Business Suite", "Adobe Creative Cloud", "Sony Cinema Line", "DaVinci Resolve", "After Effects", "Lightroom"],
     image: GreatEmmanImg,
     linkedin: "https://www.linkedin.com/in/great-emman-wori",
-    portfolio: "https://creative-emman.vercel.app",
+    portfolio: "https://www.creativeemmanlimited.com",
     email: "greatemmanwori@gmail.com",
   },
   {

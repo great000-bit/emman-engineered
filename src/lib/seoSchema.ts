@@ -1,4 +1,4 @@
-const SITE_URL = "https://www.creativeemmanlimited.com";
+import { SITE_URL, absoluteSiteUrl } from "@/config/site";
 
 /**
  * Builds a BreadcrumbList JSON-LD schema for a page. Pass an ordered list of
@@ -10,11 +10,12 @@ const SITE_URL = "https://www.creativeemmanlimited.com";
 export const buildBreadcrumbSchema = (trail: { name: string; path: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
+  "@id": `${absoluteSiteUrl(trail.at(-1)?.path ?? "/")}#breadcrumb`,
   itemListElement: [{ name: "Home", path: "/" }, ...trail].map((item, index) => ({
     "@type": "ListItem",
     position: index + 1,
     name: item.name,
-    item: `${SITE_URL}${item.path}`,
+    item: absoluteSiteUrl(item.path),
   })),
 });
 
@@ -26,6 +27,8 @@ export const buildBreadcrumbSchema = (trail: { name: string; path: string }[]) =
 export const buildFaqSchema = (faqs: { question: string; answer: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  "@id": `${SITE_URL}/#faq`,
+  inLanguage: "en-NG",
   mainEntity: faqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,

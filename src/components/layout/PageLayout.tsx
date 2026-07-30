@@ -3,6 +3,17 @@ import { Helmet } from "react-helmet-async";
 import Header from "./Header";
 import Footer from "./Footer";
 import { motion } from "framer-motion";
+import {
+  COMPANY_EMAIL,
+  COMPANY_PHONE,
+  ORGANIZATION_ID,
+  SERVICE_NAMES,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_PROFILES,
+  WEBSITE_ID,
+} from "@/config/site";
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -18,32 +29,47 @@ const SiteWideStructuredData = () => (
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "Creative Emman Limited",
-        url: "https://www.creativeemmanlimited.com",
-        logo: "https://www.creativeemmanlimited.com/favicon.png",
-        description:
-          "Creative Emman Limited is a global creative and technology company helping startups, businesses, and organisations build websites, brand identities, digital products, and growth-focused digital experiences.",
-        email: "creativeemmanlimited1@gmail.com",
-        telephone: "+234-703-784-5433",
-        address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
-        // LinkedIn confirmed by the site owner: https://www.linkedin.com/company/creative-emman-limited
-        sameAs: [
-          "https://www.instagram.com/creativeemman_limited?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-          "https://x.com/CE_Limited1?s=20",
-          "https://web.facebook.com/profile.php?id=61591330806057",
-          "https://www.linkedin.com/company/creative-emman-limited",
-        ],
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": ORGANIZATION_ID,
+        name: SITE_NAME,
+        legalName: SITE_NAME,
+        url: SITE_URL,
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/favicon.png`,
+        },
+        image: `${SITE_URL}/og-image.jpg`,
+        description: SITE_DESCRIPTION,
+        email: COMPANY_EMAIL,
+        telephone: COMPANY_PHONE,
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: "Rivers State",
+          addressCountry: "NG",
+        },
+        areaServed: "Worldwide",
+        knowsAbout: SERVICE_NAMES,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          email: COMPANY_EMAIL,
+          telephone: COMPANY_PHONE,
+          areaServed: "Worldwide",
+          availableLanguage: ["English"],
+        },
+        sameAs: SOCIAL_PROFILES,
       })}
     </script>
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "Creative Emman Limited",
-        url: "https://www.creativeemmanlimited.com",
-        description:
-          "Creative Emman Limited is a global creative and technology company helping businesses build websites, brand identities, digital products, and growth-focused digital experiences.",
+        "@id": WEBSITE_ID,
+        name: SITE_NAME,
+        url: `${SITE_URL}/`,
+        description: SITE_DESCRIPTION,
+        inLanguage: "en-NG",
+        publisher: { "@id": ORGANIZATION_ID },
       })}
     </script>
   </Helmet>

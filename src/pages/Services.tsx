@@ -8,6 +8,7 @@ import BarFanCorner from "@/components/shared/BarFanCorner";
 import IconGlow from "@/components/shared/IconGlow";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
+import { ORGANIZATION_ID, SITE_URL } from "@/config/site";
 import {
   Accordion,
   AccordionContent,
@@ -19,8 +20,8 @@ const ServicesPage = () => (
   <PageLayout>
     <SEO
       path="/services"
-      title="Services | Creative Emman Limited"
-      description="Explore Creative Emman Limited's website design, web development, branding, UI/UX, SEO, and digital strategy services for startups, businesses, and organisations."
+      title="Creative & Technology Services | Creative Emman Limited"
+      description="Explore website development, UI/UX, branding, social media, videography, video editing, motion graphics, and photography services from Creative Emman Limited."
       keywords={[
         "web development company",
         "UI UX design company",
@@ -45,12 +46,13 @@ const ServicesPage = () => (
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
+          "@id": ORGANIZATION_ID,
           name: "Creative Emman Limited",
-          url: "https://www.creativeemmanlimited.com",
+          url: SITE_URL,
           email: "creativeemmanlimited1@gmail.com",
           telephone: "+234-703-784-5433",
-          address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
-          areaServed: "Global",
+          address: { "@type": "PostalAddress", addressRegion: "Rivers State", addressCountry: "NG" },
+          areaServed: "Worldwide",
           serviceType: "Creative and Technology Services",
         },
         {
@@ -63,8 +65,8 @@ const ServicesPage = () => (
               "@type": "Service",
               name: s.title,
               description: s.description,
-              provider: { "@type": "Organization", name: "Creative Emman Limited" },
-              areaServed: "Global",
+              provider: { "@id": ORGANIZATION_ID },
+              areaServed: "Worldwide",
             },
           })),
         },
