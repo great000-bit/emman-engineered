@@ -19,12 +19,20 @@ html.brand-loader-active body {
 }
 
 .brand-loader__lockup {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   width: min(94vw, 980px);
   min-height: 150px;
   padding: 24px;
+}
+
+.brand-loader__asset {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .brand-loader__mark {
@@ -63,6 +71,25 @@ html.brand-loader-active body {
 
 .brand-loader__name-accent {
   color: #00a3f5;
+}
+
+.brand-loader__glow {
+  position: absolute;
+  inset-block: -20%;
+  left: 0;
+  width: 32%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    rgba(0, 163, 245, 0.32),
+    transparent
+  );
+  filter: blur(8px);
+  mix-blend-mode: screen;
+  transform: skewX(-18deg);
+  will-change: transform, opacity;
 }
 
 @media (max-width: 680px) {
