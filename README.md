@@ -26,8 +26,9 @@ Creative Emman Limited is a multidisciplinary creative and technology company of
 - Services showcase with animated mini-mockups per discipline
 - Centralized portfolio data model with category-specific case study presentation (brand identity, UI/UX, web development, social media, video, and motion graphics each use a layout suited to that discipline)
 - Image protection component (`ProtectedImage`) applied across portfolio imagery to discourage casual downloading while preserving accessibility
-- Careers/Applications page with separate Professional Role and Internship application forms, validated with Zod and submitted via Formspree
+- Careers/Applications page with separate Professional Role and Internship application forms, validated with Zod and submitted via Formspree (applications keep the existing endpoint)
 - Contact form with validation, loading/success/error states, and WhatsApp quick-contact option
+- Contact and application forms now use separate Formspree endpoints to preserve targeted routing and avoid changing the existing application form destination
 - SEO: per-page meta tags, Open Graph/Twitter cards, JSON-LD structured data, sitemap, and robots.txt
 
 ## Pages
@@ -97,7 +98,8 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 
 | Variable | Required | Description |
 |---|---|---|
-| `VITE_FORMSPREE_ENDPOINT` | For all forms to send (Contact, Professional Role, Internship) | Formspree endpoint URL (e.g. `https://formspree.io/f/abcd1234`) that every form on the site submits to. Create this at [formspree.io](https://formspree.io), pointed at the company inbox. This is optional — if unset, the site falls back to the production endpoint already hardcoded in `src/lib/formspree.ts`, so a missing `.env` will never break form submissions in production. |
+| `VITE_FORMSPREE_CONTACT_ENDPOINT` | Optional | Formspree endpoint URL for the contact page (e.g. `https://formspree.io/f/xdaqjqwe`). Contact submissions route here.
+| `VITE_FORMSPREE_APPLICATIONS_ENDPOINT` | Optional | Formspree endpoint URL for both the Professional Role and Internship application forms (e.g. `https://formspree.io/f/mykqknqa`). If unset, the site falls back to the production application endpoint hardcoded in `src/lib/formspree.ts`. |
 
 `.env` is gitignored and should never be committed.
 
@@ -107,3 +109,12 @@ Copy `.env.example` to `.env` and fill in real values before running locally or 
 Email: [creativeemmanlimited1@gmail.com](mailto:creativeemmanlimited1@gmail.com)
 WhatsApp: +234 703 784 5433
 Location: Rivers State, Nigeria
+
+## Formspree configuration
+
+- The contact form now submits to a dedicated Formspree endpoint: `xdaqjqwe`.
+- Professional Role and Internship applications continue to submit to the existing applications endpoint.
+- The receiving email address is controlled by the Formspree dashboard owner, not by the front-end code.
+- The approved production domain is `https://www.creativeemmanlimited.com`.
+- A short local success chime plays for successful application submissions using the browser Web Audio API.
+- If audio is unavailable, the form still completes successfully and the visual success state remains.

@@ -1,0 +1,401 @@
+2026-07-30T13:30:02.495Z vite:config config file loaded in 85.47ms
+2026-07-30T13:30:02.500Z vite:env loading env files: [
+  'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/.env',
+  'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/.env.local',
+  'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/.env.production',
+  'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/.env.production.local'
+]
+2026-07-30T13:30:02.500Z vite:env env files loaded in 0.67ms
+2026-07-30T13:30:02.501Z vite:env using resolved env: {}
+2026-07-30T13:30:02.541Z vite:config using resolved config: {
+  server: {
+    port: 8080,
+    strictPort: false,
+    host: '::',
+    allowedHosts: [],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
+    },
+    headers: {},
+    warmup: { clientFiles: [], ssrFiles: [] },
+    middlewareMode: false,
+    fs: {
+      strict: true,
+      deny: [ '.env', '.env.*', '*.{crt,pem}', '**/.git/**' ],
+      allow: [
+        'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered',
+        'c:/Users/user/Documents/GitHub/emman-engineered/node_modules/vite/dist/client'
+      ]
+    },
+    preTransformRequests: true,
+    perEnvironmentStartEndDuringDev: false,
+    sourcemapIgnoreList: [Function: isInNodeModules$1],
+    hmr: { overlay: false }
+  },
+  plugins: [
+    'vite:build-metadata',
+    'vite:watch-package-data',
+    'alias',
+    'vite:modulepreload-polyfill',
+    'vite:resolve',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'vite:esbuild',
+    'vite:json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    'vite:react-swc',
+    'vite:wasm-fallback',
+    'vite:define',
+    'vite:css-post',
+    'vite:build-html',
+    'vite:worker-import-meta-url',
+    'vite:asset-import-meta-url',
+    'vite:force-systemjs-wrap-complete',
+    'commonjs',
+    'vite:data-uri',
+    'vite:rollup-options-plugins',
+    'vite:dynamic-import-vars',
+    'vite:import-glob',
+    'vite:build-import-analysis',
+    'vite:esbuild-transpile',
+    'vite:terser',
+    'vite:manifest',
+    'vite:ssr-manifest',
+    'vite:reporter',
+    'vite:load-fallback'
+  ],
+  resolve: {
+    externalConditions: [ 'node' ],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [],
+    noExternal: [],
+    external: [],
+    preserveSymlinks: false,
+    alias: [
+      {
+        find: '@',
+        replacement: 'c:\\Users\\user\\Documents\\GitHub\\emman-engineered\\emman-engineered\\src'
+      },
+      {
+        find: /^\/?@vite\/env/,
+        replacement: '/@fs/c:/Users/user/Documents/GitHub/emman-engineered/node_modules/vite/dist/client/env.mjs'
+      },
+      {
+        find: /^\/?@vite\/client/,
+        replacement: '/@fs/c:/Users/user/Documents/GitHub/emman-engineered/node_modules/vite/dist/client/client.mjs'
+      }
+    ],
+    mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+    conditions: [ 'module', 'browser', 'development|production' ],
+    builtins: []
+  },
+  logLevel: 'debug',
+  build: {
+    target: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+    polyfillModulePreload: true,
+    modulePreload: { polyfill: true },
+    outDir: 'dist',
+    assetsDir: 'assets',
+    assetsInlineLimit: 4096,
+    sourcemap: false,
+    terserOptions: {},
+    rollupOptions: { onwarn: [Function: onwarn] },
+    commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+    dynamicImportVarsOptions: { warnOnError: true, exclude: [ /node_modules/ ] },
+    write: true,
+    emptyOutDir: null,
+    copyPublicDir: true,
+    manifest: false,
+    lib: false,
+    ssrManifest: false,
+    ssrEmitAssets: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
+    watch: null,
+    cssCodeSplit: true,
+    minify: 'esbuild',
+    ssr: false,
+    emitAssets: true,
+    createEnvironment: [Function: createEnvironment],
+    cssTarget: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+    cssMinify: true
+  },
+  esbuild: {
+    jsxDev: false,
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+    tsconfigRaw: { compilerOptions: { useDefineForClassFields: true } }
+  },
+  environments: {
+    client: {
+      define: undefined,
+      resolve: {
+        externalConditions: [ 'node' ],
+        extensions: [
+          '.mjs',  '.js',
+          '.mts',  '.ts',
+          '.jsx',  '.tsx',
+          '.json'
+        ],
+        dedupe: [],
+        noExternal: [],
+        external: [],
+        preserveSymlinks: false,
+        alias: [
+          {
+            find: '@',
+            replacement: 'c:\\Users\\user\\Documents\\GitHub\\emman-engineered\\emman-engineered\\src'
+          },
+          {
+            find: /^\/?@vite\/env/,
+            replacement: '/@fs/c:/Users/user/Documents/GitHub/emman-engineered/node_modules/vite/dist/client/env.mjs'
+          },
+          {
+            find: /^\/?@vite\/client/,
+            replacement: '/@fs/c:/Users/user/Documents/GitHub/emman-engineered/node_modules/vite/dist/client/client.mjs'
+          }
+        ],
+        mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+        conditions: [ 'module', 'browser', 'development|production' ],
+        builtins: []
+      },
+      keepProcessEnv: false,
+      consumer: 'client',
+      optimizeDeps: {
+        include: [],
+        exclude: [],
+        needsInterop: [],
+        extensions: [],
+        disabled: undefined,
+        holdUntilCrawlEnd: true,
+        force: false,
+        noDiscovery: false,
+        esbuildOptions: { preserveSymlinks: false }
+      },
+      dev: {
+        warmup: [],
+        sourcemap: { js: true },
+        sourcemapIgnoreList: [Function: isInNodeModules$1],
+        preTransformRequests: true,
+        createEnvironment: [Function: defaultCreateClientDevEnvironment],
+        recoverable: true,
+        moduleRunnerTransform: false
+      },
+      build: {
+        target: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+        polyfillModulePreload: true,
+        modulePreload: { polyfill: true },
+        outDir: 'dist',
+        assetsDir: 'assets',
+        assetsInlineLimit: 4096,
+        sourcemap: false,
+        terserOptions: {},
+        rollupOptions: { onwarn: [Function: onwarn] },
+        commonjsOptions: { include: [ /node_modules/ ], extensions: [ '.js', '.cjs' ] },
+        dynamicImportVarsOptions: { warnOnError: true, exclude: [ /node_modules/ ] },
+        write: true,
+        emptyOutDir: null,
+        copyPublicDir: true,
+        manifest: false,
+        lib: false,
+        ssrManifest: false,
+        ssrEmitAssets: false,
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 500,
+        watch: null,
+        cssCodeSplit: true,
+        minify: 'esbuild',
+        ssr: false,
+        emitAssets: true,
+        createEnvironment: [Function: createEnvironment],
+        cssTarget: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+        cssMinify: true
+      }
+    }
+  },
+  configFile: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/vite.config.ts',
+  configFileDependencies: [
+    'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/vite.config.ts'
+  ],
+  inlineConfig: {
+    root: undefined,
+    base: undefined,
+    mode: undefined,
+    configFile: undefined,
+    configLoader: undefined,
+    logLevel: 'debug',
+    clearScreen: undefined,
+    build: {}
+  },
+  root: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered',
+  base: '/',
+  decodedBase: '/',
+  rawBase: '/',
+  publicDir: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/public',
+  cacheDir: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered/node_modules/.vite',
+  command: 'build',
+  mode: 'production',
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: true,
+  css: {
+    transformer: 'postcss',
+    preprocessorMaxWorkers: 0,
+    devSourcemap: false
+  },
+  json: { namedExports: true, stringify: 'auto' },
+  builder: undefined,
+  preview: {
+    port: 4173,
+    strictPort: false,
+    host: '::',
+    allowedHosts: [],
+    https: undefined,
+    open: false,
+    proxy: undefined,
+    cors: {
+      origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
+    },
+    headers: {}
+  },
+  envDir: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered',
+  env: { BASE_URL: '/', MODE: 'production', DEV: false, PROD: true },
+  assetsInclude: [Function: assetsInclude],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered' => {
+      dir: 'c:/Users/user/Documents/GitHub/emman-engineered/emman-engineered',
+      data: {
+        name: 'creative-emman-limited-website',
+        version: '0.0.0',
+        private: true,
+        description: 'Official company website for Creative Emman Limited, showcasing services, team members, portfolio work, applications, and contact information.',
+        homepage: 'https://github.com/great000-bit/emman-engineered#readme',
+        bugs: {
+          url: 'https://github.com/great000-bit/emman-engineered/issues'
+        },
+        repository: {
+          type: 'git',
+          url: 'git+https://github.com/great000-bit/emman-engineered.git'
+        },
+        license: 'ISC',
+        author: '',
+        type: 'module',
+        main: 'eslint.config.js',
+        scripts: {
+          dev: 'vite',
+          prebuild: 'node scripts/generate-sitemap.mjs',
+          build: 'vite build',
+          'build:dev': 'vite build --mode development',
+          sitemap: 'node scripts/generate-sitemap.mjs',
+          lint: 'eslint .',
+          preview: 'vite preview',
+          test: 'vitest run',
+          'test:watch': 'vitest'
+        },
+        dependencies: {
+          '@radix-ui/react-accordion': '^1.2.11',
+          '@radix-ui/react-dialog': '^1.1.14',
+          '@radix-ui/react-select': '^2.2.5',
+          '@radix-ui/react-slot': '^1.2.3',
+          '@radix-ui/react-tooltip': '^1.2.7',
+          '@vercel/analytics': '^2.0.1',
+          'class-variance-authority': '^0.7.1',
+          clsx: '^2.1.1',
+          'framer-motion': '^12.34.3',
+          'lucide-react': '^0.462.0',
+          react: '^18.3.1',
+          'react-dom': '^18.3.1',
+          'react-helmet-async': '^3.0.0',
+          'react-router-dom': '^6.30.1',
+          'tailwind-merge': '^2.6.0',
+          'tailwindcss-animate': '^1.0.7',
+          zod: '^3.25.76'
+        },
+        devDependencies: {
+          '@eslint/js': '^9.32.0',
+          '@tailwindcss/typography': '^0.5.16',
+          '@testing-library/jest-dom': '^6.6.0',
+          '@testing-library/react': '^16.0.0',
+          '@types/node': '^22.16.5',
+          '@types/react': '^18.3.23',
+          '@types/react-dom': '^18.3.7',
+          '@vitejs/plugin-react-swc': '^3.11.0',
+          autoprefixer: '^10.4.21',
+          esbuild: '0.25.12',
+          eslint: '^9.32.0',
+          'eslint-plugin-react-hooks': '^5.2.0',
+          'eslint-plugin-react-refresh': '^0.4.20',
+          globals: '^15.15.0',
+          jsdom: '^20.0.3',
+          postcss: '^8.5.6',
+          tailwindcss: '^3.4.17',
+          typescript: '^5.8.3',
+          'typescript-eslint': '^8.38.0',
+          vite: '6.4.3',
+          vitest: '^3.2.4'
+        }
+      },
+      hasSideEffects: [Function: hasSideEffects],
+      setResolvedCache: [Function: setResolvedCache],
+      getResolvedCache: [Function: getResolvedCache]
+    },
+    set: [Function (anonymous)]
+  },
+  worker: { format: 'iife', plugins: '() => plugins', rollupOptions: {} },
+  appType: 'spa',
+  experimental: { importGlobRestoreExtension: false, hmrPartialAccept: false },
+  future: undefined,
+  ssr: {
+    target: 'node',
+    optimizeDeps: { esbuildOptions: { preserveSymlinks: false } },
+    resolve: { conditions: undefined, externalConditions: undefined }
+  },
+  optimizeDeps: {
+    include: [],
+    exclude: [],
+    needsInterop: [],
+    extensions: [],
+    disabled: undefined,
+    holdUntilCrawlEnd: true,
+    force: false,
+    noDiscovery: false,
+    esbuildOptions: { preserveSymlinks: false }
+  },
+  dev: {
+    warmup: [],
+    sourcemap: { js: true },
+    sourcemapIgnoreList: [Function: isInNodeModules$1],
+    preTransformRequests: false,
+    createEnvironment: [Function: defaultCreateDevEnvironment],
+    recoverable: false,
+    moduleRunnerTransform: false
+  },
+  webSocketToken: 'E0XWzLARXGFJ',
+  getSortedPlugins: [Function: getSortedPlugins],
+  getSortedPluginHooks: [Function: getSortedPluginHooks],
+  createResolver: [Function: createResolver],
+  fsDenyGlob: [Function: arrayMatcher],
+  safeModulePaths: Set(0) {},
+  additionalAllowedHosts: [ '::', '::' ],
+  Symbol(vite:resolved-config): true
+}
