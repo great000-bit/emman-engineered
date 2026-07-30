@@ -1,7 +1,12 @@
 import { Helmet } from "react-helmet-async";
-
-const SITE_URL = "https://www.creativeemmanlimited.com";
-const DEFAULT_OG = `${SITE_URL}/og-image.jpg`;
+import {
+  DEFAULT_OG_IMAGE,
+  ORGANIZATION_ID,
+  SITE_NAME,
+  SITE_URL,
+  WEBSITE_ID,
+  absoluteSiteUrl,
+} from "@/config/site";
 
 // Search-console verification codes, set via env vars so no real codes are ever hardcoded
 // in the repo. Leave these unset until you have real codes from Google Search Console /
@@ -28,7 +33,7 @@ const SEO = ({
   title,
   description,
   path,
-  image = DEFAULT_OG,
+  image = DEFAULT_OG_IMAGE,
   imageWidth = 1200,
   imageHeight = 630,
   type = "website",
@@ -36,16 +41,48 @@ const SEO = ({
   robots = "index, follow",
   jsonLd,
 }: SEOProps) => {
-  const url = `${SITE_URL}${path}`;
-  const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const url = absoluteSiteUrl(path);
+  const imageUrl = image.startsWith("http://") || image.startsWith("https://")
+    ? image
+    : absoluteSiteUrl(image);
+  const crawlerPolicy = robots.includes("noindex")
+    ? robots
+    : `${robots}, max-image-preview:large, max-snippet:-1, max-video-preview:-1`;
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: title,
+    description,
+    inLanguage: "en-NG",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: imageUrl,
+      width: imageWidth,
+      height: imageHeight,
+    },
+  };
+  const suppliedLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const ldArray = [webPageSchema, ...suppliedLd];
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       {keywords && keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
-      <meta name="robots" content={robots} />
-      <meta name="author" content="Creative Emman Limited" />
+      <meta name="robots" content={crawlerPolicy} />
+      <meta name="googlebot" content={crawlerPolicy} />
+      <meta name="bingbot" content={crawlerPolicy} />
+      <meta name="author" content={SITE_NAME} />
+      <meta name="application-name" content={SITE_NAME} />
+      <meta name="geo.region" content="NG-RI" />
+      <meta name="geo.placename" content="Rivers State, Nigeria" />
+      <meta httpEquiv="content-language" content="en-NG" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
       <link rel="canonical" href={url} />
 
       {/* English, single-locale site for now — both tags point at this same URL.
@@ -61,18 +98,19 @@ const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Creative Emman Limited" />
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:secure_url" content={image} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_NG" />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:secure_url" content={imageUrl} />
       <meta property="og:image:width" content={String(imageWidth)} />
       <meta property="og:image:height" content={String(imageHeight)} />
       <meta property="og:image:alt" content={title} />
 
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@CE_Limited1" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={title} />
 
       {ldArray.map((ld, i) => (

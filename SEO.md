@@ -6,11 +6,15 @@ What's implemented, where it lives, and how to keep it correct as the site grows
 
 | | |
 |---|---|
-| Sitemap | https://emman-engineered.vercel.app/sitemap.xml |
-| Robots | https://emman-engineered.vercel.app/robots.txt |
+| Canonical website | https://www.creativeemmanlimited.com/ |
+| Sitemap | https://www.creativeemmanlimited.com/sitemap.xml |
+| Robots | https://www.creativeemmanlimited.com/robots.txt |
+| AI summary | https://www.creativeemmanlimited.com/llms.txt |
+| Detailed AI reference | https://www.creativeemmanlimited.com/llms-full.txt |
 | Default OG image | `public/og-image.jpg` (1200×630) |
 | Shared SEO component | `src/components/SEO.tsx` |
 | Breadcrumb schema helper | `src/lib/seoSchema.ts` |
+| Company constants | `src/config/site.ts` |
 | Sitemap generator | `scripts/generate-sitemap.mjs` (runs automatically before every build) |
 
 ## How metadata is structured
@@ -32,8 +36,17 @@ via its own `<Helmet>` block. Multiple `<Helmet>` instances across the React tre
 merge/dedupe correctly with each other — this is the safe pattern.
 
 **`src/components/SEO.tsx`** — the per-page component. Renders title, description,
-keywords, robots, canonical, hreflang (`en` + `x-default`), OG tags, Twitter Card tags, and
-any page-specific JSON-LD passed via the `jsonLd` prop (accepts one object or an array).
+keywords, crawler directives, canonical, hreflang (`en` + `x-default`), geographic
+metadata, Open Graph tags, Twitter Card tags, and a connected `WebPage` schema. It also
+accepts page-specific JSON-LD through the `jsonLd` prop as one object or an array.
+
+**`src/config/site.ts`** — the single source of truth for the canonical domain, company
+identity, contact details, social profiles, and structured-data IDs. Update company-wide
+facts here instead of repeating them across components.
+
+**`public/llms.txt` and `public/llms-full.txt`** — factual, AI-readable summaries for
+answer engines and assistants. Keep these aligned with visible website content. Do not add
+claims, locations, awards, clients, or performance figures that the company cannot verify.
 
 ## How to update a page's SEO
 
@@ -90,7 +103,7 @@ Not yet set up — these are manual steps on Google's and Microsoft's side that 
 site owner to do:
 
 1. **Google Search Console**: go to https://search.google.com/search-console, add the
-   property `https://emman-engineered.vercel.app`, choose the "HTML tag" verification
+   URL-prefix property `https://www.creativeemmanlimited.com/`, choose the "HTML tag" verification
    method, copy just the `content` value from the meta tag it gives you, and set it as
    `VITE_GOOGLE_SITE_VERIFICATION` in your `.env` (see `.env.example`). Once set, it
    automatically renders via `src/components/SEO.tsx` — no further code change needed.
@@ -113,12 +126,20 @@ Nothing is wired up to call it automatically — see the file itself for the ste
 activate it once you have a real key (generate key → rename the placeholder file to match
 it → set `VITE_INDEXNOW_KEY` → optionally script a post-deploy notification call).
 
+## GEO and AEO content rules
+
+- Give direct, factual answers before promotional language.
+- Keep the full company name, location, services, and official URL consistent.
+- Only add FAQ schema when the same questions and answers are visible on the page.
+- Use stable `@id` references to connect Organization, WebSite, WebPage, Service, and
+  breadcrumb entities.
+- Keep `llms.txt`, `llms-full.txt`, the homepage FAQ, and structured data synchronized.
+- Avoid unverifiable superlatives, fabricated ratings, fake client claims, or guaranteed
+  rankings.
+
 ## Things that are still manual / outside code
 
 - Submitting the sitemap to Google Search Console and Bing Webmaster Tools (above).
 - Generating and activating a real IndexNow key (above).
-- Populating the `sameAs` array in the Organization schema (`PageLayout.tsx`) with real
-  Instagram/X/Facebook/LinkedIn URLs once those accounts exist — left as an empty array
-  deliberately rather than filled with placeholder/fake links.
 - Producing project-specific 1200×630 cover images if per-project social previews are
   wanted later (see "Open Graph image" above).
