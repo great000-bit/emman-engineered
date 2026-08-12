@@ -1,8 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "./Header";
 import Footer from "./Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronUp } from "lucide-react";
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -49,6 +50,49 @@ const SiteWideStructuredData = () => (
   </Helmet>
 );
 
+const ScrollToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.8, y: 20 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-accent text-white shadow-xl hover:bg-accent/90 transition-colors border border-white/10 flex items-center justify-center focus:outline-none"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp size={20} strokeWidth={2.5} />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const PageLayout = ({ children }: PageLayoutProps) => (
   <div className="min-h-screen flex flex-col">
     <SiteWideStructuredData />
@@ -62,6 +106,7 @@ const PageLayout = ({ children }: PageLayoutProps) => (
       {children}
     </motion.main>
     <Footer />
+    <ScrollToTop />
   </div>
 );
 

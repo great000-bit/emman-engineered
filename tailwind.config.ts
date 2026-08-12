@@ -15,12 +15,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        brand: ['Agile', '"Space Grotesk"', 'system-ui', 'sans-serif'],
-        'story-label': ['"Bricolage Grotesque"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
-        'story-text': ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Plus Jakarta Sans"', 'Georgia', 'serif'],
+        brand: ['Agile', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        'story-label': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        'story-text': ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

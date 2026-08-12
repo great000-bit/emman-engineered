@@ -12,6 +12,7 @@ import { services } from "@/data/services";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { submitToFormspree } from "@/lib/formspree";
+import { useSuccessSound } from "@/hooks/useSuccessSound";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -87,9 +88,11 @@ const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const { unlockSuccessSound, playSuccessSound } = useSuccessSound();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    unlockSuccessSound();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
@@ -113,6 +116,7 @@ const ContactPage = () => {
     if (ok) {
       setStatus("success");
       setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      playSuccessSound();
     } else {
       setStatus("error");
     }

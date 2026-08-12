@@ -71,9 +71,9 @@ export const navLinks: NavLink[] = [
       { label: "Motion Graphics Design Portfolio", path: "/portfolio/motion-graphics-design" },
     ],
   },
-  { label: "Team", path: "/team" },
+  { label: "Pricing", path: "/pricing" },
   { label: "Trainings", path: "/trainings" },
-  { label: "Testimonials", path: "/testimonials" },
-  { label: "Applications", path: "/applications" },
+  { label: "About", path: "/about" },
+  { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },
 ];

@@ -1,4 +1,4 @@
-import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Sparkles } from "lucide-react";
+import { Code2, Palette, PenTool, Video, Film, Camera, Share2, Play } from "lucide-react";
 
 export const services = [
   {
@@ -47,7 +47,7 @@ export const services = [
     includes: ["Color Grading", "Motion Graphics", "Sound Design", "Multi-format Export", "Subtitling"],
   },
   {
-    icon: Sparkles,
+    icon: Play,
     title: "Motion Graphics Design",
     description: "We create animated visuals, motion-led brand content, explainer animations, social media motion assets, and dynamic visual storytelling for digital platforms.",
     includes: ["Logo Animation", "Explainer Animations", "Social Media Motion Assets", "Promo Animations", "Kinetic Typography"],

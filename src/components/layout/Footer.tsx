@@ -73,13 +73,20 @@ const Footer = () => (
             Services
           </h4>
           <nav className="flex flex-col gap-3">
-            {["Web Development", "UI/UX Design", "Graphic Design", "Videography", "Motion Graphics Design", "Photography"].map((s) => (
+            {[
+              { name: "Website Development", path: "/services/website-development" },
+              { name: "UI/UX Design", path: "/services/ui-ux-design" },
+              { name: "Graphic Design", path: "/services/graphic-design" },
+              { name: "Videography", path: "/services/videography" },
+              { name: "Motion Graphics Design", path: "/services/motion-graphics-design" },
+              { name: "Photography", path: "/services/photography" }
+            ].map((s) => (
               <Link
-                key={s}
-                to="/services"
+                key={s.name}
+                to={s.path}
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >
-                {s}
+                {s.name}
               </Link>
             ))}
           </nav>

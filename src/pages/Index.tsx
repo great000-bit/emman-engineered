@@ -4,6 +4,7 @@ import Hero from "@/components/home/Hero";
 import BrandStory from "@/components/home/BrandStory";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
+import TestimonialsPreview from "@/components/home/TestimonialsPreview";
 import VisualShowcase from "@/components/home/VisualShowcase";
 import FAQ from "@/components/home/FAQ";
 import { homeFaqs } from "@/data/homeFaqs";
@@ -65,9 +66,10 @@ const Index = () => (
       <BrandStory />
       <ServicesPreview />
       <WhyChooseUs />
+      <TestimonialsPreview />
       <VisualShowcase />
-      <FAQ />
       <CTABanner />
+      <FAQ />
     </div>
   </PageLayout>
 );

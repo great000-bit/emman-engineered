@@ -93,15 +93,27 @@ const ServicesPage = () => (
       <div className="container-narrow mx-auto space-y-14 sm:space-y-20">
         {services.map((service, i) => (
           <ScrollReveal key={service.title} delay={0.05}>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+            <div
+              id={service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+              className="grid md:grid-cols-2 gap-8 md:gap-12 items-start scroll-mt-28"
+            >
 
               <div className={i % 2 === 1 ? "md:order-2" : ""}>
                 <IconGlow icon={service.icon} size="lg" className="mb-6" />
                 <h2 className="text-2xl md:text-3xl text-primary-foreground mb-4">{service.title}</h2>
                 <p className="text-primary-foreground/60 leading-relaxed mb-6">{service.description}</p>
-                <Link to="/contact">
-                  <Button variant="accent">Make Enquiry</Button>
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <Link to={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+                    <Button variant="accent">
+                      Explore Service <ArrowRight size={13} className="ml-1.5" />
+                    </Button>
+                  </Link>
+                  <Link to="/contact">
+                    <Button variant="dark-outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-white/[0.04]">
+                      Make Enquiry
+                    </Button>
+                  </Link>
+                </div>
               </div>
 
               <div className={i % 2 === 1 ? "md:order-1" : ""}>

@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="/src/assets/Creative_eman.png" type="image/png" />
-  <meta name="theme-color" content="#000324" />
+  <meta name="theme-color" content="#0A0A0B" />
+
+  <link rel="stylesheet" href="/src/index-inline.css">
 
   <!--
       Only a bare title + description live here as a no-JS / pre-mount fallback (a crawler
@@ -23,7 +25,16 @@
 </head>
 
 <body>
+  <div id="brand-loader-bootstrap" role="status" aria-label="Loading Creative Emman Limited"></div>
   <div id="root"></div>
+  <script>
+    // Lock scroll immediately on homepage load — before React mounts — so
+    // the BrandLoader animation plays without any scroll possible.
+    // On every other page this is a no-op.
+    if (window.location.pathname === '/') {
+      document.documentElement.classList.add('brand-loader-active');
+    }
+  </script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

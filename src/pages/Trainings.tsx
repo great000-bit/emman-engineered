@@ -104,15 +104,17 @@ const TrainingsPage = () => (
       <div className="relative container-narrow mx-auto px-4">
         <ScrollReveal>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
-            Invest in skills
+            Which service
             <br />
-            that actually ship.
+            starts your next win?
           </h2>
-          <p className="text-sm md:text-base text-primary-foreground/55 mb-8 max-w-md mx-auto">
-            Join a structured program designed to turn what you learn into work you can show.
-          </p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
+          <p className="text-sm md:text-base text-primary-foreground/55 max-w-md mx-auto mb-8">
+            Pick a lane or bring the whole brief — we'll map out the right team and timeline.
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.2}>
           <div className="flex flex-row gap-3 justify-center items-center">
             <Link to="/contact">
               <Button variant="light-fill">

@@ -1,96 +1,96 @@
 import { Link } from "react-router-dom";
-import { services } from "@/data/services";
+import { Code2, TrendingUp, Rocket, GraduationCap, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import SectionHeading from "@/components/shared/SectionHeading";
-import { ArrowRight } from "lucide-react";
-import {
-  WebDevMockup, SocialMockup, UIUXMockup, GraphicMockup, VideoMockup, VideoEditingMockup, PhotoMockup, MotionMockup,
-} from "./ServiceMockups";
-import MobileServiceStack from "./MobileServiceStack";
 
-// Map each real service to its mini mockup. Falls back to a generic icon
-// tile if a service doesn't have a custom mockup yet.
-const MOCKUPS: Record<string, React.FC> = {
-  "Website Development": WebDevMockup,
-  "Social Media Management": SocialMockup,
-  "UI/UX Design": UIUXMockup,
-  "Graphic Design": GraphicMockup,
-  "Videography": VideoMockup,
-  "Video Editing": VideoEditingMockup,
-  "Photography": PhotoMockup,
-  "Motion Graphics Design": MotionMockup,
-};
-
-const BentoCard = ({ service, large = false, delay = 0 }: { service: typeof services[number]; large?: boolean; delay?: number }) => {
-  const Mockup = MOCKUPS[service.title];
-
-  return (
-    <ScrollReveal delay={delay} distance="standard">
-      <Link
-        to="/services"
-        className={`group relative flex flex-col rounded-[28px] border border-primary-foreground/10 bg-primary-foreground/[0.025] hover:bg-primary-foreground/[0.045] hover:border-accent/25 transition-all duration-500 overflow-hidden ${
-          large ? "min-h-[360px] sm:min-h-[400px]" : "min-h-[320px]"
-        }`}
-      >
-        {/* Mockup window */}
-        <div className={`relative flex-shrink-0 mx-4 mt-4 rounded-2xl bg-black/40 border border-primary-foreground/[0.06] overflow-hidden ${large ? "h-44 sm:h-52" : "h-36"}`}>
-          {Mockup ? <Mockup /> : <div className="w-full h-full bg-primary-foreground/[0.02]" />}
-        </div>
-
-        {/* Label + title + description */}
-        <div className="flex-1 flex flex-col items-center text-center px-6 pt-5 pb-7">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-medium text-accent mb-3">
-            <service.icon size={13} />
-            {service.title}
-          </div>
-          <h3 className={`font-display font-semibold text-primary-foreground mb-2 ${large ? "text-xl sm:text-2xl" : "text-lg"}`}>
-            {service.description.split(".")[0]}.
-          </h3>
-          <p className="text-sm text-primary-foreground/55 leading-relaxed max-w-[280px]">
-            {service.includes.slice(0, 2).join(" · ")}
-          </p>
-          <span className="mt-auto pt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary-foreground/40 group-hover:text-accent group-hover:gap-2.5 transition-all">
-            Explore <ArrowRight size={12} />
-          </span>
-        </div>
-      </Link>
-    </ScrollReveal>
-  );
-};
+const SERVICES = [
+  {
+    icon: Code2,
+    title: "Build",
+    description: "Website development, custom applications, SaaS platforms, and UI/UX design.",
+    linkText: "Explore Build Services",
+    path: "/services"
+  },
+  {
+    icon: TrendingUp,
+    title: "Grow",
+    description: "Social media marketing, growth strategies, brand visibility, and lead generation.",
+    linkText: "Explore Grow Services",
+    path: "/services"
+  },
+  {
+    icon: Rocket,
+    title: "Scale",
+    description: "High-performance systems, scale consulting, content strategies, and video assets.",
+    linkText: "Explore Scale Services",
+    path: "/services"
+  },
+  {
+    icon: GraduationCap,
+    title: "Train",
+    description: "Professional bootcamps, UI/UX masterclasses, video editing, and tech bootcamps.",
+    linkText: "Explore Training",
+    path: "/trainings"
+  }
+];
 
 const ServicesPreview = () => {
-  const [first, second, ...rest] = services;
-
   return (
-    <section id="services" className="section-padding relative overflow-hidden">
-      <div className="container-wide mx-auto relative">
-        <SectionHeading
-          label="What We Do"
-          title="Core Services"
-          description="Eight integrated disciplines. One premium standard. Every project engineered for impact."
-          light
-        />
+    <section id="services" className="section-padding bg-background relative overflow-hidden border-t border-border">
+      {/* Glow effect */}
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-        {/* Mobile (<768px): sticky stacked-card scroll animation */}
-        <div className="md:hidden mt-10">
-          <MobileServiceStack />
+      <div className="container-wide mx-auto relative z-10">
+
+        {/* Header */}
+        <div className="max-w-3xl text-center mx-auto mb-12 sm:mb-16">
+          <ScrollReveal>
+            <span className="text-xs font-semibold tracking-widest text-accent uppercase block mb-3">Our Core Verticals</span>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
+              Everything your business needs <br className="hidden sm:inline" />
+              to <span className="font-serif italic font-medium text-accent">grow online</span>
+            </h2>
+          </ScrollReveal>
         </div>
 
-        {/* Tablet/Desktop (>=768px): existing grid layout, unchanged */}
-        <div className="hidden md:block">
-          {/* Row 1 — two large feature cards */}
-          <div className="grid sm:grid-cols-2 gap-5 lg:gap-6 mt-10">
-            <BentoCard service={first} large delay={0} />
-            <BentoCard service={second} large delay={0.08} />
-          </div>
+        {/* 4-Column Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {SERVICES.map((srv, i) => {
+            const IconComponent = srv.icon;
+            return (
+              <ScrollReveal key={srv.title} delay={0.08 * i} className="flex">
+                <Link
+                  to={srv.path}
+                  className="group relative flex flex-col justify-between w-full rounded-2xl border border-border bg-card/50 hover:bg-card hover:border-accent/30 p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-accent/5"
+                >
+                  <div>
+                    {/* Icon */}
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent size={24} />
+                    </div>
 
-          {/* Row 2+ — equal-size cards, 3 per row on desktop */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-5 lg:mt-6">
-            {rest.map((service, i) => (
-              <BentoCard key={service.title} service={service} delay={0.05 * i} />
-            ))}
-          </div>
+                    {/* Title */}
+                    <h3 className="text-xl sm:text-2xl font-bold font-display text-foreground mb-3">
+                      {srv.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm sm:text-base text-foreground/60 leading-relaxed font-body mb-6">
+                      {srv.description}
+                    </p>
+                  </div>
+
+                  {/* Action Link */}
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent group-hover:gap-2.5 transition-all duration-300 mt-auto">
+                    {srv.linkText} <ArrowRight size={14} />
+                  </span>
+                </Link>
+              </ScrollReveal>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );
