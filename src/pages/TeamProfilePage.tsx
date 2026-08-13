@@ -17,7 +17,7 @@ const TeamProfilePage = () => {
         <div className="container-wide mx-auto">
           <Link to="/about" className="group inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" /> Back to About</Link>
           <div className="mt-10 grid items-center gap-12 lg:grid-cols-[.88fr_1.12fr] lg:gap-20 xl:gap-28">
-            <div className="overflow-hidden rounded-[1.25rem] bg-muted"><img src={member.image} alt={member.name} className="aspect-[4/5] h-full w-full object-cover" /></div>
+            <div className="overflow-hidden rounded-[1.25rem] bg-muted"><img src={member.image} alt={member.name} decoding="async" fetchPriority="high" className="aspect-[4/5] h-full w-full object-cover" /></div>
             <div>
               <h1 className="text-[clamp(3rem,7vw,7rem)] font-semibold leading-[.92] tracking-[-.055em]">{member.name}</h1>
               <p className="mt-6 text-xl font-semibold text-accent sm:text-2xl">{member.role}</p>

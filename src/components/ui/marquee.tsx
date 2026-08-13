@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes, ReactNode } from "react"
+import { useEffect, useRef, useState, type CSSProperties, type HTMLAttributes, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 export function Marquee({
@@ -20,8 +20,20 @@ export function Marquee({
   pauseOnHover?: boolean
   className?: string
 } & HTMLAttributes<HTMLDivElement>) {
+  const hostRef = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const host = hostRef.current
+    if (!host || !("IntersectionObserver" in window)) return
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { rootMargin: "160px 0px" })
+    observer.observe(host)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div
+      ref={hostRef}
       {...props}
       className={cn(
         "group flex [gap:var(--gap)] overflow-hidden [--gap:1rem]",
@@ -38,7 +50,7 @@ export function Marquee({
               "badtz-marquee-left": direction === "left",
               "badtz-marquee-right": direction === "right",
               "group-hover:[animation-play-state:paused]": pauseOnHover,
-              "[animation-play-state:paused]": paused,
+              "[animation-play-state:paused]": paused || !visible,
             })}
           >
             {children}
