@@ -1,11 +1,11 @@
-import ServiceWebsiteImage from "@/assets/ServiceWebsite.jpg"
-import ServiceGraphicsImage from "@/assets/ServiceGraphics.jpg"
-import ServiceGraphicsFaq from "@/assets/ServiceGraphicsFaq.jpg"
+import ServiceWebsiteImage from "@/assets/ServiceWebsite.webp"
+import ServiceGraphicsImage from "@/assets/ServiceGraphics.webp"
+import ServiceGraphicsFaq from "@/assets/ServiceGraphicsFaq.webp"
 import ServiceMotionGraphicsImage from "@/assets/ServiceMotionGraphics.mp4"
 import ServiceVideoGraphy from "@/assets/ServiceVideoGraphy.jpg"
-import ServiceVideoGraphyFaq from "@/assets/ServiceVideoFaq.jpg"
-import ServiceSocialImage from "@/assets/ServiceSocials.jpg"
-import ServiceSocialFaq from "@/assets/ServiceSocialFaq.jpg"
+import ServiceVideoGraphyFaq from "@/assets/ServiceVideoFaq.webp"
+import ServiceSocialImage from "@/assets/ServiceSocials.webp"
+import ServiceSocialFaq from "@/assets/ServiceSocialFaq.webp"
 export interface SubService {
   title: string;
   description: string;
@@ -62,7 +62,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     heroTitle: "Web development company in Nigeria that builds websites that *actually work*",
     heroDescription: "High-performance, secure, and SEO-optimized web systems engineered to turn search traffic into loyal customers and drive business growth.",
     problemTitle: "Why most Nigerian business websites fail to generate leads",
-    problemDescription: "Many websites are slow, outdated, and fail to engage visitors. They function as static online brochures rather than active sales engines. At Creative Emman, we engineer custom web applications that load in under 2 seconds, are fully mobile-optimized, and leverage smart user journeys to guide visitors towards conversion.",
+    problemDescription: "Many websites are slow, outdated, and fail to engage visitors. They function as static online brochures rather than active business tools. At Creative Emman Limited, we engineer responsive web experiences around performance, clear information and useful customer journeys.",
     problemImage: ServiceWebsiteImage,
     servicesTitle: "Web engineering services tailored for your business",
     subServices: [
@@ -329,7 +329,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     heroTitle: "Premium videography and video production *services* in Nigeria",
     heroDescription: "Cinematic filming, corporate documentaries, event coverage, and high-impact commercial advertisements produced to tell your brand story.",
     problemTitle: "Why amateur video fails to hook modern audiences",
-    problemDescription: "Modern consumers notice shaky camera work, poor lighting, and bad sound immediately. High-quality video builds trust instantly, but bad production drives users away. At Creative Emman, we deploy professional production crews, 4K camera gear, and premium lighting systems to make your videos stand out.",
+    problemDescription: "Modern audiences notice shaky camera work, poor lighting and unclear sound immediately. Thoughtful production builds trust, while weak execution distracts from the message. Creative Emman Limited plans each production around the story, setting and delivery formats required.",
     problemImage: ServiceVideoGraphy,
     servicesTitle: "High-grade videography services built for impact",
     subServices: [

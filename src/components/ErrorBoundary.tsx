@@ -48,7 +48,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             are unsafe to render too, so this fallback is deliberately self-contained. */}
         <div className="relative z-10 flex items-center gap-2 px-4 sm:px-6 pt-6">
           <img
-            src="/favicon.png"
+            src="/creative-emman-logo.png"
             alt="Creative Emman Limited logo"
             width={32}
             height={32}
@@ -56,7 +56,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             className="w-8 h-8 object-contain"
           />
           <span className="font-brand text-sm font-bold text-primary-foreground tracking-tight">
-            Creative<span className="text-accent">Emman</span>
+            Creative <span className="text-accent">Emman</span> Limited
           </span>
         </div>
 

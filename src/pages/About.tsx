@@ -1,14 +1,15 @@
 import PageLayout from "@/components/layout/PageLayout";
-import { teamMembers } from "@/data/teamMembers";
+import TeamMarquee from "@/components/TeamMarquee";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Linkedin, ExternalLink, Mail, Phone, ArrowRight, ShieldCheck, Heart, Users, Compass, Globe } from "lucide-react";
+import { Linkedin, Mail, Phone, ArrowRight, ShieldCheck, Heart, Users, Compass, Globe } from "lucide-react";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { Link } from "react-router-dom";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 import founderImg from "@/assets/GreatEmman-wori.jpeg";
-import StartedIMage from "@/assets/StartImage.jpg"
+import companyIntroductionImage from "@/assets/about-company-introduction.png";
+import companyStoryImage from "@/assets/about-company-story.png";
 
 const AboutPage = () => {
   const values = [
@@ -50,27 +51,27 @@ const AboutPage = () => {
         ]}
       />
 
-      {/* Hero Section */}
-      <section className="bg-background pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
+      {/* Company introduction */}
+      <section className="bg-background pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 relative">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container-wide mx-auto text-center relative z-10">
-          <ScrollReveal>
-            <span className="text-xs font-semibold tracking-widest uppercase text-accent bg-accent/10 px-3 py-1.5 rounded-full border border-accent/20 inline-block mb-4">
-              Who We Are
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.08}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mt-2 mb-6 max-w-4xl mx-auto leading-[1.15]">
-              A digital agency built for Africa's <span className="font-serif italic font-normal text-accent/90">digital future</span>
+        <div className="container-wide mx-auto relative z-10 grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-20">
+          <div><ScrollReveal>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 max-w-4xl mx-auto leading-[1.15]">
+              Creative and technical capability, built together.
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.16}>
             <p className="text-base sm:text-lg text-foreground/60 max-w-3xl mx-auto mb-10 leading-relaxed font-body">
-              Creative Emman Limited is a forward-thinking digital agency focused on building premium digital solutions. We combine design precision with technical engineering to empower businesses across the globe.
+              Creative Emman Limited is a Port Harcourt-based creative technology company. We combine brand thinking, interface design, engineering, media and practical digital capability to help ambitious organisations move with greater confidence.
             </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.22}><div className="flex flex-wrap gap-3"><Link to="/services"><Button variant="accent">Explore Our Capabilities <ArrowRight className="ml-2 h-4 w-4" /></Button></Link><Link to="/contact"><Button variant="outline">Start a Conversation</Button></Link></div></ScrollReveal></div>
+          <ScrollReveal delay={0.12} className="relative z-10 overflow-visible">
+            <div className="relative mx-auto aspect-square w-full max-w-[560px] overflow-hidden rounded-2xl border border-foreground/10 shadow-2xl">
+              <img src={companyIntroductionImage} alt="Business leader seated at a desk with a laptop" className="h-full w-full object-cover" />
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -81,7 +82,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal className="space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-display">
-                Where Creative Emman started and where <span className="font-serif italic font-normal text-accent">we're going</span>
+                Where Creative Emman Limited started and where <span className="font-serif italic font-normal text-accent">we're going</span>
               </h2>
               <p className="text-foreground/60 leading-relaxed font-body">
                 Founded in Port Harcourt, Creative Emman Limited started as a small design studio with a massive vision: to build world-class digital products and brand campaigns right from the heart of the Niger Delta.
@@ -94,8 +95,10 @@ const AboutPage = () => {
             <ScrollReveal delay={0.16}>
               <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3] border border-foreground/10">
                 <img
-                  src={StartedIMage}
-                  alt="Team collaboration in modern workspace"
+                  src={companyStoryImage}
+                  alt="Business leader working with a team in a modern office"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -146,6 +149,8 @@ const AboutPage = () => {
                 <img
                   src={founderImg}
                   alt="Great Emman-wori - Founder of Creative Emman Limited"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-all duration-500"
                 />
               </div>
@@ -198,13 +203,13 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Team Grid Section */}
-      <section className="section-padding bg-foreground/[0.01] border-t border-foreground/10">
-        <div className="container-wide mx-auto">
+      {/* Team marquee */}
+      <section className="overflow-hidden border-t border-border bg-card py-20 sm:py-28">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <ScrollReveal>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-display">
-                The people behind <span className="font-serif italic font-normal text-accent">Creative Emman</span>
+                The people behind <span className="font-serif italic font-normal text-accent">Creative Emman Limited</span>
               </h2>
               <p className="text-sm text-foreground/60 mt-3 font-body">
                 Our multidisciplinary team unites to engineer high-fidelity applications and design languages.
@@ -212,55 +217,8 @@ const AboutPage = () => {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, idx) => (
-              <ScrollReveal key={member.id} delay={idx * 0.05}>
-                <div className="group border border-foreground/10 rounded-2xl overflow-hidden bg-card hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col h-full">
-                  <div className="aspect-[3/4] overflow-hidden bg-foreground/5 relative">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-all duration-500"
-                    />
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div>
-                      <h3 className="text-base font-bold font-display text-foreground group-hover:text-accent transition-colors">
-                        {member.name}
-                      </h3>
-                      <p className="text-xs text-foreground/50 mt-1 font-body">{member.role}</p>
-                    </div>
-
-                    <div className="flex gap-3 pt-3 border-t border-foreground/5">
-                      {member.linkedin && (
-                        <a
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-foreground/40 hover:text-accent transition-colors"
-                          aria-label={`${member.name} LinkedIn`}
-                        >
-                          <Linkedin className="w-4 h-4" />
-                        </a>
-                      )}
-                      {member.portfolio && (
-                        <a
-                          href={member.portfolio}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-foreground/40 hover:text-accent transition-colors"
-                          aria-label={`${member.name} Portfolio`}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
+        <TeamMarquee />
       </section>
 
       {/* Find Us Section */}

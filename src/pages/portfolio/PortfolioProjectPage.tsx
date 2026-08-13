@@ -6,9 +6,9 @@ import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import StatusBadge from "@/components/portfolio/StatusBadge";
 import AssetMarquee from "@/components/portfolio/AssetMarquee";
-import { HeroCTALink, HeroCTAAnchor, HeroCTAButton } from "@/components/shared/HeroCTA";
-import { getProjectBySlug, categoryMeta, PortfolioCategory } from "@/data/portfolioData";
-import { ChevronRight, ExternalLink, Play } from "lucide-react";
+import { HeroCTALink, HeroCTAAnchor } from "@/components/shared/HeroCTA";
+import { getProjectBySlug, categoryMeta, PortfolioCategory, portfolioProjects } from "@/data/portfolioData";
+import { ArrowLeft, ArrowRight, ChevronRight, ExternalLink, Play } from "lucide-react";
 
 const PortfolioProjectPage = () => {
   const { category, slug } = useParams<{ category: string; slug: string }>();
@@ -19,6 +19,9 @@ const PortfolioProjectPage = () => {
   }
 
   const meta = categoryMeta[project.category as PortfolioCategory];
+  const projectIndex = portfolioProjects.findIndex((item) => item.slug === project.slug);
+  const previousProject = portfolioProjects[(projectIndex - 1 + portfolioProjects.length) % portfolioProjects.length];
+  const nextProject = portfolioProjects[(projectIndex + 1) % portfolioProjects.length];
 
   return (
     <PageLayout>
@@ -91,6 +94,19 @@ const PortfolioProjectPage = () => {
       {project.category === "social-media-management" && <SocialDetail project={project} />}
       {project.category === "videography-video-editing" && <VideoDetail project={project} />}
       {project.category === "motion-graphics-design" && <MotionDetail project={project} />}
+
+      <nav aria-label="Project navigation" className="bg-primary px-4 sm:px-6">
+        <div className="container-wide mx-auto grid border-y border-primary-foreground/10 sm:grid-cols-2">
+          <Link to={`/work/${previousProject.category}/${previousProject.slug}`} className="group flex items-center gap-4 border-b border-primary-foreground/10 py-7 sm:border-b-0 sm:border-r sm:pr-8">
+            <ArrowLeft className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:-translate-x-1" />
+            <span><span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/35">Previous project</span><span className="mt-1 block text-sm text-primary-foreground/75 group-hover:text-accent">{previousProject.title}</span></span>
+          </Link>
+          <Link to={`/work/${nextProject.category}/${nextProject.slug}`} className="group flex items-center justify-end gap-4 py-7 text-right sm:pl-8">
+            <span><span className="block text-[10px] font-bold uppercase tracking-wider text-primary-foreground/35">Next project</span><span className="mt-1 block text-sm text-primary-foreground/75 group-hover:text-accent">{nextProject.title}</span></span>
+            <ArrowRight className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </nav>
 
       {/* Shared closing CTA */}
       <section className="section-padding bg-primary text-center">
@@ -301,7 +317,7 @@ const SocialDetail = ({ project }: { project: PortfolioProject }) => (
 const VideoDetail = ({ project }: { project: PortfolioProject }) => (
   <SectionWrap>
     <ScrollReveal>
-      <div className="relative rounded-2xl overflow-hidden border border-primary-foreground/10 aspect-video mb-8 group cursor-pointer">
+      <div className="relative rounded-2xl overflow-hidden border border-primary-foreground/10 aspect-video mb-8 group">
         <ProtectedImage src={project.coverImage} alt={`${project.title} video preview`} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
           <div className="w-16 h-16 rounded-full bg-accent/90 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -314,7 +330,7 @@ const VideoDetail = ({ project }: { project: PortfolioProject }) => (
           {project.videoType}
         </span>
       )}
-      <HeroCTAButton label="Watch Project" icon={Play} />
+      <p className="text-sm text-primary-foreground/45">Project preview image. Video playback will appear when a public reel is available.</p>
     </ScrollReveal>
   </SectionWrap>
 );

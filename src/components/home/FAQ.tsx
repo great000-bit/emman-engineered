@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { homeFaqs } from "@/data/homeFaqs";
-import faqImage from "@/assets/FaqImage.png";
+import faqImage from "@/assets/faq-support-strategy.webp";
 
 const FAQ = () => (
   <section className="section-padding bg-background relative overflow-hidden border-t border-border">
@@ -21,7 +21,9 @@ const FAQ = () => (
             <div className="relative rounded-2xl border border-border overflow-hidden bg-muted shadow-2xl group aspect-[4/5]">
               <img
                 src={faqImage}
-                alt="Frequently Asked Questions Section Graphic"
+                alt="Creative Emman Limited support professional speaking with a client"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
               />
               {/* Overlay vignette */}
@@ -29,8 +31,7 @@ const FAQ = () => (
 
               {/* Floating client tag */}
               <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-black/60 border border-white/10 p-4 rounded-xl text-left">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-accent">We are here to help</span>
-                <p className="text-sm font-semibold text-white font-display mt-0.5">Creative Emman Support & Strategy</p>
+                <p className="text-sm font-semibold text-white font-display">Creative Emman Limited Support & Strategy</p>
               </div>
             </div>
           </ScrollReveal>
@@ -39,10 +40,6 @@ const FAQ = () => (
         {/* Right Column - Accordion FAQs */}
         <div className="lg:col-span-7 space-y-6 text-left">
           <ScrollReveal>
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase block mb-3">Help Center</span>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.1}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight mb-8">
               Frequently asked <span className="font-serif italic font-medium text-accent">questions</span>
             </h2>

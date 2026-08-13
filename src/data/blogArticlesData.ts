@@ -1,29 +1,10 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Blog Article Content Data
-// ─────────────────────────────────────────────────────────────────────────────
-// Each `BlogArticle` maps 1-to-1 with a `BlogPost` in blogData.ts (same `id`).
-//
-// TO ADD A NEW ARTICLE:
-//  1. Add a new post object to `blogPosts` in blogData.ts (id, title, excerpt,
-//     date, readTime, category, imageUrl).
-//  2. Add a new `BlogArticle` entry below with the SAME `id`.
-//
-// CONTENT BLOCK TYPES:
-//  • paragraph  — body text (supports inline HTML via dangerouslySetInnerHTML)
-//  • heading    — h2 section heading; must have a unique `id` for TOC anchoring
-//  • list       — unordered bullet list
-//  • blockquote — pull-quote / callout
-//  • checklist  — checked list items
-//  • roadmap    — horizontal step cards (e.g. a workflow diagram)
-// ─────────────────────────────────────────────────────────────────────────────
-
 export type ContentBlock =
-  | { type: "paragraph";  text: string }
-  | { type: "heading";    id: string;  text: string }
-  | { type: "list";       items: string[] }
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; id: string; text: string }
+  | { type: "list"; items: string[] }
   | { type: "blockquote"; text: string }
-  | { type: "checklist";  items: string[] }
-  | { type: "roadmap";    title: string; steps: { step: string; title: string; desc: string }[] };
+  | { type: "checklist"; items: string[] }
+  | { type: "roadmap"; title: string; steps: { step: string; title: string; desc: string }[] };
 
 export interface TocItem {
   id: string;
@@ -31,214 +12,223 @@ export interface TocItem {
 }
 
 export interface BlogArticle {
-  /** Must match the `id` field of the corresponding BlogPost in blogData.ts */
   id: string;
   author: string;
   tocItems: TocItem[];
   content: ContentBlock[];
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ARTICLES
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const blogArticles: BlogArticle[] = [
-  // ── 1 ────────────────────────────────────────────────────────────────────
   {
-    id: "free-website-nigeria",
-    author: "Great Emman",
+    id: "first-100-customers-online-nigeria",
+    author: "Creative Emman Limited",
     tocItems: [
-      { id: "what-is-free",   label: "1. What counts as a 'free' website?" },
-      { id: "platforms",      label: "2. Best free platforms in Nigeria" },
-      { id: "limitations",    label: "3. Limitations to know about" },
-      { id: "upgrade-path",   label: "4. When to upgrade to paid" },
+      { id: "define-customer", label: "1. Define the customer you want" },
+      { id: "build-offer", label: "2. Build an offer people understand" },
+      { id: "trust-foundation", label: "3. Create a trustworthy foundation" },
+      { id: "choose-channels", label: "4. Choose focused acquisition channels" },
+      { id: "customer-system", label: "5. Build your 100-customer system" },
+      { id: "sales-process", label: "6. Make buying simple" },
+      { id: "measure", label: "7. Measure what creates revenue" },
+      { id: "thirty-day-plan", label: "8. Follow a 30-day action plan" },
+      { id: "mistakes", label: "9. Avoid common growth mistakes" },
     ],
     content: [
       {
         type: "paragraph",
-        text: "Getting a website for your business doesn't have to cost a fortune — especially when you're just starting out. Several platforms offer genuinely free tiers that are more than adequate for a basic online presence.",
-      },
-      {
-        type: "heading",
-        id: "what-is-free",
-        text: "1. What counts as a 'free' website?",
+        text: "Getting your first 100 customers is not mainly a follower-count problem. It is a <strong>clarity, trust and consistency problem</strong>. Nigerian buyers have more options than ever, but they are also more careful with their attention and money. The businesses that win are not always the ones with the largest advertising budgets; they are the ones that make the right offer to a clearly defined audience and follow up professionally.",
       },
       {
         type: "paragraph",
-        text: "A free website typically means: no monthly hosting fee, no domain registration fee (you get a subdomain instead), and access to a basic set of templates. You trade cost for flexibility — free plans usually come with platform branding and limited custom features.",
-      },
-      {
-        type: "heading",
-        id: "platforms",
-        text: "2. Best free platforms in Nigeria",
-      },
-      {
-        type: "list",
-        items: [
-          "<strong>WordPress.com (Free)</strong> — Solid blogging engine; free subdomain (yoursite.wordpress.com).",
-          "<strong>Google Sites</strong> — Dead simple; integrates with Google Workspace; great for portfolios.",
-          "<strong>Wix Free Plan</strong> — Drag-and-drop builder; free with Wix branding.",
-          "<strong>Blogger</strong> — Google-hosted blog; free custom domain support via CNAME.",
-          "<strong>Netlify (static)</strong> — Deploy a static HTML site for free via GitHub; perfect for developers.",
-        ],
-      },
-      {
-        type: "heading",
-        id: "limitations",
-        text: "3. Limitations to know about",
+        text: "This guide gives founders, service providers and small business owners a practical system for moving from scattered online activity to a repeatable customer-acquisition process. You do not need every social platform, expensive software or a large team. You need a focused offer, credible proof, dependable follow-up and enough weekly activity to learn what works.",
       },
       {
         type: "blockquote",
-        text: "\"Free websites are a great starting point, but for any serious business generating revenue, you'll want your own domain and hosting within 6 months.\" — Great Emman",
+        text: "Your first 100 customers usually come from focused conversations and consistent execution—not viral reach.",
       },
-      {
-        type: "checklist",
-        items: [
-          "No custom domain (you'll have .wordpress.com or .wixsite.com in your URL).",
-          "Platform ads may appear on your site.",
-          "Limited storage for images and files.",
-          "No e-commerce or payment gateway on free tiers.",
-          "SEO capabilities are restricted.",
-        ],
-      },
-      {
-        type: "heading",
-        id: "upgrade-path",
-        text: "4. When to upgrade to paid",
-      },
-      {
-        type: "paragraph",
-        text: "Once you start receiving consistent traffic, want to sell products, or need a professional email address, it's time to invest in a paid plan. Creative Emman Limited offers affordable website packages tailored specifically for Nigerian businesses.",
-      },
-      {
-        type: "roadmap",
-        title: "Website Growth Journey",
-        steps: [
-          { step: "01", title: "Free Plan",     desc: "Build & validate your idea" },
-          { step: "02", title: "Custom Domain", desc: "Look professional, build trust" },
-          { step: "03", title: "Paid Hosting",  desc: "Speed, security & e-commerce" },
-          { step: "04", title: "Growth Stack",  desc: "SEO, CRM & analytics" },
-        ],
-      },
-    ],
-  },
 
-  // ── 2 ────────────────────────────────────────────────────────────────────
-  {
-    id: "business-ideas-nigeria",
-    author: "Great Emman",
-    tocItems: [
-      { id: "why-now",         label: "1. Why 2023 is a great time to start" },
-      { id: "top-ideas",       label: "2. Top 10 business ideas" },
-      { id: "getting-started", label: "3. Getting started checklist" },
-      { id: "final-thoughts",  label: "4. Final thoughts" },
-    ],
-    content: [
+      { type: "heading", id: "define-customer", text: "1. Define the customer you actually want" },
       {
         type: "paragraph",
-        text: "Nigeria's digital economy is growing rapidly. With mobile penetration rising and more consumers shopping and transacting online, the opportunities for entrepreneurs have never been richer.",
+        text: "A business that speaks to everyone rarely feels relevant to anyone. Before creating content or paying for adverts, decide who has the strongest need for what you sell. Describe that person or organisation by the problem they face, the result they want, their ability to pay and where they already spend time online.",
       },
-      { type: "heading", id: "why-now", text: "1. Why 2023 is a great time to start" },
-      {
-        type: "paragraph",
-        text: "Post-COVID consumer behaviour has permanently shifted. Nigerians are more comfortable ordering food, booking services, and making financial transactions digitally. Founders who build for this shift now will capture significant market share.",
-      },
-      { type: "heading", id: "top-ideas", text: "2. Top 10 business ideas" },
       {
         type: "list",
         items: [
-          "Logistics & last-mile delivery aggregation.",
-          "AgriTech — connecting smallholder farmers to buyers.",
-          "EdTech — vocational skills and professional certification.",
-          "HealthTech — telemedicine and pharmacy delivery.",
-          "Digital marketing agency for SMEs.",
-          "Food delivery from home kitchens.",
-          "Cleaning & home services marketplace.",
-          "Secondhand fashion e-commerce.",
-          "Solar energy sales and installation.",
-          "Virtual assistant services for diaspora businesses.",
+          "<strong>For a fashion brand:</strong> working women in Lagos and Port Harcourt who need polished, ready-to-wear outfits delivered reliably.",
+          "<strong>For a web designer:</strong> established service businesses losing enquiries because their current website looks outdated or performs poorly.",
+          "<strong>For a training company:</strong> graduates and early-career professionals who need practical digital skills and portfolio evidence.",
+          "<strong>For a food business:</strong> offices within a defined delivery radius that need dependable weekday lunch service.",
         ],
       },
-      { type: "heading", id: "getting-started", text: "3. Getting started checklist" },
+      {
+        type: "paragraph",
+        text: "Start with one primary customer group. You can expand later, but early traction improves when your message is specific enough for the right buyer to immediately think, “This is for me.”",
+      },
+
+      { type: "heading", id: "build-offer", text: "2. Build an offer people can understand quickly" },
+      {
+        type: "paragraph",
+        text: "Customers do not buy a list of features; they buy a useful outcome with an acceptable level of risk. Package your service or product so that a prospect can understand the result, price range, delivery time and next step without a long explanation.",
+      },
       {
         type: "checklist",
         items: [
-          "Validate your idea with 10 potential customers before building.",
-          "Register your business with the CAC.",
-          "Build a simple landing page to capture leads.",
-          "Set up a business bank account.",
-          "Define your minimum viable product (MVP).",
+          "Name the specific problem your offer solves.",
+          "State the result or transformation the customer should expect.",
+          "Explain exactly what is included—and what is not.",
+          "Use a clear starting price or pricing range where possible.",
+          "Add a reasonable guarantee, revision policy or low-risk first step.",
+          "Give the buyer one obvious action: order, book, call or request a quote.",
         ],
       },
-      { type: "heading", id: "final-thoughts", text: "4. Final thoughts" },
       {
         type: "paragraph",
-        text: "Every successful Nigerian business started with one decision — to start. Pick the idea that solves a real problem you understand, and build from there.",
+        text: "For example, “We create business websites” is broad. “We design and launch a five-page lead-generation website for Nigerian professional firms within three weeks” is easier to understand, compare and buy.",
       },
-    ],
-  },
 
-  // ── 3 ────────────────────────────────────────────────────────────────────
-  {
-    id: "smes-compete-online",
-    author: "Great Emman",
-    tocItems: [
-      { id: "the-challenge",  label: "1. The SME challenge online" },
-      { id: "key-strategies", label: "2. Key competitive strategies" },
-      { id: "tools",          label: "3. Affordable tools to use" },
-      { id: "action-plan",    label: "4. Your 30-day action plan" },
-    ],
-    content: [
+      { type: "heading", id: "trust-foundation", text: "3. Create a trustworthy digital foundation" },
       {
         type: "paragraph",
-        text: "Nigerian SMEs often feel outgunned online by large corporations with massive marketing budgets. But the digital playing field is more level than it appears — if you know where to invest your energy.",
+        text: "Before someone sends money or books a call, they usually check whether your business appears credible. Your digital presence does not need to be complicated, but it must be consistent. Use the same business name, visual identity, phone number and offer across every customer touchpoint.",
       },
-      { type: "heading", id: "the-challenge", text: "1. The SME challenge online" },
-      {
-        type: "paragraph",
-        text: "The biggest barriers for SMEs are inconsistent digital presence, low website authority, and no documented content strategy. Large brands win through volume; you win through precision.",
-      },
-      { type: "heading", id: "key-strategies", text: "2. Key competitive strategies" },
       {
         type: "list",
         items: [
-          "<strong>Niche down</strong>: Own a specific local or vertical niche instead of competing broadly.",
-          "<strong>Content marketing</strong>: Publish practical guides your audience actually searches for.",
-          "<strong>Local SEO</strong>: Optimise your Google Business Profile and local citations.",
-          "<strong>Social proof</strong>: Actively collect and display customer testimonials and case studies.",
-          "<strong>Community building</strong>: WhatsApp groups and Facebook communities drive organic loyalty.",
+          "<strong>A conversion-focused website or landing page</strong> with your offer, proof, FAQs and a clear contact path.",
+          "<strong>A complete Google Business Profile</strong> if you serve a location or local market.",
+          "<strong>A professional WhatsApp Business profile</strong> with a catalogue, greeting, quick replies and accurate operating hours.",
+          "<strong>One strong social profile</strong> containing useful content, proof of work and visible customer conversations.",
+          "<strong>Simple proof</strong> such as real photographs, portfolio samples, testimonials, results, certifications or behind-the-scenes process.",
         ],
       },
-      { type: "heading", id: "tools", text: "3. Affordable tools to use" },
+      {
+        type: "paragraph",
+        text: "Trust is built through small signals. Fast replies, correct spelling, transparent terms, secure payment options and keeping promises are often more persuasive than elaborate marketing claims.",
+      },
+
+      { type: "heading", id: "choose-channels", text: "4. Choose two focused acquisition channels" },
+      {
+        type: "paragraph",
+        text: "Trying to dominate Instagram, TikTok, Facebook, LinkedIn, X, YouTube and email at the same time usually produces weak execution everywhere. Select two channels based on where your buyers already search, ask questions or make recommendations.",
+      },
+      {
+        type: "list",
+        items: [
+          "<strong>WhatsApp:</strong> best for warm referrals, follow-up, catalogues and direct conversations. Avoid unsolicited bulk messages; earn permission first.",
+          "<strong>Instagram or TikTok:</strong> useful for visual products, transformations, demonstrations and founder-led storytelling.",
+          "<strong>LinkedIn:</strong> effective for B2B services, corporate buyers, partnerships and professional authority.",
+          "<strong>Google Search:</strong> valuable when customers actively search for your service and location with buying intent.",
+          "<strong>Email:</strong> useful for nurturing leads, educating buyers and creating repeat sales without depending entirely on algorithms.",
+          "<strong>Communities and partnerships:</strong> industry groups, alumni networks, associations and complementary businesses can accelerate early trust.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Use one channel to create discovery and another to capture or follow up with interested people. For many Nigerian small businesses, that can mean Instagram for attention and WhatsApp for conversion, or LinkedIn for authority and email for nurturing.",
+      },
+
+      { type: "heading", id: "customer-system", text: "5. Build a system for reaching 100 customers" },
+      {
+        type: "paragraph",
+        text: "Break the target into smaller, controllable numbers. One hundred customers can feel intimidating; five qualified conversations each working day feels operational. If 20 percent of qualified conversations become customers, you need roughly 500 meaningful conversations to produce 100 sales. Your actual rate may be higher or lower, but the principle is the same: work backwards from conversion.",
+      },
+      {
+        type: "roadmap",
+        title: "The first-100 customer engine",
+        steps: [
+          { step: "01", title: "Attract", desc: "Publish useful content, partner and ask for referrals" },
+          { step: "02", title: "Capture", desc: "Move interest to a form, WhatsApp or booked call" },
+          { step: "03", title: "Convert", desc: "Diagnose the need, recommend and follow up" },
+          { step: "04", title: "Multiply", desc: "Deliver well, request proof and earn referrals" },
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Create a simple weekly rhythm: publish three genuinely useful pieces of content, start 25 relevant conversations, follow up with every open lead, ask satisfied customers for referrals and review your numbers every Friday. Consistency makes the system compound.",
+      },
+
+      { type: "heading", id: "sales-process", text: "6. Make the buying process simple" },
+      {
+        type: "paragraph",
+        text: "Many good businesses lose customers between “I am interested” and “How do I pay?” Reduce unnecessary friction. Respond quickly, ask focused questions and recommend the most suitable option instead of sending a confusing catalogue with no guidance.",
+      },
       {
         type: "checklist",
         items: [
-          "Google Business Profile (free) — local search visibility.",
-          "Canva (free/pro) — professional graphics on a budget.",
-          "Mailchimp (free tier) — email marketing for up to 500 contacts.",
-          "Google Analytics 4 (free) — track website performance.",
-          "Hootsuite or Buffer (free tiers) — schedule social media content.",
+          "Acknowledge every enquiry and give a realistic response time.",
+          "Ask what the customer needs, when they need it and what success looks like.",
+          "Send a concise recommendation with scope, price, timeline and payment terms.",
+          "Provide trusted payment options and issue a receipt or confirmation.",
+          "Follow up professionally after 24–48 hours if the prospect has not decided.",
+          "Record the lead and next action in a spreadsheet or simple CRM.",
         ],
       },
-      { type: "heading", id: "action-plan", text: "4. Your 30-day action plan" },
+      {
+        type: "paragraph",
+        text: "Following up is not desperation when it is respectful and useful. A prospect may be busy, waiting for approval or comparing options. Good follow-up clarifies the next step and gives them a reason to respond.",
+      },
+
+      { type: "heading", id: "measure", text: "7. Measure the numbers that create revenue" },
+      {
+        type: "paragraph",
+        text: "Do not judge marketing only by likes. Track the journey from attention to revenue. A small audience that generates qualified enquiries is more valuable than a large audience that never buys.",
+      },
+      {
+        type: "list",
+        items: [
+          "<strong>Qualified leads:</strong> people who fit your target customer and have a relevant need.",
+          "<strong>Conversion rate:</strong> the percentage of qualified leads who become paying customers.",
+          "<strong>Customer acquisition cost:</strong> total marketing and sales spend divided by new customers.",
+          "<strong>Average order value:</strong> the average revenue earned from each transaction.",
+          "<strong>Repeat purchase rate:</strong> how many customers buy again within a defined period.",
+          "<strong>Referral rate:</strong> the percentage of customers who introduce another prospect.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Review these numbers weekly. Increase activity in channels that generate qualified conversations, improve weak steps in the buying journey and stop spending on activity that cannot be connected to a clear business goal.",
+      },
+
+      { type: "heading", id: "thirty-day-plan", text: "8. Follow this 30-day action plan" },
       {
         type: "roadmap",
-        title: "30-Day Competitive Sprint",
+        title: "Your first 30-day customer sprint",
         steps: [
-          { step: "Wk 1", title: "Audit",   desc: "Review your current digital presence" },
-          { step: "Wk 2", title: "Fix",     desc: "Update website & Google profile" },
-          { step: "Wk 3", title: "Create",  desc: "Publish 2 pieces of targeted content" },
-          { step: "Wk 4", title: "Measure", desc: "Review traffic & leads generated" },
+          { step: "W1", title: "Clarify", desc: "Define customer, offer, message and conversion goal" },
+          { step: "W2", title: "Build", desc: "Prepare landing page, proof and follow-up tools" },
+          { step: "W3", title: "Launch", desc: "Publish, contact prospects and activate partners" },
+          { step: "W4", title: "Improve", desc: "Review data, follow up and double down on traction" },
         ],
+      },
+      {
+        type: "paragraph",
+        text: "During the sprint, protect time for customer conversations every day. Content supports sales, but it should not become a comfortable substitute for speaking with real prospects. Listen for repeated objections, questions and desired outcomes; they will tell you how to improve your offer and messaging.",
+      },
+
+      { type: "heading", id: "mistakes", text: "9. Avoid the mistakes that slow early growth" },
+      {
+        type: "list",
+        items: [
+          "<strong>Buying followers:</strong> inflated numbers do not create trust, insight or predictable sales.",
+          "<strong>Running adverts before fixing the offer:</strong> paid traffic amplifies confusion when the message and conversion path are weak.",
+          "<strong>Copying competitors:</strong> learn from the market, but build a distinct reason for customers to choose you.",
+          "<strong>Inconsistent follow-up:</strong> many leads need more than one interaction before making a decision.",
+          "<strong>Discounting too quickly:</strong> strengthen value, proof and packaging before training customers to wait for lower prices.",
+          "<strong>Ignoring existing customers:</strong> repeat purchases and referrals are usually more efficient than constantly finding strangers.",
+        ],
+      },
+      {
+        type: "blockquote",
+        text: "The goal is not simply to reach 100 transactions. It is to build a system that can earn customer 101 without starting from zero.",
+      },
+      {
+        type: "paragraph",
+        text: "Your first customers are a source of revenue, but they are also your best source of insight. Serve them well, document what convinced them, study what nearly stopped them from buying and turn those lessons into a stronger offer. That is how early traction becomes sustainable growth.",
       },
     ],
   },
-
-  // ────────────────────────────────────────────────────────────────────────
-  // ADD MORE ARTICLES BELOW — copy the block above and change id + content
-  // ────────────────────────────────────────────────────────────────────────
 ];
 
-/** Convenience lookup by post id */
 export const getArticleById = (id: string): BlogArticle | undefined =>
-  blogArticles.find((a) => a.id === id);
+  blogArticles.find((article) => article.id === id);

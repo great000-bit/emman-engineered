@@ -19,6 +19,8 @@ const contactSchema = z.object({
   email: z.string().trim().email("Invalid email"),
   phone: z.string().trim().max(20).optional(),
   service: z.string().min(1, "Please select a service"),
+  budget: z.string().optional(),
+  timeline: z.string().optional(),
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
 
@@ -85,7 +87,7 @@ const FloatingTextarea = ({
 );
 
 const ContactPage = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", budget: "", timeline: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const { unlockSuccessSound, playSuccessSound } = useSuccessSound();
@@ -110,12 +112,14 @@ const ContactPage = () => {
       email: form.email,
       phone: form.phone,
       service: form.service,
+      budget: form.budget,
+      timeline: form.timeline,
       message: form.message,
     });
 
     if (ok) {
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      setForm({ name: "", email: "", phone: "", service: "", budget: "", timeline: "", message: "" });
       playSuccessSound();
     } else {
       setStatus("error");
@@ -154,7 +158,7 @@ const ContactPage = () => {
           </ScrollReveal>
           <ScrollReveal delay={0.16}>
             <p className="text-lg text-primary-foreground/50 max-w-xl">
-              Initiate a project. Our team responds within 24 hours.
+              Share the challenge, desired timeline and enough context for a useful first conversation.
             </p>
           </ScrollReveal>
         </div>
@@ -206,9 +210,9 @@ const ContactPage = () => {
                         onChange={(v) => setForm({ ...form, phone: v })}
                       />
                       <div>
-                        <label className="text-xs text-muted-foreground mb-2 block">Service *</label>
-                        <Select value={form.service} onValueChange={(v) => setForm({ ...form, service: v })}>
-                          <SelectTrigger className="bg-transparent border-0 border-b-2 border-border rounded-none focus:border-accent px-0 text-foreground">
+                        <label id="service-label" className="text-xs text-muted-foreground mb-2 block">Service *</label>
+                        <Select name="service" required value={form.service} onValueChange={(v) => setForm({ ...form, service: v })}>
+                          <SelectTrigger aria-labelledby="service-label" aria-invalid={!!errors.service} aria-describedby={errors.service ? "service-error" : undefined} className="bg-transparent border-0 border-b-2 border-border rounded-none focus:border-accent px-0 text-foreground">
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
                           <SelectContent className="bg-card border-border">
@@ -219,7 +223,32 @@ const ContactPage = () => {
                             <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
                         </Select>
-                        {errors.service && <p className="text-xs text-destructive mt-1">{errors.service}</p>}
+                        {errors.service && <p id="service-error" className="text-xs text-destructive mt-1">{errors.service}</p>}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+                      <div>
+                        <label id="budget-label" className="text-xs text-muted-foreground mb-2 block">Indicative budget</label>
+                        <Select name="budget" value={form.budget} onValueChange={(v) => setForm({ ...form, budget: v })}>
+                          <SelectTrigger aria-labelledby="budget-label" className="bg-transparent border-0 border-b-2 border-border rounded-none focus:border-accent px-0 text-foreground">
+                            <SelectValue placeholder="Select a range" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-card border-border">
+                            {["Under ₦100,000", "₦100,000 – ₦300,000", "₦300,000 – ₦750,000", "₦750,000 – ₦1,500,000", "Above ₦1,500,000", "Not decided yet"].map((option) => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <label id="timeline-label" className="text-xs text-muted-foreground mb-2 block">Preferred timeline</label>
+                        <Select name="timeline" value={form.timeline} onValueChange={(v) => setForm({ ...form, timeline: v })}>
+                          <SelectTrigger aria-labelledby="timeline-label" className="bg-transparent border-0 border-b-2 border-border rounded-none focus:border-accent px-0 text-foreground">
+                            <SelectValue placeholder="Select a timeline" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-card border-border">
+                            {["As soon as practical", "Within 1 month", "1–3 months", "3–6 months", "More than 6 months", "Not decided yet"].map((option) => <SelectItem key={option} value={option}>{option}</SelectItem>)}
+                          </SelectContent>
+                        </Select>
                       </div>
                     </div>
 

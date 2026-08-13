@@ -13,8 +13,8 @@ import showcaseFilm from "@/assets/showcase-film.jpg";
 import showcaseMobile from "@/assets/showcase-mobile.jpg";
 import showcasePortrait from "@/assets/showcase-portrait.jpg";
 import showcaseSaas from "@/assets/showcase-saas.jpg";
-import showcaseSchool from "@/assets/BrightPathAcademy.png";
-import showcaseAdeyemi from "@/assets/AdeyemiPartners.png";
+import showcaseSchool from "@/assets/BrightPathAcademy.webp";
+import showcaseAdeyemi from "@/assets/AdeyemiPartners.webp";
 
 export type PortfolioCategory =
   | "web-development"

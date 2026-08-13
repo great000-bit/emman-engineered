@@ -1,16 +1,12 @@
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import SEO from "@/components/SEO";
 import KeyboardVisual from "@/components/shared/KeyboardVisual";
-import { HeroCTALink } from "@/components/shared/HeroCTA";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   const location = useLocation();
-
-  useEffect(() => {
-    console.error("404: no route matches", location.pathname);
-  }, [location.pathname]);
 
   return (
     <PageLayout>
@@ -18,6 +14,7 @@ const NotFound = () => {
         path={location.pathname}
         title="Page Not Found | Creative Emman Limited"
         description="The page you are looking for could not be found. Return to Creative Emman Limited's homepage or explore our services and portfolio."
+        robots="noindex, follow"
       />
 
       <section className="relative min-h-screen flex flex-col overflow-hidden bg-primary">
@@ -34,7 +31,11 @@ const NotFound = () => {
           <p className="text-base sm:text-lg text-primary-foreground/60 max-w-md mb-10">
             The page you're looking for doesn't exist, may have moved, or the link might be broken.
           </p>
-          <HeroCTALink to="/" label="Go Home" />
+          <div className="flex flex-wrap justify-center gap-3">
+            {[{ label: "Home", path: "/" }, { label: "Services", path: "/services" }, { label: "Work", path: "/work" }, { label: "Contact", path: "/contact" }].map((item, index) => (
+              <Link key={item.path} to={item.path} className={`inline-flex min-h-11 items-center gap-2 rounded-full border px-5 py-3 text-xs font-bold uppercase tracking-wider transition-colors ${index === 0 ? "border-accent bg-accent text-white" : "border-primary-foreground/20 text-primary-foreground/70 hover:border-accent hover:text-accent"}`}>{item.label}{index === 0 && <ArrowRight className="h-4 w-4" />}</Link>
+            ))}
+          </div>
         </div>
       </section>
     </PageLayout>

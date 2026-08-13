@@ -642,3 +642,128 @@ export const pricingFaqs = [
     answer: "No hidden fees. After the first year, your only recurring costs will be standard domain name and web hosting renewals, unless you opt for one of our Website Care & Growth retainer plans."
   }
 ];
+
+export interface ServicePrice {
+  amount: string;
+  usdAmount: string;
+  timeline: string;
+  note: string;
+}
+
+const categoryDefaults: Record<ServicePillarSlug, ServicePrice> = {
+  build: { amount: "From ₦500,000", usdAmount: "From $315", timeline: "From 3 weeks", note: "Final cost depends on page depth, functionality and integrations." },
+  grow: { amount: "From ₦200,000 / month", usdAmount: "From $125 / month", timeline: "Monthly engagement", note: "Media and advertising spend are scoped separately where required." },
+  scale: { amount: "From ₦400,000", usdAmount: "From $250", timeline: "From 3 weeks", note: "Complexity depends on workflows, data sources and connected systems." },
+  train: { amount: "From ₦50,000 / participant", usdAmount: "From $35 / participant", timeline: "Programme dependent", note: "Group and custom programme pricing is confirmed after a learning-needs review." },
+};
+
+const priceOverrides: Record<string, Partial<ServicePrice>> = {
+  "web-design-development": { amount: "From ₦500,000", timeline: "3–6 weeks" },
+  "website-development": { amount: "From ₦500,000", timeline: "3–6 weeks" },
+  "custom-website-development": { amount: "From ₦500,000", timeline: "4–8 weeks" },
+  "frontend-development": { amount: "From ₦500,000", timeline: "3–8 weeks" },
+  "full-stack-development": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "wordpress-development": { amount: "From ₦400,000", timeline: "3–6 weeks" },
+  "website-redesign": { amount: "From ₦450,000", timeline: "3–6 weeks" },
+  "landing-page-development": { amount: "From ₦250,000", timeline: "1–3 weeks" },
+  "ecommerce-development": { amount: "From ₦550,000", timeline: "5–8 weeks" },
+  "custom-web-applications": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "web-application-development": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "saas-development": { amount: "From ₦2,000,000", timeline: "10+ weeks" },
+  "mobile-app-development": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "ui-ux-design": { amount: "From ₦350,000", timeline: "3–6 weeks" },
+  "product-design": { amount: "From ₦600,000", timeline: "4–8 weeks" },
+  "brand-identity-design": { amount: "From ₦150,000", timeline: "2–4 weeks" },
+  "graphic-design": { amount: "From ₦10,000", timeline: "1–3 weeks" },
+  "hosting-infrastructure": { amount: "Custom Quote", timeline: "Scope dependent" },
+  "website-maintenance": { amount: "From ₦100,000 / month", timeline: "Monthly engagement" },
+  "website-care-plans": { amount: "From ₦100,000 / month", timeline: "Monthly engagement" },
+  "corporate-photography": { amount: "From ₦40,000", timeline: "Per project" },
+  "api-development": { amount: "From ₦400,000", timeline: "3–8 weeks" },
+  dashboards: { amount: "From ₦800,000", timeline: "5–10 weeks" },
+  seo: { amount: "From ₦200,000 / month", timeline: "Monthly engagement" },
+  "google-ads-management": { amount: "From ₦150,000 / month", timeline: "Monthly engagement" },
+  "social-media-management": { amount: "From ₦250,000 / month", timeline: "Monthly engagement" },
+  "social-media-marketing": { amount: "From ₦250,000 / month", timeline: "Monthly engagement" },
+  "paid-social-advertising": { amount: "From ₦150,000 / campaign", timeline: "Campaign dependent" },
+  "content-marketing": { amount: "From ₦200,000 / month", timeline: "Monthly engagement" },
+  "content-strategy": { amount: "From ₦200,000", timeline: "2–4 weeks" },
+  "email-marketing": { amount: "From ₦150,000 / month", timeline: "Monthly engagement" },
+  "email-automation": { amount: "From ₦250,000", timeline: "2–5 weeks" },
+  "digital-marketing": { amount: "From ₦250,000 / month", timeline: "Monthly engagement" },
+  "campaign-strategy": { amount: "From ₦200,000", timeline: "2–4 weeks" },
+  "event-marketing": { amount: "Custom Quote", timeline: "Event dependent" },
+  "creative-content-production": { amount: "From ₦150,000", timeline: "Per production cycle" },
+  "photography-content": { amount: "From ₦50,000", timeline: "Per project" },
+  "videography-content": { amount: "From ₦150,000", timeline: "Per project" },
+  "marketing-strategy": { amount: "From ₦250,000", timeline: "2–5 weeks" },
+  "ai-business-automation": { amount: "From ₦500,000", timeline: "4–10 weeks" },
+  "business-automation": { amount: "From ₦400,000", timeline: "3–8 weeks" },
+  "analytics-data": { amount: "From ₦350,000", timeline: "3–6 weeks" },
+  "analytics-dashboards": { amount: "From ₦800,000", timeline: "5–10 weeks" },
+  "crm-automation": { amount: "From ₦400,000", timeline: "3–8 weeks" },
+  "digital-strategy-consulting": { amount: "From ₦120,000 / session", timeline: "Per session or sprint" },
+  "growth-retainers": { amount: "From ₦400,000 / month", timeline: "Monthly engagement" },
+  "api-integration": { amount: "From ₦250,000", timeline: "2–6 weeks" },
+  "internal-business-tools": { amount: "From ₦800,000", timeline: "6+ weeks" },
+  "business-management-systems": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "custom-dashboards": { amount: "From ₦800,000", timeline: "5–10 weeks" },
+  "saas-products": { amount: "From ₦2,000,000", timeline: "10+ weeks" },
+  "technical-consulting": { amount: "From ₦120,000 / session", timeline: "Per session" },
+  "digital-transformation": { amount: "Custom Quote", timeline: "Phased engagement" },
+  "mvp-development": { amount: "From ₦1,500,000", timeline: "8+ weeks" },
+  "corporate-digital-training": { amount: "From ₦300,000 / workshop", timeline: "Custom programme" },
+  "ui-ux-training": { amount: "From ₦200,000 / participant", timeline: "4–8 weeks" },
+  "web-development-training": { amount: "From ₦400,000 / participant", timeline: "6–12 weeks" },
+  "frontend-development-training": { amount: "From ₦100,000 / participant", timeline: "6–12 weeks" },
+  "graphic-design-training": { amount: "From ₦100,000 / participant", timeline: "4–8 weeks" },
+  "brand-design-training": { amount: "From ₦75,000 / participant", timeline: "4–8 weeks" },
+  "social-media-training": { amount: "From ₦60,000 / participant", timeline: "3–6 weeks" },
+  "digital-marketing-training": { amount: "From ₦150,000 / participant", timeline: "4–8 weeks" },
+  "video-editing-training": { amount: "From ₦80,000 / participant", timeline: "4–8 weeks" },
+  "photography-training": { amount: "From ₦80,000 / participant", timeline: "4–8 weeks" },
+  "online-courses": { amount: "From ₦50,000 / course", timeline: "Self-paced or cohort" },
+  mentorship: { amount: "From ₦50,000 / month", timeline: "Monthly" },
+  internships: { amount: "Application required", timeline: "Cohort dependent", note: "Internship places are selective and do not guarantee employment." },
+  "custom-training-programmes": { amount: "Custom Quote", timeline: "Programme dependent" },
+  videography: { amount: "From ₦100,000", timeline: "Per project" },
+  "video-editing": { amount: "From ₦30,000 / project", timeline: "From 5 working days" },
+  "motion-graphics-design": { amount: "From ₦150,000", timeline: "From 1 week" },
+  photography: { amount: "From ₦15,000", timeline: "Per project" },
+};
+
+const toUsd = (amount: string, fallback: string) => {
+  if (/custom quote|application required/i.test(amount)) return "On request";
+  const digits = amount.replace(/,/g, "").match(/₦(\d+)/);
+  if (!digits) return fallback;
+  const rounded = Math.ceil(Number(digits[1]) / 1600 / 5) * 5;
+  const suffix = [" / month", " / participant", " / session", " / project", " / workshop", " / campaign", " / course"].find((item) => amount.includes(item)) ?? "";
+  return `From $${rounded.toLocaleString("en-US")}${suffix}`;
+};
+
+export const servicePricing: Record<string, ServicePrice> = Object.fromEntries(
+  allServices.map((item) => {
+    const merged = { ...categoryDefaults[item.category], ...priceOverrides[item.slug] };
+    return [item.slug, { ...merged, usdAmount: toUsd(merged.amount, merged.usdAmount) }];
+  })
+);
+
+export const getServicePrice = (slug: string) => servicePricing[slug];
+
+export interface PricingTableSection { id: string; shortLabel: string; title: string; description: string; serviceSlugs: string[]; }
+
+export const pricingTableSections: PricingTableSection[] = [
+  { id: "websites", shortLabel: "Websites", title: "Website design and development", description: "Conversion-focused websites built for clarity, performance and confident growth.", serviceSlugs: ["web-design-development", "landing-page-development", "wordpress-development", "website-redesign", "ecommerce-development"] },
+  { id: "ui-ux", shortLabel: "UI UX", title: "UI UX and product design", description: "Research, flows and interface systems that make digital products easier to use.", serviceSlugs: ["ui-ux-design", "product-design"] },
+  { id: "branding", shortLabel: "Branding", title: "Brand identity and graphic design", description: "Connected visual systems for organisations that need to look consistent and credible.", serviceSlugs: ["brand-identity-design", "graphic-design"] },
+  { id: "software", shortLabel: "Software", title: "Web applications and software", description: "Purpose-built software products, operational tools and connected digital platforms.", serviceSlugs: ["custom-web-applications", "saas-development", "mobile-app-development", "mvp-development", "api-development", "dashboards"] },
+  { id: "maintenance", shortLabel: "Maintenance", title: "Hosting maintenance and support", description: "Reliable foundations and ongoing care after a website or product goes live.", serviceSlugs: ["hosting-infrastructure", "website-maintenance", "website-care-plans"] },
+  { id: "growth", shortLabel: "Growth", title: "Digital marketing and growth", description: "Channel strategy and accountable campaigns designed around business goals.", serviceSlugs: ["seo", "google-ads-management", "digital-marketing", "content-marketing", "email-marketing", "growth-retainers"] },
+  { id: "social", shortLabel: "Social", title: "Social media management and content", description: "Consistent publishing, community care and campaign-ready creative production.", serviceSlugs: ["social-media-management", "social-media-marketing", "paid-social-advertising", "creative-content-production"] },
+  { id: "automation", shortLabel: "Automation", title: "AI automation and strategy", description: "Practical systems that reduce repeated work and improve operational visibility.", serviceSlugs: ["ai-business-automation", "business-automation", "crm-automation", "analytics-dashboards", "digital-strategy-consulting"] },
+  { id: "photography", shortLabel: "Photography", title: "Photography", description: "Purposeful brand, corporate, product and event imagery.", serviceSlugs: ["photography", "corporate-photography", "photography-content"] },
+  { id: "video", shortLabel: "Video", title: "Videography and video editing", description: "Production and post-production for campaigns, corporate stories and events.", serviceSlugs: ["videography", "video-editing", "videography-content"] },
+  { id: "motion", shortLabel: "Motion", title: "Motion graphics", description: "Animated communication that makes brand stories and complex ideas easier to understand.", serviceSlugs: ["motion-graphics-design"] },
+  { id: "training", shortLabel: "Training", title: "Training and capacity building", description: "Practical programmes for individuals, teams and organisations building digital capability.", serviceSlugs: ["corporate-digital-training", "ui-ux-training", "web-development-training", "graphic-design-training", "digital-marketing-training", "video-editing-training", "photography-training"] },
+];
+import { allServices, type ServicePillarSlug } from "@/data/serviceCategories";

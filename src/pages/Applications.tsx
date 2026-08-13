@@ -11,6 +11,7 @@ import { submitToFormspree } from "@/lib/formspree";
 import FormSuccessState from "@/components/shared/FormSuccessState";
 import InternshipOnboardingModal from "@/components/shared/InternshipOnboardingModal";
 import { useSuccessSound } from "@/hooks/useSuccessSound";
+import { Link } from "react-router-dom";
 
 type ApplicationTab = "professional" | "internship";
 
@@ -430,6 +431,7 @@ const ApplicationsPage = () => {
               Apply for a professional role or internship and become part of a multidisciplinary creative team
               building digital products, brands, campaigns, and visual experiences.
             </p>
+            <Link to="/internships" className="mt-5 inline-flex text-sm font-semibold text-accent underline-offset-4 hover:underline">Review the internship programme before applying →</Link>
           </ScrollReveal>
         </div>
       </section>

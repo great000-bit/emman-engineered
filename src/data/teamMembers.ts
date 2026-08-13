@@ -1,7 +1,7 @@
 import AdebowaleImg from "@/assets/AdebowaleTaofeek.jpeg";
 import DanielImg from "@/assets/DanielOyetayo.jpeg";
 import VivianImg from "@/assets/MbaVivian.jpeg";
-import ZaydImg from "@/assets/ZaydTahir.png";
+import ZaydImg from "@/assets/ZaydTahir.webp";
 import GreatEmmanImg from "@/assets/GreatEmman-wori.jpeg";
 import SophiaImg from "@/assets/IyeritufuSophiaAdaobim.jpeg";
 import OsuagwuImg from "@/assets/OsuagwuGoldenheart.jpeg";
@@ -10,7 +10,7 @@ import GraceImg from "@/assets/GraceGrant.jpeg";
 import CharlesImg from "@/assets/CharlesMacanthony.jpeg";
 import JenniferImg from "@/assets/JenniferFrank .jpeg";
 
-export const teamMembers = [
+const teamMembersBase = [
   {
     id: "Great Emman-wori",
     name: "Great Emman-wori",
@@ -113,3 +113,28 @@ export const teamMembers = [
     portfolio: "",
   },
 ];
+
+const profileDetails: Record<string, { slug: string; firstName: string; discipline: string }> = {
+  "Great Emman-wori": { slug: "great-emman-wori", firstName: "Great", discipline: "Creative technology leadership" },
+  "Zayd Tahir": { slug: "zayd-tahir", firstName: "Zayd", discipline: "Frontend engineering" },
+  "Adebowale Taofeek": { slug: "adebowale-taofeek", firstName: "Adebowale", discipline: "Visual design" },
+  "Daniel Oyetayo": { slug: "daniel-oyetayo", firstName: "Daniel", discipline: "Brand and graphic design" },
+  "MBA Vivian": { slug: "mba-vivian", firstName: "Vivian", discipline: "Content and operations" },
+  "Osuagwu Goldenheart": { slug: "osuagwu-goldenheart", firstName: "Osuagwu", discipline: "Mobile photography" },
+  "David Esemuru Okeoghene": { slug: "david-esemuru-okeoghene", firstName: "David", discipline: "Design and social media" },
+  "Grace Grant": { slug: "grace-grant", firstName: "Grace", discipline: "Content, video and social media" },
+  "Charles Macanthony": { slug: "charles-macanthony", firstName: "Charles", discipline: "Frontend engineering" },
+  "Jennifer Frank": { slug: "jennifer-frank", firstName: "Jennifer", discipline: "Community management" },
+};
+
+export const teamMembers = teamMembersBase.map((member) => ({
+  ...member,
+  ...profileDetails[member.id],
+  shortBio: member.bio,
+  fullBio: member.bio,
+  skills: member.stack,
+}));
+
+export const founderTeamMember = teamMembers.find((member) => member.id === "Great Emman-wori")!;
+export const aboutTeamMembers = teamMembers.filter((member) => member.id !== founderTeamMember.id);
+export const getTeamMember = (slug: string) => teamMembers.find((member) => member.slug === slug);

@@ -1,197 +1,47 @@
+import { ArrowRight, CheckCircle2, MessageSquareQuote } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { Phone, Mail, ArrowRight } from "lucide-react";
-import BarFanCorner from "@/components/shared/BarFanCorner";
 import SEO from "@/components/SEO";
+import { Button } from "@/components/ui/button";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 
-const testimonials = [
-  {
-    name: "Adaeze Nwosu",
-    company: "Finova Technologies",
-    text: "Creative Emman Limited delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched.",
-  },
-  {
-    name: "James Okonkwo",
-    company: "Atlas Logistics",
-    text: "From concept to deployment, their team demonstrated exceptional engineering discipline. Our web platform now handles 10x the traffic seamlessly.",
-  },
-  {
-    name: "Fatima Hassan",
-    company: "Meridian Health",
-    text: "The UI/UX redesign transformed our patient portal. User engagement increased by 340% within the first quarter.",
-  },
-  {
-    name: "Michael Ade",
-    company: "Vertex Capital",
-    text: "Their brand identity work gave us the institutional presence we needed. Every deliverable was precise, strategic, and beautifully executed.",
-  },
-  {
-    name: "Chioma Eze",
-    company: "NovaTech Solutions",
-    text: "The video production quality rivaled agencies three times their size. Creative Emman Limited is a serious technology partner.",
-  },
-  {
-    name: "Daniel Osei",
-    company: "Prism Ventures",
-    text: "We've worked with many agencies. Creative Emman Limited is the only one that treats digital execution as engineering. Highly recommended.",
-  },
-  {
-    name: "Blessing Amadi",
-    company: "Zenith Education",
-    text: "Their training program fundamentally changed how our team approaches frontend development. Structured, practical, and world-class.",
-  },
-  {
-    name: "Kola Balogun",
-    company: "Apex Realty",
-    text: "The photography and videography elevated our brand beyond anything we imagined. Every frame felt cinematic and intentional.",
-  },
+const proofPoints = [
+  "Project scope and expectations are clarified before production begins.",
+  "Milestones make progress and review points visible throughout delivery.",
+  "Final work is presented with the context needed to use and maintain it.",
 ];
 
-const MarqueeRow = ({ items, direction = "left", speed = 40 }: { items: typeof testimonials; direction?: "left" | "right"; speed?: number }) => {
-  const [isPaused, setIsPaused] = useState(false);
-  const doubled = [...items, ...items];
-  const totalWidth = items.length * 400;
+const TestimonialsPage = () => (
+  <PageLayout>
+    <SEO
+      path="/testimonials"
+      title="Client Feedback | Creative Emman Limited"
+      description="Learn how Creative Emman Limited approaches transparent collaboration, structured delivery and verified client feedback."
+      jsonLd={buildBreadcrumbSchema([{ name: "Client Feedback", path: "/testimonials" }])}
+    />
 
-  return (
-    <div
-      className="overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <motion.div
-        className="flex gap-6"
-        animate={{
-          x: direction === "left"
-            ? isPaused ? undefined : [0, -totalWidth]
-            : isPaused ? undefined : [-totalWidth, 0],
-        }}
-        transition={
-          isPaused
-            ? { type: "tween", duration: 0 }
-            : { x: { duration: speed, repeat: Infinity, ease: "linear" } }
-        }
-        style={{ width: "fit-content" }}
-      >
-        {doubled.map((t, i) => (
-          <div
-            key={`${t.name}-${i}`}
-            className="w-[300px] sm:w-[380px] flex-shrink-0 rounded-xl p-6 sm:p-8 border border-primary-foreground/10 backdrop-blur-lg bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all group"
-            style={{ transitionDuration: "var(--duration-fast)" }}
-          >
+    <section className="relative overflow-hidden bg-primary pt-32 sm:pt-40 pb-20 sm:pb-28 px-4 sm:px-6">
+      <div className="absolute inset-0 opacity-40" style={{ background: "radial-gradient(circle at 75% 25%, hsl(var(--accent) / .22), transparent 36%)" }} />
+      <div className="container-wide mx-auto relative">
+        <ScrollReveal><h1 className="max-w-5xl text-4xl sm:text-6xl lg:text-8xl leading-[.95] text-primary-foreground">Trust should be earned—and every quote should be verifiable.</h1></ScrollReveal>
+        <ScrollReveal delay={0.16}><p className="mt-8 max-w-2xl text-base sm:text-lg leading-relaxed text-primary-foreground/60">We are preparing this page for confirmed client feedback. We will only publish testimonials that can be attributed accurately and approved by the people behind them.</p></ScrollReveal>
+      </div>
+    </section>
 
-            <p className="text-sm text-primary-foreground/70 leading-relaxed mb-6 italic">
-              "{t.text}"
-            </p>
-            <div>
-              <p className="text-sm font-display font-semibold text-primary-foreground">{t.name}</p>
-              <p className="text-xs text-accent">{t.company}</p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-    </div>
-  );
-};
-
-const TestimonialsPage = () => {
-  const firstRow = testimonials.slice(0, 4);
-  const secondRow = testimonials.slice(4);
-
-  return (
-    <PageLayout>
-      <SEO
-        path="/testimonials"
-        title="Testimonials | Creative Emman Limited"
-        description="Read testimonials and feedback from people and brands connected with Creative Emman Limited's creative, digital, and technology services."
-        jsonLd={[
-          ...testimonials.map((t) => ({
-            "@context": "https://schema.org",
-            "@type": "Review",
-            reviewBody: t.text,
-            author: { "@type": "Person", name: t.name },
-            itemReviewed: { "@type": "Organization", name: "Creative Emman Limited" },
-          })),
-          buildBreadcrumbSchema([{ name: "Testimonials", path: "/testimonials" }]),
-        ]}
-      />
-      <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
-        <div className="container-wide mx-auto">
-          <ScrollReveal>
-            <span className="text-sm font-medium tracking-widest uppercase text-accent">Testimonials</span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl text-primary-foreground mt-3 mb-4 max-w-3xl">
-              What Our Clients <span className="text-accent">Say</span>
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.16}>
-            <p className="text-lg text-primary-foreground/60 max-w-xl">
-              Real feedback from partners who trusted us to build exceptional digital experiences.
-            </p>
-          </ScrollReveal>
+    <section className="section-padding bg-background">
+      <div className="container-wide mx-auto grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+        <ScrollReveal><div><MessageSquareQuote className="h-8 w-8 text-accent" /><h2 className="mt-6 text-3xl sm:text-5xl text-foreground">What you can expect while we build that record.</h2><p className="mt-5 text-muted-foreground leading-relaxed">Clear communication and accountable delivery are designed into our process—not added after something goes wrong.</p></div></ScrollReveal>
+        <div className="border-t border-border">
+          {proofPoints.map((point, index) => <ScrollReveal key={point} delay={index * 0.06}><div className="flex gap-4 border-b border-border py-7"><CheckCircle2 className="h-5 w-5 shrink-0 text-accent" /><p className="text-foreground/75 leading-relaxed">{point}</p></div></ScrollReveal>)}
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="bg-primary py-16 space-y-8">
-        <ScrollReveal>
-          <MarqueeRow items={firstRow} direction="left" speed={35} />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <MarqueeRow items={secondRow} direction="right" speed={40} />
-        </ScrollReveal>
-      </section>
-
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-primary text-center py-20 sm:py-28">
-        <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-        <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-        <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-        <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-        <div className="relative container-narrow mx-auto px-4">
-          <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
-              Which service
-              <br />
-              starts your next win?
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <p className="text-sm md:text-base text-primary-foreground/55 max-w-md mx-auto mb-8">
-              Pick a lane or bring the whole brief — we'll map out the right team and timeline.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <div className="flex flex-row gap-3 justify-center items-center">
-              <Link to="/contact">
-                <Button variant="light-fill">
-                  Let's Work Together <ArrowRight size={15} className="ml-1.5" />
-                </Button>
-              </Link>
-              <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                  <Phone size={14} className="mr-1.5" /> WhatsApp
-              </Button>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.15}>
-            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-primary-foreground/50">
-              <a href="mailto:creativeemmanlimited1@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Mail size={14} /> creativeemmanlimited1@gmail.com
-              </a>
-              <a href="tel:07037845433" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <Phone size={14} /> 07037845433
-              </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-    </PageLayout>
-  );
-};
+    <section className="section-padding bg-card border-y border-border text-center">
+      <div className="container-narrow mx-auto"><h2 className="text-3xl sm:text-5xl text-foreground">Judge the thinking. Review the work. Then start a conversation.</h2><p className="mx-auto mt-5 max-w-xl text-muted-foreground">Explore the current case studies and see how Creative Emman Limited approaches different digital challenges.</p><div className="mt-8 flex flex-wrap justify-center gap-3"><Link to="/work"><Button variant="outline" size="lg">View Our Work</Button></Link><Link to="/contact"><Button variant="accent" size="lg">Start a Project <ArrowRight className="ml-2 h-4 w-4" /></Button></Link></div></div>
+    </section>
+  </PageLayout>
+);
 
 export default TestimonialsPage;

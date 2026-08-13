@@ -34,11 +34,8 @@ const WhyChooseUs = () => (
       {/* Centered Heading */}
       <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
         <ScrollReveal>
-          <span className="text-xs font-semibold tracking-widest text-accent uppercase block mb-3">Our Core Principles</span>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-            What makes Creative Emman <span className="font-serif italic font-medium text-accent">different</span>
+            What makes Creative Emman Limited <span className="font-serif italic font-medium text-accent">different</span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-foreground/60 leading-relaxed font-body max-w-lg mx-auto">
             We focus on real outcomes, not just deliverables. Here is why founders and teams trust us with their projects.
