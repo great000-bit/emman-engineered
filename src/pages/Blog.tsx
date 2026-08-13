@@ -1,28 +1,25 @@
 import { useState, useMemo } from "react";
 import PageLayout from "@/components/layout/PageLayout";
-import { blogPosts, BlogPost } from "@/data/blogData";
+import { blogPosts } from "@/data/blogData";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { Search, Calendar, Clock, ArrowRight, MessageSquare, HelpCircle, Phone } from "lucide-react";
+import { Calendar, Clock, ArrowRight, HelpCircle, Phone, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
 import { Link } from "react-router-dom";
 import BarFanCorner from "@/components/shared/BarFanCorner";
 
 const BlogPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = ["All", "Web Design", "Business", "Marketing", "Tech", "Finance"];
+  const categories = ["All", ...Array.from(new Set(blogPosts.map((post) => post.category)))];
 
   const filteredPosts = useMemo(() => {
     return blogPosts.filter(post => {
-      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+      return matchesCategory;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [selectedCategory]);
 
   return (
     <PageLayout>
@@ -36,46 +33,30 @@ const BlogPage = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-background pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 relative overflow-hidden">
+      <section className="relative overflow-hidden bg-background px-4 pb-14 pt-28 sm:px-6 sm:pb-20 sm:pt-36">
         {/* Subtle radial background glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
         
-        <div className="container-wide mx-auto text-center relative z-10">
+        <div className="relative z-10 mx-auto max-w-5xl text-center">
           <ScrollReveal>
-            <span className="text-xs font-semibold tracking-widest uppercase text-accent bg-accent/10 px-3 py-1.5 rounded-full border border-accent/20 inline-block mb-4">
-              Our Blog
-            </span>
+            <div className="mb-14 inline-flex items-center gap-2 text-sm text-muted-foreground"><Link to="/">Home</Link><ChevronRight className="h-4 w-4" /><span className="text-foreground">Blog</span></div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.08}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mt-2 mb-6 max-w-4xl mx-auto leading-[1.15]">
+            <h1 className="mx-auto mb-7 max-w-5xl text-[clamp(3.2rem,6vw,6.5rem)] font-bold leading-[.98] tracking-[-.06em] text-foreground">
               Practical guides for Nigerian businesses going <span className="font-serif italic font-normal text-accent/90">digital</span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.16}>
-            <p className="text-base sm:text-lg text-foreground/60 max-w-2xl mx-auto mb-10 leading-relaxed font-body">
-              Articles, case studies, and insights from our team of engineers, designers, and marketing strategists.
+            <p className="mx-auto mb-12 max-w-3xl text-base leading-relaxed text-foreground/60 sm:text-lg">
+              Clear, practical thinking on customer growth, websites, marketing and technology—written for Nigerian business owners making real decisions.
             </p>
-          </ScrollReveal>
-
-          {/* Search Bar */}
-          <ScrollReveal delay={0.2}>
-            <div className="relative max-w-md mx-auto mb-10">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search blog posts..."
-                className="w-full bg-foreground/[0.03] border border-foreground/10 rounded-full py-3.5 pl-12 pr-6 text-sm text-foreground placeholder-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all"
-              />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-foreground/40" />
-            </div>
           </ScrollReveal>
 
           {/* Category Filter Pills */}
           <ScrollReveal delay={0.24}>
-            <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto pb-4 border-b border-foreground/10 mb-4">
+            <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2 border-b border-foreground/10 pb-6">
               {categories.map(cat => (
                 <button
                   key={cat}
@@ -98,17 +79,18 @@ const BlogPage = () => {
       <section className="pb-24 px-4 sm:px-6 bg-background">
         <div className="container-wide mx-auto">
           {filteredPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className={filteredPosts.length === 1 ? "grid grid-cols-1" : "grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"}>
               {filteredPosts.map((post, index) => (
                 <ScrollReveal key={post.id} delay={index * 0.05}>
-                  <article className="group h-full flex flex-col border border-foreground/10 rounded-2xl overflow-hidden bg-card hover:bg-foreground/[0.01] hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg transition-all duration-300">
+                  <article className={`group h-full overflow-hidden rounded-3xl border border-foreground/10 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:bg-foreground/[0.01] hover:shadow-lg ${filteredPosts.length === 1 ? "lg:grid lg:grid-cols-[1.25fr_.75fr]" : "flex flex-col"}`}>
                     {/* Post Image Container */}
-                    <div className="relative aspect-[16/10] overflow-hidden bg-foreground/5">
+                    <div className={`relative overflow-hidden bg-foreground/5 ${filteredPosts.length === 1 ? "aspect-[16/9] lg:aspect-auto lg:min-h-[470px]" : "aspect-[16/10]"}`}>
                       <img
                         src={post.imageUrl}
                         alt={post.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute top-4 left-4">
                         <span className="text-[10px] font-bold tracking-wider uppercase bg-black/80 text-white px-2.5 py-1 rounded-md border border-white/10">
@@ -118,7 +100,7 @@ const BlogPage = () => {
                     </div>
 
                     {/* Card Content */}
-                    <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div className={`flex flex-1 flex-col justify-between ${filteredPosts.length === 1 ? "p-7 sm:p-10 lg:p-12" : "p-6"}`}>
                       <div className="space-y-3">
                         <div className="flex items-center gap-4 text-xs text-foreground/40 font-body">
                           <span className="flex items-center gap-1.5">
@@ -130,10 +112,10 @@ const BlogPage = () => {
                             {post.readTime}
                           </span>
                         </div>
-                        <h2 className="text-lg font-bold font-display text-foreground leading-snug group-hover:text-accent transition-colors">
+                        <h2 className={`${filteredPosts.length === 1 ? "text-3xl sm:text-4xl" : "text-lg"} font-bold font-display text-foreground leading-tight group-hover:text-accent transition-colors`}>
                           {post.title}
                         </h2>
-                        <p className="text-sm text-foreground/60 leading-relaxed font-body">
+                        <p className={`${filteredPosts.length === 1 ? "text-base" : "text-sm"} text-foreground/60 leading-relaxed font-body`}>
                           {post.excerpt}
                         </p>
                       </div>
@@ -163,7 +145,6 @@ const BlogPage = () => {
                   variant="outline" 
                   size="sm"
                   onClick={() => {
-                    setSearchQuery("");
                     setSelectedCategory("All");
                   }}
                   className="font-bold uppercase tracking-wider text-xs"

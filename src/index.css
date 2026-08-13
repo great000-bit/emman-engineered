@@ -161,6 +161,13 @@
     @apply bg-background text-foreground font-body antialiased transition-colors duration-300;
   }
 
+  html { scroll-behavior: smooth; }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold tracking-tight;
   }
@@ -174,6 +181,91 @@
 }
 
 @layer components {
+  .hero-atmosphere {
+    background:
+      radial-gradient(60% 58% at 16% 45%, hsl(var(--accent) / .12), transparent 72%),
+      radial-gradient(48% 50% at 86% 42%, hsl(38 70% 75% / .11), transparent 72%),
+      hsl(var(--background));
+  }
+
+  .dark .hero-atmosphere {
+    background:
+      radial-gradient(58% 56% at 16% 42%, hsl(var(--accent) / .15), transparent 72%),
+      radial-gradient(46% 46% at 86% 40%, hsl(220 35% 28% / .12), transparent 72%),
+      hsl(var(--background));
+  }
+
+  .site-nav-shell {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border) / .8);
+    background: hsl(var(--background) / .78);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 8px 35px hsl(220 20% 10% / .08);
+    transition: color 280ms, background-color 280ms, border-color 280ms, box-shadow 280ms;
+  }
+  .site-nav-shell.is-scrolled { background: hsl(var(--background) / .94); box-shadow: var(--shadow-md); }
+  .site-nav-inner { border-color: hsl(var(--border) / .8); background: hsl(var(--muted) / .65); }
+  .site-nav-link { color: hsl(var(--foreground) / .68); }
+  .site-nav-link:hover, .site-nav-link:focus-visible { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .site-nav-link.is-active { background: hsl(var(--foreground) / .075); color: hsl(var(--accent)); }
+  .site-theme-toggle { border-color: hsl(var(--border)); color: hsl(var(--foreground) / .8); background: hsl(var(--background) / .7); }
+  .site-theme-toggle:hover, .site-theme-toggle:focus-visible { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .site-mobile-toggle { color: hsl(var(--foreground) / .82); }
+  .brand-logo-light { display: none; }
+  .brand-logo-dark { display: block; }
+  .light .brand-logo-light { display: block; }
+  .light .brand-logo-dark { display: none; }
+  .nav-dropdown-item { color: hsl(var(--foreground)); transition: background-color 220ms, color 220ms; }
+  .nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .nav-service-item { color: hsl(var(--foreground) / .72); transition: color 200ms, background-color 200ms; }
+  .nav-service-item:hover, .nav-service-item:focus-visible { background: hsl(var(--foreground)); color: hsl(var(--background)); }
+  .dark .nav-dropdown-item:hover, .dark .nav-dropdown-item:focus-visible,
+  .dark .nav-service-item:hover, .dark .nav-service-item:focus-visible { background: hsl(var(--accent) / .18); color: white; }
+
+  .client-rail-track { animation: client-rail 44s linear infinite; }
+  .client-rail:hover .client-rail-track, .client-rail:focus-within .client-rail-track { animation-play-state: paused; }
+  .badtz-marquee-left { animation: badtz-marquee-left var(--duration, 60s) linear infinite; will-change: transform; }
+  .badtz-marquee-right { animation: badtz-marquee-right var(--duration, 60s) linear infinite; will-change: transform; }
+  .team-profile-card { transition: filter 260ms, opacity 260ms, transform 260ms, box-shadow 260ms; }
+  .team-profile-cta { opacity: 0; transform: translateY(7px); pointer-events: none; }
+  .team-profile-card:hover .team-profile-cta,
+  .team-profile-card:focus-within .team-profile-cta,
+  .team-profile-card.is-active .team-profile-cta { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .team-marquee-v2.is-engaged .team-profile-card:not(.is-active) { opacity: .58; filter: blur(1.5px); }
+  .team-profile-card.is-active { z-index: 2; transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-lg); }
+  .pricing-row { transition: background-color 220ms; }
+  .pricing-row:hover, .pricing-row:focus-within { background: hsl(var(--foreground) / .045); }
+  .pricing-table-wrap { scrollbar-color: hsl(var(--accent)) hsl(var(--muted)); scrollbar-width: thin; }
+}
+
+@keyframes client-rail { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes badtz-marquee-left { from { transform: translateX(0); } to { transform: translateX(calc(-100% - var(--gap))); } }
+@keyframes badtz-marquee-right { from { transform: translateX(calc(-100% - var(--gap))); } to { transform: translateX(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .client-rail-track { animation: none; }
+}
+
+@layer components {
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 1000;
+    transform: translateY(-180%);
+    border-radius: 999px;
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: transform var(--duration-fast) var(--ease-primary);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
   /* Mini glass effect — used on the floating nav bar (dark mode base) */
   .nav-glass {
     position: relative;
@@ -448,5 +540,12 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* The team rail remains user-controllable through its visible Pause button. */
+  .team-marquee-v2 .badtz-marquee-left,
+  .team-marquee-v2 .badtz-marquee-right {
+    animation-duration: var(--duration, 58s) !important;
+    animation-iteration-count: infinite !important;
   }
 }

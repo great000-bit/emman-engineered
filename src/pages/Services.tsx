@@ -1,185 +1,31 @@
-import PageLayout from "@/components/layout/PageLayout";
-import { services } from "@/data/services";
-import ScrollReveal from "@/components/shared/ScrollReveal";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
-import BarFanCorner from "@/components/shared/BarFanCorner";
-import IconGlow from "@/components/shared/IconGlow";
+import PageLayout from "@/components/layout/PageLayout";
 import SEO from "@/components/SEO";
+import ScrollReveal from "@/components/shared/ScrollReveal";
+import { Button } from "@/components/ui/button";
+import { serviceCategories } from "@/data/serviceCategories";
+import { getServicePrice } from "@/data/pricingData";
 import { buildBreadcrumbSchema } from "@/lib/seoSchema";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const ServicesPage = () => (
   <PageLayout>
-    <SEO
-      path="/services"
-      title="Services | Creative Emman Limited"
-      description="Explore Creative Emman Limited's website design, web development, branding, UI/UX, SEO, and digital strategy services for startups, businesses, and organisations."
-      keywords={[
-        "web development company",
-        "UI UX design company",
-        "branding company",
-        "digital product design company",
-        "social media management company",
-        "video editing company",
-        "motion graphics company",
-        "startup branding company",
-        "website development Nigeria",
-        "web design Rivers State",
-        "UI UX designer Nigeria",
-        "logo design Nigeria",
-        "branding company Nigeria",
-        "social media management Nigeria",
-        "video editing Nigeria",
-        "videography Rivers State",
-        "motion graphics Nigeria",
-        "creative technology company in Nigeria",
-      ]}
-      jsonLd={[
-        {
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          name: "Creative Emman Limited",
-          url: "https://www.creativeemmanlimited.com",
-          email: "creativeemmanlimited1@gmail.com",
-          telephone: "+234-703-784-5433",
-          address: { "@type": "PostalAddress", addressLocality: "Rivers State", addressCountry: "NG" },
-          areaServed: "Global",
-          serviceType: "Creative and Technology Services",
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          itemListElement: services.map((s, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            item: {
-              "@type": "Service",
-              name: s.title,
-              description: s.description,
-              provider: { "@type": "Organization", name: "Creative Emman Limited" },
-              areaServed: "Global",
-            },
-          })),
-        },
-        buildBreadcrumbSchema([{ name: "Services", path: "/services" }]),
-      ]}
-    />
-    <section className="bg-primary pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
-      <div className="container-wide mx-auto">
-        <ScrollReveal>
-          <span className="text-sm font-medium tracking-widest uppercase text-accent">Our Expertise</span>
-        </ScrollReveal>
-        <ScrollReveal delay={0.08}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-primary-foreground mt-3 mb-4 max-w-3xl">
-            Services Built for <span className="text-accent">Impact</span>
-          </h1>
-        </ScrollReveal>
-        <ScrollReveal delay={0.16}>
-          <p className="text-lg text-primary-foreground/60 max-w-xl">
-            Eight integrated disciplines delivering premium digital outcomes. Every service engineered with institutional precision.
-          </p>
-        </ScrollReveal>
-      </div>
+    <SEO path="/services" title="Creative & Technology Services | Creative Emman Limited" description="Build, grow, scale and train with one Creative Emman Limited team across websites, software, brand, marketing, automation and practical digital training." jsonLd={buildBreadcrumbSchema([{ name: "Services", path: "/services" }])} />
+    <section className="relative overflow-hidden bg-primary px-4 pb-20 pt-32 text-primary-foreground sm:px-6 sm:pb-28 sm:pt-40">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--accent)/.25),transparent_35%)]" />
+      <div className="container-wide relative mx-auto"><h1 className="max-w-6xl text-5xl leading-[.96] sm:text-7xl lg:text-8xl">Everything your business needs to move forward—under one roof.</h1><p className="mt-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/60">Our services follow four practical stages: establish the foundation, bring the right audience, strengthen the systems and build internal capability.</p><div className="mt-9 flex flex-wrap gap-3"><Link to="/contact"><Button variant="accent" size="lg">Get a Quote <ArrowRight className="ml-2 h-4 w-4" /></Button></Link><Link to="/pricing"><Button variant="dark-outline" size="lg">See Pricing</Button></Link></div></div>
     </section>
-
-    <section className="section-padding bg-primary">
-      <div className="container-narrow mx-auto space-y-14 sm:space-y-20">
-        {services.map((service, i) => (
-          <ScrollReveal key={service.title} delay={0.05}>
-            <div
-              id={service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-              className="grid md:grid-cols-2 gap-8 md:gap-12 items-start scroll-mt-28"
-            >
-
-              <div className={i % 2 === 1 ? "md:order-2" : ""}>
-                <IconGlow icon={service.icon} size="lg" className="mb-6" />
-                <h2 className="text-2xl md:text-3xl text-primary-foreground mb-4">{service.title}</h2>
-                <p className="text-primary-foreground/60 leading-relaxed mb-6">{service.description}</p>
-                <div className="flex flex-wrap gap-3">
-                  <Link to={`/services/${service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-                    <Button variant="accent">
-                      Explore Service <ArrowRight size={13} className="ml-1.5" />
-                    </Button>
-                  </Link>
-                  <Link to="/contact">
-                    <Button variant="dark-outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-white/[0.04]">
-                      Make Enquiry
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-
-              <div className={i % 2 === 1 ? "md:order-1" : ""}>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-primary-foreground/40 mb-4">What's Included</h3>
-                <ul className="space-y-3">
-                  {service.includes.map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <Accordion type="single" collapsible className="mt-6">
-                  <AccordionItem value="details" className="border-primary-foreground/10">
-                    <AccordionTrigger className="text-sm font-medium text-primary-foreground/70 hover:text-accent">
-                      More Details
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm text-primary-foreground/50 leading-relaxed">
-                      {service.longDescription ?? `Our ${service.title.toLowerCase()} service follows a structured delivery process: Discovery, Strategy, Execution, and Optimization. Every engagement is scoped precisely and delivered on milestone.`}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </div>
-            </div>
-
-            {i < services.length - 1 && <div className="border-t border-primary-foreground/10 mt-14 sm:mt-20" />}
-          </ScrollReveal>
-        ))}
-      </div>
-    </section>
-
-    <section className="relative overflow-hidden bg-primary text-center py-20 sm:py-28">
-      <BarFanCorner corner="top-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-      <BarFanCorner corner="bottom-left" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-      <BarFanCorner corner="top-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-      <BarFanCorner corner="bottom-right" className="w-[180px] h-[180px] sm:w-[280px] sm:h-[280px] opacity-80" />
-      <div className="relative container-narrow mx-auto px-4">
-        <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-primary-foreground mb-5 leading-tight">
-            Which service
-            <br />
-            starts your next win?
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <p className="text-sm md:text-base text-primary-foreground/55 max-w-md mx-auto mb-8">
-            Pick a lane or bring the whole brief — we'll map out the right team and timeline.
-          </p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <div className="flex flex-row gap-3 justify-center items-center">
-            <Link to="/contact">
-              <Button variant="light-fill">
-                Let's Work Together <ArrowRight size={15} className="ml-1.5" />
-              </Button>
-            </Link>
-            <Button variant="dark-outline" onClick={() => window.open("https://wa.me/2347037845433", "_blank")}>
-                <Phone size={14} className="mr-1.5" /> WhatsApp
-            </Button>
+    <section className="bg-background">
+      {serviceCategories.map((category, categoryIndex) => (
+        <article key={category.slug} id={category.slug} className="border-b border-border px-4 py-20 sm:px-6 sm:py-28">
+          <div className="container-wide mx-auto grid gap-12 lg:grid-cols-[.72fr_1.28fr] lg:gap-24">
+            <ScrollReveal><div className="lg:sticky lg:top-32"><span className="text-xs text-accent">0{categoryIndex + 1}</span><p className="mt-4 text-xs font-bold uppercase tracking-[.24em] text-accent">{category.name}</p><h2 className="mt-5 text-4xl sm:text-6xl">{category.shortDescription}</h2><p className="mt-5 leading-relaxed text-muted-foreground">{category.description}</p><Link to={`/services/${category.slug}`} className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-accent">View all {category.name} services <ArrowRight className="h-4 w-4" /></Link></div></ScrollReveal>
+            <div className="divide-y divide-border border-y border-border">{category.services.map((item, index) => <ScrollReveal key={item.slug} delay={Math.min(index * .015, .12)}><Link to={`/services/${item.slug}`} className="group grid gap-3 py-5 transition-colors hover:bg-card sm:grid-cols-[3rem_1fr_auto] sm:items-center sm:px-4"><span className="text-xs text-muted-foreground">{String(index + 1).padStart(2, "0")}</span><div><h3 className="text-lg transition-transform group-hover:translate-x-1 group-hover:text-accent sm:text-xl">{item.name}</h3><p className="mt-1 max-w-xl text-sm text-muted-foreground">{item.summary}</p></div><span className="flex items-center gap-2 whitespace-nowrap text-sm text-foreground/60">{getServicePrice(item.slug)?.amount}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" /></span></Link></ScrollReveal>)}</div>
           </div>
-        </ScrollReveal>
-      </div>
-
+        </article>
+      ))}
     </section>
-
+    <section className="bg-primary px-4 py-24 text-center text-primary-foreground"><div className="container-narrow mx-auto"><h2 className="text-4xl sm:text-6xl">Not sure where to start?</h2><p className="mx-auto mt-5 max-w-xl text-primary-foreground/55">Share the current problem and desired outcome. We’ll recommend the right services in the right order.</p><Link to="/contact" className="mt-8 inline-block"><Button variant="accent" size="lg">Start the Conversation <ArrowRight className="ml-2 h-4 w-4" /></Button></Link></div></section>
   </PageLayout>
 );
 

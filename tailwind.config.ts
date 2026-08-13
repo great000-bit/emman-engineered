@@ -105,6 +105,14 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "marquee-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-right": {
+          from: { transform: "translateX(calc(-100% - var(--gap)))" },
+          to: { transform: "translateX(0)" },
+        },
         bubble1: {
           "0%, 100%": { transform: "translate(0, 0) scale(1)" },
           "33%": { transform: "translate(30px, -50px) scale(1.1)" },
@@ -137,6 +145,8 @@ export default {
         "fade-up": "fade-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards",
         "fade-in": "fade-in 0.4s ease-out forwards",
         scroll: "scroll 30s linear infinite",
+        "marquee-left": "marquee-left var(--duration, 60s) linear infinite",
+        "marquee-right": "marquee-right var(--duration, 60s) linear infinite",
       },
     },
   },

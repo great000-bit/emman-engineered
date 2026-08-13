@@ -1,89 +1,85 @@
 import { Link } from "react-router-dom";
-import { Code2, TrendingUp, Rocket, GraduationCap, ArrowRight } from "lucide-react";
+import { Hammer, TrendingUp, Rocket, GraduationCap, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const SERVICES = [
   {
-    icon: Code2,
+    icon: Hammer,
     title: "Build",
-    description: "Website development, custom applications, SaaS platforms, and UI/UX design.",
+    description: "Websites, e-commerce stores, mobile apps, custom software, and hosting infrastructure. We design and build digital products that are fast, beautiful, and built to convert.",
     linkText: "Explore Build Services",
     path: "/services"
   },
   {
     icon: TrendingUp,
     title: "Grow",
-    description: "Social media marketing, growth strategies, brand visibility, and lead generation.",
+    description: "SEO, Google Ads, social media marketing, content production, email campaigns, and event marketing. We put your brand in front of the right people, at the right time.",
     linkText: "Explore Grow Services",
     path: "/services"
   },
   {
     icon: Rocket,
     title: "Scale",
-    description: "High-performance systems, scale consulting, content strategies, and video assets.",
+    description: "Automation, AI systems, analytics dashboards, and growth retainers. For businesses ready to remove bottlenecks and grow without adding headcount.",
     linkText: "Explore Scale Services",
     path: "/services"
   },
   {
     icon: GraduationCap,
     title: "Train",
-    description: "Professional bootcamps, UI/UX masterclasses, video editing, and tech bootcamps.",
-    linkText: "Explore Training",
+    description: "Corporate workshops, online courses, and mentorship for teams and individuals looking to build real digital skills, from WordPress to digital marketing strategy.",
+    linkText: "Explore Train Services",
     path: "/trainings"
   }
 ];
 
 const ServicesPreview = () => {
   return (
-    <section id="services" className="section-padding bg-background relative overflow-hidden border-t border-border">
+    <section id="services" className="relative overflow-hidden border-t border-border bg-background px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:px-12 lg:py-24">
       {/* Glow effect */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container-wide mx-auto relative z-10">
+      <div className="relative z-10 mx-auto max-w-[1540px]">
 
         {/* Header */}
-        <div className="max-w-3xl text-center mx-auto mb-12 sm:mb-16">
+        <div className="mb-12 sm:mb-16 lg:mb-20">
           <ScrollReveal>
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase block mb-3">Our Core Verticals</span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              Everything your business needs <br className="hidden sm:inline" />
-              to <span className="font-serif italic font-medium text-accent">grow online</span>
+            <h2 className="text-[clamp(2.6rem,4.25vw,4.35rem)] font-bold leading-[1.02] tracking-[-.05em] text-foreground xl:whitespace-nowrap">
+              Everything your business needs to <span className="font-serif font-medium italic">win online</span>
             </h2>
           </ScrollReveal>
         </div>
 
         {/* 4-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
           {SERVICES.map((srv, i) => {
             const IconComponent = srv.icon;
             return (
               <ScrollReveal key={srv.title} delay={0.08 * i} className="flex">
                 <Link
                   to={srv.path}
-                  className="group relative flex flex-col justify-between w-full rounded-2xl border border-border bg-card/50 hover:bg-card hover:border-accent/30 p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-accent/5"
+                  className="group relative flex min-h-[25rem] w-full flex-col justify-between rounded-[1.2rem] border border-white/5 bg-[#0c1220] p-8 text-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50 hover:bg-[#111a2c] hover:shadow-xl hover:shadow-black/15 sm:p-9 lg:p-10"
                 >
                   <div>
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent size={24} />
+                    <div className="mb-9 flex h-12 w-12 items-center justify-start text-white transition-transform duration-300 group-hover:scale-110">
+                      <IconComponent size={38} strokeWidth={1.8} />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold font-display text-foreground mb-3">
+                    <h3 className="mb-4 font-display text-2xl font-bold text-white sm:text-[1.65rem]">
                       {srv.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-foreground/60 leading-relaxed font-body mb-6">
+                    <p className="mb-8 font-body text-base leading-[1.55] text-white/88">
                       {srv.description}
                     </p>
                   </div>
 
                   {/* Action Link */}
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent group-hover:gap-2.5 transition-all duration-300 mt-auto">
-                    {srv.linkText} <ArrowRight size={14} />
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-base font-semibold text-white transition-all duration-300 group-hover:gap-2.5 group-hover:text-accent">
+                    {srv.linkText} <ArrowRight size={16} />
                   </span>
                 </Link>
               </ScrollReveal>

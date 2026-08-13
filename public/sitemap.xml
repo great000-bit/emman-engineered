@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.creativeemmanlimited.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/web-development</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/ui-ux-design</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -9,11 +10,109 @@
   <url><loc>https://www.creativeemmanlimited.com/portfolio/social-media-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/videography-video-editing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/motion-graphics-design</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.creativeemmanlimited.com/team</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/pricing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/blog/first-100-customers-online-nigeria</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/trainings</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/testimonials</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/applications</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/internships</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/contact</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/build</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/web-design-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/website-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/custom-website-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/frontend-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/full-stack-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/wordpress-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/website-redesign</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/landing-page-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/ecommerce-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/custom-web-applications</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/web-application-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/saas-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/mobile-app-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/ui-ux-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/product-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/brand-identity-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/graphic-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/hosting-infrastructure</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/website-maintenance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/website-care-plans</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/corporate-photography</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/photography</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/videography</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/video-editing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/motion-graphics-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/api-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/dashboards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/grow</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/seo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/google-ads-management</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/social-media-management</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/social-media-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/paid-social-advertising</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/content-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/content-strategy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/email-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/email-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/digital-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/campaign-strategy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/event-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/creative-content-production</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/photography-content</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/videography-content</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/marketing-strategy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/scale</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/ai-business-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/business-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/analytics-data</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/analytics-dashboards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/crm-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/digital-strategy-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/growth-retainers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/api-integration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/internal-business-tools</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/business-management-systems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/custom-dashboards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/saas-products</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/technical-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/digital-transformation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/mvp-development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/train</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/corporate-digital-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/ui-ux-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/web-development-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/frontend-development-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/graphic-design-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/brand-design-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/social-media-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/digital-marketing-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/video-editing-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/photography-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/online-courses</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/mentorship</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/internships</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/services/custom-training-programmes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/oil-gas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/education</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/real-estate</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/healthcare</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/hospitality</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/industries/smes-startups</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/great-emman-wori</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/zayd-tahir</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/adebowale-taofeek</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/daniel-oyetayo</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/mba-vivian</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/osuagwu-goldenheart</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/david-esemuru-okeoghene</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/grace-grant</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/charles-macanthony</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.creativeemmanlimited.com/team/jennifer-frank</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/web-development/brightpath-academy-website</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/web-development/adeyemi-partners-law-firm-website</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.creativeemmanlimited.com/portfolio/ui-ux-design/luxebyte-mobile-banking</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

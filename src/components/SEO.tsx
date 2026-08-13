@@ -37,6 +37,7 @@ const SEO = ({
   jsonLd,
 }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
+  const resolvedImage = image.startsWith("http") ? image : `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
@@ -63,8 +64,8 @@ const SEO = ({
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Creative Emman Limited" />
       <meta property="og:locale" content="en_US" />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:secure_url" content={image} />
+      <meta property="og:image" content={resolvedImage} />
+      <meta property="og:image:secure_url" content={resolvedImage} />
       <meta property="og:image:width" content={String(imageWidth)} />
       <meta property="og:image:height" content={String(imageHeight)} />
       <meta property="og:image:alt" content={title} />
@@ -72,7 +73,7 @@ const SEO = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={resolvedImage} />
       <meta name="twitter:image:alt" content={title} />
 
       {ldArray.map((ld, i) => (

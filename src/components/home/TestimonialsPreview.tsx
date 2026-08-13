@@ -1,93 +1,135 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight, Quote } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Quote, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
+const experiences = [
+  {
+    eyebrow: "Clarity from day one",
+    statement: "Every engagement begins with a clear scope, shared priorities and a practical plan built around the outcome your business needs.",
+    detail: "Discovery & scope",
+    number: "01",
+  },
+  {
+    eyebrow: "Progress you can see",
+    statement: "Visible milestones and focused review points keep your team informed, involved and confident from first concept to final delivery.",
+    detail: "Collaborative delivery",
+    number: "02",
+  },
+  {
+    eyebrow: "Value beyond launch",
+    statement: "Thoughtful documentation, context-rich handover and dependable support make every solution easier to own, use and grow.",
+    detail: "Handover & support",
+    number: "03",
+  },
+];
+
 const TestimonialsPreview = () => {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const current = experiences[active];
+  const next = experiences[(active + 1) % experiences.length];
+  const last = experiences[(active + 2) % experiences.length];
+
+  useEffect(() => {
+    if (paused || reducedMotion) return;
+    const timer = window.setInterval(() => setActive((index) => (index + 1) % experiences.length), 6000);
+    return () => window.clearInterval(timer);
+  }, [paused, reducedMotion]);
+
   return (
-    <section className="section-padding bg-background relative overflow-hidden border-t border-border">
-      {/* Background glow */}
-      <div className="absolute top-1/2 right-1/10 -translate-y-1/2 w-80 h-80 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container-wide mx-auto relative z-10">
-
-        {/* Header */}
-        <div className="max-w-2xl text-center mx-auto mb-12 sm:mb-16">
-          <ScrollReveal>
-            <span className="text-xs font-semibold tracking-widest text-accent uppercase block mb-3">Testimonials</span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground leading-tight">
-              What our clients <span className="font-serif italic font-medium text-accent">say</span>
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-foreground/60 leading-relaxed font-body">
-              Real feedback from partners who trusted us to build exceptional digital experiences.
-            </p>
-          </ScrollReveal>
-        </div>
-
-        {/* Testimonials Layout (2 columns split: 60/40) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-16">
-
-          {/* Large Testimonial - 7/12 */}
-          <ScrollReveal className="lg:col-span-7 flex" delay={0.1}>
-            <div className="w-full bg-card/50 border border-border hover:border-foreground/20 p-8 sm:p-10 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 relative group">
-              <Quote className="absolute top-8 right-8 text-foreground/5 w-16 h-16 pointer-events-none group-hover:text-accent/10 transition-colors duration-300" />
-
-              <div className="space-y-6">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/10 px-2.5 py-1 rounded-full border border-accent/20">
-                  Highly Recommended
-                </span>
-                <p className="text-lg sm:text-xl md:text-2xl font-medium text-foreground/90 leading-relaxed font-display">
-                  "Creative Emman Limited delivered an enterprise-grade platform that exceeded our expectations. Their technical precision and structured delivery were unmatched."
-                </p>
-              </div>
-
-              <div className="mt-8 border-t border-border pt-6">
-                <h4 className="text-base font-bold text-foreground font-display">Adaeze Nwosu</h4>
-                <p className="text-xs text-foreground/50 mt-0.5">CEO, Finova Technologies</p>
-              </div>
+    <section
+      className="overflow-hidden border-t border-border bg-background px-4 py-16 sm:px-6 sm:py-20 md:px-8 lg:px-12 lg:py-24"
+      aria-labelledby="client-experience-heading"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="mx-auto max-w-[1540px]">
+        <ScrollReveal>
+          <div className="mb-12 flex flex-col gap-6 sm:mb-16 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[.18em] text-accent">The client experience</p>
+              <h2 id="client-experience-heading" className="text-[clamp(2.8rem,5vw,5.2rem)] font-bold leading-[.98] tracking-[-.055em] text-foreground">
+                What working with us <span className="font-serif font-medium italic">feels like</span>
+              </h2>
             </div>
-          </ScrollReveal>
-
-          {/* Accent Testimonial - 5/12 */}
-          <ScrollReveal className="lg:col-span-5 flex" delay={0.2}>
-            <div className="w-full bg-accent/[0.03] border border-accent/25 hover:border-accent/40 p-8 sm:p-10 rounded-2xl flex flex-col justify-between text-left transition-all duration-300 relative group shadow-lg shadow-accent/5">
-              <Quote className="absolute top-8 right-8 text-accent/5 w-12 h-12 pointer-events-none group-hover:text-accent/10 transition-colors duration-300" />
-
-              <div className="space-y-6">
-                <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/20 px-2.5 py-1 rounded-full">
-                  UI/UX Redesign
-                </span>
-                <p className="text-base sm:text-lg md:text-xl font-medium text-foreground/95 leading-relaxed font-body">
-                  "The UI/UX redesign transformed our patient portal. User engagement increased by 340% within the first quarter."
-                </p>
-              </div>
-
-              <div className="mt-8 border-t border-accent/20 pt-6">
-                <h4 className="text-base font-bold text-foreground font-display">Fatima Hassan</h4>
-                <p className="text-xs text-foreground/60 mt-0.5 font-body">Product Lead, Meridian Health</p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-        </div>
-
-        {/* Small Bottom Banner */}
-        <ScrollReveal delay={0.3}>
-          <div className="max-w-4xl mx-auto backdrop-blur-md bg-card/30 border border-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
-            <p className="text-sm sm:text-base text-foreground/70 max-w-xl">
-              Join 50+ scaling companies that choose Creative Emman to build and grow their digital presence.
-            </p>
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background hover:bg-accent hover:text-white text-xs sm:text-sm font-semibold tracking-wide uppercase transition-all duration-300 shrink-0"
-            >
-              Start Your Project
-              <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+            <Link to="/testimonials" className="group inline-flex shrink-0 items-center gap-2 font-semibold text-foreground hover:text-accent">
+              How we earn trust
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>
         </ScrollReveal>
 
+        <div className="grid gap-5 lg:grid-cols-[2fr_1fr]">
+          <motion.article layout className="relative flex min-h-[23rem] flex-col justify-between overflow-hidden rounded-[1.35rem] bg-[#0c1220] p-7 text-white sm:p-10 lg:p-12">
+            <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.number}
+                initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: -14 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10"
+              >
+                <Quote className="mb-12 h-10 w-10 fill-accent text-accent" aria-hidden="true" />
+                <p className="max-w-5xl text-[clamp(1.55rem,2.4vw,2.65rem)] font-medium leading-[1.28] tracking-[-.03em]">{current.statement}</p>
+              </motion.div>
+            </AnimatePresence>
+            <div className="relative z-10 mt-10 flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="text-sm font-bold text-accent">{current.eyebrow}</p>
+                <p className="mt-1 text-sm text-white/60">{current.detail}</p>
+              </div>
+              <span className="font-serif text-6xl italic text-white/12">{current.number}</span>
+            </div>
+            {!reducedMotion && <motion.div key={`progress-${active}`} className="absolute bottom-0 left-0 h-1 bg-accent" initial={{ width: 0 }} animate={{ width: paused ? "0%" : "100%" }} transition={{ duration: paused ? 0 : 6, ease: "linear" }} />}
+          </motion.article>
+
+          <button
+            type="button"
+            onClick={() => setActive((active + 1) % experiences.length)}
+            className="group relative flex min-h-[23rem] flex-col justify-between overflow-hidden rounded-[1.35rem] bg-accent p-7 text-left text-white transition-transform duration-300 hover:-translate-y-1 sm:p-10"
+            aria-label={`Show ${next.eyebrow}`}
+          >
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-white/70">Up next</p>
+              <p className="mt-14 text-xl font-semibold leading-relaxed sm:text-2xl">{next.statement}</p>
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              <div><p className="font-bold">{next.eyebrow}</p><p className="mt-1 text-sm text-white/70">{next.detail}</p></div>
+              <ArrowUpRight className="h-7 w-7 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActive((active + 2) % experiences.length)}
+            className="group flex flex-col gap-7 rounded-[1.35rem] border border-border bg-muted/70 p-7 text-left transition-colors hover:border-accent/30 hover:bg-muted sm:flex-row sm:items-center sm:justify-between sm:p-10 lg:col-span-2"
+            aria-label={`Show ${last.eyebrow}`}
+          >
+            <p className="max-w-5xl text-xl font-medium leading-relaxed text-foreground sm:text-2xl lg:text-[1.75rem]">{last.statement}</p>
+            <div className="flex shrink-0 items-center gap-4 sm:min-w-64">
+              <span className="grid h-14 w-14 place-items-center rounded-full bg-accent/12 font-bold text-accent">{last.number}</span>
+              <div><p className="font-bold text-foreground">{last.eyebrow}</p><p className="mt-1 text-sm text-muted-foreground">{last.detail}</p></div>
+            </div>
+          </button>
+        </div>
+
+        <div className="mt-7 flex items-center justify-center gap-2" aria-label="Client experience slides">
+          {experiences.map((experience, index) => (
+            <button
+              key={experience.number}
+              type="button"
+              onClick={() => setActive(index)}
+              aria-label={`Show ${experience.eyebrow}`}
+              aria-current={active === index ? "true" : undefined}
+              className={`h-2 rounded-full transition-all duration-300 ${active === index ? "w-9 bg-accent" : "w-2 bg-foreground/20 hover:bg-foreground/40"}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

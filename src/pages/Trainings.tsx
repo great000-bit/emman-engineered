@@ -81,6 +81,13 @@ const TrainingsPage = () => (
       </div>
     </section>
 
+    <section className="section-padding border-y border-primary-foreground/10 bg-primary">
+      <div className="container-wide mx-auto grid gap-10 lg:grid-cols-2 lg:items-center">
+        <ScrollReveal><div><span className="text-xs font-bold uppercase tracking-[.22em] text-accent">Learning ecosystem</span><h2 className="mt-5 text-3xl text-primary-foreground sm:text-5xl">Courses, mentorship and internships connect.</h2><p className="mt-5 max-w-xl leading-relaxed text-primary-foreground/55">Training builds the foundation. Mentorship supports deliberate improvement. Internships create an applied route for selected emerging practitioners.</p></div></ScrollReveal>
+        <ScrollReveal delay={.08}><div className="grid gap-3 sm:grid-cols-2"><Link to="/services/mentorship" className="rounded-2xl border border-primary-foreground/10 p-6 text-primary-foreground hover:border-accent"><span className="text-xs uppercase tracking-wider text-accent">Mentorship</span><h3 className="mt-3 text-xl">Guided professional development</h3></Link><Link to="/internships" className="rounded-2xl border border-primary-foreground/10 p-6 text-primary-foreground hover:border-accent"><span className="text-xs uppercase tracking-wider text-accent">Internships</span><h3 className="mt-3 text-xl">Applied learning opportunities</h3></Link></div></ScrollReveal>
+      </div>
+    </section>
+
     <section className="section-padding bg-primary">
       <div className="container-narrow mx-auto text-center">
         <ScrollReveal>

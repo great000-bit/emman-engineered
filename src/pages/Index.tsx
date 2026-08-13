@@ -1,12 +1,16 @@
 import PageLayout from "@/components/layout/PageLayout";
 import HomeAnimatedBackground from "@/components/home/HomeAnimatedBackground";
 import Hero from "@/components/home/Hero";
+import ClientTrustRail from "@/components/home/ClientTrustRail";
 import BrandStory from "@/components/home/BrandStory";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
-import TestimonialsPreview from "@/components/home/TestimonialsPreview";
 import VisualShowcase from "@/components/home/VisualShowcase";
+import IndustriesPreview from "@/components/home/IndustriesPreview";
+import ProcessPreview from "@/components/home/ProcessPreview";
+import InsightsPreview from "@/components/home/InsightsPreview";
 import FAQ from "@/components/home/FAQ";
+import TestimonialsPreview from "@/components/home/TestimonialsPreview";
 import { homeFaqs } from "@/data/homeFaqs";
 import CTABanner from "@/components/home/CTABanner";
 import SEO from "@/components/SEO";
@@ -39,7 +43,7 @@ const Index = () => (
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Creative Emman Limited",
-          image: "https://www.creativeemmanlimited.com/favicon.png",
+          image: "https://www.creativeemmanlimited.com/creative-emman-logo.png",
           url: "https://www.creativeemmanlimited.com",
           email: "creativeemmanlimited1@gmail.com",
           telephone: "+234-703-784-5433",
@@ -63,13 +67,17 @@ const Index = () => (
 
     <div className="relative z-10">
       <Hero />
+      <ClientTrustRail />
       <BrandStory />
       <ServicesPreview />
+      <VisualShowcase />
+      <IndustriesPreview />
+      <ProcessPreview />
       <WhyChooseUs />
       <TestimonialsPreview />
-      <VisualShowcase />
-      <CTABanner />
+      <InsightsPreview />
       <FAQ />
+      <CTABanner />
     </div>
   </PageLayout>
 );
