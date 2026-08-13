@@ -37,13 +37,21 @@ const HeroButton = ({ to, children, outline = false }: { to: string; children: R
 
 const Hero = () => {
   const reduced = useReducedMotion() ?? false;
+  const [mobile, setMobile] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches);
   const [setIndex, setSetIndex] = useState(0);
 
   useEffect(() => {
-    if (reduced) return;
+    const query = window.matchMedia("(max-width: 767px)");
+    const update = () => setMobile(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (reduced || mobile) return;
     const timer = window.setInterval(() => setSetIndex((current) => (current + 1) % heroPhraseSets.length), 3650);
     return () => window.clearInterval(timer);
-  }, [reduced]);
+  }, [mobile, reduced]);
 
   const phrases = heroPhraseSets[setIndex];
   return (
@@ -53,9 +61,9 @@ const Hero = () => {
           <span className="block">Nigeria&apos;s full service</span>
           <span className="block">creative and technology company.</span>
           <span aria-label={`${phrases[0]} ${phrases[1]} ${phrases[2]}`} className="mt-[0.12em] grid w-full grid-cols-1 items-center justify-center gap-x-[0.14em] text-[.78em] sm:grid-cols-[4.8em_5.5em_6.4em] sm:text-[.58em]">
-            <ReelPhrase phrase={phrases[0]} index={0} reduced={reduced} />
-            <ReelPhrase phrase={phrases[1]} index={1} reduced={reduced} />
-            <ReelPhrase phrase={phrases[2]} index={2} reduced={reduced} />
+            <ReelPhrase phrase={phrases[0]} index={0} reduced={reduced || mobile} />
+            <ReelPhrase phrase={phrases[1]} index={1} reduced={reduced || mobile} />
+            <ReelPhrase phrase={phrases[2]} index={2} reduced={reduced || mobile} />
           </span>
         </motion.h1>
 

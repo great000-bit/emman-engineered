@@ -1,20 +1,27 @@
+import { lazy, Suspense } from "react";
 import PageLayout from "@/components/layout/PageLayout";
 import HomeAnimatedBackground from "@/components/home/HomeAnimatedBackground";
 import Hero from "@/components/home/Hero";
 import ClientTrustRail from "@/components/home/ClientTrustRail";
-import BrandStory from "@/components/home/BrandStory";
-import ServicesPreview from "@/components/home/ServicesPreview";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import VisualShowcase from "@/components/home/VisualShowcase";
-import IndustriesPreview from "@/components/home/IndustriesPreview";
-import ProcessPreview from "@/components/home/ProcessPreview";
-import InsightsPreview from "@/components/home/InsightsPreview";
-import FAQ from "@/components/home/FAQ";
-import TestimonialsPreview from "@/components/home/TestimonialsPreview";
+import DeferredSection from "@/components/shared/DeferredSection";
 import { homeFaqs } from "@/data/homeFaqs";
-import CTABanner from "@/components/home/CTABanner";
 import SEO from "@/components/SEO";
 import { buildFaqSchema } from "@/lib/seoSchema";
+
+const BrandStory = lazy(() => import("@/components/home/BrandStory"));
+const ServicesPreview = lazy(() => import("@/components/home/ServicesPreview"));
+const VisualShowcase = lazy(() => import("@/components/home/VisualShowcase"));
+const IndustriesPreview = lazy(() => import("@/components/home/IndustriesPreview"));
+const ProcessPreview = lazy(() => import("@/components/home/ProcessPreview"));
+const WhyChooseUs = lazy(() => import("@/components/home/WhyChooseUs"));
+const TestimonialsPreview = lazy(() => import("@/components/home/TestimonialsPreview"));
+const InsightsPreview = lazy(() => import("@/components/home/InsightsPreview"));
+const FAQ = lazy(() => import("@/components/home/FAQ"));
+const CTABanner = lazy(() => import("@/components/home/CTABanner"));
+
+const Deferred = ({ children, minHeight }: { children: React.ReactNode; minHeight?: string }) => (
+  <DeferredSection minHeight={minHeight}><Suspense fallback={null}>{children}</Suspense></DeferredSection>
+);
 
 const Index = () => (
   <PageLayout>
@@ -68,16 +75,16 @@ const Index = () => (
     <div className="relative z-10">
       <Hero />
       <ClientTrustRail />
-      <BrandStory />
-      <ServicesPreview />
-      <VisualShowcase />
-      <IndustriesPreview />
-      <ProcessPreview />
-      <WhyChooseUs />
-      <TestimonialsPreview />
-      <InsightsPreview />
-      <FAQ />
-      <CTABanner />
+      <Deferred minHeight="36rem"><BrandStory /></Deferred>
+      <Deferred minHeight="42rem"><ServicesPreview /></Deferred>
+      <Deferred minHeight="40rem"><VisualShowcase /></Deferred>
+      <Deferred><IndustriesPreview /></Deferred>
+      <Deferred><ProcessPreview /></Deferred>
+      <Deferred><WhyChooseUs /></Deferred>
+      <Deferred minHeight="36rem"><TestimonialsPreview /></Deferred>
+      <Deferred><InsightsPreview /></Deferred>
+      <Deferred minHeight="34rem"><FAQ /></Deferred>
+      <Deferred minHeight="22rem"><CTABanner /></Deferred>
     </div>
   </PageLayout>
 );

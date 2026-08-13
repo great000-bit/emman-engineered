@@ -1,5 +1,3 @@
-import { useReducedMotion } from "framer-motion";
-
 export type HomeBgVariant = "aurora" | "ember" | "violet-drift" | "mono-grid";
 
 const VARIANT_LAYERS: Record<HomeBgVariant, string> = {
@@ -28,7 +26,7 @@ interface HomeAnimatedBackgroundProps {
 const HomeAnimatedBackground = ({ variant = "aurora" }: HomeAnimatedBackgroundProps) => {
   return (
     <div
-      className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+      className="home-atmosphere fixed inset-0 z-0 pointer-events-none overflow-hidden"
       aria-hidden="true"
     >
       {/* Selected static color-mood layer — no animation, just a fixed gradient tint */}
